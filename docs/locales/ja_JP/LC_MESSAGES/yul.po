@@ -1,0 +1,1910 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2023, The Solidity Authors
+# This file is distributed under the same license as the Solidity package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Solidity 0.8.20\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-18 04:40+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ja_JP\n"
+"Language-Team: ja_JP <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../yul.rst:5 135812c8debf49b0b3e845781926c31d
+msgid "Yul"
+msgstr ""
+
+#: ../../yul.rst:9 c1c5f85a8cca4e5e9046bdc093586f78
+msgid ""
+"Yul (previously also called JULIA or IULIA) is an intermediate language "
+"that can be compiled to bytecode for different backends."
+msgstr ""
+
+#: ../../yul.rst:12 a39505637f354414ba8f36d657f1f9f7
+msgid ""
+"It can be used in stand-alone mode and for \"inline assembly\" inside "
+"Solidity. The compiler uses Yul as an intermediate language in the IR-"
+"based code generator (\"new codegen\" or \"IR-based codegen\"). Yul is a "
+"good target for high-level optimisation stages that can benefit all "
+"target platforms equally."
+msgstr ""
+
+#: ../../yul.rst:17 b4bde480f6224536ad863a86ddf43780
+msgid "Motivation and High-level Description"
+msgstr ""
+
+#: ../../yul.rst:19 055508417a734f90b269fe425092a160
+msgid "The design of Yul tries to achieve several goals:"
+msgstr ""
+
+#: ../../yul.rst:21 e8232c7d53344febb1b53d5569eda528
+msgid ""
+"Programs written in Yul should be readable, even if the code is generated"
+" by a compiler from Solidity or another high-level language."
+msgstr ""
+
+#: ../../yul.rst:22 fcaea94c4f024bac978c24cd5476c7ca
+msgid ""
+"Control flow should be easy to understand to help in manual inspection, "
+"formal verification and optimization."
+msgstr ""
+
+#: ../../yul.rst:23 76d22965df5d48689a12a00734029cd2
+msgid ""
+"The translation from Yul to bytecode should be as straightforward as "
+"possible."
+msgstr ""
+
+#: ../../yul.rst:24 863ded57bb914312aed5d1b366b9a671
+msgid "Yul should be suitable for whole-program optimization."
+msgstr ""
+
+#: ../../yul.rst:26 50e5e28d8710404cb520570a796a2de5
+msgid ""
+"In order to achieve the first and second goal, Yul provides high-level "
+"constructs like ``for`` loops, ``if`` and ``switch`` statements and "
+"function calls. These should be sufficient for adequately representing "
+"the control flow for assembly programs. Therefore, no explicit statements"
+" for ``SWAP``, ``DUP``, ``JUMPDEST``, ``JUMP`` and ``JUMPI`` are "
+"provided, because the first two obfuscate the data flow and the last two "
+"obfuscate control flow. Furthermore, functional statements of the form "
+"``mul(add(x, y), 7)`` are preferred over pure opcode statements like ``7 "
+"y x add mul`` because in the first form, it is much easier to see which "
+"operand is used for which opcode."
+msgstr ""
+
+#: ../../yul.rst:36 b799a73105034ae5adbb6d1fcef76b8f
+msgid ""
+"Even though it was designed for stack machines, Yul does not expose the "
+"complexity of the stack itself. The programmer or auditor should not have"
+" to worry about the stack."
+msgstr ""
+
+#: ../../yul.rst:39 f855c2a32dad4e69bd7a008d573e5106
+msgid ""
+"The third goal is achieved by compiling the higher level constructs to "
+"bytecode in a very regular way. The only non-local operation performed by"
+" the assembler is name lookup of user-defined identifiers (functions, "
+"variables, ...) and cleanup of local variables from the stack."
+msgstr ""
+
+#: ../../yul.rst:45 2f59e5865ed74fc4a281590cb95c6332
+msgid ""
+"To avoid confusions between concepts like values and references, Yul is "
+"statically typed. At the same time, there is a default type (usually the "
+"integer word of the target machine) that can always be omitted to help "
+"readability."
+msgstr ""
+
+#: ../../yul.rst:50 3fc0e839a45b4053a202a7fd1a333fa1
+msgid ""
+"To keep the language simple and flexible, Yul does not have any built-in "
+"operations, functions or types in its pure form. These are added together"
+" with their semantics when specifying a dialect of Yul, which allows "
+"specializing Yul to the requirements of different target platforms and "
+"feature sets."
+msgstr ""
+
+#: ../../yul.rst:56 9a93271add5b409081233c295931f2ee
+msgid ""
+"Currently, there is only one specified dialect of Yul. This dialect uses "
+"the EVM opcodes as builtin functions (see below) and defines only the "
+"type ``u256``, which is the native 256-bit type of the EVM. Because of "
+"that, we will not provide types in the examples below."
+msgstr ""
+
+#: ../../yul.rst:63 06bdd3b572b041308fce8d2805febf5a
+msgid "Simple Example"
+msgstr ""
+
+#: ../../yul.rst:65 f9fe7c0ea1e64eb8a805475a7ee2b536
+msgid ""
+"The following example program is written in the EVM dialect and computes "
+"exponentiation. It can be compiled using ``solc --strict-assembly``. The "
+"builtin functions ``mul`` and ``div`` compute product and division, "
+"respectively."
+msgstr ""
+
+#: ../../yul.rst:86 83dfa3a6bffd4a36ac68a379bd06349e
+msgid ""
+"It is also possible to implement the same function using a for-loop "
+"instead of with recursion. Here, ``lt(a, b)`` computes whether ``a`` is "
+"less than ``b``."
+msgstr ""
+
+#: ../../yul.rst:102 67859c77e7a447adab1d7eed38495e68
+msgid ""
+"At the :ref:`end of the section <erc20yul>`, a complete implementation of"
+" the ERC-20 standard can be found."
+msgstr ""
+
+#: ../../yul.rst:108 dff84872c2cf45309d95467aee579e18
+msgid "Stand-Alone Usage"
+msgstr ""
+
+#: ../../yul.rst:110 900bb5a7c91f416595081ebb47f062a4
+msgid ""
+"You can use Yul in its stand-alone form in the EVM dialect using the "
+"Solidity compiler. This will use the :ref:`Yul object notation <yul-"
+"object>` so that it is possible to refer to code as data to deploy "
+"contracts. This Yul mode is available for the commandline compiler (use "
+"``--strict-assembly``) and for the :ref:`standard-json interface "
+"<compiler-api>`:"
+msgstr ""
+
+#: ../../yul.rst:128 7c02406dc0494b90b498efe7197c9d32
+msgid ""
+"Yul is in active development and bytecode generation is only fully "
+"implemented for the EVM dialect of Yul with EVM 1.0 as target."
+msgstr ""
+
+#: ../../yul.rst:133 e584e365344e442eae3e6a0caeace315
+msgid "Informal Description of Yul"
+msgstr ""
+
+#: ../../yul.rst:135 79e2d594369c41da846dc05a2e95809e
+msgid ""
+"In the following, we will talk about each individual aspect of the Yul "
+"language. In examples, we will use the default EVM dialect."
+msgstr ""
+
+#: ../../yul.rst:139 292b6e918cfe464981cd113e2fb9a54a
+msgid "Syntax"
+msgstr ""
+
+#: ../../yul.rst:141 48ae3184d36e45fe9f020e9f61fdae9b
+msgid ""
+"Yul parses comments, literals and identifiers in the same way as "
+"Solidity, so you can e.g. use ``//`` and ``/* */`` to denote comments. "
+"There is one exception: Identifiers in Yul can contain dots: ``.``."
+msgstr ""
+
+#: ../../yul.rst:145 62d5409ceac24180a77285b4a903eefe
+msgid ""
+"Yul can specify \"objects\" that consist of code, data and sub-objects. "
+"Please see :ref:`Yul Objects <yul-object>` below for details on that. In "
+"this section, we are only concerned with the code part of such an object."
+" This code part always consists of a curly-braces delimited block. Most "
+"tools support specifying just a code block where an object is expected."
+msgstr ""
+
+#: ../../yul.rst:152 ed0c05e8e5ba4bfc878a69d02cd1ff05
+msgid ""
+"Inside a code block, the following elements can be used (see the later "
+"sections for more details):"
+msgstr ""
+
+#: ../../yul.rst:155 440b0ab9c47845c8ad3380dc243e1160
+msgid ""
+"literals, i.e. ``0x123``, ``42`` or ``\"abc\"`` (strings up to 32 "
+"characters)"
+msgstr ""
+
+#: ../../yul.rst:156 ebc7e27acfe84999bded7b29f336f5a8
+msgid "calls to builtin functions, e.g. ``add(1, mload(0))``"
+msgstr ""
+
+#: ../../yul.rst:157 2435e105d65d4d4480b84d97080f0661
+msgid ""
+"variable declarations, e.g. ``let x := 7``, ``let x := add(y, 3)`` or "
+"``let x`` (initial value of 0 is assigned)"
+msgstr ""
+
+#: ../../yul.rst:158 dd44ac93dfac451ebc128f504914677a
+msgid "identifiers (variables), e.g. ``add(3, x)``"
+msgstr ""
+
+#: ../../yul.rst:159 039e00a2b5544ac8a50c2d4be81bb6e6
+msgid "assignments, e.g. ``x := add(y, 3)``"
+msgstr ""
+
+#: ../../yul.rst:160 8136898db44c473d9af438d0405d2bc2
+msgid ""
+"blocks where local variables are scoped inside, e.g. ``{ let x := 3 { let"
+" y := add(x, 1) } }``"
+msgstr ""
+
+#: ../../yul.rst:161 a0cd6efc2d944a75ae0e663d2e3cf79b
+msgid "if statements, e.g. ``if lt(a, b) { sstore(0, 1) }``"
+msgstr ""
+
+#: ../../yul.rst:162 77d97b8b0df14e9c9402c7ffba27d6e4
+msgid ""
+"switch statements, e.g. ``switch mload(0) case 0 { revert() } default { "
+"mstore(0, 1) }``"
+msgstr ""
+
+#: ../../yul.rst:163 3a4a69413178434490f5c1fa7b5314aa
+msgid ""
+"for loops, e.g. ``for { let i := 0} lt(i, 10) { i := add(i, 1) } { "
+"mstore(i, 7) }``"
+msgstr ""
+
+#: ../../yul.rst:164 847e41b052714dc485a2c862d561df6d
+msgid "function definitions, e.g. ``function f(a, b) -> c { c := add(a, b) }``"
+msgstr ""
+
+#: ../../yul.rst:166 49ede0158311418596028de19a18ce9f
+msgid ""
+"Multiple syntactical elements can follow each other simply separated by "
+"whitespace, i.e. there is no terminating ``;`` or newline required."
+msgstr ""
+
+#: ../../yul.rst:170 e608a003a2544821884feaff4da12bf2
+msgid "Literals"
+msgstr ""
+
+#: ../../yul.rst:172 6b45cf154ebe467f9d1bea04d6f0288d
+msgid "As literals, you can use:"
+msgstr ""
+
+#: ../../yul.rst:174 f5fb036c5f374dbb88b95afffba2a811
+msgid "Integer constants in decimal or hexadecimal notation."
+msgstr ""
+
+#: ../../yul.rst:176 69fac55c07764a48bc3afc92dd593289
+msgid ""
+"ASCII strings (e.g. ``\"abc\"``), which may contain hex escapes ``\\xNN``"
+" and Unicode escapes ``\\uNNNN`` where ``N`` are hexadecimal digits."
+msgstr ""
+
+#: ../../yul.rst:178 0db2df46f7ce4a1a97201330ee2b218b
+msgid "Hex strings (e.g. ``hex\"616263\"``)."
+msgstr ""
+
+#: ../../yul.rst:180 e8f2a8a3e7a34d2fa3dbdf4027d95799
+msgid "In the EVM dialect of Yul, literals represent 256-bit words as follows:"
+msgstr ""
+
+#: ../../yul.rst:182 8ae4b2509beb422b9ed93a8aedc0fe85
+msgid ""
+"Decimal or hexadecimal constants must be less than ``2**256``. They "
+"represent the 256-bit word with that value as an unsigned integer in big "
+"endian encoding."
+msgstr ""
+
+#: ../../yul.rst:185 bd2a64aa495540889a3430b2786ef418
+msgid ""
+"An ASCII string is first viewed as a byte sequence, by viewing a non-"
+"escape ASCII character as a single byte whose value is the ASCII code, an"
+" escape ``\\xNN`` as single byte with that value, and an escape "
+"``\\uNNNN`` as the UTF-8 sequence of bytes for that code point. The byte "
+"sequence must not exceed 32 bytes. The byte sequence is padded with zeros"
+" on the right to reach 32 bytes in length; in other words, the string is "
+"stored left-aligned. The padded byte sequence represents a 256-bit word "
+"whose most significant 8 bits are the ones from the first byte, i.e. the "
+"bytes are interpreted in big endian form."
+msgstr ""
+
+#: ../../yul.rst:195 36da300426904d949d7e0363753c5990
+msgid ""
+"A hex string is first viewed as a byte sequence, by viewing each pair of "
+"contiguous hex digits as a byte. The byte sequence must not exceed 32 "
+"bytes (i.e. 64 hex digits), and is treated as above."
+msgstr ""
+
+#: ../../yul.rst:199 1895a44a1df84a2eb03353e935ad4d91
+msgid ""
+"When compiling for the EVM, this will be translated into an appropriate "
+"``PUSHi`` instruction. In the following example, ``3`` and ``2`` are "
+"added resulting in 5 and then the bitwise ``and`` with the string \"abc\""
+" is computed. The final value is assigned to a local variable called "
+"``x``."
+msgstr ""
+
+#: ../../yul.rst:205 8691f87657194eb08c1babe783722442
+msgid ""
+"The 32-byte limit above does not apply to string literals passed to "
+"builtin functions that require literal arguments (e.g. ``setimmutable`` "
+"or ``loadimmutable``). Those strings never end up in the generated "
+"bytecode."
+msgstr ""
+
+#: ../../yul.rst:213 de6fda90deda4590b0d414de1733fa2d
+msgid ""
+"Unless it is the default type, the type of a literal has to be specified "
+"after a colon:"
+msgstr ""
+
+#: ../../yul.rst:223 9e6cfabf7abe4cbda5c17af0dcbce35b
+msgid "Function Calls"
+msgstr ""
+
+#: ../../yul.rst:225 f25c0f83658a4ff8bf270f807c9fd0d8
+msgid ""
+"Both built-in and user-defined functions (see below) can be called in the"
+" same way as shown in the previous example. If the function returns a "
+"single value, it can be directly used inside an expression again. If it "
+"returns multiple values, they have to be assigned to local variables."
+msgstr ""
+
+#: ../../yul.rst:238 49b516fd6db9451f8edf432ebf108487
+msgid ""
+"For built-in functions of the EVM, functional expressions can be directly"
+" translated to a stream of opcodes: You just read the expression from "
+"right to left to obtain the opcodes. In the case of the first line in the"
+" example, this is ``PUSH1 3 PUSH1 0x80 MLOAD ADD PUSH1 0x80 MSTORE``."
+msgstr ""
+
+#: ../../yul.rst:244 33c911700dcf4f72ae9e69f407aec17a
+msgid ""
+"For calls to user-defined functions, the arguments are also put on the "
+"stack from right to left and this is the order in which argument lists "
+"are evaluated. The return values, though, are expected on the stack from "
+"left to right, i.e. in this example, ``y`` is on top of the stack and "
+"``x`` is below it."
+msgstr ""
+
+#: ../../yul.rst:252 4a9c4e7a32034c518f44113091d66624
+msgid "Variable Declarations"
+msgstr ""
+
+#: ../../yul.rst:254 f863372263be4e9da96c90c3ef5bcc82
+msgid ""
+"You can use the ``let`` keyword to declare variables. A variable is only "
+"visible inside the ``{...}``-block it was defined in. When compiling to "
+"the EVM, a new stack slot is created that is reserved for the variable "
+"and automatically removed again when the end of the block is reached. You"
+" can provide an initial value for the variable. If you do not provide a "
+"value, the variable will be initialized to zero."
+msgstr ""
+
+#: ../../yul.rst:262 f643e0ae7fb342bb9b5e3cc30e4c0f95
+msgid ""
+"Since variables are stored on the stack, they do not directly influence "
+"memory or storage, but they can be used as pointers to memory or storage "
+"locations in the built-in functions ``mstore``, ``mload``, ``sstore`` and"
+" ``sload``. Future dialects might introduce specific types for such "
+"pointers."
+msgstr ""
+
+#: ../../yul.rst:268 d3c650c0df34435a84ed4ea7113c1513
+msgid ""
+"When a variable is referenced, its current value is copied. For the EVM, "
+"this translates to a ``DUP`` instruction."
+msgstr ""
+
+#: ../../yul.rst:284 ba15118a257f4c85a64d116a27a91f32
+msgid ""
+"If the declared variable should have a type different from the default "
+"type, you denote that following a colon. You can also declare multiple "
+"variables in one statement when you assign from a function call that "
+"returns multiple values."
+msgstr ""
+
+#: ../../yul.rst:298 5e340c08847b4bbdbc9f78da74f93c0b
+msgid ""
+"Depending on the optimiser settings, the compiler can free the stack "
+"slots already after the variable has been used for the last time, even "
+"though it is still in scope."
+msgstr ""
+
+#: ../../yul.rst:304 ca2376171ca94663abbb0febb4d3392a
+msgid "Assignments"
+msgstr ""
+
+#: ../../yul.rst:306 1680e94aa84c4071b3c2830db9ba2781
+msgid ""
+"Variables can be assigned to after their definition using the ``:=`` "
+"operator. It is possible to assign multiple variables at the same time. "
+"For this, the number and types of the values have to match. If you want "
+"to assign the values returned from a function that has multiple return "
+"parameters, you have to provide multiple variables. The same variable may"
+" not occur multiple times on the left-hand side of an assignment, e.g. "
+"``x, x := f()`` is invalid."
+msgstr ""
+
+#: ../../yul.rst:327 ac8c40d28ec64d1c89cd066c4def9116
+msgid "If"
+msgstr ""
+
+#: ../../yul.rst:329 8bc3b8657673471d852ded8c461a4b31
+msgid ""
+"The if statement can be used for conditionally executing code. No "
+"\"else\" block can be defined. Consider using \"switch\" instead (see "
+"below) if you need multiple alternatives."
+msgstr ""
+
+#: ../../yul.rst:337 72eb2e183da04571a57909694fab8264
+msgid "The curly braces for the body are required."
+msgstr ""
+
+#: ../../yul.rst:340 32ed0b86fdc14799bb3bae1c3fada07b
+msgid "Switch"
+msgstr ""
+
+#: ../../yul.rst:342 e80eeb81be0b4e7599255444565f1561
+msgid ""
+"You can use a switch statement as an extended version of the if "
+"statement. It takes the value of an expression and compares it to several"
+" literal constants. The branch corresponding to the matching constant is "
+"taken. Contrary to other programming languages, for safety reasons, "
+"control flow does not continue from one case to the next. There can be a "
+"fallback or default case called ``default`` which is taken if none of the"
+" literal constants matches."
+msgstr ""
+
+#: ../../yul.rst:363 6bf59f64867745d0b943460c634b60a2
+msgid ""
+"The list of cases is not enclosed by curly braces, but the body of a case"
+" does require them."
+msgstr ""
+
+#: ../../yul.rst:367 31edb905c9ed4918acced87dd56388f8
+msgid "Loops"
+msgstr ""
+
+#: ../../yul.rst:369 e57e6a7e1ca24aedaa6b11736b4bee05
+msgid ""
+"Yul supports for-loops which consist of a header containing an "
+"initializing part, a condition, a post-iteration part and a body. The "
+"condition has to be an expression, while the other three are blocks. If "
+"the initializing part declares any variables at the top level, the scope "
+"of these variables extends to all other parts of the loop."
+msgstr ""
+
+#: ../../yul.rst:376 b3544d6388214e00a987e8f3c2fff903
+msgid ""
+"The ``break`` and ``continue`` statements can be used in the body to exit"
+" the loop or skip to the post-part, respectively."
+msgstr ""
+
+#: ../../yul.rst:379 ce808c8148f8404b9ee214ef8715437b
+msgid "The following example computes the sum of an area in memory."
+msgstr ""
+
+#: ../../yul.rst:390 543a202aeb0b47d7855c3c9906fd3909
+msgid ""
+"For loops can also be used as a replacement for while loops: Simply leave"
+" the initialization and post-iteration parts empty."
+msgstr ""
+
+#: ../../yul.rst:405 01e9cdc5b36a43369fdf2fca28062bce
+msgid "Function Declarations"
+msgstr ""
+
+#: ../../yul.rst:407 65b0605c60864aca9fcbc564bb23ecfe
+msgid ""
+"Yul allows the definition of functions. These should not be confused with"
+" functions in Solidity since they are never part of an external interface"
+" of a contract and are part of a namespace separate from the one for "
+"Solidity functions."
+msgstr ""
+
+#: ../../yul.rst:411 4909acec4ef642b5bef70bdbbfde7d77
+msgid ""
+"For the EVM, Yul functions take their arguments (and a return PC) from "
+"the stack and also put the results onto the stack. User-defined functions"
+" and built-in functions are called in exactly the same way."
+msgstr ""
+
+#: ../../yul.rst:415 107c1d1359264197bf8ad4bab06d7971
+msgid ""
+"Functions can be defined anywhere and are visible in the block they are "
+"declared in. Inside a function, you cannot access local variables defined"
+" outside of that function."
+msgstr ""
+
+#: ../../yul.rst:419 4287b67a7b9b41a98f5c29ee25056eb7
+msgid ""
+"Functions declare parameters and return variables, similar to Solidity. "
+"To return a value, you assign it to the return variable(s)."
+msgstr ""
+
+#: ../../yul.rst:422 54657fe977b94115bd4b994708808cd0
+msgid ""
+"If you call a function that returns multiple values, you have to assign "
+"them to multiple variables using ``a, b := f(x)`` or ``let a, b := "
+"f(x)``."
+msgstr ""
+
+#: ../../yul.rst:425 aed01e03723e44129e5bbffbfd229378
+msgid ""
+"The ``leave`` statement can be used to exit the current function. It "
+"works like the ``return`` statement in other languages just that it does "
+"not take a value to return, it just exits the functions and the function "
+"will return whatever values are currently assigned to the return "
+"variable(s)."
+msgstr ""
+
+#: ../../yul.rst:430 fd0386d238c34f6690d41eb9b1d3ba29
+msgid ""
+"Note that the EVM dialect has a built-in function called ``return`` that "
+"quits the full execution context (internal message call) and not just the"
+" current yul function."
+msgstr ""
+
+#: ../../yul.rst:434 20734ec5771f4fc499d036c6af078052
+msgid ""
+"The following example implements the power function by square-and-"
+"multiply."
+msgstr ""
+
+#: ../../yul.rst:452 8a2c9edfe0884c938681531a1a7e8c94
+msgid "Specification of Yul"
+msgstr ""
+
+#: ../../yul.rst:454 8c15431995304c298cb720ba831ab53a
+msgid ""
+"This chapter describes Yul code formally. Yul code is usually placed "
+"inside Yul objects, which are explained in their own chapter."
+msgstr ""
+
+#: ../../yul.rst:510 8384471f991c41c8bc3c3ae80d8252e9
+msgid "Restrictions on the Grammar"
+msgstr ""
+
+#: ../../yul.rst:512 e0f818df73c54bbf9ced9dfe9fd929f8
+msgid ""
+"Apart from those directly imposed by the grammar, the following "
+"restrictions apply:"
+msgstr ""
+
+#: ../../yul.rst:515 8ac886d62b4c47b6a8899ef0ef871a79
+msgid ""
+"Switches must have at least one case (including the default case). All "
+"case values need to have the same type and distinct values. If all "
+"possible values of the expression type are covered, a default case is not"
+" allowed (i.e. a switch with a ``bool`` expression that has both a true "
+"and a false case do not allow a default case)."
+msgstr ""
+
+#: ../../yul.rst:521 01fa33a841a94ed4a30188e3a6c7aeb0
+msgid ""
+"Every expression evaluates to zero or more values. Identifiers and "
+"Literals evaluate to exactly one value and function calls evaluate to a "
+"number of values equal to the number of return variables of the function "
+"called."
+msgstr ""
+
+#: ../../yul.rst:526 c4a53b94e31440d59d3c3c72c4bd9865
+msgid ""
+"In variable declarations and assignments, the right-hand-side expression "
+"(if present) has to evaluate to a number of values equal to the number of"
+" variables on the left-hand-side. This is the only situation where an "
+"expression evaluating to more than one value is allowed. The same "
+"variable name cannot occur more than once in the left-hand-side of an "
+"assignment or variable declaration."
+msgstr ""
+
+#: ../../yul.rst:534 bf6d50a68cde450194df999594728d82
+msgid ""
+"Expressions that are also statements (i.e. at the block level) have to "
+"evaluate to zero values."
+msgstr ""
+
+#: ../../yul.rst:537 92fad964ec6a49dc965c2c8c737e5795
+msgid ""
+"In all other situations, expressions have to evaluate to exactly one "
+"value."
+msgstr ""
+
+#: ../../yul.rst:539 0356aab4031a4e45a9656d5149c0a7a5
+msgid ""
+"A ``continue`` or ``break`` statement can only be used inside the body of"
+" a for-loop, as follows. Consider the innermost loop that contains the "
+"statement. The loop and the statement must be in the same function, or "
+"both must be at the top level. The statement must be in the loop's body "
+"block; it cannot be in the loop's initialization block or update block. "
+"It is worth emphasizing that this restriction applies just to the "
+"innermost loop that contains the ``continue`` or ``break`` statement: "
+"this innermost loop, and therefore the ``continue`` or ``break`` "
+"statement, may appear anywhere in an outer loop, possibly in an outer "
+"loop's initialization block or update block. For example, the following "
+"is legal, because the ``break`` occurs in the body block of the inner "
+"loop, despite also occurring in the update block of the outer loop:"
+msgstr ""
+
+#: ../../yul.rst:558 0129533c4ebc4a878689f1bc74027c23
+msgid "The condition part of the for-loop has to evaluate to exactly one value."
+msgstr ""
+
+#: ../../yul.rst:560 cda4fcf4fcd14b8a8b950b1be2d8f177
+msgid "The ``leave`` statement can only be used inside a function."
+msgstr ""
+
+#: ../../yul.rst:562 fbf0cf72f47e4d59b5d554be93ae210d
+msgid "Functions cannot be defined anywhere inside for loop init blocks."
+msgstr ""
+
+#: ../../yul.rst:564 301297eb67be4b0ea4e262dd8afc3e32
+msgid ""
+"Literals cannot be larger than their type. The largest type defined is "
+"256-bit wide."
+msgstr ""
+
+#: ../../yul.rst:566 7f29ec296052452d85722b5694f60f03
+msgid ""
+"During assignments and function calls, the types of the respective values"
+" have to match. There is no implicit type conversion. Type conversion in "
+"general can only be achieved if the dialect provides an appropriate "
+"built-in function that takes a value of one type and returns a value of a"
+" different type."
+msgstr ""
+
+#: ../../yul.rst:572 c77a935e477b48c1b47ee7690031cf56
+msgid "Scoping Rules"
+msgstr ""
+
+#: ../../yul.rst:574 0aceacde633b4e9791220a3454bdcea6
+msgid ""
+"Scopes in Yul are tied to Blocks (exceptions are functions and the for "
+"loop as explained below) and all declarations (``FunctionDefinition``, "
+"``VariableDeclaration``) introduce new identifiers into these scopes."
+msgstr ""
+
+#: ../../yul.rst:579 9b202a055bea42f383b9a993c9cf5487
+msgid ""
+"Identifiers are visible in the block they are defined in (including all "
+"sub-nodes and sub-blocks): Functions are visible in the whole block (even"
+" before their definitions) while variables are only visible starting from"
+" the statement after the ``VariableDeclaration``."
+msgstr ""
+
+#: ../../yul.rst:584 fcdc899cc2164977bf864a4992124da4
+msgid ""
+"In particular, variables cannot be referenced in the right hand side of "
+"their own variable declaration. Functions can be referenced already "
+"before their declaration (if they are visible)."
+msgstr ""
+
+#: ../../yul.rst:589 9a93d7fb1d2a4f9387a6aee8c4c6394f
+msgid ""
+"As an exception to the general scoping rule, the scope of the \"init\" "
+"part of the for-loop (the first block) extends across all other parts of "
+"the for loop. This means that variables (and functions) declared in the "
+"init part (but not inside a block inside the init part) are visible in "
+"all other parts of the for-loop."
+msgstr ""
+
+#: ../../yul.rst:594 51e01a29fc0d416f8dc7ba99a5929cdb
+msgid ""
+"Identifiers declared in the other parts of the for loop respect the "
+"regular syntactical scoping rules."
+msgstr ""
+
+#: ../../yul.rst:597 dbdcbf77d5004a13a89b8f746477fe79
+msgid ""
+"This means a for-loop of the form ``for { I... } C { P... } { B... }`` is"
+" equivalent to ``{ I... for {} C { P... } { B... } }``."
+msgstr ""
+
+#: ../../yul.rst:600 09d0cad32b354706ad01e5e94dcec461
+msgid ""
+"The parameters and return parameters of functions are visible in the "
+"function body and their names have to be distinct."
+msgstr ""
+
+#: ../../yul.rst:603 c66273c4873c4e169b3262edc24fadad
+msgid ""
+"Inside functions, it is not possible to reference a variable that was "
+"declared outside of that function."
+msgstr ""
+
+#: ../../yul.rst:606 cc38fd535c21426ca6f9b1bd916cfde3
+msgid ""
+"Shadowing is disallowed, i.e. you cannot declare an identifier at a point"
+" where another identifier with the same name is also visible, even if it "
+"is not possible to reference it because it was declared outside the "
+"current function."
+msgstr ""
+
+#: ../../yul.rst:611 ef13b0c50a1e45719f0785a7740a073e
+msgid "Formal Specification"
+msgstr ""
+
+#: ../../yul.rst:613 7b9478d5fe6a4717b6966da888565f21
+msgid ""
+"We formally specify Yul by providing an evaluation function E overloaded "
+"on the various nodes of the AST. As builtin functions can have side "
+"effects, E takes two state objects and the AST node and returns two new "
+"state objects and a variable number of other values. The two state "
+"objects are the global state object (which in the context of the EVM is "
+"the memory, storage and state of the blockchain) and the local state "
+"object (the state of local variables, i.e. a segment of the stack in the "
+"EVM)."
+msgstr ""
+
+#: ../../yul.rst:622 c91bc755d5b14978b5ddd9d253c6a404
+msgid ""
+"If the AST node is a statement, E returns the two state objects and a "
+"\"mode\", which is used for the ``break``, ``continue`` and ``leave`` "
+"statements. If the AST node is an expression, E returns the two state "
+"objects and as many values as the expression evaluates to."
+msgstr ""
+
+#: ../../yul.rst:628 e0698e1ac57847b986d31fb7cae0f3f3
+msgid ""
+"The exact nature of the global state is unspecified for this high level "
+"description. The local state ``L`` is a mapping of identifiers ``i`` to "
+"values ``v``, denoted as ``L[i] = v``."
+msgstr ""
+
+#: ../../yul.rst:632 d23881f63eff4209bb261b032343e6a9
+msgid "For an identifier ``v``, let ``$v`` be the name of the identifier."
+msgstr ""
+
+#: ../../yul.rst:634 9ae19da53a33414c8fc839b5b51b7fdb
+msgid "We will use a destructuring notation for the AST nodes."
+msgstr ""
+
+#: ../../yul.rst:739 173d23d77345434ab6c1ee61c5f371e9
+msgid "EVM Dialect"
+msgstr ""
+
+#: ../../yul.rst:741 36d9d5c1f81d4731a52208c6d7a95bad
+msgid ""
+"The default dialect of Yul currently is the EVM dialect for the currently"
+" selected version of the EVM. with a version of the EVM. The only type "
+"available in this dialect is ``u256``, the 256-bit native type of the "
+"Ethereum Virtual Machine. Since it is the default type of this dialect, "
+"it can be omitted."
+msgstr ""
+
+#: ../../yul.rst:746 034ae1b9382c40bf8a051831c04b0d11
+msgid ""
+"The following table lists all builtin functions (depending on the EVM "
+"version) and provides a short description of the semantics of the "
+"function / opcode. This document does not want to be a full description "
+"of the Ethereum virtual machine. Please refer to a different document if "
+"you are interested in the precise semantics."
+msgstr ""
+
+#: ../../yul.rst:752 ab7edd1a40d140bc9703978b8214aab3
+msgid ""
+"Opcodes marked with ``-`` do not return a result and all others return "
+"exactly one value. Opcodes marked with ``F``, ``H``, ``B``, ``C``, ``I``,"
+" ``L`` and ``P`` are present since Frontier, Homestead, Byzantium, "
+"Constantinople, Istanbul, London or Paris respectively."
+msgstr ""
+
+#: ../../yul.rst:756 4e23cca5b78b4aed8457b9b4836e0226
+msgid ""
+"In the following, ``mem[a...b)`` signifies the bytes of memory starting "
+"at position ``a`` up to but not including position ``b`` and "
+"``storage[p]`` signifies the storage contents at slot ``p``."
+msgstr ""
+
+#: ../../yul.rst:759 60f1c5548ed2425ea72cb445f3ccf187
+msgid ""
+"Since Yul manages local variables and control-flow, opcodes that "
+"interfere with these features are not available. This includes the "
+"``dup`` and ``swap`` instructions as well as ``jump`` instructions, "
+"labels and the ``push`` instructions."
+msgstr ""
+
+#: ../../yul.rst:764 32a1691138f64e8a9029f4944b558800
+msgid "Instruction"
+msgstr ""
+
+#: ../../yul.rst:764 8e6ff29e1b554c188633af0841ee5694
+msgid "Explanation"
+msgstr ""
+
+#: ../../yul.rst:766 2a15a424c9a84ad4b8e438e4c6c17cd6
+msgid "stop()"
+msgstr ""
+
+#: ../../yul.rst:766 ../../yul.rst:822 ../../yul.rst:826 ../../yul.rst:828
+#: ../../yul.rst:832 ../../yul.rst:852 ../../yul.rst:856 ../../yul.rst:860
+#: ../../yul.rst:864 ../../yul.rst:896 ../../yul.rst:898 ../../yul.rst:900
+#: ../../yul.rst:903 ../../yul.rst:905 ../../yul.rst:907 ../../yul.rst:909
+#: ../../yul.rst:911 ../../yul.rst:913 06722ea541cf4d5c8a71a4b3c4a9a0c6
+#: 30f2655f4579468b8aacdbc257f5f523 3ce77119556b4ff4a2f65904f0eb2fda
+#: 5020abc10e1b48448ab0f2cad91ea2d5 6836aa47f88545bda97e1b45869ef636
+#: 6d11fa8a14f542c3bd46ea24b9c37c1c 6d188c5eff1a41e7b0c80a3e1533cce1
+#: 711590f66162466fb9ce1620491aba3a 8087fa9bbb4f4013b28a627d462dfd2e
+#: 849a3425983f420bafa143b1ce0bedf1 87430cd49ad74132b2f8557ec46823d7
+#: 9f2db073694640998c2d896f1ce8f837 a2d5e02cd6b04fbdbfb709127cc43624
+#: a505cd9ea47249fba55aa2b46804829c a825302332ed4800a847745fad54cc23
+#: d050a6f01c534ca1a69168c0fd47fbaf f611bf338c2c4ba8b5061f6025175e9d
+#: f87f15167da34de1be2306547b3faceb
+msgid "`-`"
+msgstr ""
+
+#: ../../yul.rst:766 ../../yul.rst:768 ../../yul.rst:770 ../../yul.rst:772
+#: ../../yul.rst:774 ../../yul.rst:776 ../../yul.rst:778 ../../yul.rst:780
+#: ../../yul.rst:782 ../../yul.rst:784 ../../yul.rst:786 ../../yul.rst:788
+#: ../../yul.rst:790 ../../yul.rst:792 ../../yul.rst:794 ../../yul.rst:796
+#: ../../yul.rst:798 ../../yul.rst:800 ../../yul.rst:802 ../../yul.rst:804
+#: ../../yul.rst:812 ../../yul.rst:814 ../../yul.rst:816 ../../yul.rst:818
+#: ../../yul.rst:820 ../../yul.rst:822 ../../yul.rst:824 ../../yul.rst:826
+#: ../../yul.rst:828 ../../yul.rst:830 ../../yul.rst:832 ../../yul.rst:834
+#: ../../yul.rst:836 ../../yul.rst:838 ../../yul.rst:840 ../../yul.rst:844
+#: ../../yul.rst:846 ../../yul.rst:848 ../../yul.rst:850 ../../yul.rst:852
+#: ../../yul.rst:854 ../../yul.rst:856 ../../yul.rst:858 ../../yul.rst:860
+#: ../../yul.rst:868 ../../yul.rst:878 ../../yul.rst:884 ../../yul.rst:896
+#: ../../yul.rst:900 ../../yul.rst:903 ../../yul.rst:905 ../../yul.rst:907
+#: ../../yul.rst:909 ../../yul.rst:911 ../../yul.rst:913 ../../yul.rst:920
+#: ../../yul.rst:922 ../../yul.rst:924 ../../yul.rst:926 ../../yul.rst:928
+#: ../../yul.rst:930 ../../yul.rst:932 ../../yul.rst:936
+#: 01279ba49a66401db0f1ef30c02e7ebf 0188129ea7814066ae9208ea3648eb05
+#: 03fad6c50e4545039875129c429f6de5 0552b454cdc340cf8cd3c38e4a5b25d0
+#: 18960cb0ea5846e5b1b29d01abc9a64c 1ca66fb2ca964c5a875c197a178fdd90
+#: 1f9617af11af4551a0cf8b66d2a2a5df 2330a69f899d49e09236b01c41f4ed25
+#: 258f064d39904ee5932bdfeea5e49f3d 33e3ad896f084f37b95da7a07b453a03
+#: 33f1c75f3bb247f091dc0d8826fa07fb 37ad12f8727b41eba984d0f1de95efca
+#: 3879a27e3c5940348784e676b15097fd 3d4bfd6a200d47e3ae1ed453f2dccb8a
+#: 414dbab75de241f6958e889fb1dd37a1 43f448a1480341b8943f6defed8ffc4d
+#: 448b6c8947b747f281b6877230fb7610 454860b91427456d9125dc2317293f0d
+#: 4b8fd36450534cea885fb5e11dd6e289 505c7bebf7d34b2f899df5056deeffbc
+#: 53c0197839bc42d08f4047d618c21138 57bd65eb44964446a7eb765d10ed8312
+#: 5967ad4d906442e99c46e4111a5611d2 5c8b5efd493b4c4db7a91d87140ada5e
+#: 5d41f2838c13468894f44ccb533fcd1a 662fbad3509a49e7b1b296ca8c520966
+#: 6816adb652f949409464ec6019eff0be 693d2af3f3484c8ebb30322561f1c672
+#: 6ed5da33e79b4549a7efdffc328204fb 7881d31ab7dd4873a9e4d99a97a65fce
+#: 82571ca4596b4647a0060d0cca5067cc 85dc38562f4346c49c22e33cd9362549
+#: 87743160b70b4a1fb8757aa0e12e830d 8c76ad38c4804a3aac43ab4832b570a2
+#: 8c9c0016985b4e07b2a7a60658cd3fe9 92d68593a5bd46828f5d659cda2b7a96
+#: 949901f3a2e94677a5343ea1837d6e73 97f020c2eb854657abd0f22abd6c9edc
+#: 9c43314f914546f7ada24cff640561f7 9e296c6e9d6a42eea55774467b52853c
+#: a1cc83b67a8b47bfa5d8f143205e3aab a4bbab595ea34e3bb01729a390cfc6bd
+#: a79f9b4d5c304cfeb4c6bb39b7cab039 a7e9190678174027acc7c287af7a00d1
+#: a92e2e012fd7472b9cdba1f6e47f839d ac098211015247cab17b07eba31e6959
+#: affc6c0d02b340c3bebf55de3b3123e9 b4694fbe5daa410ea3f835977d5cbb2d
+#: b4edbd3764914ba8a35c04a81aae1390 c3e7d26851ef43db8baa16490f69a135
+#: cb19dad0f77c469996fbb7464d9fbcba d15f2c7218674353833cdefe9e3d50f8
+#: d2bdb9358aec450280d5d8f225b400cd d396cca3cc544cfba70539c5fef7cf37
+#: d52c17042f7f45039a516e69e2eb8d7e d9ac508ca26f49c9addd767d0bc91878
+#: de4da8bdf333440eb3d81e098a7ea3d8 de9b01256fed429da8ca5edb53396eae
+#: e3000efa73ca412382819f8c58b7cb4a e9f96606ff60421789f7918b719b2d15
+#: eb93d25af2f447aca3aa03783349f2ef edc687c1576641c78d2af5dcd6486d86
+#: ef298989c164481a9dea8ae2b544e557
+msgid "F"
+msgstr ""
+
+#: ../../yul.rst:766 bb0d630bf33745a0860bcf1d65e5df97
+msgid "stop execution, identical to return(0, 0)"
+msgstr ""
+
+#: ../../yul.rst:768 799fdb0f28a3463aa14c8b28fdbed005
+msgid "add(x, y)"
+msgstr ""
+
+#: ../../yul.rst:768 67d80c8aad00442e91358b66895c3b1a
+msgid "x + y"
+msgstr ""
+
+#: ../../yul.rst:770 2dcaaf83afcd484ea61b6a2d4b543000
+msgid "sub(x, y)"
+msgstr ""
+
+#: ../../yul.rst:770 5d13b2c64136437b9f929441c261517b
+msgid "x - y"
+msgstr ""
+
+#: ../../yul.rst:772 26f004d4e23e4258ac0d13be2d0941c3
+msgid "mul(x, y)"
+msgstr ""
+
+#: ../../yul.rst:772 9d522db0d53346bea284782889b657fe
+msgid "x * y"
+msgstr ""
+
+#: ../../yul.rst:774 2cde4965e2c5421a9fbda5ebe44b7edc
+msgid "div(x, y)"
+msgstr ""
+
+#: ../../yul.rst:774 293e5c607a0147b4b2dcac682e744f29
+msgid "x / y or 0 if y == 0"
+msgstr ""
+
+#: ../../yul.rst:776 3d9448ce6f39477a89411b250c9aff1f
+msgid "sdiv(x, y)"
+msgstr ""
+
+#: ../../yul.rst:776 05523496df984b5491e7b037f1a4f741
+msgid "x / y, for signed numbers in two's complement, 0 if y == 0"
+msgstr ""
+
+#: ../../yul.rst:778 4909eff7d5dc4b05b948ece423ca6b60
+msgid "mod(x, y)"
+msgstr ""
+
+#: ../../yul.rst:778 78642f38e997439798beeeca94a92c61
+msgid "x % y, 0 if y == 0"
+msgstr ""
+
+#: ../../yul.rst:780 4c7ff4745b8f4d89b109bc2093a56ecb
+msgid "smod(x, y)"
+msgstr ""
+
+#: ../../yul.rst:780 de4772b96c6c4776bb28212fc7c45e0d
+msgid "x % y, for signed numbers in two's complement, 0 if y == 0"
+msgstr ""
+
+#: ../../yul.rst:782 4f9fcf75174442f78bdff295e90f9175
+msgid "exp(x, y)"
+msgstr ""
+
+#: ../../yul.rst:782 0253d406b6f3436da069f93fb7457e37
+msgid "x to the power of y"
+msgstr ""
+
+#: ../../yul.rst:784 69224328158b4fc3a06f75b8dc34967b
+msgid "not(x)"
+msgstr ""
+
+#: ../../yul.rst:784 eb45b5ae86dd4df29e48b31dbc54bfb5
+msgid "bitwise \"not\" of x (every bit of x is negated)"
+msgstr ""
+
+#: ../../yul.rst:786 a1423c654ab341fb9fcbeab39bafa86b
+msgid "lt(x, y)"
+msgstr ""
+
+#: ../../yul.rst:786 01e11c4cd379448ca246e1c4a991a3f0
+msgid "1 if x < y, 0 otherwise"
+msgstr ""
+
+#: ../../yul.rst:788 d4770e697d3e4590bc7f8f3898d9722e
+msgid "gt(x, y)"
+msgstr ""
+
+#: ../../yul.rst:788 60594a6606ae4329a5c92cb9edaa8b54
+msgid "1 if x > y, 0 otherwise"
+msgstr ""
+
+#: ../../yul.rst:790 763bfa958fdd4af5a173b6209df4f9a0
+msgid "slt(x, y)"
+msgstr ""
+
+#: ../../yul.rst:790 1a1ea93e01224f6c99b44faeb6c7aae4
+msgid "1 if x < y, 0 otherwise, for signed numbers in two's complement"
+msgstr ""
+
+#: ../../yul.rst:792 3b932bb7a48247d69c233d20c98647a0
+msgid "sgt(x, y)"
+msgstr ""
+
+#: ../../yul.rst:792 a4e057254f2842ffab18c07053e4ab4a
+msgid "1 if x > y, 0 otherwise, for signed numbers in two's complement"
+msgstr ""
+
+#: ../../yul.rst:794 d4d2f684212d46c6bcd0a8e465828ac0
+msgid "eq(x, y)"
+msgstr ""
+
+#: ../../yul.rst:794 4f9e7abaf0704d39840d5fd2f8649cd3
+msgid "1 if x == y, 0 otherwise"
+msgstr ""
+
+#: ../../yul.rst:796 df70a52497234bc58a229c2c3c335d06
+msgid "iszero(x)"
+msgstr ""
+
+#: ../../yul.rst:796 77602dd505894ecd85958a58af9d3ad5
+msgid "1 if x == 0, 0 otherwise"
+msgstr ""
+
+#: ../../yul.rst:798 d0fe8370c122437d8204b8d1129ccb4f
+msgid "and(x, y)"
+msgstr ""
+
+#: ../../yul.rst:798 f42858050fa24550b4fe3ab4ca6343ab
+msgid "bitwise \"and\" of x and y"
+msgstr ""
+
+#: ../../yul.rst:800 3225adbbc564425e9889133e57748c82
+msgid "or(x, y)"
+msgstr ""
+
+#: ../../yul.rst:800 cf6c5ba52c41455597f7de3cd6e5fbaf
+msgid "bitwise \"or\" of x and y"
+msgstr ""
+
+#: ../../yul.rst:802 51de51cba2bf415586f4fdad9c278035
+msgid "xor(x, y)"
+msgstr ""
+
+#: ../../yul.rst:802 4be7dbae84ea42f6b0b5802c820e3cfb
+msgid "bitwise \"xor\" of x and y"
+msgstr ""
+
+#: ../../yul.rst:804 662f3840f8904499a6947859df926dbd
+msgid "byte(n, x)"
+msgstr ""
+
+#: ../../yul.rst:804 924ee71e3a1b457ca68d03d33431564a
+msgid "nth byte of x, where the most significant byte is the 0th byte"
+msgstr ""
+
+#: ../../yul.rst:806 4fb779cd64694eb78810beaad0385b57
+msgid "shl(x, y)"
+msgstr ""
+
+#: ../../yul.rst:806 ../../yul.rst:808 ../../yul.rst:810 ../../yul.rst:866
+#: ../../yul.rst:871 3ccad829bd5444d0bdac40775aeb3f5f
+#: b328e02b1c9a4ade9a2897090b723677 bb3d7a17e0824b13ad0c6226f6d665b0
+#: e87079475d574c7a9c54b777d4aab718 fbb1495d339241dc90f69a56540e7fb8
+msgid "C"
+msgstr ""
+
+#: ../../yul.rst:806 b65950f2c8b94acea813f30bf2bfeead
+msgid "logical shift left y by x bits"
+msgstr ""
+
+#: ../../yul.rst:808 296418b9480f46958cf3e399d8d57d62
+msgid "shr(x, y)"
+msgstr ""
+
+#: ../../yul.rst:808 cdff0995dfc1415cbca799e88cab8321
+msgid "logical shift right y by x bits"
+msgstr ""
+
+#: ../../yul.rst:810 ac7d33ccf4c848b3a095576153711e0d
+msgid "sar(x, y)"
+msgstr ""
+
+#: ../../yul.rst:810 f4a9dcefa5bd489abc9fda7e85214cd8
+msgid "signed arithmetic shift right y by x bits"
+msgstr ""
+
+#: ../../yul.rst:812 75a06be63a3d49afb09e1b8ac0cc266b
+msgid "addmod(x, y, m)"
+msgstr ""
+
+#: ../../yul.rst:812 2ef6106c6ac14414b6cfd2b71bafe709
+msgid "(x + y) % m with arbitrary precision arithmetic, 0 if m == 0"
+msgstr ""
+
+#: ../../yul.rst:814 57eb445b0848481595c2a0cba3ada56d
+msgid "mulmod(x, y, m)"
+msgstr ""
+
+#: ../../yul.rst:814 b13e01782b4948958d132d5a92de3459
+msgid "(x * y) % m with arbitrary precision arithmetic, 0 if m == 0"
+msgstr ""
+
+#: ../../yul.rst:816 073283ef5f664831890911c838f17d9a
+msgid "signextend(i, x)"
+msgstr ""
+
+#: ../../yul.rst:816 2f7bb68da61e4e9391bd6f0bf85fb22f
+msgid "sign extend from (i*8+7)th bit counting from least significant"
+msgstr ""
+
+#: ../../yul.rst:818 c6dd6c7d06c041ab8ebc954374df08ac
+msgid "keccak256(p, n)"
+msgstr ""
+
+#: ../../yul.rst:818 5951be30c4de4ebd950718e134a9b539
+msgid "keccak(mem[p...(p+n)))"
+msgstr ""
+
+#: ../../yul.rst:820 d4befd477c7846eea3d48229e3db2cea
+msgid "pc()"
+msgstr ""
+
+#: ../../yul.rst:820 1a1c8b318f244efc9a99f84b01537870
+msgid "current position in code"
+msgstr ""
+
+#: ../../yul.rst:822 d12e00d9d5d340c18a9637546fac0f2c
+msgid "pop(x)"
+msgstr ""
+
+#: ../../yul.rst:822 5d7f96aac9c34f2699681b6bd929c60d
+msgid "discard value x"
+msgstr ""
+
+#: ../../yul.rst:824 fe30d30e9a7b451a8ea4149c122450ca
+msgid "mload(p)"
+msgstr ""
+
+#: ../../yul.rst:824 bd99fcf9b222439bb43ca59986656aa6
+msgid "mem[p...(p+32))"
+msgstr ""
+
+#: ../../yul.rst:826 71a2559817fa4879b9e1d3a451aefe3a
+msgid "mstore(p, v)"
+msgstr ""
+
+#: ../../yul.rst:826 4d7a2508a9b74d318b00e0ab52b73635
+msgid "mem[p...(p+32)) := v"
+msgstr ""
+
+#: ../../yul.rst:828 065d7226d4e842bc9a5117de0a6a938e
+msgid "mstore8(p, v)"
+msgstr ""
+
+#: ../../yul.rst:828 4be8c62bc8e84947955f6acba9e9f738
+msgid "mem[p] := v & 0xff (only modifies a single byte)"
+msgstr ""
+
+#: ../../yul.rst:830 c7369d56faf54aa0928779e7f6405a7a
+msgid "sload(p)"
+msgstr ""
+
+#: ../../yul.rst:830 61e141da7a8c4c3d9c9fe7e28c73f023
+msgid "storage[p]"
+msgstr ""
+
+#: ../../yul.rst:832 168487eedf58444991fdd227735af2cb
+msgid "sstore(p, v)"
+msgstr ""
+
+#: ../../yul.rst:832 e6e278052b5f4730a5c4e86adcddebd2
+msgid "storage[p] := v"
+msgstr ""
+
+#: ../../yul.rst:834 b2b5666f549d49ff94ed8ba97f064f56
+msgid "msize()"
+msgstr ""
+
+#: ../../yul.rst:834 1d6350241fbf42d4a618466637b7f6f8
+msgid "size of memory, i.e. largest accessed memory index"
+msgstr ""
+
+#: ../../yul.rst:836 0eb5a3d0650240dcb918c62680d61947
+msgid "gas()"
+msgstr ""
+
+#: ../../yul.rst:836 ef0212e1d7e142428204d205d32c6659
+msgid "gas still available to execution"
+msgstr ""
+
+#: ../../yul.rst:838 5633a91798ef473395f7aad15dafd07b
+msgid "address()"
+msgstr ""
+
+#: ../../yul.rst:838 dd463d8d6cf940eaaa95588374d03625
+msgid "address of the current contract / execution context"
+msgstr ""
+
+#: ../../yul.rst:840 d091514341cc4656b18eb6167e9499b7
+msgid "balance(a)"
+msgstr ""
+
+#: ../../yul.rst:840 0b537aeb488e41faa8761ce3def991e7
+msgid "wei balance at address a"
+msgstr ""
+
+#: ../../yul.rst:842 4eb7becb16d04f1a8d12fbac1b9f54bc
+msgid "selfbalance()"
+msgstr ""
+
+#: ../../yul.rst:842 ../../yul.rst:916 7091f6f12e704cb49268276fd76bac88
+#: f5584b7168b64535b3960836f14518db
+msgid "I"
+msgstr ""
+
+#: ../../yul.rst:842 83df6a58afee49f99116955fad63fd68
+msgid "equivalent to balance(address()), but cheaper"
+msgstr ""
+
+#: ../../yul.rst:844 1ba0cededb414dce9e465e28b50049e2
+msgid "caller()"
+msgstr ""
+
+#: ../../yul.rst:844 3fd7149f70c44b34a82ee580879a8418
+msgid "call sender (excluding ``delegatecall``)"
+msgstr ""
+
+#: ../../yul.rst:846 4a13faff993d4217b9b0b55366fb127f
+msgid "callvalue()"
+msgstr ""
+
+#: ../../yul.rst:846 d2c0b4839ac643a28d01b872de488ff7
+msgid "wei sent together with the current call"
+msgstr ""
+
+#: ../../yul.rst:848 2addb23a515f4397a51aec926df4d34f
+msgid "calldataload(p)"
+msgstr ""
+
+#: ../../yul.rst:848 08f0737fbee643d1804d732b85a231cd
+msgid "call data starting from position p (32 bytes)"
+msgstr ""
+
+#: ../../yul.rst:850 82ad2d3d603c4551a5dbd557d16b5506
+msgid "calldatasize()"
+msgstr ""
+
+#: ../../yul.rst:850 4791a1157e73428681f89f388efa9f8a
+msgid "size of call data in bytes"
+msgstr ""
+
+#: ../../yul.rst:852 5d47b1da323744b6abf1cb1e28ca8db4
+msgid "calldatacopy(t, f, s)"
+msgstr ""
+
+#: ../../yul.rst:852 6ef10b19c8f14e9f85deac6380af6e7e
+msgid "copy s bytes from calldata at position f to mem at position t"
+msgstr ""
+
+#: ../../yul.rst:854 e0e98b2962e44091a6f0a3abe52cf0aa
+msgid "codesize()"
+msgstr ""
+
+#: ../../yul.rst:854 8d19ec8140754e8dad87f196024e2806
+msgid "size of the code of the current contract / execution context"
+msgstr ""
+
+#: ../../yul.rst:856 e47984e1ea30426b87441716100b7666
+msgid "codecopy(t, f, s)"
+msgstr ""
+
+#: ../../yul.rst:856 1c2ec55221424778801db9a5d44cf335
+msgid "copy s bytes from code at position f to mem at position t"
+msgstr ""
+
+#: ../../yul.rst:858 3187fc9dbdee423aabb28e0d7884bd88
+msgid "extcodesize(a)"
+msgstr ""
+
+#: ../../yul.rst:858 08bbbc087e6d451a9ca01589f2314525
+msgid "size of the code at address a"
+msgstr ""
+
+#: ../../yul.rst:860 d9c57935706f49f3b893db0e0598c219
+msgid "extcodecopy(a, t, f, s)"
+msgstr ""
+
+#: ../../yul.rst:860 351de50ccd1d45f4873650289d0ee626
+msgid "like codecopy(t, f, s) but take code at address a"
+msgstr ""
+
+#: ../../yul.rst:862 5bc6534901ac45ffb68125171a969a5e
+msgid "returndatasize()"
+msgstr ""
+
+#: ../../yul.rst:862 ../../yul.rst:864 ../../yul.rst:892 ../../yul.rst:898
+#: 04f4ff8524eb44b081fb383f7d20a733 4a4f72c7e2f94281ba8a8b27baa6b7ac
+#: 7cc3d2a36c3a4a0bb78e5a0c90d180b4 877706b123b848c7955540cc83b7f049
+msgid "B"
+msgstr ""
+
+#: ../../yul.rst:862 8e0f47fcfb6a4e179250999e879bd018
+msgid "size of the last returndata"
+msgstr ""
+
+#: ../../yul.rst:864 0be8928ce286427184419c04bc04c775
+msgid "returndatacopy(t, f, s)"
+msgstr ""
+
+#: ../../yul.rst:864 5113de81f4e04da3a792722bd2c87765
+msgid "copy s bytes from returndata at position f to mem at position t"
+msgstr ""
+
+#: ../../yul.rst:866 703d099eac2d4076ab67f222b027597e
+msgid "extcodehash(a)"
+msgstr ""
+
+#: ../../yul.rst:866 ec0cbc7b31584a079f12dc338e72c8c2
+msgid "code hash of address a"
+msgstr ""
+
+#: ../../yul.rst:868 630bbaeee097438496c37c49d8ad68b1
+msgid "create(v, p, n)"
+msgstr ""
+
+#: ../../yul.rst:868 90f2681b8e4f470097c6314d553c22b0
+msgid ""
+"create new contract with code mem[p...(p+n)) and send v wei and return "
+"the new address; returns 0 on error"
+msgstr ""
+
+#: ../../yul.rst:871 086abe3e5ab34432bd0ef4be74a2dd46
+msgid "create2(v, p, n, s)"
+msgstr ""
+
+#: ../../yul.rst:871 5866bb3903ce47cf90f2c4fce74f6e40
+msgid ""
+"create new contract with code mem[p...(p+n)) at address keccak256(0xff . "
+"this . s . keccak256(mem[p...(p+n))) and send v wei and return the new "
+"address, where ``0xff`` is a 1 byte value, ``this`` is the current "
+"contract's address as a 20 byte value and ``s`` is a big-endian 256-bit "
+"value; returns 0 on error"
+msgstr ""
+
+#: ../../yul.rst:878 e6cb052466484ac996d022e547365a0e
+msgid "call(g, a, v, in, insize, out, outsize)"
+msgstr ""
+
+#: ../../yul.rst:878 c167fdffced44c1ea76c32949c2ace3a
+msgid ""
+"call contract at address a with input mem[in...(in+insize)) providing g "
+"gas and v wei and output area mem[out...(out+outsize)) returning 0 on "
+"error (eg. out of gas) and 1 on success :ref:`See more <yul-call-return-"
+"area>`"
+msgstr ""
+
+#: ../../yul.rst:884 3003e6c3697b4643b7801a3390e5cd07
+msgid "callcode(g, a, v, in, insize, out, outsize)"
+msgstr ""
+
+#: ../../yul.rst:884 01b04c0db34a473c9eba079069023f6c
+msgid ""
+"identical to ``call`` but only use the code from a and stay in the "
+"context of the current contract otherwise :ref:`See more <yul-call-"
+"return-area>`"
+msgstr ""
+
+#: ../../yul.rst:888 5988ae7ee6a946cc87fcf81fc94f3621
+msgid "delegatecall(g, a, in, insize, out, outsize)"
+msgstr ""
+
+#: ../../yul.rst:888 42fd0e42fbee46da8dfd3abb0e9efd82
+msgid "H"
+msgstr ""
+
+#: ../../yul.rst:888 b8132f8553494a7cbd094b745c95072f
+msgid ""
+"identical to ``callcode`` but also keep ``caller`` and ``callvalue`` "
+":ref:`See more <yul-call-return-area>`"
+msgstr ""
+
+#: ../../yul.rst:892 61c1153702c648ed8d03dbda9a7acd34
+msgid "staticcall(g, a, in, insize, out, outsize)"
+msgstr ""
+
+#: ../../yul.rst:892 2287643e41eb4518829d8b7eb8d74ddc
+msgid ""
+"identical to ``call(g, a, 0, in, insize, out, outsize)`` but do not allow"
+" state modifications :ref:`See more <yul-call-return-area>`"
+msgstr ""
+
+#: ../../yul.rst:896 83fc2d939d4f4cf8a321b2f501584c12
+msgid "return(p, s)"
+msgstr ""
+
+#: ../../yul.rst:896 8454dbed06db4987acde389823548104
+msgid "end execution, return data mem[p...(p+s))"
+msgstr ""
+
+#: ../../yul.rst:898 52b58649cdce42c686e0cc13855b034c
+msgid "revert(p, s)"
+msgstr ""
+
+#: ../../yul.rst:898 9e862017a3ec4a0bbc2d4658516476f0
+msgid "end execution, revert state changes, return data mem[p...(p+s))"
+msgstr ""
+
+#: ../../yul.rst:900 103347a71e314b908861e5b3b1c69be4
+msgid "selfdestruct(a)"
+msgstr ""
+
+#: ../../yul.rst:900 4abff448032946ba97a134c9ddfee45b
+msgid "end execution, destroy current contract and send funds to a (deprecated)"
+msgstr ""
+
+#: ../../yul.rst:903 da1d1226190f47a6b4191d1fa76abfa6
+msgid "invalid()"
+msgstr ""
+
+#: ../../yul.rst:903 61bd97bf7b5340d185e933714054917e
+msgid "end execution with invalid instruction"
+msgstr ""
+
+#: ../../yul.rst:905 eaa045a926444fea973c000930c28b9b
+msgid "log0(p, s)"
+msgstr ""
+
+#: ../../yul.rst:905 4b16ae58abec48738fbd709906602ca2
+msgid "log without topics and data mem[p...(p+s))"
+msgstr ""
+
+#: ../../yul.rst:907 07f71129b36843c396c9618a9140c699
+msgid "log1(p, s, t1)"
+msgstr ""
+
+#: ../../yul.rst:907 d42d28d4a3a24e08ac4636e6bf305333
+msgid "log with topic t1 and data mem[p...(p+s))"
+msgstr ""
+
+#: ../../yul.rst:909 ca3e938fc7764878b4f11ad3aa4bcb27
+msgid "log2(p, s, t1, t2)"
+msgstr ""
+
+#: ../../yul.rst:909 2a581e10e0e14e8bbf26e536b00a003d
+msgid "log with topics t1, t2 and data mem[p...(p+s))"
+msgstr ""
+
+#: ../../yul.rst:911 607dc91e166f4844a3842945c0b6462d
+msgid "log3(p, s, t1, t2, t3)"
+msgstr ""
+
+#: ../../yul.rst:911 4c503a7565ba4a02aa56e5217e3a1f0c
+msgid "log with topics t1, t2, t3 and data mem[p...(p+s))"
+msgstr ""
+
+#: ../../yul.rst:913 72989dec79db433598e141f091214921
+msgid "log4(p, s, t1, t2, t3, t4)"
+msgstr ""
+
+#: ../../yul.rst:913 b0ef0cc545194288a64c79f9463ee68f
+msgid "log with topics t1, t2, t3, t4 and data mem[p...(p+s))"
+msgstr ""
+
+#: ../../yul.rst:916 32cbced13f7f423680eacad0792f45fd
+msgid "chainid()"
+msgstr ""
+
+#: ../../yul.rst:916 7f487bcd97364ecca2f2946ed9bebf9e
+msgid "ID of the executing chain (EIP-1344)"
+msgstr ""
+
+#: ../../yul.rst:918 569fccde599048879e2c9104e5a7fa4c
+msgid "basefee()"
+msgstr ""
+
+#: ../../yul.rst:918 6999ebe28ecb4864b5ab3e3a1dc3d81e
+msgid "L"
+msgstr ""
+
+#: ../../yul.rst:918 cb1bcbfd0c654e88ad2871abbb2e4636
+msgid "current block's base fee (EIP-3198 and EIP-1559)"
+msgstr ""
+
+#: ../../yul.rst:920 bf6158b5eb2148a59c19542f9c8a8d00
+msgid "origin()"
+msgstr ""
+
+#: ../../yul.rst:920 5b7a73a041674969a5c3ebc99233831b
+msgid "transaction sender"
+msgstr ""
+
+#: ../../yul.rst:922 83aae8455287497fa770ee7da0fca802
+msgid "gasprice()"
+msgstr ""
+
+#: ../../yul.rst:922 9beb6409375b4d329a31731e22c84a78
+msgid "gas price of the transaction"
+msgstr ""
+
+#: ../../yul.rst:924 50594f51560840d98172466db316dd0c
+msgid "blockhash(b)"
+msgstr ""
+
+#: ../../yul.rst:924 739fd99164d149879552e14fca6b48e3
+msgid "hash of block nr b - only for last 256 blocks excluding current"
+msgstr ""
+
+#: ../../yul.rst:926 63ef059c8bc04c0aa436cc542aeb1ba5
+msgid "coinbase()"
+msgstr ""
+
+#: ../../yul.rst:926 861f033bae3447678046c646c64bd17c
+msgid "current mining beneficiary"
+msgstr ""
+
+#: ../../yul.rst:928 981f23509cfd41a9ab88224070007c0b
+msgid "timestamp()"
+msgstr ""
+
+#: ../../yul.rst:928 f376a9f0548c4b5fa8096f8c17660360
+msgid "timestamp of the current block in seconds since the epoch"
+msgstr ""
+
+#: ../../yul.rst:930 616128ec2c274d6bb7eb3bd9c4a2e79b
+msgid "number()"
+msgstr ""
+
+#: ../../yul.rst:930 9cf0321441804179a8446d02f4aaf966
+msgid "current block number"
+msgstr ""
+
+#: ../../yul.rst:932 9996adde2a164c999a56506bf063332c
+msgid "difficulty()"
+msgstr ""
+
+#: ../../yul.rst:932 7fb8f47017f048eca3d57aebc1e122a7
+msgid "difficulty of the current block (see note below)"
+msgstr ""
+
+#: ../../yul.rst:934 f9aab44a4a944809bf6e8bb1413d9098
+msgid "prevrandao()"
+msgstr ""
+
+#: ../../yul.rst:934 4d2e1cbd0f044c969547a9fc8c578b35
+msgid "P"
+msgstr ""
+
+#: ../../yul.rst:934 188985141ecd43dfa49fda2660b617ca
+msgid "randomness provided by the beacon chain (see note below)"
+msgstr ""
+
+#: ../../yul.rst:936 251e5928a12d4908b386986d106d1aaf
+msgid "gaslimit()"
+msgstr ""
+
+#: ../../yul.rst:936 ae7e4870b87f4751acb4e515ce58455f
+msgid "block gas limit of the current block"
+msgstr ""
+
+#: ../../yul.rst:942 cb9b7626dcf14621afad0268954c1139
+msgid ""
+"The ``call*`` instructions use the ``out`` and ``outsize`` parameters to "
+"define an area in memory where the return or failure data is placed. This"
+" area is written to depending on how many bytes the called contract "
+"returns. If it returns more data, only the first ``outsize`` bytes are "
+"written. You can access the rest of the data using the ``returndatacopy``"
+" opcode. If it returns less data, then the remaining bytes are not "
+"touched at all. You need to use the ``returndatasize`` opcode to check "
+"which part of this memory area contains the return data. The remaining "
+"bytes will retain their values as of before the call."
+msgstr ""
+
+#: ../../yul.rst:950 d055a2ef7cfd461a81311d2c94ff0fb9
+msgid ""
+"The `difficulty()` instruction is disallowed in EVM version >= Paris. "
+"With the Paris network upgrade the semantics of the instruction that was "
+"previously called ``difficulty`` have been changed and the instruction "
+"was renamed to ``prevrandao``. It can now return arbitrary values in the "
+"full 256-bit range, whereas the highest recorded difficulty value within "
+"Ethash was ~54 bits. This change is described in `EIP-4399 "
+"<https://eips.ethereum.org/EIPS/eip-4399>`_. Please note that irrelevant "
+"to which EVM version is selected in the compiler, the semantics of "
+"instructions depend on the final chain of deployment."
+msgstr ""
+
+#: ../../yul.rst:960 d6be38f90e064c068de1695426cd872e
+msgid ""
+"From version 0.8.18 and up, the use of ``selfdestruct`` in both Solidity "
+"and Yul will trigger a deprecation warning, since the ``SELFDESTRUCT`` "
+"opcode will eventually undergo breaking changes in behaviour as stated in"
+" `EIP-6049 <https://eips.ethereum.org/EIPS/eip-6049>`_."
+msgstr ""
+
+#: ../../yul.rst:964 1cede9d703184b949ccdb59367cd9278
+msgid "In some internal dialects, there are additional functions:"
+msgstr ""
+
+#: ../../yul.rst:967 3354ad23eae64d198eee61e727ea4e85
+msgid "datasize, dataoffset, datacopy"
+msgstr ""
+
+#: ../../yul.rst:969 f01a9a374def41ee91a5c9685079c2b9
+msgid ""
+"The functions ``datasize(x)``, ``dataoffset(x)`` and ``datacopy(t, f, "
+"l)`` are used to access other parts of a Yul object."
+msgstr ""
+
+#: ../../yul.rst:972 c58aa1b9b7344185a6c116848fd815b0
+msgid ""
+"``datasize`` and ``dataoffset`` can only take string literals (the names "
+"of other objects) as arguments and return the size and offset in the data"
+" area, respectively. For the EVM, the ``datacopy`` function is equivalent"
+" to ``codecopy``."
+msgstr ""
+
+#: ../../yul.rst:978 6b739f6ea79647bb98b9ba6d6937fb11
+msgid "setimmutable, loadimmutable"
+msgstr ""
+
+#: ../../yul.rst:980 77983c7e1dfe45d99828a83f4bfa0eaf
+msgid ""
+"The functions ``setimmutable(offset, \"name\", value)`` and "
+"``loadimmutable(\"name\")`` are used for the immutable mechanism in "
+"Solidity and do not nicely map to pure Yul. The call to "
+"``setimmutable(offset, \"name\", value)`` assumes that the runtime code "
+"of the contract containing the given named immutable was copied to memory"
+" at offset ``offset`` and will write ``value`` to all positions in memory"
+" (relative to ``offset``) that contain the placeholder that was generated"
+" for calls to ``loadimmutable(\"name\")`` in the runtime code."
+msgstr ""
+
+#: ../../yul.rst:989 074a551424d14cd5ae70f2bf2003c680
+msgid "linkersymbol"
+msgstr ""
+
+#: ../../yul.rst:990 4cddca1542c24120bda441cd9017d146
+msgid ""
+"The function ``linkersymbol(\"library_id\")`` is a placeholder for an "
+"address literal to be substituted by the linker. Its first and only "
+"argument must be a string literal and uniquely represents the address to "
+"be inserted. Identifiers can be arbitrary but when the compiler produces "
+"Yul code from Solidity sources, it uses a library name qualified with the"
+" name of the source unit that defines that library. To link the code with"
+" a particular library address, the same identifier must be provided to "
+"the ``--libraries`` option on the command line."
+msgstr ""
+
+#: ../../yul.rst:998 eab235f8d497437ba42de164d7e2e359
+msgid "For example this code"
+msgstr ""
+
+#: ../../yul.rst:1004 5d19e4d39a23480c93b94cc55ddba377
+msgid "is equivalent to"
+msgstr ""
+
+#: ../../yul.rst:1010 07d199b0b155467a8a435b26b3eecec2
+msgid ""
+"when the linker is invoked with ``--libraries "
+"\"file.sol:Math=0x1234567890123456789012345678901234567890`` option."
+msgstr ""
+
+#: ../../yul.rst:1013 f7379d928270405ab5ba2ac2dba0bfab
+msgid ""
+"See :ref:`Using the Commandline Compiler <commandline-compiler>` for "
+"details about the Solidity linker."
+msgstr ""
+
+#: ../../yul.rst:1016 84f46447086a46c1aacbd22fbe32cdab
+msgid "memoryguard"
+msgstr ""
+
+#: ../../yul.rst:1018 7e83bda259dc436fa82ab20546a88cca
+msgid ""
+"This function is available in the EVM dialect with objects. The caller of"
+" ``let ptr := memoryguard(size)`` (where ``size`` has to be a literal "
+"number) promises that they only use memory in either the range ``[0, "
+"size)`` or the unbounded range starting at ``ptr``."
+msgstr ""
+
+#: ../../yul.rst:1023 d1422e1a70454c69b076659b48524f85
+msgid ""
+"Since the presence of a ``memoryguard`` call indicates that all memory "
+"access adheres to this restriction, it allows the optimizer to perform "
+"additional optimization steps, for example the stack limit evader, which "
+"attempts to move stack variables that would otherwise be unreachable to "
+"memory."
+msgstr ""
+
+#: ../../yul.rst:1028 8e075389b89346e89648d7bd5853b576
+msgid ""
+"The Yul optimizer promises to only use the memory range ``[size, ptr)`` "
+"for its purposes. If the optimizer does not need to reserve any memory, "
+"it holds that ``ptr == size``."
+msgstr ""
+
+#: ../../yul.rst:1031 c8165183467840c09e10e51a7a6436f2
+msgid ""
+"``memoryguard`` can be called multiple times, but needs to have the same "
+"literal as argument within one Yul subobject. If at least one "
+"``memoryguard`` call is found in a subobject, the additional optimiser "
+"steps will be run on it."
+msgstr ""
+
+#: ../../yul.rst:1039 7ef96b2307f542859f1f35f8a45c4780
+msgid "verbatim"
+msgstr ""
+
+#: ../../yul.rst:1041 cb2cae8ad39a4a478f22dc73422b7d2c
+msgid ""
+"The set of ``verbatim...`` builtin functions lets you create bytecode for"
+" opcodes that are not known to the Yul compiler. It also allows you to "
+"create bytecode sequences that will not be modified by the optimizer."
+msgstr ""
+
+#: ../../yul.rst:1045 396fa89180e64e18832765894e7391ab
+msgid "The functions are ``verbatim_<n>i_<m>o(\"<data>\", ...)``, where"
+msgstr ""
+
+#: ../../yul.rst:1047 5cc0bee60ca24203b1d7940e6300adf8
+msgid ""
+"``n`` is a decimal between 0 and 99 that specifies the number of input "
+"stack slots / variables"
+msgstr ""
+
+#: ../../yul.rst:1048 a0389ad0709b413297c6342bd89c3e24
+msgid ""
+"``m`` is a decimal between 0 and 99 that specifies the number of output "
+"stack slots / variables"
+msgstr ""
+
+#: ../../yul.rst:1049 0f9c77f177924a5b9050612b181a7999
+msgid "``data`` is a string literal that contains the sequence of bytes"
+msgstr ""
+
+#: ../../yul.rst:1051 1b64ec462ea34929a687e4af96e829d8
+msgid ""
+"If you for example want to define a function that multiplies the input by"
+" two, without the optimizer touching the constant two, you can use"
+msgstr ""
+
+#: ../../yul.rst:1059 9e2919d2d1ce4c378fb025660ff0edc5
+msgid ""
+"This code will result in a ``dup1`` opcode to retrieve ``x`` (the "
+"optimizer might directly re-use result of the ``calldataload`` opcode, "
+"though) directly followed by ``600202``. The code is assumed to consume "
+"the copied value of ``x`` and produce the result on the top of the stack."
+" The compiler then generates code to allocate a stack slot for ``double``"
+" and store the result there."
+msgstr ""
+
+#: ../../yul.rst:1067 dfb7d772ca814d2081d88baf59344eb8
+msgid ""
+"As with all opcodes, the arguments are arranged on the stack with the "
+"leftmost argument on the top, while the return values are assumed to be "
+"laid out such that the rightmost variable is at the top of the stack."
+msgstr ""
+
+#: ../../yul.rst:1072 2a67a33d9ce24364b96c104f0316d079
+msgid ""
+"Since ``verbatim`` can be used to generate arbitrary opcodes or even "
+"opcodes unknown to the Solidity compiler, care has to be taken when using"
+" ``verbatim`` together with the optimizer. Even when the optimizer is "
+"switched off, the code generator has to determine the stack layout, which"
+" means that e.g. using ``verbatim`` to modify the stack height can lead "
+"to undefined behaviour."
+msgstr ""
+
+#: ../../yul.rst:1079 4527d3cbdfe74217861254f216dae015
+msgid ""
+"The following is a non-exhaustive list of restrictions on verbatim "
+"bytecode that are not checked by the compiler. Violations of these "
+"restrictions can result in undefined behaviour."
+msgstr ""
+
+#: ../../yul.rst:1084 6486abf31e9d4f3ea371090524042fe7
+msgid ""
+"Control-flow should not jump into or out of verbatim blocks, but it can "
+"jump within the same verbatim block."
+msgstr ""
+
+#: ../../yul.rst:1086 29012ab82d6e45dfaad01097a2fcf8cd
+msgid ""
+"Stack contents apart from the input and output parameters should not be "
+"accessed."
+msgstr ""
+
+#: ../../yul.rst:1088 a9867dda7d114fe9baa94d5facb0f14e
+msgid ""
+"The stack height difference should be exactly ``m - n`` (output slots "
+"minus input slots)."
+msgstr ""
+
+#: ../../yul.rst:1090 424ae256b0d74eb9ba9aede0636984e0
+msgid ""
+"Verbatim bytecode cannot make any assumptions about the surrounding "
+"bytecode. All required parameters have to be passed in as stack "
+"variables."
+msgstr ""
+
+#: ../../yul.rst:1094 0fbe6372fc9a472f8127dc38d2cbc547
+msgid ""
+"The optimizer does not analyze verbatim bytecode and always assumes that "
+"it modifies all aspects of state and thus can only do very few "
+"optimizations across ``verbatim`` function calls."
+msgstr ""
+
+#: ../../yul.rst:1098 b3a58c36c0fb471d975b6c299557fff4
+msgid ""
+"The optimizer treats verbatim bytecode as an opaque block of code. It "
+"will not split it but might move, duplicate or combine it with identical "
+"verbatim bytecode blocks. If a verbatim bytecode block is unreachable by "
+"the control-flow, it can be removed."
+msgstr ""
+
+#: ../../yul.rst:1107 59fa9e056a7d4a95819c2b0d01209f38
+msgid ""
+"During discussions about whether or not EVM improvements might break "
+"existing smart contracts, features inside ``verbatim`` cannot receive the"
+" same consideration as those used by the Solidity compiler itself."
+msgstr ""
+
+#: ../../yul.rst:1114 25c364aee58449cb84c2d845073497de
+msgid ""
+"To avoid confusion, all identifiers starting with the string ``verbatim``"
+" are reserved and cannot be used for user-defined identifiers."
+msgstr ""
+
+#: ../../yul.rst:1120 6b8100eb5ae14fd392fc323536c5e206
+msgid "Specification of Yul Object"
+msgstr ""
+
+#: ../../yul.rst:1122 b6b2525827d447b6a1c977469838cfce
+msgid ""
+"Yul objects are used to group named code and data sections. The functions"
+" ``datasize``, ``dataoffset`` and ``datacopy`` can be used to access "
+"these sections from within code. Hex strings can be used to specify data "
+"in hex encoding, regular strings in native encoding. For code, "
+"``datacopy`` will access its assembled binary representation."
+msgstr ""
+
+#: ../../yul.rst:1137 50c1e4ff56a741da93d23f25841a0057
+msgid ""
+"Above, ``Block`` refers to ``Block`` in the Yul code grammar explained in"
+" the previous chapter."
+msgstr ""
+
+#: ../../yul.rst:1141 7fb825eefbaf47a88ffce2278a0987ae
+msgid ""
+"An object with a name that ends in ``_deployed`` is treated as deployed "
+"code by the Yul optimizer. The only consequence of this is a different "
+"gas cost heuristic in the optimizer."
+msgstr ""
+
+#: ../../yul.rst:1146 c8ee57255713470ba410d0ab08162657
+msgid ""
+"Data objects or sub-objects whose names contain a ``.`` can be defined "
+"but it is not possible to access them through ``datasize``, "
+"``dataoffset`` or ``datacopy`` because ``.`` is used as a separator to "
+"access objects inside another object."
+msgstr ""
+
+#: ../../yul.rst:1153 f2f718a1b3324cd1a89e287897fdda56
+msgid ""
+"The data object called ``\".metadata\"`` has a special meaning: It cannot"
+" be accessed from code and is always appended to the very end of the "
+"bytecode, regardless of its position in the object."
+msgstr ""
+
+#: ../../yul.rst:1157 61ddb55ae54a45ff90ea681e5cdb0aed
+msgid ""
+"Other data objects with special significance might be added in the "
+"future, but their names will always start with a ``.``."
+msgstr ""
+
+#: ../../yul.rst:1161 8e96457c92dc486f9a150415e535707b
+msgid "An example Yul Object is shown below:"
+msgstr ""
+
+#: ../../yul.rst:1237 e57f9ecb04e544089c156c9df303a292
+msgid "Yul Optimizer"
+msgstr ""
+
+#: ../../yul.rst:1239 7a50eb7d0e154d9d9c4a065c92759398
+msgid ""
+"The Yul optimizer operates on Yul code and uses the same language for "
+"input, output and intermediate states. This allows for easy debugging and"
+" verification of the optimizer."
+msgstr ""
+
+#: ../../yul.rst:1242 288e734f0e5f404d8b49ef3482dc1c6f
+msgid ""
+"Please refer to the general :ref:`optimizer documentation <optimizer>` "
+"for more details about the different optimization stages and how to use "
+"the optimizer."
+msgstr ""
+
+#: ../../yul.rst:1245 b3871e446b684ccd93bead6119503833
+msgid ""
+"If you want to use Solidity in stand-alone Yul mode, you activate the "
+"optimizer using ``--optimize`` and optionally specify the :ref:`expected "
+"number of contract executions <optimizer-parameter-runs>` with "
+"``--optimize-runs``:"
+msgstr ""
+
+#: ../../yul.rst:1253 2f42eac36afd44909a77e47035388045
+msgid ""
+"In Solidity mode, the Yul optimizer is activated together with the "
+"regular optimizer."
+msgstr ""
+
+#: ../../yul.rst:1258 24a195f6edc64428b80e45faf34980c3
+msgid "Optimization Step Sequence"
+msgstr ""
+
+#: ../../yul.rst:1260 a53508ff7acd4ecca31381ba357f740d
+msgid ""
+"Detailed information regrading the optimization sequence as well a list "
+"of abbreviations is available in the :ref:`optimizer docs <optimizer-"
+"steps>`."
+msgstr ""
+
+#: ../../yul.rst:1266 080acb735d424d96b913a617a1a8ad31
+msgid "Complete ERC20 Example"
+msgstr ""
+

@@ -1,0 +1,265 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2023, The Solidity Authors
+# This file is distributed under the same license as the Solidity package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Solidity 0.8.20\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-18 04:40+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ja_JP\n"
+"Language-Team: ja_JP <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../index.rst:119 b0b55b684daf4a928afc1dffa90d21be
+msgid "Basics"
+msgstr ""
+
+#: ../../index.rst:127 4b018dfb82334bbf8a77268f05b54e75
+msgid "Language Description"
+msgstr ""
+
+#: ../../index.rst:141 d9648af81eb14e28bd2081d6490ea834
+msgid "Compiler"
+msgstr ""
+
+#: ../../index.rst:149 df8cacec86544bccbceac07f84a70b26
+msgid "Internals"
+msgstr ""
+
+#: ../../index.rst:162 3a9e302f18eb46d3802bb6b84a0ae7e9
+msgid "Additional Material"
+msgstr ""
+
+#: ../../index.rst:2 f39437ba784f4d259830f4ba4998dfc4
+msgid "Solidity"
+msgstr ""
+
+#: ../../index.rst:4 81d3e26ce4b24d9a9458051e5746367f
+msgid ""
+"Solidity is an object-oriented, high-level language for implementing "
+"smart contracts. Smart contracts are programs which govern the behaviour "
+"of accounts within the Ethereum state."
+msgstr ""
+
+#: ../../index.rst:8 8c541406f96549cd8318c2539d38dbe0
+msgid ""
+"Solidity is a `curly-bracket language "
+"<https://en.wikipedia.org/wiki/List_of_programming_languages_by_type"
+"#Curly-bracket_languages>`_ designed to target the Ethereum Virtual "
+"Machine (EVM). It is influenced by C++, Python and JavaScript. You can "
+"find more details about which languages Solidity has been inspired by in "
+"the :doc:`language influences <language-influences>` section."
+msgstr ""
+
+#: ../../index.rst:11 5e5495afe0044d8f8a40dfc12ed89340
+msgid ""
+"Solidity is statically typed, supports inheritance, libraries and complex"
+" user-defined types among other features."
+msgstr ""
+
+#: ../../index.rst:14 f212fb1b18034de3a810d3891d33ae96
+msgid ""
+"With Solidity you can create contracts for uses such as voting, "
+"crowdfunding, blind auctions, and multi-signature wallets."
+msgstr ""
+
+#: ../../index.rst:17 ff7cf7ce9c6745fd93b1f5b5f569f21f
+msgid ""
+"When deploying contracts, you should use the latest released version of "
+"Solidity. Apart from exceptional cases, only the latest version receives "
+"`security fixes <https://github.com/ethereum/solidity/security/policy"
+"#supported-versions>`_. Furthermore, breaking changes as well as new "
+"features are introduced regularly. We currently use a 0.y.z version "
+"number `to indicate this fast pace of change <https://semver.org/#spec-"
+"item-4>`_."
+msgstr ""
+
+#: ../../index.rst:26 af568ed823a94085aecb5460d19f9dd9
+msgid ""
+"Solidity recently released the 0.8.x version that introduced a lot of "
+"breaking changes. Make sure you read :doc:`the full list <080-breaking-"
+"changes>`."
+msgstr ""
+
+#: ../../index.rst:29 697553117408471da26ec230e53a7c6a
+msgid ""
+"Ideas for improving Solidity or this documentation are always welcome, "
+"read our :doc:`contributors guide <contributing>` for more details."
+msgstr ""
+
+#: ../../index.rst:34 e29eabbf45de44519463491748ab5397
+msgid ""
+"You can download this documentation as PDF, HTML or Epub by clicking on "
+"the versions flyout menu in the bottom-left corner and selecting the "
+"preferred download format."
+msgstr ""
+
+#: ../../index.rst:39 8bdddc2173e641da8cecb5946edc06a1
+msgid "Getting Started"
+msgstr ""
+
+#: ../../index.rst:41 03d9481b16a24fc0a1bbacd19640b63b
+msgid "**1. Understand the Smart Contract Basics**"
+msgstr ""
+
+#: ../../index.rst:43 ffb083c5057d4552aec244692dac869d
+msgid ""
+"If you are new to the concept of smart contracts we recommend you to get "
+"started by digging into the \"Introduction to Smart Contracts\" section, "
+"which covers:"
+msgstr ""
+
+#: ../../index.rst:46 2f191f09a75944d39ae469f2cbad686f
+msgid ""
+":ref:`A simple example smart contract <simple-smart-contract>` written in"
+" Solidity."
+msgstr ""
+
+#: ../../index.rst:47 739b30f5df4444729894db90a5244bec
+msgid ":ref:`Blockchain Basics <blockchain-basics>`."
+msgstr ""
+
+#: ../../index.rst:48 3566ab9a4ad9498d975b96ea93fc68a8
+msgid ":ref:`The Ethereum Virtual Machine <the-ethereum-virtual-machine>`."
+msgstr ""
+
+#: ../../index.rst:50 06282b25c30c4cf8abdd62a3c9277104
+msgid "**2. Get to Know Solidity**"
+msgstr ""
+
+#: ../../index.rst:52 ba477dd182de48b1b2c30ff52fa29ecc
+msgid ""
+"Once you are accustomed to the basics, we recommend you read the "
+":doc:`\"Solidity by Example\" <solidity-by-example>` and “Language "
+"Description” sections to understand the core concepts of the language."
+msgstr ""
+
+#: ../../index.rst:55 71359392a26443d8996c9d019d6204cc
+msgid "**3. Install the Solidity Compiler**"
+msgstr ""
+
+#: ../../index.rst:57 f1d5db1708164ebc90926daf8658f098
+msgid ""
+"There are various ways to install the Solidity compiler, simply choose "
+"your preferred option and follow the steps outlined on the "
+":ref:`installation page <installing-solidity>`."
+msgstr ""
+
+#: ../../index.rst:61 0072ff22ed0646e6b92742e907a03b61
+msgid ""
+"You can try out code examples directly in your browser with the `Remix "
+"IDE <https://remix.ethereum.org>`_. Remix is a web browser based IDE that"
+" allows you to write, deploy and administer Solidity smart contracts, "
+"without the need to install Solidity locally."
+msgstr ""
+
+#: ../../index.rst:67 c4c94085c6284c2fa12d1b0e57ed1b57
+msgid ""
+"As humans write software, it can have bugs. You should follow established"
+" software development best-practices when writing your smart contracts. "
+"This includes code review, testing, audits, and correctness proofs. Smart"
+" contract users are sometimes more confident with code than their "
+"authors, and blockchains and smart contracts have their own unique issues"
+" to watch out for, so before working on production code, make sure you "
+"read the :ref:`security_considerations` section."
+msgstr ""
+
+#: ../../index.rst:75 649536c83c1342bf9d372a26bbae1e8f
+msgid "**4. Learn More**"
+msgstr ""
+
+#: ../../index.rst:77 d2410e98aab64334afdc5b28eed44a9d
+msgid ""
+"If you want to learn more about building decentralized applications on "
+"Ethereum, the `Ethereum Developer Resources "
+"<https://ethereum.org/en/developers/>`_ can help you with further general"
+" documentation around Ethereum, and a wide selection of tutorials, tools "
+"and development frameworks."
+msgstr ""
+
+#: ../../index.rst:82 c3e9a9cc3fc64329bf1f33946c2268b5
+msgid ""
+"If you have any questions, you can try searching for answers or asking on"
+" the `Ethereum StackExchange <https://ethereum.stackexchange.com/>`_, or "
+"our `Gitter channel <https://gitter.im/ethereum/solidity/>`_."
+msgstr ""
+
+#: ../../index.rst:89 8327c858b1484a36890c1996de510b0d
+msgid "Translations"
+msgstr ""
+
+#: ../../index.rst:91 abc3cd2baf3b4855b6eb6d5fab46acc6
+msgid ""
+"Community contributors help translate this documentation into several "
+"languages. Note that they have varying degrees of completeness and up-to-"
+"dateness. The English version stands as a reference."
+msgstr ""
+
+#: ../../index.rst:95 0922103851ab450d9e4d10c83518d6cc
+msgid ""
+"You can switch between languages by clicking on the flyout menu in the "
+"bottom-left corner and selecting the preferred language."
+msgstr ""
+
+#: ../../index.rst:98 7b8e52276ab24fef8611882a13aee08a
+msgid "`Chinese <https://docs.soliditylang.org/zh/latest/>`_"
+msgstr ""
+
+#: ../../index.rst:99 d0691c7ba3364d2899b3c06ae955e7d7
+msgid "`French <https://docs.soliditylang.org/fr/latest/>`_"
+msgstr ""
+
+#: ../../index.rst:100 a62b192230d242df8a40125516b89dad
+msgid "`Indonesian <https://github.com/solidity-docs/id-indonesian>`_"
+msgstr ""
+
+#: ../../index.rst:101 e5a9eea894bf43a38e643bc9d563d401
+msgid "`Japanese <https://github.com/solidity-docs/ja-japanese>`_"
+msgstr ""
+
+#: ../../index.rst:102 766f8c3f2b304f0abee543d049d67ec1
+msgid "`Korean <https://github.com/solidity-docs/ko-korean>`_"
+msgstr ""
+
+#: ../../index.rst:103 a7aaf7f3077d44daad182dd377e39f66
+msgid "`Persian <https://github.com/solidity-docs/fa-persian>`_"
+msgstr ""
+
+#: ../../index.rst:104 8b56d69c8e664dcdbbf3694eb44e8e1f
+msgid "`Russian <https://github.com/solidity-docs/ru-russian>`_"
+msgstr ""
+
+#: ../../index.rst:105 0e768f73f7ab49c28ad97ee581b433f5
+msgid "`Spanish <https://github.com/solidity-docs/es-spanish>`_"
+msgstr ""
+
+#: ../../index.rst:106 49cc2b7db9a9436e95ecb4cd8370334a
+msgid "`Turkish <https://docs.soliditylang.org/tr/latest/>`_"
+msgstr ""
+
+#: ../../index.rst:110 662bca12b2fc4f7abf1174c86fd0a7af
+msgid ""
+"We set up a GitHub organization and translation workflow to help "
+"streamline the community efforts. Please refer to the translation guide "
+"in the `solidity-docs org <https://github.com/solidity-docs>`_ for "
+"information on how to start a new language or contribute to the community"
+" translations."
+msgstr ""
+
+#: ../../index.rst:115 13f1c5a123604aa8be934910bf2fa732
+msgid "Contents"
+msgstr ""
+
+#: ../../index.rst:117 2d4f6571f16448328e6dc4193ad2d575
+msgid ":ref:`Keyword Index <genindex>`, :ref:`Search Page <search>`"
+msgstr ""
+

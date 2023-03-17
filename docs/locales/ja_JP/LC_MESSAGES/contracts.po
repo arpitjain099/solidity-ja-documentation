@@ -1,0 +1,2222 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2023, The Solidity Authors
+# This file is distributed under the same license as the Solidity package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Solidity 0.8.20\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-18 04:40+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ja_JP\n"
+"Language-Team: ja_JP <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../contracts.rst:7 f8f4c3c320d34ef28ff476798b461727
+msgid "Contracts"
+msgstr ""
+
+#: ../../contracts.rst:9 1c60f9b2c57847b287ae074a1e09e855
+msgid ""
+"Contracts in Solidity are similar to classes in object-oriented "
+"languages. They contain persistent data in state variables, and functions"
+" that can modify these variables. Calling a function on a different "
+"contract (instance) will perform an EVM function call and thus switch the"
+" context such that state variables in the calling contract are "
+"inaccessible. A contract and its functions need to be called for anything"
+" to happen. There is no \"cron\" concept in Ethereum to call a function "
+"at a particular event automatically."
+msgstr ""
+
+#: ../../contracts/creating-contracts.rst:5 f4557f46fdf64217b02fb65bc97d5bf9
+msgid "Creating Contracts"
+msgstr ""
+
+#: ../../contracts/creating-contracts.rst:7 0ef57a2e1ea94bd49b1e57e23db7859e
+msgid ""
+"Contracts can be created \"from outside\" via Ethereum transactions or "
+"from within Solidity contracts."
+msgstr ""
+
+#: ../../contracts/creating-contracts.rst:9 15e800f9121841bea33cbc4d19f5dcd7
+msgid ""
+"IDEs, such as `Remix <https://remix.ethereum.org/>`_, make the creation "
+"process seamless using UI elements."
+msgstr ""
+
+#: ../../contracts/creating-contracts.rst:11 80309c884be243f8ad42af9cbcfad9ca
+msgid ""
+"One way to create contracts programmatically on Ethereum is via the "
+"JavaScript API `web3.js <https://github.com/web3/web3.js>`_. It has a "
+"function called `web3.eth.Contract "
+"<https://web3js.readthedocs.io/en/1.0/web3-eth-contract.html#new-"
+"contract>`_ to facilitate contract creation."
+msgstr ""
+
+#: ../../contracts/creating-contracts.rst:15 255d31baad19407e9cdbf6976030cfa5
+msgid ""
+"When a contract is created, its :ref:`constructor <constructor>` (a "
+"function declared with the ``constructor`` keyword) is executed once."
+msgstr ""
+
+#: ../../contracts/creating-contracts.rst:18 466df7de1c494717a78acca3d7fadc65
+msgid ""
+"A constructor is optional. Only one constructor is allowed, which means "
+"overloading is not supported."
+msgstr ""
+
+#: ../../contracts/creating-contracts.rst:21 24073e6eb83d49318d86e623e7c7a3f2
+msgid ""
+"After the constructor has executed, the final code of the contract is "
+"stored on the blockchain. This code includes all public and external "
+"functions and all functions that are reachable from there through "
+"function calls. The deployed code does not include the constructor code "
+"or internal functions only called from the constructor."
+msgstr ""
+
+#: ../../contracts/creating-contracts.rst:28 48aff44ca5ae4b9d9b0e790dedc36527
+msgid ""
+"Internally, constructor arguments are passed :ref:`ABI encoded <ABI>` "
+"after the code of the contract itself, but you do not have to care about "
+"this if you use ``web3.js``."
+msgstr ""
+
+#: ../../contracts/creating-contracts.rst:31 5b0361aa8a6a4618b0f570ceebb2b988
+msgid ""
+"If a contract wants to create another contract, the source code (and the "
+"binary) of the created contract has to be known to the creator. This "
+"means that cyclic creation dependencies are impossible."
+msgstr ""
+
+#: ../../contracts/visibility-and-getters.rst:9
+#: d7e2d94863f0471387a25e2e1da71051
+msgid "Visibility and Getters"
+msgstr ""
+
+#: ../../contracts/visibility-and-getters.rst:12
+#: 779e0818229b486da290a54bf501f954
+msgid "State Variable Visibility"
+msgstr ""
+
+#: ../../contracts/visibility-and-getters.rst:19
+#: ../../contracts/visibility-and-getters.rst:48
+#: 039385a9039244509d3320b4d02a661c db9cd011feb74081b1039a5c2aa6244a
+msgid "``public``"
+msgstr ""
+
+#: ../../contracts/visibility-and-getters.rst:15
+#: f06a49493913466a8c214e776f3270a5
+msgid ""
+"Public state variables differ from internal ones only in that the "
+"compiler automatically generates :ref:`getter functions<getter-"
+"functions>` for them, which allows other contracts to read their values. "
+"When used within the same contract, the external access (e.g. ``this.x``)"
+" invokes the getter while internal access (e.g. ``x``) gets the variable "
+"value directly from storage. Setter functions are not generated so other "
+"contracts cannot directly modify their values."
+msgstr ""
+
+#: ../../contracts/visibility-and-getters.rst:25
+#: ../../contracts/visibility-and-getters.rst:54
+#: 64629ad928ba4918b763e72c59c16e49 67fcfc1e253d465ca7a11ee6a7c4be98
+msgid "``internal``"
+msgstr ""
+
+#: ../../contracts/visibility-and-getters.rst:22
+#: 039f7c94958b4172a1e26a22ac57e695
+msgid ""
+"Internal state variables can only be accessed from within the contract "
+"they are defined in and in derived contracts. They cannot be accessed "
+"externally. This is the default visibility level for state variables."
+msgstr ""
+
+#: ../../contracts/visibility-and-getters.rst:28
+#: ../../contracts/visibility-and-getters.rst:57
+#: bc462aea4e80457380655e3aef508e89 e5f2445585194111bd7582bbaf8268b0
+msgid "``private``"
+msgstr ""
+
+#: ../../contracts/visibility-and-getters.rst:28
+#: 11e5937274f941aab8158f59bc1c9215
+msgid ""
+"Private state variables are like internal ones but they are not visible "
+"in derived contracts."
+msgstr ""
+
+#: ../../contracts/visibility-and-getters.rst:31
+#: ../../contracts/visibility-and-getters.rst:60
+#: d8efa9a9190a4ddc9429115283432521 dd9670b049924abc9b04e0abe2695088
+msgid "|visibility-caveat|"
+msgstr ""
+
+#: ../../contracts/visibility-and-getters.rst:34
+#: 9cf04a8c70954632bdd96c34331f2ef2
+msgid "Function Visibility"
+msgstr ""
+
+#: ../../contracts/visibility-and-getters.rst:36
+#: 6da254db04f44295a38e20332825d30b
+msgid ""
+"Solidity knows two kinds of function calls: external ones that do create "
+"an actual EVM message call and internal ones that do not. Furthermore, "
+"internal functions can be made inaccessible to derived contracts. This "
+"gives rise to four types of visibility for functions."
+msgstr ""
+
+#: ../../contracts/visibility-and-getters.rst:44
+#: 4c6ed4d536e445a5b13a0a8a71a47846
+msgid "``external``"
+msgstr ""
+
+#: ../../contracts/visibility-and-getters.rst:41
+#: 398c4ac650684123b771202bdeab8b47
+msgid ""
+"External functions are part of the contract interface, which means they "
+"can be called from other contracts and via transactions. An external "
+"function ``f`` cannot be called internally (i.e. ``f()`` does not work, "
+"but ``this.f()`` works)."
+msgstr ""
+
+#: ../../contracts/visibility-and-getters.rst:47
+#: aaa5e9c7d81c4e50957e457ab957a280
+msgid ""
+"Public functions are part of the contract interface and can be either "
+"called internally or via message calls."
+msgstr ""
+
+#: ../../contracts/visibility-and-getters.rst:51
+#: 4826b6c2808d4ddba9e9e1bf47aeda3b
+msgid ""
+"Internal functions can only be accessed from within the current contract "
+"or contracts deriving from it. They cannot be accessed externally. Since "
+"they are not exposed to the outside through the contract's ABI, they can "
+"take parameters of internal types like mappings or storage references."
+msgstr ""
+
+#: ../../contracts/visibility-and-getters.rst:57
+#: 20346eef00f648f9b2f0346852f4ad42
+msgid ""
+"Private functions are like internal ones but they are not visible in "
+"derived contracts."
+msgstr ""
+
+#: ../../contracts/visibility-and-getters.rst:62
+#: 3a8468dea78840259db4cbd867ddbd2e
+msgid ""
+"The visibility specifier is given after the type for state variables and "
+"between parameter list and return parameter list for functions."
+msgstr ""
+
+#: ../../contracts/visibility-and-getters.rst:77
+#: bbd3af04ccb440358da42d8074b2a4ae
+msgid ""
+"In the following example, ``D``, can call ``c.getData()`` to retrieve the"
+" value of ``data`` in state storage, but is not able to call ``f``. "
+"Contract ``E`` is derived from ``C`` and, thus, can call ``compute``."
+msgstr ""
+
+#: ../../contracts/visibility-and-getters.rst:117
+#: 98ae02a6f4404a5c91e63cc66300b1e1
+msgid "Getter Functions"
+msgstr ""
+
+#: ../../contracts/visibility-and-getters.rst:119
+#: df598a6b30174575a3dfef478f3271e3
+msgid ""
+"The compiler automatically creates getter functions for all **public** "
+"state variables. For the contract given below, the compiler will generate"
+" a function called ``data`` that does not take any arguments and returns "
+"a ``uint``, the value of the state variable ``data``. State variables can"
+" be initialized when they are declared."
+msgstr ""
+
+#: ../../contracts/visibility-and-getters.rst:142
+#: f56dc81cf41443449ca7f8fffc6bdc53
+msgid ""
+"The getter functions have external visibility. If the symbol is accessed "
+"internally (i.e. without ``this.``), it evaluates to a state variable.  "
+"If it is accessed externally (i.e. with ``this.``), it evaluates to a "
+"function."
+msgstr ""
+
+#: ../../contracts/visibility-and-getters.rst:160
+#: 98e5529273ed4b0fa9c06daffa000715
+msgid ""
+"If you have a ``public`` state variable of array type, then you can only "
+"retrieve single elements of the array via the generated getter function. "
+"This mechanism exists to avoid high gas costs when returning an entire "
+"array. You can use arguments to specify which individual element to "
+"return, for example ``myArray(0)``. If you want to return an entire array"
+" in one call, then you need to write a function, for example:"
+msgstr ""
+
+#: ../../contracts/visibility-and-getters.rst:189
+#: 2a197a2958bf4a3cab063ee4a7d046e2
+msgid ""
+"Now you can use ``getArray()`` to retrieve the entire array, instead of "
+"``myArray(i)``, which returns a single element per call."
+msgstr ""
+
+#: ../../contracts/visibility-and-getters.rst:192
+#: 910b1154a2fa40bd8458bc60803fc8ab
+msgid "The next example is more complex:"
+msgstr ""
+
+#: ../../contracts/visibility-and-getters.rst:211
+#: 2a641a2d324548658a407ebd3723294a
+msgid ""
+"It generates a function of the following form. The mapping and arrays "
+"(with the exception of byte arrays) in the struct are omitted because "
+"there is no good way to select individual struct members or provide a key"
+" for the mapping:"
+msgstr ""
+
+#: ../../contracts/function-modifiers.rst:7 df287e557fbd41898280a8b00d87323d
+msgid "Function Modifiers"
+msgstr ""
+
+#: ../../contracts/function-modifiers.rst:9 a6d52468f70f4c2f8da27351de29e8a5
+msgid ""
+"Modifiers can be used to change the behaviour of functions in a "
+"declarative way. For example, you can use a modifier to automatically "
+"check a condition prior to executing the function."
+msgstr ""
+
+#: ../../contracts/function-modifiers.rst:13 6c91bdb2870046bcbba58c5490488669
+msgid ""
+"Modifiers are inheritable properties of contracts and may be overridden "
+"by derived contracts, but only if they are marked ``virtual``. For "
+"details, please see :ref:`Modifier Overriding <modifier-overriding>`."
+msgstr ""
+
+#: ../../contracts/function-modifiers.rst:104 c2d4ae602197447c963ddec3dfd76a30
+msgid ""
+"If you want to access a modifier ``m`` defined in a contract ``C``, you "
+"can use ``C.m`` to reference it without virtual lookup. It is only "
+"possible to use modifiers defined in the current contract or its base "
+"contracts. Modifiers can also be defined in libraries but their use is "
+"limited to functions of the same library."
+msgstr ""
+
+#: ../../contracts/function-modifiers.rst:109 85d8c8350c3541f0b6d5bd91b36abc0e
+msgid ""
+"Multiple modifiers are applied to a function by specifying them in a "
+"whitespace-separated list and are evaluated in the order presented."
+msgstr ""
+
+#: ../../contracts/function-modifiers.rst:112 5b5b4dc9715546a681c38c327872fe86
+msgid ""
+"Modifiers cannot implicitly access or change the arguments and return "
+"values of functions they modify. Their values can only be passed to them "
+"explicitly at the point of invocation."
+msgstr ""
+
+#: ../../contracts/function-modifiers.rst:115 5084934b7746484ca4666f21b53cb22d
+msgid ""
+"In function modifiers, it is necessary to specify when you want the "
+"function to which the modifier is applied to be run. The placeholder "
+"statement (denoted by a single underscore character ``_``) is used to "
+"denote where the body of the function being modified should be inserted. "
+"Note that the placeholder operator is different from using underscores as"
+" leading or trailing characters in variable names, which is a stylistic "
+"choice."
+msgstr ""
+
+#: ../../contracts/function-modifiers.rst:121 4892e9f8d23f4cb3b0869c0a22dd41a6
+msgid ""
+"Explicit returns from a modifier or function body only leave the current "
+"modifier or function body. Return variables are assigned and control flow"
+" continues after the ``_`` in the preceding modifier."
+msgstr ""
+
+#: ../../contracts/function-modifiers.rst:126 7daad608f7204bfdb3e60a477f1739e4
+msgid ""
+"In an earlier version of Solidity, ``return`` statements in functions "
+"having modifiers behaved differently."
+msgstr ""
+
+#: ../../contracts/function-modifiers.rst:129 0cfb47c96a6441e6be669421ef694bc9
+msgid ""
+"An explicit return from a modifier with ``return;`` does not affect the "
+"values returned by the function. The modifier can, however, choose not to"
+" execute the function body at all and in that case the return variables "
+"are set to their :ref:`default values<default-value>` just as if the "
+"function had an empty body."
+msgstr ""
+
+#: ../../contracts/function-modifiers.rst:134 82b1ca201786436f9d34d65397896656
+msgid ""
+"The ``_`` symbol can appear in the modifier multiple times. Each "
+"occurrence is replaced with the function body."
+msgstr ""
+
+#: ../../contracts/function-modifiers.rst:137 7d1f9979db244f17b6408319a087cc58
+msgid ""
+"Arbitrary expressions are allowed for modifier arguments and in this "
+"context, all symbols visible from the function are visible in the "
+"modifier. Symbols introduced in the modifier are not visible in the "
+"function (as they might change by overriding)."
+msgstr ""
+
+#: ../../contracts/constant-state-variables.rst:7
+#: 360b9adf21fd4c138f26c53126f259ce
+msgid "Constant and Immutable State Variables"
+msgstr ""
+
+#: ../../contracts/constant-state-variables.rst:9
+#: cbf4d1adbb594151bca6f831ffe9280a
+msgid ""
+"State variables can be declared as ``constant`` or ``immutable``. In both"
+" cases, the variables cannot be modified after the contract has been "
+"constructed. For ``constant`` variables, the value has to be fixed at "
+"compile-time, while for ``immutable``, it can still be assigned at "
+"construction time."
+msgstr ""
+
+#: ../../contracts/constant-state-variables.rst:14
+#: c8ebb5f06ee745f497327296074efa4c
+msgid "It is also possible to define ``constant`` variables at the file level."
+msgstr ""
+
+#: ../../contracts/constant-state-variables.rst:16
+#: edb4e60ce00b43bc9377de37487cf5da
+msgid ""
+"The compiler does not reserve a storage slot for these variables, and "
+"every occurrence is replaced by the respective value."
+msgstr ""
+
+#: ../../contracts/constant-state-variables.rst:19
+#: 8ec4a8e1865b4893bef716d3d5d39a2c
+msgid ""
+"Compared to regular state variables, the gas costs of constant and "
+"immutable variables are much lower. For a constant variable, the "
+"expression assigned to it is copied to all the places where it is "
+"accessed and also re-evaluated each time. This allows for local "
+"optimizations. Immutable variables are evaluated once at construction "
+"time and their value is copied to all the places in the code where they "
+"are accessed. For these values, 32 bytes are reserved, even if they would"
+" fit in fewer bytes. Due to this, constant values can sometimes be "
+"cheaper than immutable values."
+msgstr ""
+
+#: ../../contracts/constant-state-variables.rst:27
+#: 780aae3bd3e2417ab586e94895cd58b1
+msgid ""
+"Not all types for constants and immutables are implemented at this time. "
+"The only supported types are :ref:`strings <strings>` (only for "
+"constants) and :ref:`value types <value-types>`."
+msgstr ""
+
+#: ../../contracts/constant-state-variables.rst:57
+#: 8448db7da10047a29bbf7df4b5e90bf9
+msgid "Constant"
+msgstr ""
+
+#: ../../contracts/constant-state-variables.rst:59
+#: 4f3274a8d4d94234a1fbed0b12cf05a9
+msgid ""
+"For ``constant`` variables, the value has to be a constant at compile "
+"time and it has to be assigned where the variable is declared. Any "
+"expression that accesses storage, blockchain data (e.g. "
+"``block.timestamp``, ``address(this).balance`` or ``block.number``) or "
+"execution data (``msg.value`` or ``gasleft()``) or makes calls to "
+"external contracts is disallowed. Expressions that might have a side-"
+"effect on memory allocation are allowed, but those that might have a "
+"side-effect on other memory objects are not. The built-in functions "
+"``keccak256``, ``sha256``, ``ripemd160``, ``ecrecover``, ``addmod`` and "
+"``mulmod`` are allowed (even though, with the exception of ``keccak256``,"
+" they do call external contracts)."
+msgstr ""
+
+#: ../../contracts/constant-state-variables.rst:69
+#: d2de922712a8491699dac83bb347f540
+msgid ""
+"The reason behind allowing side-effects on the memory allocator is that "
+"it should be possible to construct complex objects like e.g. lookup-"
+"tables. This feature is not yet fully usable."
+msgstr ""
+
+#: ../../contracts/constant-state-variables.rst:74
+#: e0f7a5ef2292417a873484cc128b0a63
+msgid "Immutable"
+msgstr ""
+
+#: ../../contracts/constant-state-variables.rst:76
+#: dacfb5ec3c0e403395f4a2ea5a4acad5
+msgid ""
+"Variables declared as ``immutable`` are a bit less restricted than those "
+"declared as ``constant``: Immutable variables can be assigned an "
+"arbitrary value in the constructor of the contract or at the point of "
+"their declaration. They can be assigned only once and can, from that "
+"point on, be read even during construction time."
+msgstr ""
+
+#: ../../contracts/constant-state-variables.rst:82
+#: fde0c7cfe22f49e88e8f26af96e93839
+msgid ""
+"The contract creation code generated by the compiler will modify the "
+"contract's runtime code before it is returned by replacing all references"
+" to immutables with the values assigned to them. This is important if you"
+" are comparing the runtime code generated by the compiler with the one "
+"actually stored in the blockchain."
+msgstr ""
+
+#: ../../contracts/constant-state-variables.rst:90
+#: ce004371edda46d9b68a28b8098b14cf
+msgid ""
+"Immutables that are assigned at their declaration are only considered "
+"initialized once the constructor of the contract is executing. This means"
+" you cannot initialize immutables inline with a value that depends on "
+"another immutable. You can do this, however, inside the constructor of "
+"the contract."
+msgstr ""
+
+#: ../../contracts/constant-state-variables.rst:96
+#: afcb3e57f0bb4aec83dd2f816122ed4b
+msgid ""
+"This is a safeguard against different interpretations about the order of "
+"state variable initialization and constructor execution, especially with "
+"regards to inheritance."
+msgstr ""
+
+#: ../../contracts/functions.rst:7 69788f05e9e948a49dceaea3b969e740
+msgid "Functions"
+msgstr ""
+
+#: ../../contracts/functions.rst:9 c1e4328384404354ac5f6a4b00e8868b
+msgid "Functions can be defined inside and outside of contracts."
+msgstr ""
+
+#: ../../contracts/functions.rst:11 8a9bff9f3dad4aa9b8d8d892775acfab
+msgid ""
+"Functions outside of a contract, also called \"free functions\", always "
+"have implicit ``internal`` :ref:`visibility<visibility-and-getters>`. "
+"Their code is included in all contracts that call them, similar to "
+"internal library functions."
+msgstr ""
+
+#: ../../contracts/functions.rst:37 e827ce11b9e24b68931c0f35b63bd65c
+msgid ""
+"Functions defined outside a contract are still always executed in the "
+"context of a contract. They still can call other contracts, send them "
+"Ether and destroy the contract that called them, among other things. The "
+"main difference to functions defined inside a contract is that free "
+"functions do not have direct access to the variable ``this``, storage "
+"variables and functions not in their scope."
+msgstr ""
+
+#: ../../contracts/functions.rst:47 6e4fb25639b641a8b31ca857fb5376a6
+msgid "Function Parameters and Return Variables"
+msgstr ""
+
+#: ../../contracts/functions.rst:49 e071f4ebd7174f83a52c90f38edbc9f7
+msgid ""
+"Functions take typed parameters as input and may, unlike in many other "
+"languages, also return an arbitrary number of values as output."
+msgstr ""
+
+#: ../../contracts/functions.rst:53 2dfbf9d57dd1415c80a345eae73568c2
+msgid "Function Parameters"
+msgstr ""
+
+#: ../../contracts/functions.rst:55 b78a2a90bef04e50939324893fbe26cf
+msgid ""
+"Function parameters are declared the same way as variables, and the name "
+"of unused parameters can be omitted."
+msgstr ""
+
+#: ../../contracts/functions.rst:58 54fe12fff6bd4456a03507cb3ecd127d
+msgid ""
+"For example, if you want your contract to accept one kind of external "
+"call with two integers, you would use something like the following:"
+msgstr ""
+
+#: ../../contracts/functions.rst:73 dbbd141ff7e34371b705e492f1cc0633
+msgid ""
+"Function parameters can be used as any other local variable and they can "
+"also be assigned to."
+msgstr ""
+
+#: ../../contracts/functions.rst:78 0693b32ebf6f4020859492ef9355570a
+msgid "Return Variables"
+msgstr ""
+
+#: ../../contracts/functions.rst:80 86c172fbf5b744d5abbc1185f6448570
+msgid ""
+"Function return variables are declared with the same syntax after the "
+"``returns`` keyword."
+msgstr ""
+
+#: ../../contracts/functions.rst:83 f86f951a20794c06b6a4b7d4aa628917
+msgid ""
+"For example, suppose you want to return two results: the sum and the "
+"product of two integers passed as function parameters, then you use "
+"something like:"
+msgstr ""
+
+#: ../../contracts/functions.rst:102 b2822483f6904e5faa28a2758a243e2f
+msgid ""
+"The names of return variables can be omitted. Return variables can be "
+"used as any other local variable and they are initialized with their "
+":ref:`default value <default-value>` and have that value until they are "
+"(re-)assigned."
+msgstr ""
+
+#: ../../contracts/functions.rst:107 82fb478737ca4bfd8614e358e8533e7f
+msgid ""
+"You can either explicitly assign to return variables and then leave the "
+"function as above, or you can provide return values (either a single or "
+":ref:`multiple ones<multi-return>`) directly with the ``return`` "
+"statement:"
+msgstr ""
+
+#: ../../contracts/functions.rst:128 f2c7696b333f42ed89855d16009c538d
+msgid ""
+"If you use an early ``return`` to leave a function that has return "
+"variables, you must provide return values together with the return "
+"statement."
+msgstr ""
+
+#: ../../contracts/functions.rst:132 ae25844c062d4dcb819b124aedd2fa50
+msgid ""
+"You cannot return some types from non-internal functions. This includes "
+"the types listed below and any composite types that recursively contain "
+"them:"
+msgstr ""
+
+#: ../../contracts/functions.rst:135 15e345cce4a7413684851a34a8b11524
+msgid "mappings,"
+msgstr ""
+
+#: ../../contracts/functions.rst:136 c22d325a48274718b4164f2c5a1fe447
+msgid "internal function types,"
+msgstr ""
+
+#: ../../contracts/functions.rst:137 891051f113e9435d9f6ede0e78c94da1
+msgid "reference types with location set to ``storage``,"
+msgstr ""
+
+#: ../../contracts/functions.rst:138 4cd6932f2eba4c2fb114d2a4ebb393eb
+msgid ""
+"multi-dimensional arrays (applies only to :ref:`ABI coder v1 "
+"<abi_coder>`),"
+msgstr ""
+
+#: ../../contracts/functions.rst:139 1fea54c473fe4debb80e0cc5841f567f
+msgid "structs (applies only to :ref:`ABI coder v1 <abi_coder>`)."
+msgstr ""
+
+#: ../../contracts/functions.rst:141 c2a0baa741394c8fa59acea9cea049f8
+msgid ""
+"This restriction does not apply to library functions because of their "
+"different :ref:`internal ABI <library-selectors>`."
+msgstr ""
+
+#: ../../contracts/functions.rst:146 a6d8086bb56640f58bd7379636ddd252
+msgid "Returning Multiple Values"
+msgstr ""
+
+#: ../../contracts/functions.rst:148 30c094eb032747e0a1ba0892ba3cdd33
+msgid ""
+"When a function has multiple return types, the statement ``return (v0, "
+"v1, ..., vn)`` can be used to return multiple values. The number of "
+"components must be the same as the number of return variables and their "
+"types have to match, potentially after an :ref:`implicit conversion "
+"<types-conversion-elementary-types>`."
+msgstr ""
+
+#: ../../contracts/functions.rst:155 a72ad2478520440ba1e5faa7d57efdbd
+msgid "State Mutability"
+msgstr ""
+
+#: ../../contracts/functions.rst:162 08973a3930d5471da86d69a42f4ac6cb
+msgid "View Functions"
+msgstr ""
+
+#: ../../contracts/functions.rst:164 44b50eb401e344e88e6961610a790772
+msgid ""
+"Functions can be declared ``view`` in which case they promise not to "
+"modify the state."
+msgstr ""
+
+#: ../../contracts/functions.rst:167 baa2a2cbceff454ea27b96d054bb3344
+msgid ""
+"If the compiler's EVM target is Byzantium or newer (default) the opcode "
+"``STATICCALL`` is used when ``view`` functions are called, which enforces"
+" the state to stay unmodified as part of the EVM execution. For library "
+"``view`` functions ``DELEGATECALL`` is used, because there is no combined"
+" ``DELEGATECALL`` and ``STATICCALL``. This means library ``view`` "
+"functions do not have run-time checks that prevent state modifications. "
+"This should not impact security negatively because library code is "
+"usually known at compile-time and the static checker performs compile-"
+"time checks."
+msgstr ""
+
+#: ../../contracts/functions.rst:175 81b0c58e753e49f0a9c3a6f717331f53
+msgid "The following statements are considered modifying the state:"
+msgstr ""
+
+#: ../../contracts/functions.rst:177 de13aa1d04584b529fcc9986d987bd71
+msgid "Writing to state variables."
+msgstr ""
+
+#: ../../contracts/functions.rst:178 ef2306ee9cb34eb78f21d937fb190b6c
+msgid ":ref:`Emitting events <events>`."
+msgstr ""
+
+#: ../../contracts/functions.rst:179 f8f51cea4049435795eb90e8ab85f769
+msgid ":ref:`Creating other contracts <creating-contracts>`."
+msgstr ""
+
+#: ../../contracts/functions.rst:180 5c13c70a59df47b495f7e37d552f0456
+msgid "Using ``selfdestruct``."
+msgstr ""
+
+#: ../../contracts/functions.rst:181 6a931546218e45a69f943a3f94947273
+msgid "Sending Ether via calls."
+msgstr ""
+
+#: ../../contracts/functions.rst:182 3e84d5ae4ceb4cf5b11e7440fcfc0129
+msgid "Calling any function not marked ``view`` or ``pure``."
+msgstr ""
+
+#: ../../contracts/functions.rst:183 cbafb0adfd704da49297fce0a0322be9
+msgid "Using low-level calls."
+msgstr ""
+
+#: ../../contracts/functions.rst:184 ../../contracts/functions.rst:233
+#: 4b195cce5a1044eda3bf70ba7d4fa1ac 85c6398333624f97a64665b665c82649
+msgid "Using inline assembly that contains certain opcodes."
+msgstr ""
+
+#: ../../contracts/functions.rst:198 42adad684a144d5cbecb14788c60034d
+msgid ""
+"``constant`` on functions used to be an alias to ``view``, but this was "
+"dropped in version 0.5.0."
+msgstr ""
+
+#: ../../contracts/functions.rst:201 e01d73f6aa2344e5a351abfb4bb3af67
+msgid "Getter methods are automatically marked ``view``."
+msgstr ""
+
+#: ../../contracts/functions.rst:204 44ceaba86f734bbbb3e63e347cf0b409
+msgid ""
+"Prior to version 0.5.0, the compiler did not use the ``STATICCALL`` "
+"opcode for ``view`` functions. This enabled state modifications in "
+"``view`` functions through the use of invalid explicit type conversions. "
+"By using  ``STATICCALL`` for ``view`` functions, modifications to the "
+"state are prevented on the level of the EVM."
+msgstr ""
+
+#: ../../contracts/functions.rst:216 3f9eb4f807df43c18f0a78163a28171b
+msgid "Pure Functions"
+msgstr ""
+
+#: ../../contracts/functions.rst:218 ea1106e9eb754220868ad1637b5128ff
+msgid ""
+"Functions can be declared ``pure`` in which case they promise not to read"
+" from or modify the state. In particular, it should be possible to "
+"evaluate a ``pure`` function at compile-time given only its inputs and "
+"``msg.data``, but without any knowledge of the current blockchain state. "
+"This means that reading from ``immutable`` variables can be a non-pure "
+"operation."
+msgstr ""
+
+#: ../../contracts/functions.rst:224 9cea7b6a8c7e4856860c6149c962b233
+msgid ""
+"If the compiler's EVM target is Byzantium or newer (default) the opcode "
+"``STATICCALL`` is used, which does not guarantee that the state is not "
+"read, but at least that it is not modified."
+msgstr ""
+
+#: ../../contracts/functions.rst:227 5ae35f180ff74927bee2a0f54974e78f
+msgid ""
+"In addition to the list of state modifying statements explained above, "
+"the following are considered reading from the state:"
+msgstr ""
+
+#: ../../contracts/functions.rst:229 9021432f76224bf698a352f30580c099
+msgid "Reading from state variables."
+msgstr ""
+
+#: ../../contracts/functions.rst:230 726e10a875b940b3910ffcc91b6cdbd4
+msgid "Accessing ``address(this).balance`` or ``<address>.balance``."
+msgstr ""
+
+#: ../../contracts/functions.rst:231 d2546cf521da4261abae3fed3e6dc703
+msgid ""
+"Accessing any of the members of ``block``, ``tx``, ``msg`` (with the "
+"exception of ``msg.sig`` and ``msg.data``)."
+msgstr ""
+
+#: ../../contracts/functions.rst:232 1a72e5ddb1994853bf284eb1fcc4a7a9
+msgid "Calling any function not marked ``pure``."
+msgstr ""
+
+#: ../../contracts/functions.rst:246 113ad587eef449acb228b29ccee63714
+msgid ""
+"Pure functions are able to use the ``revert()`` and ``require()`` "
+"functions to revert potential state changes when an :ref:`error occurs "
+"<assert-and-require>`."
+msgstr ""
+
+#: ../../contracts/functions.rst:249 3593c612e6c748b48419663d07ed8a72
+msgid ""
+"Reverting a state change is not considered a \"state modification\", as "
+"only changes to the state made previously in code that did not have the "
+"``view`` or ``pure`` restriction are reverted and that code has the "
+"option to catch the ``revert`` and not pass it on."
+msgstr ""
+
+#: ../../contracts/functions.rst:253 36be47c5574a4aeba607f0eed0662e2b
+msgid "This behaviour is also in line with the ``STATICCALL`` opcode."
+msgstr ""
+
+#: ../../contracts/functions.rst:256 b39eacfa069e432a958bd09792e94cf6
+msgid ""
+"It is not possible to prevent functions from reading the state at the "
+"level of the EVM, it is only possible to prevent them from writing to the"
+" state (i.e. only ``view`` can be enforced at the EVM level, ``pure`` can"
+" not)."
+msgstr ""
+
+#: ../../contracts/functions.rst:261 398823ae2d074e8a905fc7f7669dd79c
+msgid ""
+"Prior to version 0.5.0, the compiler did not use the ``STATICCALL`` "
+"opcode for ``pure`` functions. This enabled state modifications in "
+"``pure`` functions through the use of invalid explicit type conversions. "
+"By using  ``STATICCALL`` for ``pure`` functions, modifications to the "
+"state are prevented on the level of the EVM."
+msgstr ""
+
+#: ../../contracts/functions.rst:269 a3419e02a6ef41948dce8121870585de
+msgid ""
+"Prior to version 0.4.17 the compiler did not enforce that ``pure`` is not"
+" reading the state. It is a compile-time type check, which can be "
+"circumvented doing invalid explicit conversions between contract types, "
+"because the compiler can verify that the type of the contract does not do"
+" state-changing operations, but it cannot check that the contract that "
+"will be called at runtime is actually of that type."
+msgstr ""
+
+#: ../../contracts/functions.rst:278 6dbe3bf8c0df4b799d0b6b17425f5415
+msgid "Special Functions"
+msgstr ""
+
+#: ../../contracts/functions.rst:285 72298cbc3c2b463c94baf1cc4cf57fa8
+msgid "Receive Ether Function"
+msgstr ""
+
+#: ../../contracts/functions.rst:287 18c5871ecff747988e52be86f0bcd468
+msgid ""
+"A contract can have at most one ``receive`` function, declared using "
+"``receive() external payable { ... }`` (without the ``function`` "
+"keyword). This function cannot have arguments, cannot return anything and"
+" must have ``external`` visibility and ``payable`` state mutability. It "
+"can be virtual, can override and can have modifiers."
+msgstr ""
+
+#: ../../contracts/functions.rst:294 e3956699551049f5be8e9c2737420397
+msgid ""
+"The receive function is executed on a call to the contract with empty "
+"calldata. This is the function that is executed on plain Ether transfers "
+"(e.g. via ``.send()`` or ``.transfer()``). If no such function exists, "
+"but a payable :ref:`fallback function <fallback-function>` exists, the "
+"fallback function will be called on a plain Ether transfer. If neither a "
+"receive Ether nor a payable fallback function is present, the contract "
+"cannot receive Ether through a transaction that does not represent a "
+"payable function call and throws an exception."
+msgstr ""
+
+#: ../../contracts/functions.rst:303 4cb8e9549ced4ff89351176ec59e0815
+msgid ""
+"In the worst case, the ``receive`` function can only rely on 2300 gas "
+"being available (for example when ``send`` or ``transfer`` is used), "
+"leaving little room to perform other operations except basic logging. The"
+" following operations will consume more gas than the 2300 gas stipend:"
+msgstr ""
+
+#: ../../contracts/functions.rst:308 0da9a15f78514c7680b814fd3e60ad1b
+msgid "Writing to storage"
+msgstr ""
+
+#: ../../contracts/functions.rst:309 5cdd21e4f6d14b80b25346cc79fc6007
+msgid "Creating a contract"
+msgstr ""
+
+#: ../../contracts/functions.rst:310 1568fb1d2ea84a688d62ab606033862b
+msgid "Calling an external function which consumes a large amount of gas"
+msgstr ""
+
+#: ../../contracts/functions.rst:311 01a6b4e6bc6b49c8a1e268b1de28b7af
+msgid "Sending Ether"
+msgstr ""
+
+#: ../../contracts/functions.rst:314 1672c858c162463886bd746ed073a0ae
+msgid ""
+"When Ether is sent directly to a contract (without a function call, i.e. "
+"sender uses ``send`` or ``transfer``) but the receiving contract does not"
+" define a receive Ether function or a payable fallback function, an "
+"exception will be thrown, sending back the Ether (this was different "
+"before Solidity v0.4.0). If you want your contract to receive Ether, you "
+"have to implement a receive Ether function (using payable fallback "
+"functions for receiving Ether is not recommended, since the fallback is "
+"invoked and would not fail for interface confusions on the part of the "
+"sender)."
+msgstr ""
+
+#: ../../contracts/functions.rst:324 89e64322e0f549fea73e7c1404a6e481
+msgid ""
+"A contract without a receive Ether function can receive Ether as a "
+"recipient of a *coinbase transaction* (aka *miner block reward*) or as a "
+"destination of a ``selfdestruct``."
+msgstr ""
+
+#: ../../contracts/functions.rst:328 b15ba78d29394e28896a716987343f6d
+msgid ""
+"A contract cannot react to such Ether transfers and thus also cannot "
+"reject them. This is a design choice of the EVM and Solidity cannot work "
+"around it."
+msgstr ""
+
+#: ../../contracts/functions.rst:332 eef2e471032742519b0dc99d6f625178
+msgid ""
+"It also means that ``address(this).balance`` can be higher than the sum "
+"of some manual accounting implemented in a contract (i.e. having a "
+"counter updated in the receive Ether function)."
+msgstr ""
+
+#: ../../contracts/functions.rst:336 4b610dfc605f4d34a9dc1f56097fe915
+msgid ""
+"Below you can see an example of a Sink contract that uses function "
+"``receive``."
+msgstr ""
+
+#: ../../contracts/functions.rst:357 1db2f351ef1b4d18ba6778b2c081f29f
+msgid "Fallback Function"
+msgstr ""
+
+#: ../../contracts/functions.rst:359 f21fe47a03a54167980a59cce28775cf
+msgid ""
+"A contract can have at most one ``fallback`` function, declared using "
+"either ``fallback () external [payable]`` or ``fallback (bytes calldata "
+"input) external [payable] returns (bytes memory output)`` (both without "
+"the ``function`` keyword). This function must have ``external`` "
+"visibility. A fallback function can be virtual, can override and can have"
+" modifiers."
+msgstr ""
+
+#: ../../contracts/functions.rst:365 11d765a99ca44e55bb08e25e9a61ef56
+msgid ""
+"The fallback function is executed on a call to the contract if none of "
+"the other functions match the given function signature, or if no data was"
+" supplied at all and there is no :ref:`receive Ether function <receive-"
+"ether-function>`. The fallback function always receives data, but in "
+"order to also receive Ether it must be marked ``payable``."
+msgstr ""
+
+#: ../../contracts/functions.rst:371 ac6f3c2a8daf49048f3594db60862a6a
+msgid ""
+"If the version with parameters is used, ``input`` will contain the full "
+"data sent to the contract (equal to ``msg.data``) and can return data in "
+"``output``. The returned data will not be ABI-encoded. Instead it will be"
+" returned without modifications (not even padding)."
+msgstr ""
+
+#: ../../contracts/functions.rst:375 4e285c33c4a945618a597657e93d1036
+msgid ""
+"In the worst case, if a payable fallback function is also used in place "
+"of a receive function, it can only rely on 2300 gas being available (see "
+":ref:`receive Ether function <receive-ether-function>` for a brief "
+"description of the implications of this)."
+msgstr ""
+
+#: ../../contracts/functions.rst:380 4ee4a4b335394bf98d8652e9903419dd
+msgid ""
+"Like any function, the fallback function can execute complex operations "
+"as long as there is enough gas passed on to it."
+msgstr ""
+
+#: ../../contracts/functions.rst:384 2cd4fd9cb90f47428ed402bfd2ceae0b
+msgid ""
+"A ``payable`` fallback function is also executed for plain Ether "
+"transfers, if no :ref:`receive Ether function <receive-ether-function>` "
+"is present. It is recommended to always define a receive Ether function "
+"as well, if you define a payable fallback function to distinguish Ether "
+"transfers from interface confusions."
+msgstr ""
+
+#: ../../contracts/functions.rst:391 d14ab2a9ef3b45c594d0e70126a7d187
+msgid ""
+"If you want to decode the input data, you can check the first four bytes "
+"for the function selector and then you can use ``abi.decode`` together "
+"with the array slice syntax to decode ABI-encoded data: ``(c, d) = "
+"abi.decode(input[4:], (uint256, uint256));`` Note that this should only "
+"be used as a last resort and proper functions should be used instead."
+msgstr ""
+
+#: ../../contracts/functions.rst:470 25a39cf72d284fcb9cb10fb3921298fc
+msgid "Function Overloading"
+msgstr ""
+
+#: ../../contracts/functions.rst:472 4f5fcc8729414afd9bc1ef790d00711f
+msgid ""
+"A contract can have multiple functions of the same name but with "
+"different parameter types. This process is called \"overloading\" and "
+"also applies to inherited functions. The following example shows "
+"overloading of the function ``f`` in the scope of contract ``A``."
+msgstr ""
+
+#: ../../contracts/functions.rst:494 21ec80a508f04916aaa9724febf2adf5
+msgid ""
+"Overloaded functions are also present in the external interface. It is an"
+" error if two externally visible functions differ by their Solidity types"
+" but not by their external types."
+msgstr ""
+
+#: ../../contracts/functions.rst:517 2407717a222144fe93eeb2c4dda61b21
+msgid ""
+"Both ``f`` function overloads above end up accepting the address type for"
+" the ABI although they are considered different inside Solidity."
+msgstr ""
+
+#: ../../contracts/functions.rst:521 d5f93235626c45519a06361978267ab0
+msgid "Overload resolution and Argument matching"
+msgstr ""
+
+#: ../../contracts/functions.rst:523 5d78720eb0224599abdd888d2fa07207
+msgid ""
+"Overloaded functions are selected by matching the function declarations "
+"in the current scope to the arguments supplied in the function call. "
+"Functions are selected as overload candidates if all arguments can be "
+"implicitly converted to the expected types. If there is not exactly one "
+"candidate, resolution fails."
+msgstr ""
+
+#: ../../contracts/functions.rst:529 2c66283b962b4526b563486b7ffbe0d3
+msgid "Return parameters are not taken into account for overload resolution."
+msgstr ""
+
+#: ../../contracts/functions.rst:546 e050142a7768466cb337c8aedc3bbe9c
+msgid ""
+"Calling ``f(50)`` would create a type error since ``50`` can be "
+"implicitly converted both to ``uint8`` and ``uint256`` types. On another "
+"hand ``f(256)`` would resolve to ``f(uint256)`` overload as ``256`` "
+"cannot be implicitly converted to ``uint8``."
+msgstr ""
+
+#: ../../contracts/events.rst:7 47cc4a63802b4b8d90b0c8b33714f81d
+msgid "Events"
+msgstr ""
+
+#: ../../contracts/events.rst:9 093a52de952e42f5b0dcbe33ce9a86ce
+msgid ""
+"Solidity events give an abstraction on top of the EVM's logging "
+"functionality. Applications can subscribe and listen to these events "
+"through the RPC interface of an Ethereum client."
+msgstr ""
+
+#: ../../contracts/events.rst:12 e3d4537cc40744d99d49142c3d2135b6
+msgid ""
+"Events are inheritable members of contracts. When you call them, they "
+"cause the arguments to be stored in the transaction's log - a special "
+"data structure in the blockchain. These logs are associated with the "
+"address of the contract, are incorporated into the blockchain, and stay "
+"there as long as a block is accessible (forever as of now, but this might"
+" change with Serenity). The Log and its event data is not accessible from"
+" within contracts (not even from the contract that created them)."
+msgstr ""
+
+#: ../../contracts/events.rst:20 8a4dda7c23f04287b3a8d01bb0cf939a
+msgid ""
+"It is possible to request a Merkle proof for logs, so if an external "
+"entity supplies a contract with such a proof, it can check that the log "
+"actually exists inside the blockchain. You have to supply block headers "
+"because the contract can only see the last 256 block hashes."
+msgstr ""
+
+#: ../../contracts/events.rst:25 f5b0c3d790e646fcbac50912c00a1fa2
+msgid ""
+"You can add the attribute ``indexed`` to up to three parameters which "
+"adds them to a special data structure known as :ref:`\"topics\" "
+"<abi_events>` instead of the data part of the log. A topic can only hold "
+"a single word (32 bytes) so if you use a :ref:`reference type <reference-"
+"types>` for an indexed argument, the Keccak-256 hash of the value is "
+"stored as a topic instead."
+msgstr ""
+
+#: ../../contracts/events.rst:32 9d0cbb2ce10b40d8b2f2e704aec56140
+msgid ""
+"All parameters without the ``indexed`` attribute are :ref:`ABI-encoded "
+"<ABI>` into the data part of the log."
+msgstr ""
+
+#: ../../contracts/events.rst:35 1aa2b621206b4e778464a698d2985bc3
+msgid ""
+"Topics allow you to search for events, for example when filtering a "
+"sequence of blocks for certain events. You can also filter events by the "
+"address of the contract that emitted the event."
+msgstr ""
+
+#: ../../contracts/events.rst:39 b4faeb6331894252b7a2b5de515019c7
+msgid ""
+"For example, the code below uses the web3.js ``subscribe(\"logs\")`` "
+"`method <https://web3js.readthedocs.io/en/1.0/web3-eth-subscribe.html"
+"#subscribe-logs>`_ to filter logs that match a topic with a certain "
+"address value:"
+msgstr ""
+
+#: ../../contracts/events.rst:61 cc92f6b7eb60481bac8252d953e2ec48
+msgid ""
+"The hash of the signature of the event is one of the topics, except if "
+"you declared the event with the ``anonymous`` specifier. This means that "
+"it is not possible to filter for specific anonymous events by name, you "
+"can only filter by the contract address. The advantage of anonymous "
+"events is that they are cheaper to deploy and call. It also allows you to"
+" declare four indexed arguments rather than three."
+msgstr ""
+
+#: ../../contracts/events.rst:69 8184844657df417cbe5484ac0a60b358
+msgid ""
+"Since the transaction log only stores the event data and not the type, "
+"you have to know the type of the event, including which parameter is "
+"indexed and if the event is anonymous in order to correctly interpret the"
+" data. In particular, it is possible to \"fake\" the signature of another"
+" event using an anonymous event."
+msgstr ""
+
+#: ../../contracts/events.rst:79 661e499efe744e86ac760e8941165744
+msgid "Members of Events"
+msgstr ""
+
+#: ../../contracts/events.rst:81 bebbc225c08b43c0a045516fb743b549
+msgid ""
+"``event.selector``: For non-anonymous events, this is a ``bytes32`` value"
+" containing the ``keccak256`` hash of the event signature, as used in the"
+" default topic."
+msgstr ""
+
+#: ../../contracts/events.rst:86 f7c0d1ae5e804fd69c34ef94c02407be
+msgid "Example"
+msgstr ""
+
+#: ../../contracts/events.rst:110 caac9e29c56647a0abd6da7b9a85725c
+msgid "The use in the JavaScript API is as follows:"
+msgstr ""
+
+#: ../../contracts/events.rst:135 faa43b7474974f818a9d53b485a084a6
+msgid "The output of the above looks like the following (trimmed):"
+msgstr ""
+
+#: ../../contracts/events.rst:152 e1704cbf81e24ce1a18fec21aa4bcb8a
+msgid "Additional Resources for Understanding Events"
+msgstr ""
+
+#: ../../contracts/events.rst:154 f3d7ad0cfa6744eaa13be7c182147b1f
+msgid ""
+"`Javascript documentation "
+"<https://github.com/web3/web3.js/blob/1.x/docs/web3-eth-"
+"contract.rst#events>`_"
+msgstr ""
+
+#: ../../contracts/events.rst:155 68bbdfb0e73e4977929ad47944ec860d
+msgid ""
+"`Example usage of events <https://github.com/ethchange/smart-"
+"exchange/blob/master/lib/contracts/SmartExchange.sol>`_"
+msgstr ""
+
+#: ../../contracts/events.rst:156 22613851585a4f10ab78c9b2e79868d1
+msgid ""
+"`How to access them in js <https://github.com/ethchange/smart-"
+"exchange/blob/master/lib/exchange_transactions.js>`_"
+msgstr ""
+
+#: ../../contracts/errors.rst:6 a478b50fa1014ab097f6f2e94d83b46a
+msgid "Errors and the Revert Statement"
+msgstr ""
+
+#: ../../contracts/errors.rst:8 4df8cdd0d07b49289452a7d85bff6e4d
+msgid ""
+"Errors in Solidity provide a convenient and gas-efficient way to explain "
+"to the user why an operation failed. They can be defined inside and "
+"outside of contracts (including interfaces and libraries)."
+msgstr ""
+
+#: ../../contracts/errors.rst:11 f4b90fff2c3f408cb4fb84d33fc5f7fb
+msgid ""
+"They have to be used together with the :ref:`revert statement <revert-"
+"statement>` which causes all changes in the current call to be reverted "
+"and passes the error data back to the caller."
+msgstr ""
+
+#: ../../contracts/errors.rst:41 dce58ace061d46d88b185b29251d0981
+msgid ""
+"Errors cannot be overloaded or overridden but are inherited. The same "
+"error can be defined in multiple places as long as the scopes are "
+"distinct. Instances of errors can only be created using ``revert`` "
+"statements."
+msgstr ""
+
+#: ../../contracts/errors.rst:45 24f8aaa0404441528c6fb7f61ff7bcd9
+msgid ""
+"The error creates data that is then passed to the caller with the revert "
+"operation to either return to the off-chain component or catch it in a "
+":ref:`try/catch statement <try-catch>`. Note that an error can only be "
+"caught when coming from an external call, reverts happening in internal "
+"calls or inside the same function cannot be caught."
+msgstr ""
+
+#: ../../contracts/errors.rst:50 b52256e63a3d4edabe03ad91cea2803c
+msgid ""
+"If you do not provide any parameters, the error only needs four bytes of "
+"data and you can use :ref:`NatSpec <natspec>` as above to further explain"
+" the reasons behind the error, which is not stored on chain. This makes "
+"this a very cheap and convenient error-reporting feature at the same "
+"time."
+msgstr ""
+
+#: ../../contracts/errors.rst:55 544cf15297d34099b3b83c7e39e4e04f
+msgid ""
+"More specifically, an error instance is ABI-encoded in the same way as a "
+"function call to a function of the same name and types would be and then "
+"used as the return data in the ``revert`` opcode. This means that the "
+"data consists of a 4-byte selector followed by :ref:`ABI-encoded<abi>` "
+"data. The selector consists of the first four bytes of the keccak256-hash"
+" of the signature of the error type."
+msgstr ""
+
+#: ../../contracts/errors.rst:62 133065c05d104658a3ddd3e80c7a8616
+msgid ""
+"It is possible for a contract to revert with different errors of the same"
+" name or even with errors defined in different places that are "
+"indistinguishable by the caller. For the outside, i.e. the ABI, only the "
+"name of the error is relevant, not the contract or file where it is "
+"defined."
+msgstr ""
+
+#: ../../contracts/errors.rst:67 aa87afc360b74c548f1cba8c5dddce0f
+msgid ""
+"The statement ``require(condition, \"description\");`` would be "
+"equivalent to ``if (!condition) revert Error(\"description\")`` if you "
+"could define ``error Error(string)``. Note, however, that ``Error`` is a "
+"built-in type and cannot be defined in user-supplied code."
+msgstr ""
+
+#: ../../contracts/errors.rst:72 29f4a7c1f3564a3e87586a47da2aa7c1
+msgid ""
+"Similarly, a failing ``assert`` or similar conditions will revert with an"
+" error of the built-in type ``Panic(uint256)``."
+msgstr ""
+
+#: ../../contracts/errors.rst:76 bf6e0f8c523d4cf1b9ddccb2d0283e19
+msgid ""
+"Error data should only be used to give an indication of failure, but not "
+"as a means for control-flow. The reason is that the revert data of inner "
+"calls is propagated back through the chain of external calls by default. "
+"This means that an inner call can \"forge\" revert data that looks like "
+"it could have come from the contract that called it."
+msgstr ""
+
+#: ../../contracts/errors.rst:84 296b6319b42d45c4acf8cf6b7f720fb7
+msgid "Members of Errors"
+msgstr ""
+
+#: ../../contracts/errors.rst:86 3657e75c306341eeab11951f5ad1f917
+msgid "``error.selector``: A ``bytes4`` value containing the error selector."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:5 9f76bbf069c54f04a603a0da1920a067
+msgid "Inheritance"
+msgstr ""
+
+#: ../../contracts/inheritance.rst:7 3727640ce04d4e11a7ab97408d8c0b11
+msgid "Solidity supports multiple inheritance including polymorphism."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:9 8b83061f6096416e9c0fab4fd4b63e84
+msgid ""
+"Polymorphism means that a function call (internal and external) always "
+"executes the function of the same name (and parameter types) in the most "
+"derived contract in the inheritance hierarchy. This has to be explicitly "
+"enabled on each function in the hierarchy using the ``virtual`` and "
+"``override`` keywords. See :ref:`Function Overriding <function-"
+"overriding>` for more details."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:16 dfe576c21fe14ce38680849363c0c1cf
+msgid ""
+"It is possible to call functions further up in the inheritance hierarchy "
+"internally by explicitly specifying the contract using "
+"``ContractName.functionName()`` or using ``super.functionName()`` if you "
+"want to call the function one level higher up in the flattened "
+"inheritance hierarchy (see below)."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:22 2fc0d2453c6247ac85bbb5931380b8f5
+msgid ""
+"When a contract inherits from other contracts, only a single contract is "
+"created on the blockchain, and the code from all the base contracts is "
+"compiled into the created contract. This means that all internal calls to"
+" functions of base contracts also just use internal function calls "
+"(``super.f(..)`` will use JUMP and not a message call)."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:28 40f02451c52b4f28adebcf2eb6f5152d
+msgid ""
+"State variable shadowing is considered as an error.  A derived contract "
+"can only declare a state variable ``x``, if there is no visible state "
+"variable with the same name in any of its bases."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:32 7b7d97c6e8764331913617c0607710fc
+msgid ""
+"The general inheritance system is very similar to `Python's "
+"<https://docs.python.org/3/tutorial/classes.html#inheritance>`_, "
+"especially concerning multiple inheritance, but there are also some "
+":ref:`differences <multi-inheritance>`."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:37 d767e845e04c4173a9c074121afe74e6
+msgid "Details are given in the following example."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:125 a2c72adc286e47779ded4a69504253ae
+msgid ""
+"Note that above, we call ``Destructible.destroy()`` to \"forward\" the "
+"destruction request. The way this is done is problematic, as seen in the "
+"following example:"
+msgstr ""
+
+#: ../../contracts/inheritance.rst:158 f457c68a7e344e7980f67f6f7320993f
+msgid ""
+"A call to ``Final.destroy()`` will call ``Base2.destroy`` because we "
+"specify it explicitly in the final override, but this function will "
+"bypass ``Base1.destroy``. The way around this is to use ``super``:"
+msgstr ""
+
+#: ../../contracts/inheritance.rst:192 f1b8f03f01424c7390260d36e392b0ac
+msgid ""
+"If ``Base2`` calls a function of ``super``, it does not simply call this "
+"function on one of its base contracts.  Rather, it calls this function on"
+" the next base contract in the final inheritance graph, so it will call "
+"``Base1.destroy()`` (note that the final inheritance sequence is -- "
+"starting with the most derived contract: Final, Base2, Base1, "
+"Destructible, owned). The actual function that is called when using super"
+" is not known in the context of the class where it is used, although its "
+"type is known. This is similar for ordinary virtual method lookup."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:208 a311636119c1455791d3c83043306cb8
+msgid "Function Overriding"
+msgstr ""
+
+#: ../../contracts/inheritance.rst:210 593973ba36e24b91b1b491add40b263e
+msgid ""
+"Base functions can be overridden by inheriting contracts to change their "
+"behavior if they are marked as ``virtual``. The overriding function must "
+"then use the ``override`` keyword in the function header. The overriding "
+"function may only change the visibility of the overridden function from "
+"``external`` to ``public``. The mutability may be changed to a more "
+"strict one following the order: ``nonpayable`` can be overridden by "
+"``view`` and ``pure``. ``view`` can be overridden by ``pure``. "
+"``payable`` is an exception and cannot be changed to any other "
+"mutability."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:218 6d8aa7645a0147bf8d70938cd34462e4
+msgid "The following example demonstrates changing mutability and visibility:"
+msgstr ""
+
+#: ../../contracts/inheritance.rst:237 864b115bf0fa419c80290b27d8ed6256
+msgid ""
+"For multiple inheritance, the most derived base contracts that define the"
+" same function must be specified explicitly after the ``override`` "
+"keyword. In other words, you have to specify all base contracts that "
+"define the same function and have not yet been overridden by another base"
+" contract (on some path through the inheritance graph). Additionally, if "
+"a contract inherits the same function from multiple (unrelated) bases, it"
+" has to explicitly override it:"
+msgstr ""
+
+#: ../../contracts/inheritance.rst:266 e9f5519449a744bfb238770ebf6f3e6d
+msgid ""
+"An explicit override specifier is not required if the function is defined"
+" in a common base contract or if there is a unique function in a common "
+"base contract that already overrides all other functions."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:282 b6d2643b78644e6ab21fe5a569ad3329
+msgid ""
+"More formally, it is not required to override a function (directly or "
+"indirectly) inherited from multiple bases if there is a base contract "
+"that is part of all override paths for the signature, and (1) that base "
+"implements the function and no paths from the current contract to the "
+"base mentions a function with that signature or (2) that base does not "
+"implement the function and there is at most one mention of the function "
+"in all paths from the current contract to that base."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:290 255a52ad229749df94acb07dd3f3eddf
+msgid ""
+"In this sense, an override path for a signature is a path through the "
+"inheritance graph that starts at the contract under consideration and "
+"ends at a contract mentioning a function with that signature that does "
+"not override."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:295 8d991c0c73484f939723935d1cb1bd22
+msgid ""
+"If you do not mark a function that overrides as ``virtual``, derived "
+"contracts can no longer change the behaviour of that function."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:300 274d212d92ae4d76b1b4855062facfad
+msgid "Functions with the ``private`` visibility cannot be ``virtual``."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:304 1b22b83a993a4980802d738e9f69813b
+msgid ""
+"Functions without implementation have to be marked ``virtual`` outside of"
+" interfaces. In interfaces, all functions are automatically considered "
+"``virtual``."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:310 da346a1eb45647aa8c098a91d9c1fa30
+msgid ""
+"Starting from Solidity 0.8.8, the ``override`` keyword is not required "
+"when overriding an interface function, except for the case where the "
+"function is defined in multiple bases."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:315 d384414e64f247abb27e1541726bcafa
+msgid ""
+"Public state variables can override external functions if the parameter "
+"and return types of the function matches the getter function of the "
+"variable:"
+msgstr ""
+
+#: ../../contracts/inheritance.rst:336 fa604580e0094177838750209122840f
+msgid ""
+"While public state variables can override external functions, they "
+"themselves cannot be overridden."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:344 ca9646768c6840ffa29e74c08d2ec19a
+msgid "Modifier Overriding"
+msgstr ""
+
+#: ../../contracts/inheritance.rst:346 21e85073675f4f9abde19b820c4b2566
+msgid ""
+"Function modifiers can override each other. This works in the same way as"
+" :ref:`function overriding <function-overriding>` (except that there is "
+"no overloading for modifiers). The ``virtual`` keyword must be used on "
+"the overridden modifier and the ``override`` keyword must be used in the "
+"overriding modifier:"
+msgstr ""
+
+#: ../../contracts/inheritance.rst:367 a9b91268c86945c9933e19d72eeaa8d1
+msgid ""
+"In case of multiple inheritance, all direct base contracts must be "
+"specified explicitly:"
+msgstr ""
+
+#: ../../contracts/inheritance.rst:397 af2861199a1241b1b62ab44fcc5bfc1b
+msgid "Constructors"
+msgstr ""
+
+#: ../../contracts/inheritance.rst:399 cca0c167e8064543b98314707a94b102
+msgid ""
+"A constructor is an optional function declared with the ``constructor`` "
+"keyword which is executed upon contract creation, and where you can run "
+"contract initialisation code."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:403 201ae1ab9a9742e4be0f4cb7b2755127
+msgid ""
+"Before the constructor code is executed, state variables are initialised "
+"to their specified value if you initialise them inline, or their "
+":ref:`default value<default-value>` if you do not."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:406 3b9cc0b80eda4da28063c0020f136540
+msgid ""
+"After the constructor has run, the final code of the contract is deployed"
+" to the blockchain. The deployment of the code costs additional gas "
+"linear to the length of the code. This code includes all functions that "
+"are part of the public interface and all functions that are reachable "
+"from there through function calls. It does not include the constructor "
+"code or internal functions that are only called from the constructor."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:414 5f300e4ee19a43d5ab94ec132ce1b55f
+msgid ""
+"If there is no constructor, the contract will assume the default "
+"constructor, which is equivalent to ``constructor() {}``. For example:"
+msgstr ""
+
+#: ../../contracts/inheritance.rst:435 8da74532b9ca4c429dd54d0216d7465e
+msgid ""
+"You can use internal parameters in a constructor (for example storage "
+"pointers). In this case, the contract has to be marked :ref:`abstract "
+"<abstract-contract>`, because these parameters cannot be assigned valid "
+"values from outside but only through the constructors of derived "
+"contracts."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:440 194ce99caf34452c8ef595716b33b320
+msgid ""
+"Prior to version 0.4.22, constructors were defined as functions with the "
+"same name as the contract. This syntax was deprecated and is not allowed "
+"anymore in version 0.5.0."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:444 0e447d684fb8498ba20405325af85073
+msgid ""
+"Prior to version 0.7.0, you had to specify the visibility of constructors"
+" as either ``internal`` or ``public``."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:451 f3ff696c914a4d1690ae98f80e1304cc
+msgid "Arguments for Base Constructors"
+msgstr ""
+
+#: ../../contracts/inheritance.rst:453 3397c3095ae041258f18cf747602abaa
+msgid ""
+"The constructors of all the base contracts will be called following the "
+"linearization rules explained below. If the base constructors have "
+"arguments, derived contracts need to specify all of them. This can be "
+"done in two ways:"
+msgstr ""
+
+#: ../../contracts/inheritance.rst:486 7909b59f40904dbeab7827e7002f3bfa
+msgid ""
+"One way is directly in the inheritance list (``is Base(7)``).  The other "
+"is in the way a modifier is invoked as part of the derived constructor "
+"(``Base(y * y)``). The first way to do it is more convenient if the "
+"constructor argument is a constant and defines the behaviour of the "
+"contract or describes it. The second way has to be used if the "
+"constructor arguments of the base depend on those of the derived "
+"contract. Arguments have to be given either in the inheritance list or in"
+" modifier-style in the derived constructor. Specifying arguments in both "
+"places is an error."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:497 c190f24fc802409a884911ba9ef8743c
+msgid ""
+"If a derived contract does not specify the arguments to all of its base "
+"contracts' constructors, it must be declared abstract. In that case, when"
+" another contract derives from it, that other contract's inheritance list"
+" or constructor must provide the necessary parameters for all base "
+"classes that haven't had their parameters specified (otherwise, that "
+"other contract must be declared abstract as well). For example, in the "
+"above code snippet, see ``Derived3`` and ``DerivedFromDerived``."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:510 6005f66107b744c188b2a610788c9015
+msgid "Multiple Inheritance and Linearization"
+msgstr ""
+
+#: ../../contracts/inheritance.rst:512 db62da9672734d67958dd2c8278ec44b
+msgid ""
+"Languages that allow multiple inheritance have to deal with several "
+"problems.  One is the `Diamond Problem "
+"<https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem>`_."
+" Solidity is similar to Python in that it uses \"`C3 Linearization "
+"<https://en.wikipedia.org/wiki/C3_linearization>`_\" to force a specific "
+"order in the directed acyclic graph (DAG) of base classes. This results "
+"in the desirable property of monotonicity but disallows some inheritance "
+"graphs. Especially, the order in which the base classes are given in the "
+"``is`` directive is important: You have to list the direct base contracts"
+" in the order from \"most base-like\" to \"most derived\". Note that this"
+" order is the reverse of the one used in Python."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:523 25c7097fd8c74ae28e7667e8f022e875
+msgid ""
+"Another simplifying way to explain this is that when a function is called"
+" that is defined multiple times in different contracts, the given bases "
+"are searched from right to left (left to right in Python) in a depth-"
+"first manner, stopping at the first match. If a base contract has already"
+" been searched, it is skipped."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:528 8318f2580a344b97931cca275fe8d9e6
+msgid ""
+"In the following code, Solidity will give the error \"Linearization of "
+"inheritance graph impossible\"."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:541 c60c2980fdf84969847c8085c754c7ff
+msgid ""
+"The reason for this is that ``C`` requests ``X`` to override ``A`` (by "
+"specifying ``A, X`` in this order), but ``A`` itself requests to override"
+" ``X``, which is a contradiction that cannot be resolved."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:546 644f6f1de6974ff192b924c2430eafae
+msgid ""
+"Due to the fact that you have to explicitly override a function that is "
+"inherited from multiple bases without a unique override, C3 linearization"
+" is not too important in practice."
+msgstr ""
+
+#: ../../contracts/inheritance.rst:550 4704bc41833549c0ab97ea658021658f
+msgid ""
+"One area where inheritance linearization is especially important and "
+"perhaps not as clear is when there are multiple constructors in the "
+"inheritance hierarchy. The constructors will always be executed in the "
+"linearized order, regardless of the order in which their arguments are "
+"provided in the inheriting contract's constructor.  For example:"
+msgstr ""
+
+#: ../../contracts/inheritance.rst:591 aea33c1ee0f7480eaee4b385267e8976
+msgid "Inheriting Different Kinds of Members of the Same Name"
+msgstr ""
+
+#: ../../contracts/inheritance.rst:596 5ee2a8db166f4dc1a10012784b9e79a4
+msgid ""
+"It is an error when any of the following pairs in a contract have the "
+"same name due to inheritance:"
+msgstr ""
+
+#: ../../contracts/inheritance.rst:594 e17a7bc0dca744aa8237c14df33dace0
+msgid "a function and a modifier"
+msgstr ""
+
+#: ../../contracts/inheritance.rst:595 5220d2c28e1648dcb8dff4508777072b
+msgid "a function and an event"
+msgstr ""
+
+#: ../../contracts/inheritance.rst:596 726e689f394f4ba68ca1c03a7923a07b
+msgid "an event and a modifier"
+msgstr ""
+
+#: ../../contracts/inheritance.rst:598 be1e360f00a54c1bb9a596c488fd5069
+msgid ""
+"As an exception, a state variable getter can override an external "
+"function."
+msgstr ""
+
+#: ../../contracts/abstract-contracts.rst:7 bccdf022ae594586a8a17413bc702611
+msgid "Abstract Contracts"
+msgstr ""
+
+#: ../../contracts/abstract-contracts.rst:9 0726e8ccc9264455bc5e77bf27058736
+msgid ""
+"Contracts must be marked as abstract when at least one of their functions"
+" is not implemented or when they do not provide arguments for all of "
+"their base contract constructors. Even if this is not the case, a "
+"contract may still be marked abstract, such as when you do not intend for"
+" the contract to be created directly. Abstract contracts are similar to "
+":ref:`interfaces` but an interface is more limited in what it can "
+"declare."
+msgstr ""
+
+#: ../../contracts/abstract-contracts.rst:15 d9e87e0dd4bf4f3b944af13897067d78
+msgid ""
+"An abstract contract is declared using the ``abstract`` keyword as shown "
+"in the following example. Note that this contract needs to be defined as "
+"abstract, because the function ``utterance()`` is declared, but no "
+"implementation was provided (no implementation body ``{ }`` was given)."
+msgstr ""
+
+#: ../../contracts/abstract-contracts.rst:28 f79deeb3c9cd4c2981131f898da7a4ea
+msgid ""
+"Such abstract contracts can not be instantiated directly. This is also "
+"true, if an abstract contract itself does implement all defined "
+"functions. The usage of an abstract contract as a base class is shown in "
+"the following example:"
+msgstr ""
+
+#: ../../contracts/abstract-contracts.rst:44 bf058febdc2e4a3dbd1eb2b0746140fe
+msgid ""
+"If a contract inherits from an abstract contract and does not implement "
+"all non-implemented functions by overriding, it needs to be marked as "
+"abstract as well."
+msgstr ""
+
+#: ../../contracts/abstract-contracts.rst:47 b7e92da06dcc47029d1050ee5e78684d
+msgid ""
+"Note that a function without implementation is different from a "
+":ref:`Function Type <function_types>` even though their syntax looks very"
+" similar."
+msgstr ""
+
+#: ../../contracts/abstract-contracts.rst:50 d860e01633224715a055795acbeb3913
+msgid "Example of function without implementation (a function declaration):"
+msgstr ""
+
+#: ../../contracts/abstract-contracts.rst:56 9631bf2c78724313869131d1944c7c6e
+msgid "Example of a declaration of a variable whose type is a function type:"
+msgstr ""
+
+#: ../../contracts/abstract-contracts.rst:62 40dcca67ac034a53b004a11bd87f8e0a
+msgid ""
+"Abstract contracts decouple the definition of a contract from its "
+"implementation providing better extensibility and self-documentation and "
+"facilitating patterns like the `Template method "
+"<https://en.wikipedia.org/wiki/Template_method_pattern>`_ and removing "
+"code duplication. Abstract contracts are useful in the same way that "
+"defining methods in an interface is useful. It is a way for the designer "
+"of the abstract contract to say \"any child of mine must implement this "
+"method\"."
+msgstr ""
+
+#: ../../contracts/abstract-contracts.rst:71 a7469fee6d554f3e8addfd0c6f877859
+msgid ""
+"Abstract contracts cannot override an implemented virtual function with "
+"an unimplemented one."
+msgstr ""
+
+#: ../../contracts/interfaces.rst:7 bb3173d409044195b5cbea8fd659ef34
+msgid "Interfaces"
+msgstr ""
+
+#: ../../contracts/interfaces.rst:9 d9a7312d3efd4642adeb8d31fb5f42b4
+msgid ""
+"Interfaces are similar to abstract contracts, but they cannot have any "
+"functions implemented. There are further restrictions:"
+msgstr ""
+
+#: ../../contracts/interfaces.rst:12 363b342180044a6cbdd2f5a72118dd64
+msgid ""
+"They cannot inherit from other contracts, but they can inherit from other"
+" interfaces."
+msgstr ""
+
+#: ../../contracts/interfaces.rst:13 314e90099b60457580319b3d5d003f1b
+msgid ""
+"All declared functions must be external in the interface, even if they "
+"are public in the contract."
+msgstr ""
+
+#: ../../contracts/interfaces.rst:14 02503df9643b484e9d067fab0eb8e642
+msgid "They cannot declare a constructor."
+msgstr ""
+
+#: ../../contracts/interfaces.rst:15 3d94204673e64424b1e3a9737f78ab69
+msgid "They cannot declare state variables."
+msgstr ""
+
+#: ../../contracts/interfaces.rst:16 59e67d39253f484494105fa867368f6e
+msgid "They cannot declare modifiers."
+msgstr ""
+
+#: ../../contracts/interfaces.rst:18 e9621c31237c4b3797c4a35adc695122
+msgid "Some of these restrictions might be lifted in the future."
+msgstr ""
+
+#: ../../contracts/interfaces.rst:20 bc4f972e81514af5a6622ae77d9feafe
+msgid ""
+"Interfaces are basically limited to what the Contract ABI can represent, "
+"and the conversion between the ABI and an interface should be possible "
+"without any information loss."
+msgstr ""
+
+#: ../../contracts/interfaces.rst:23 0938e112f37e44c5b4a0b521a77a02be
+msgid "Interfaces are denoted by their own keyword:"
+msgstr ""
+
+#: ../../contracts/interfaces.rst:36 57c235ac35504f7490251cc7efdded67
+msgid "Contracts can inherit interfaces as they would inherit other contracts."
+msgstr ""
+
+#: ../../contracts/interfaces.rst:38 35484db5dd10413cb98b680d08c6c323
+msgid ""
+"All functions declared in interfaces are implicitly ``virtual`` and any "
+"functions that override them do not need the ``override`` keyword. This "
+"does not automatically mean that an overriding function can be overridden"
+" again - this is only possible if the overriding function is marked "
+"``virtual``."
+msgstr ""
+
+#: ../../contracts/interfaces.rst:43 423317421a8d459db1642eec01d4761a
+msgid ""
+"Interfaces can inherit from other interfaces. This has the same rules as "
+"normal inheritance."
+msgstr ""
+
+#: ../../contracts/interfaces.rst:65 b58c77df11ba4641a7f736231dfba8a0
+msgid ""
+"Types defined inside interfaces and other contract-like structures can be"
+" accessed from other contracts: ``Token.TokenType`` or ``Token.Coin``."
+msgstr ""
+
+#: ../../contracts/libraries.rst:7 06a9981e8b5c4f73bd8430a461eb0726
+msgid "Libraries"
+msgstr ""
+
+#: ../../contracts/libraries.rst:9 adf66a3427a44ccbb2f12ce31f0a58e7
+msgid ""
+"Libraries are similar to contracts, but their purpose is that they are "
+"deployed only once at a specific address and their code is reused using "
+"the ``DELEGATECALL`` (``CALLCODE`` until Homestead) feature of the EVM. "
+"This means that if library functions are called, their code is executed "
+"in the context of the calling contract, i.e. ``this`` points to the "
+"calling contract, and especially the storage from the calling contract "
+"can be accessed. As a library is an isolated piece of source code, it can"
+" only access state variables of the calling contract if they are "
+"explicitly supplied (it would have no way to name them, otherwise). "
+"Library functions can only be called directly (i.e. without the use of "
+"``DELEGATECALL``) if they do not modify the state (i.e. if they are "
+"``view`` or ``pure`` functions), because libraries are assumed to be "
+"stateless. In particular, it is not possible to destroy a library."
+msgstr ""
+
+#: ../../contracts/libraries.rst:24 866585f4c9db4517b51a8152d6e5e9c4
+msgid ""
+"Until version 0.4.20, it was possible to destroy libraries by "
+"circumventing Solidity's type system. Starting from that version, "
+"libraries contain a :ref:`mechanism<call-protection>` that disallows "
+"state-modifying functions to be called directly (i.e. without "
+"``DELEGATECALL``)."
+msgstr ""
+
+#: ../../contracts/libraries.rst:30 e6e52d1575fa4768bc23cd71d7c1d27f
+msgid ""
+"Libraries can be seen as implicit base contracts of the contracts that "
+"use them. They will not be explicitly visible in the inheritance "
+"hierarchy, but calls to library functions look just like calls to "
+"functions of explicit base contracts (using qualified access like "
+"``L.f()``). Of course, calls to internal functions use the internal "
+"calling convention, which means that all internal types can be passed and"
+" types :ref:`stored in memory <data-location>` will be passed by "
+"reference and not copied. To realize this in the EVM, the code of "
+"internal library functions that are called from a contract and all "
+"functions called from therein will at compile time be included in the "
+"calling contract, and a regular ``JUMP`` call will be used instead of a "
+"``DELEGATECALL``."
+msgstr ""
+
+#: ../../contracts/libraries.rst:43 332170b5611a4719b05fc90e398a0d9f
+msgid ""
+"The inheritance analogy breaks down when it comes to public functions. "
+"Calling a public library function with ``L.f()`` results in an external "
+"call (``DELEGATECALL`` to be precise). In contrast, ``A.f()`` is an "
+"internal call when ``A`` is a base contract of the current contract."
+msgstr ""
+
+#: ../../contracts/libraries.rst:50 fd3fbef5739f4a1da37af3ae07cd3a6c
+msgid ""
+"The following example illustrates how to use libraries (but using a "
+"manual method, be sure to check out :ref:`using for <using-for>` for a "
+"more advanced example to implement a set)."
+msgstr ""
+
+#: ../../contracts/libraries.rst:115 8a46b0eff6bc4564a80c3009228d7029
+msgid ""
+"Of course, you do not have to follow this way to use libraries: they can "
+"also be used without defining struct data types. Functions also work "
+"without any storage reference parameters, and they can have multiple "
+"storage reference parameters and in any position."
+msgstr ""
+
+#: ../../contracts/libraries.rst:121 8a83581933314a37afacd5046862fbd0
+msgid ""
+"The calls to ``Set.contains``, ``Set.insert`` and ``Set.remove`` are all "
+"compiled as calls (``DELEGATECALL``) to an external contract/library. If "
+"you use libraries, be aware that an actual external function call is "
+"performed. ``msg.sender``, ``msg.value`` and ``this`` will retain their "
+"values in this call, though (prior to Homestead, because of the use of "
+"``CALLCODE``, ``msg.sender`` and ``msg.value`` changed, though)."
+msgstr ""
+
+#: ../../contracts/libraries.rst:129 76d19d10cd424b7e9e0bbd0434eb31d0
+msgid ""
+"The following example shows how to use :ref:`types stored in memory "
+"<data-location>` and internal functions in libraries in order to "
+"implement custom types without the overhead of external function calls:"
+msgstr ""
+
+#: ../../contracts/libraries.rst:195 0b2b4d62f74c40119f6ba84f4e27e75c
+msgid ""
+"It is possible to obtain the address of a library by converting the "
+"library type to the ``address`` type, i.e. using "
+"``address(LibraryName)``."
+msgstr ""
+
+#: ../../contracts/libraries.rst:198 e6fedb658da947c89a0cdf63bc25ee48
+msgid ""
+"As the compiler does not know the address where the library will be "
+"deployed, the compiled hex code will contain placeholders of the form "
+"``__$30bbc0abd4d6364515865950d3e0d10953$__``. The placeholder is a 34 "
+"character prefix of the hex encoding of the keccak256 hash of the fully "
+"qualified library name, which would be for example "
+"``libraries/bigint.sol:BigInt`` if the library was stored in a file "
+"called ``bigint.sol`` in a ``libraries/`` directory. Such bytecode is "
+"incomplete and should not be deployed. Placeholders need to be replaced "
+"with actual addresses. You can do that by either passing them to the "
+"compiler when the library is being compiled or by using the linker to "
+"update an already compiled binary. See :ref:`library-linking` for "
+"information on how to use the commandline compiler for linking."
+msgstr ""
+
+#: ../../contracts/libraries.rst:208 394608da9d084f61b917fdc6ad689d60
+msgid ""
+"In comparison to contracts, libraries are restricted in the following "
+"ways:"
+msgstr ""
+
+#: ../../contracts/libraries.rst:210 6949099287c6456382141269b80f161d
+msgid "they cannot have state variables"
+msgstr ""
+
+#: ../../contracts/libraries.rst:211 a54ddd6a89dd437d908acc0e74b28663
+msgid "they cannot inherit nor be inherited"
+msgstr ""
+
+#: ../../contracts/libraries.rst:212 2177a5b594e949a1adf06210fe81a6dc
+msgid "they cannot receive Ether"
+msgstr ""
+
+#: ../../contracts/libraries.rst:213 ad1845338f484c02810ee47708bdb821
+msgid "they cannot be destroyed"
+msgstr ""
+
+#: ../../contracts/libraries.rst:215 ea00f5bb908d4b94861f7390c2ffcf29
+msgid "(These might be lifted at a later point.)"
+msgstr ""
+
+#: ../../contracts/libraries.rst:221 7f24f298eecd451bb41cde0200ecdeb1
+msgid "Function Signatures and Selectors in Libraries"
+msgstr ""
+
+#: ../../contracts/libraries.rst:223 14f2718d9d3f4d84ab24e7c5bf4e29e6
+msgid ""
+"While external calls to public or external library functions are "
+"possible, the calling convention for such calls is considered to be "
+"internal to Solidity and not the same as specified for the regular "
+":ref:`contract ABI<ABI>`. External library functions support more "
+"argument types than external contract functions, for example recursive "
+"structs and storage pointers. For that reason, the function signatures "
+"used to compute the 4-byte selector are computed following an internal "
+"naming schema and arguments of types not supported in the contract ABI "
+"use an internal encoding."
+msgstr ""
+
+#: ../../contracts/libraries.rst:229 10b0e6506c4e47ccaa95bf82fcc258b2
+msgid "The following identifiers are used for the types in the signatures:"
+msgstr ""
+
+#: ../../contracts/libraries.rst:231 faf26fe30f3f48f0aeed4a5176d7f80f
+msgid ""
+"Value types, non-storage ``string`` and non-storage ``bytes`` use the "
+"same identifiers as in the contract ABI."
+msgstr ""
+
+#: ../../contracts/libraries.rst:232 e31f356265f249bd81a4ea7f5532f544
+msgid ""
+"Non-storage array types follow the same convention as in the contract "
+"ABI, i.e. ``<type>[]`` for dynamic arrays and ``<type>[M]`` for fixed-"
+"size arrays of ``M`` elements."
+msgstr ""
+
+#: ../../contracts/libraries.rst:234 fe7442a71af94584989c7f75ebe24660
+msgid ""
+"Non-storage structs are referred to by their fully qualified name, i.e. "
+"``C.S`` for ``contract C { struct S { ... } }``."
+msgstr ""
+
+#: ../../contracts/libraries.rst:235 c83bd190f5c64a658ded364fa3526f3c
+msgid ""
+"Storage pointer mappings use ``mapping(<keyType> => <valueType>) "
+"storage`` where ``<keyType>`` and ``<valueType>`` are the identifiers for"
+" the key and value types of the mapping, respectively."
+msgstr ""
+
+#: ../../contracts/libraries.rst:237 53255ec3e0a14cc38ea9076809b66fe4
+msgid ""
+"Other storage pointer types use the type identifier of their "
+"corresponding non-storage type, but append a single space followed by "
+"``storage`` to it."
+msgstr ""
+
+#: ../../contracts/libraries.rst:240 e727a8c3a5484376a35858392baeb358
+msgid ""
+"The argument encoding is the same as for the regular contract ABI, except"
+" for storage pointers, which are encoded as a ``uint256`` value referring"
+" to the storage slot to which they point."
+msgstr ""
+
+#: ../../contracts/libraries.rst:243 addb79618c0342e8b0c05510318ce19e
+msgid ""
+"Similarly to the contract ABI, the selector consists of the first four "
+"bytes of the Keccak256-hash of the signature. Its value can be obtained "
+"from Solidity using the ``.selector`` member as follows:"
+msgstr ""
+
+#: ../../contracts/libraries.rst:266 91170676bf5549398319d63a241b72e7
+msgid "Call Protection For Libraries"
+msgstr ""
+
+#: ../../contracts/libraries.rst:268 f1bb67ff8e4a4ece9d7f332955b8596f
+msgid ""
+"As mentioned in the introduction, if a library's code is executed using a"
+" ``CALL`` instead of a ``DELEGATECALL`` or ``CALLCODE``, it will revert "
+"unless a ``view`` or ``pure`` function is called."
+msgstr ""
+
+#: ../../contracts/libraries.rst:272 2722b2ee6d6d4256b4b7a3c979b64c58
+msgid ""
+"The EVM does not provide a direct way for a contract to detect whether it"
+" was called using ``CALL`` or not, but a contract can use the ``ADDRESS``"
+" opcode to find out \"where\" it is currently running. The generated code"
+" compares this address to the address used at construction time to "
+"determine the mode of calling."
+msgstr ""
+
+#: ../../contracts/libraries.rst:279 8be3b12eba134f33b24eae7d97cdaddd
+msgid ""
+"More specifically, the runtime code of a library always starts with a "
+"push instruction, which is a zero of 20 bytes at compilation time. When "
+"the deploy code runs, this constant is replaced in memory by the current "
+"address and this modified code is stored in the contract. At runtime, "
+"this causes the deploy time address to be the first constant to be pushed"
+" onto the stack and the dispatcher code compares the current address "
+"against this constant for any non-view and non-pure function."
+msgstr ""
+
+#: ../../contracts/libraries.rst:289 b063203ae6be411b8defb9864d481667
+msgid ""
+"This means that the actual code stored on chain for a library is "
+"different from the code reported by the compiler as ``deployedBytecode``."
+msgstr ""
+
+#: ../../contracts/using-for.rst:7 3505e986a8ef4597b5f04d1fe9d9759e
+msgid "Using For"
+msgstr ""
+
+#: ../../contracts/using-for.rst:9 30c48f2e3ea443e389d177abe75c8509
+msgid ""
+"The directive ``using A for B`` can be used to attach functions (``A``) "
+"as operators to user-defined value types or as member functions to any "
+"type (``B``). The member functions receive the object they are called on "
+"as their first parameter (like the ``self`` variable in Python). The "
+"operator functions receive operands as parameters."
+msgstr ""
+
+#: ../../contracts/using-for.rst:16 6c45e162f59542a5ae0bfb21f1abd49b
+msgid "It is valid either at file level or inside a contract, at contract level."
+msgstr ""
+
+#: ../../contracts/using-for.rst:19 af7e0548ca86428f8af45a172f56f772
+msgid "The first part, ``A``, can be one of:"
+msgstr ""
+
+#: ../../contracts/using-for.rst:21 475996de858a428a939e67698fce6b5a
+msgid ""
+"A list of functions, optionally with an operator name assigned (e.g. "
+"``using {f, g as +, h, L.t} for uint``). If no operator is specified, the"
+" function can be either a library function or a free function and is "
+"attached to the type as a member function. Otherwise it must be a free "
+"function and it becomes the definition of that operator on the type."
+msgstr ""
+
+#: ../../contracts/using-for.rst:26 7050bc9849264310a3082d35aea63bbb
+msgid ""
+"The name of a library (e.g. ``using L for uint``) - all non-private "
+"functions of the library are attached to the type as member functions"
+msgstr ""
+
+#: ../../contracts/using-for.rst:30 2408a423110b4edf892113bc2efe5168
+msgid ""
+"At file level, the second part, ``B``, has to be an explicit type "
+"(without data location specifier). Inside contracts, you can also use "
+"``*`` in place of the type (e.g. ``using L for *;``), which has the "
+"effect that all functions of the library ``L`` are attached to *all* "
+"types."
+msgstr ""
+
+#: ../../contracts/using-for.rst:35 817614f003fb40dba926eecf2448e415
+msgid ""
+"If you specify a library, *all* non-private functions in the library get "
+"attached, even those where the type of the first parameter does not match"
+" the type of the object. The type is checked at the point the function is"
+" called and function overload resolution is performed."
+msgstr ""
+
+#: ../../contracts/using-for.rst:41 1f4b21aa4af943e8910ce85f85834819
+msgid ""
+"If you use a list of functions (e.g. ``using {f, g, h, L.t} for uint``), "
+"then the type (``uint``) has to be implicitly convertible to the first "
+"parameter of each of these functions. This check is performed even if "
+"none of these functions are called. Note that private library functions "
+"can only be specified when ``using for`` is inside a library."
+msgstr ""
+
+#: ../../contracts/using-for.rst:47 41db4260047245dfa8ddc3359842a327
+msgid ""
+"If you define an operator (e.g. ``using {f as +} for T``), then the type "
+"(``T``) must be a :ref:`user-defined value type <user-defined-value-"
+"types>` and the definition must be a ``pure`` function. Operator "
+"definitions must be global. The following operators can be defined this "
+"way:"
+msgstr ""
+
+#: ../../contracts/using-for.rst:53 b0061f098fbc4d42b5a0ab00913b53f5
+msgid "Category"
+msgstr ""
+
+#: ../../contracts/using-for.rst:53 3c2f92f01ca7405493379e5dda8149c2
+msgid "Operator"
+msgstr ""
+
+#: ../../contracts/using-for.rst:53 ee8d524077c849e6bbd93c294c1109d4
+msgid "Possible signatures"
+msgstr ""
+
+#: ../../contracts/using-for.rst:55 f33eb08256f142ef807e6d08e4739996
+msgid "Bitwise"
+msgstr ""
+
+#: ../../contracts/using-for.rst:55 60fb0cdfc06b43e6a47c2940c9563d66
+msgid "``&``"
+msgstr ""
+
+#: ../../contracts/using-for.rst:55 ../../contracts/using-for.rst:57
+#: ../../contracts/using-for.rst:59 ../../contracts/using-for.rst:63
+#: ../../contracts/using-for.rst:65 ../../contracts/using-for.rst:69
+#: ../../contracts/using-for.rst:71 ../../contracts/using-for.rst:73
+#: 216a727e9a284da6a707538de198854d 5f75e525fc65415fa6acb656e2a75dec
+#: 8048fab772584ed2997089dea2fc8084 a815618c2a1a498892df28946f6f5df0
+#: ba93eb87bb3f4600b3f535ff2c90895a cf8457467dfe43c1a963ee0e18aa8ad3
+#: d807f5cc39784c9d849ed30244cf8b3e e907b75c1cc74356b33c2a6e32473c6b
+msgid "``function (T, T) pure returns (T)``"
+msgstr ""
+
+#: ../../contracts/using-for.rst:57 81a10eff37234d83b40e692b012e095a
+msgid "``|``"
+msgstr ""
+
+#: ../../contracts/using-for.rst:59 f2366a24af9a425898e66dc0628c2704
+msgid "``^``"
+msgstr ""
+
+#: ../../contracts/using-for.rst:61 7f62982bfdf5424fa62050d2ea87b136
+msgid "``~``"
+msgstr ""
+
+#: ../../contracts/using-for.rst:61 ../../contracts/using-for.rst:67
+#: 5fa0ad98c8264656b3683dbb81869598 c036a90872204de79c8cfbae56d30908
+msgid "``function (T) pure returns (T)``"
+msgstr ""
+
+#: ../../contracts/using-for.rst:63 257f3a05f5bb49a8824f9af8f47c8b03
+msgid "Arithmetic"
+msgstr ""
+
+#: ../../contracts/using-for.rst:63 f64e8484f43e4910a079a22e2220c865
+msgid "``+``"
+msgstr ""
+
+#: ../../contracts/using-for.rst:65 f6ba26f045cc47ecbc93964571032d3e
+msgid "``-``"
+msgstr ""
+
+#: ../../contracts/using-for.rst:69 e23deb5ac2614aa29d0bace98377c681
+msgid "``*``"
+msgstr ""
+
+#: ../../contracts/using-for.rst:71 bb6bdc41ea7f45fdba493187ebeefa12
+msgid "``/``"
+msgstr ""
+
+#: ../../contracts/using-for.rst:73 09687d05664f4e4caada730c6824ddf9
+msgid "``%``"
+msgstr ""
+
+#: ../../contracts/using-for.rst:75 3e45026342e3480ebbbe4540a78dab9a
+msgid "Comparison"
+msgstr ""
+
+#: ../../contracts/using-for.rst:75 02a6686414aa4035ac3f560abef74a66
+msgid "``==``"
+msgstr ""
+
+#: ../../contracts/using-for.rst:75 ../../contracts/using-for.rst:77
+#: ../../contracts/using-for.rst:79 ../../contracts/using-for.rst:81
+#: ../../contracts/using-for.rst:83 ../../contracts/using-for.rst:85
+#: 012cd6da1db14b83b12eef0b51e3d529 0383c883b1ec4e2db882ca8c5659dae7
+#: 209a4bd280234483b00bfda4e08240a1 757dcb5ebd0d4be3ab52f35b6b918a09
+#: b0263c55eb484db2b2e6113de52bb8de d305f31d51a54b0b8a78ca47c68b6d0d
+msgid "``function (T, T) pure returns (bool)``"
+msgstr ""
+
+#: ../../contracts/using-for.rst:77 ed21aa5d497b4f09ba8c183890f8d9b9
+msgid "``!=``"
+msgstr ""
+
+#: ../../contracts/using-for.rst:79 da62822e76a04202a4dc2be7538db0f0
+msgid "``<``"
+msgstr ""
+
+#: ../../contracts/using-for.rst:81 b123e9162e4f41379f1d3399c013e2f8
+msgid "``<=``"
+msgstr ""
+
+#: ../../contracts/using-for.rst:83 b4d2678310814cbd8ae71ec4d38d444b
+msgid "``>``"
+msgstr ""
+
+#: ../../contracts/using-for.rst:85 28f6f28fd776460fa7a1066d14fa6df3
+msgid "``>=``"
+msgstr ""
+
+#: ../../contracts/using-for.rst:88 2992c4e6752d4a8e95435f2f2d3903f2
+msgid ""
+"Note that unary and binary ``-`` need separate definitions. The compiler "
+"will choose the right definition based on how the operator is invoked."
+msgstr ""
+
+#: ../../contracts/using-for.rst:91 d3fbe2c3111b4702bc6ddc19870a3dce
+msgid ""
+"The ``using A for B;`` directive is active only within the current scope "
+"(either the contract or the current module/source unit), including within"
+" all of its functions, and has no effect outside of the contract or "
+"module in which it is used."
+msgstr ""
+
+#: ../../contracts/using-for.rst:96 c171a9be7503435a93b23fad7adaf9ce
+msgid ""
+"When the directive is used at file level and applied to a user-defined "
+"type which was defined at file level in the same file, the word "
+"``global`` can be added at the end. This will have the effect that the "
+"functions and operators are attached to the type everywhere the type is "
+"available (including other files), not only in the scope of the using "
+"statement."
+msgstr ""
+
+#: ../../contracts/using-for.rst:103 22ead3ea9cd24dbf9f14b30ff552f445
+msgid ""
+"Let us rewrite the set example from the :ref:`libraries` section in this "
+"way, using file-level functions instead of library functions."
+msgstr ""
+
+#: ../../contracts/using-for.rst:160 cfc18096d3aa48919556a6ca15a7e2ee
+msgid ""
+"It is also possible to extend built-in types in that way. In this "
+"example, we will use a library."
+msgstr ""
+
+#: ../../contracts/using-for.rst:198 ad60be6f5901496fa751aad588126675
+msgid ""
+"Note that all external library calls are actual EVM function calls. This "
+"means that if you pass memory or value types, a copy will be performed, "
+"even in case of the ``self`` variable. The only situation where no copy "
+"will be performed is when storage reference variables are used or when "
+"internal library functions are called."
+msgstr ""
+
+#: ../../contracts/using-for.rst:204 e630f36adbff42b0aa4174a6a32f564c
+msgid ""
+"Another example shows how to define a custom operator for a user-defined "
+"type:"
+msgstr ""
+

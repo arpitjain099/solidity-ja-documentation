@@ -1,0 +1,41 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2023, The Solidity Authors
+# This file is distributed under the same license as the Solidity package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Solidity 0.8.20\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-18 04:40+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ja_JP\n"
+"Language-Team: ja_JP <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../_templates/versions.html:16 826dee3b28bb4983aa7a722b1659813d
+msgid "Downloads"
+msgstr ""
+
+#: ../../_templates/versions.html:21 5191bc5e9c954f7b8b86fb249d50e2ed
+msgid "Versions"
+msgstr ""
+
+#: ../../_templates/versions.html:27 c210e9def11b42c994e745a30e250544
+msgid "On Read the Docs"
+msgstr ""
+
+#: ../../_templates/versions.html:29 a4f54183d4ad446c8f99e893dcef0fdc
+msgid "Project Home"
+msgstr ""
+
+#: ../../_templates/versions.html:32 25e7682133204f38ab9af17c4d16420e
+msgid "Builds"
+msgstr ""
+

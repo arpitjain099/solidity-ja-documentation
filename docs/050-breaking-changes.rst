@@ -2,36 +2,23 @@
 Solidity v0.5.0 Breaking Changes
 ********************************
 
-This section highlights the main breaking changes introduced in Solidity
-version 0.5.0, along with the reasoning behind the changes and how to update
-affected code.
-For the full list check
-`the release changelog <https://github.com/ethereum/solidity/releases/tag/v0.5.0>`_.
+This section highlights the main breaking changes introduced in Solidity version 0.5.0, along with the reasoning behind the changes and how to update affected code.
+
+For the full list check `the release changelog <https://github.com/ethereum/solidity/releases/tag/v0.5.0>`_
 
 .. note::
-   Contracts compiled with Solidity v0.5.0 can still interface with contracts
-   and even libraries compiled with older versions without recompiling or
-   redeploying them.  Changing the interfaces to include data locations and
-   visibility and mutability specifiers suffices. See the
-   :ref:`Interoperability With Older Contracts <interoperability>` section below.
+   Contracts compiled with Solidity v0.5.0 can still interface with contracts and even libraries compiled with older versions without recompiling or redeploying them.  Changing the interfaces to include data locations and visibility and mutability specifiers suffices. See the :ref:`Interoperability With Older Contracts <interoperability>` section below.
 
 Semantic Only Changes
 =====================
 
-This section lists the changes that are semantic-only, thus potentially
-hiding new and different behavior in existing code.
+This section lists the changes that are semantic-only, thus potentially hiding new and different behavior in existing code.
 
-* Signed right shift now uses proper arithmetic shift, i.e. rounding towards
-  negative infinity, instead of rounding towards zero.  Signed and unsigned
-  shift will have dedicated opcodes in Constantinople, and are emulated by
-  Solidity for the moment.
+* Signed right shift now uses proper arithmetic shift, i.e. rounding towards negative infinity, instead of rounding towards zero.  Signed and unsigned shift will have dedicated opcodes in Constantinople, and are emulated by Solidity for the moment.
 
-* The ``continue`` statement in a ``do...while`` loop now jumps to the
-  condition, which is the common behavior in such cases. It used to jump to the
-  loop body. Thus, if the condition is false, the loop terminates.
+* The ``continue`` statement in a ``do...while`` loop now jumps to the condition, which is the common behavior in such cases. It used to jump to the loop body. Thus, if the condition is false, the loop terminates.
 
-* The functions ``.call()``, ``.delegatecall()`` and ``.staticcall()`` do not
-  pad anymore when given a single ``bytes`` parameter.
+* The functions ``.call()``, ``.delegatecall()`` and ``.staticcall()`` do not pad anymore when given a single ``bytes`` parameter.
 
 * Pure and view functions are now called using the opcode ``STATICCALL``
   instead of ``CALL`` if the EVM version is Byzantium or later. This

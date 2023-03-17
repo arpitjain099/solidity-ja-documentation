@@ -1,0 +1,513 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2023, The Solidity Authors
+# This file is distributed under the same license as the Solidity package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Solidity 0.8.20\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-18 04:40+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ja_JP\n"
+"Language-Team: ja_JP <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../using-the-compiler.rst:3 03b92202a0674bc784ef2e3a4964e1fd
+msgid "Using the Compiler"
+msgstr ""
+
+#: ../../using-the-compiler.rst:10 4e084aaa88774f43a612c91645b15217
+msgid "Using the Commandline Compiler"
+msgstr ""
+
+#: ../../using-the-compiler.rst:13 529d3c6e7e584c96a84d0201b195939e
+msgid ""
+"This section does not apply to :ref:`solcjs <solcjs>`, not even if it is "
+"used in commandline mode."
+msgstr ""
+
+#: ../../using-the-compiler.rst:16 30b85e2931954d8baaa1a51120230105
+msgid "Basic Usage"
+msgstr ""
+
+#: ../../using-the-compiler.rst:18 9b382ab8764c4c75a3de2174043eabf6
+msgid ""
+"One of the build targets of the Solidity repository is ``solc``, the "
+"solidity commandline compiler. Using ``solc --help`` provides you with an"
+" explanation of all options. The compiler can produce various outputs, "
+"ranging from simple binaries and assembly over an abstract syntax tree "
+"(parse tree) to estimations of gas usage. If you only want to compile a "
+"single file, you run it as ``solc --bin sourceFile.sol`` and it will "
+"print the binary. If you want to get some of the more advanced output "
+"variants of ``solc``, it is probably better to tell it to output "
+"everything to separate files using ``solc -o outputDirectory --bin --ast-"
+"compact-json --asm sourceFile.sol``."
+msgstr ""
+
+#: ../../using-the-compiler.rst:23 74a9308eb8a847bc92d55c687692bd46
+msgid "Optimizer Options"
+msgstr ""
+
+#: ../../using-the-compiler.rst:25 0f55a5e01b0b4d86908e452789e5b1ae
+msgid ""
+"Before you deploy your contract, activate the optimizer when compiling "
+"using ``solc --optimize --bin sourceFile.sol``. By default, the optimizer"
+" will optimize the contract assuming it is called 200 times across its "
+"lifetime (more specifically, it assumes each opcode is executed around "
+"200 times). If you want the initial contract deployment to be cheaper and"
+" the later function executions to be more expensive, set it to "
+"``--optimize-runs=1``. If you expect many transactions and do not care "
+"for higher deployment cost and output size, set ``--optimize-runs`` to a "
+"high number. This parameter has effects on the following (this might "
+"change in the future):"
+msgstr ""
+
+#: ../../using-the-compiler.rst:33 9c95eef402cd424e953647deca917e75
+msgid "the size of the binary search in the function dispatch routine"
+msgstr ""
+
+#: ../../using-the-compiler.rst:34 836885a4b5e44b52a6af172beab0d332
+msgid "the way constants like large numbers or strings are stored"
+msgstr ""
+
+#: ../../using-the-compiler.rst:39 189c13b278ae45aaa9b74f6c8d806884
+msgid "Base Path and Import Remapping"
+msgstr ""
+
+#: ../../using-the-compiler.rst:41 d89f608ae0ad46dd9080dac15cbc682d
+msgid ""
+"The commandline compiler will automatically read imported files from the "
+"filesystem, but it is also possible to provide :ref:`path redirects "
+"<import-remapping>` using ``prefix=path`` in the following way:"
+msgstr ""
+
+#: ../../using-the-compiler.rst:48 6ed87c87abf4414a9083261eb70c7b21
+msgid ""
+"This essentially instructs the compiler to search for anything starting "
+"with ``github.com/ethereum/dapp-bin/`` under ``/usr/local/lib/dapp-bin``."
+msgstr ""
+
+#: ../../using-the-compiler.rst:51 80418cd8a11c461eb3b437f812591ad6
+msgid ""
+"When accessing the filesystem to search for imports, :ref:`paths that do "
+"not start with ./ or ../ <direct-imports>` are treated as relative to the"
+" directories specified using ``--base-path`` and ``--include-path`` "
+"options (or the current working directory if base path is not specified)."
+" Furthermore, the part of the path added via these options will not "
+"appear in the contract metadata."
+msgstr ""
+
+#: ../../using-the-compiler.rst:56 3190c2e223ae4d6298607903679e6338
+msgid ""
+"For security reasons the compiler has :ref:`restrictions on what "
+"directories it can access <allowed-paths>`. Directories of source files "
+"specified on the command line and target paths of remappings are "
+"automatically allowed to be accessed by the file reader, but everything "
+"else is rejected by default. Additional paths (and their subdirectories) "
+"can be allowed via the ``--allow-paths "
+"/sample/path,/another/sample/path`` switch. Everything inside the path "
+"specified via ``--base-path`` is always allowed."
+msgstr ""
+
+#: ../../using-the-compiler.rst:64 54c60cb4a4fc4cfcb7c6e937a4e97e0f
+msgid ""
+"The above is only a simplification of how the compiler handles import "
+"paths. For a detailed explanation with examples and discussion of corner "
+"cases please refer to the section on :ref:`path resolution <path-"
+"resolution>`."
+msgstr ""
+
+#: ../../using-the-compiler.rst:72 d2149d3fc3174fb98c293b0bb5b73d44
+msgid "Library Linking"
+msgstr ""
+
+#: ../../using-the-compiler.rst:74 e01997a92ced4921bfb3fbe2716ea1ef
+msgid ""
+"If your contracts use :ref:`libraries <libraries>`, you will notice that "
+"the bytecode contains substrings of the form "
+"``__$53aea86b7d70b31448b230b20ae141a537$__``. These are placeholders for "
+"the actual library addresses. The placeholder is a 34 character prefix of"
+" the hex encoding of the keccak256 hash of the fully qualified library "
+"name. The bytecode file will also contain lines of the form ``// "
+"<placeholder> -> <fq library name>`` at the end to help identify which "
+"libraries the placeholders represent. Note that the fully qualified "
+"library name is the path of its source file and the library name "
+"separated by ``:``. You can use ``solc`` as a linker meaning that it will"
+" insert the library addresses for you at those points:"
+msgstr ""
+
+#: ../../using-the-compiler.rst:81 ade55e5ea9ad49afabe6aad3c81f36b4
+msgid ""
+"Either add ``--libraries "
+"\"file.sol:Math=0x1234567890123456789012345678901234567890 "
+"file.sol:Heap=0xabCD567890123456789012345678901234567890\"`` to your "
+"command to provide an address for each library (use commas or spaces as "
+"separators) or store the string in a file (one library per line) and run "
+"``solc`` using ``--libraries fileName``."
+msgstr ""
+
+#: ../../using-the-compiler.rst:84 5d87c3eea481495ea3346c8cf1ed8c66
+msgid ""
+"Starting Solidity 0.8.1 accepts ``=`` as separator between library and "
+"address, and ``:`` as a separator is deprecated. It will be removed in "
+"the future. Currently ``--libraries "
+"\"file.sol:Math:0x1234567890123456789012345678901234567890 "
+"file.sol:Heap:0xabCD567890123456789012345678901234567890\"`` will work "
+"too."
+msgstr ""
+
+#: ../../using-the-compiler.rst:88 9aff75a2f6fb4f9e93c874ff7adc7d39
+msgid ""
+"If ``solc`` is called with the option ``--standard-json``, it will expect"
+" a JSON input (as explained below) on the standard input, and return a "
+"JSON output on the standard output. This is the recommended interface for"
+" more complex and especially automated uses. The process will always "
+"terminate in a \"success\" state and report any errors via the JSON "
+"output. The option ``--base-path`` is also processed in standard-json "
+"mode."
+msgstr ""
+
+#: ../../using-the-compiler.rst:91 f24234af54914f4b95c13da5a799787e
+msgid ""
+"If ``solc`` is called with the option ``--link``, all input files are "
+"interpreted to be unlinked binaries (hex-encoded) in the "
+"``__$53aea86b7d70b31448b230b20ae141a537$__``-format given above and are "
+"linked in-place (if the input is read from stdin, it is written to "
+"stdout). All options except ``--libraries`` are ignored (including "
+"``-o``) in this case."
+msgstr ""
+
+#: ../../using-the-compiler.rst:94 d7efa3425c044d22bc2b006e9fb2546d
+msgid ""
+"Manually linking libraries on the generated bytecode is discouraged "
+"because it does not update contract metadata. Since metadata contains a "
+"list of libraries specified at the time of compilation and bytecode "
+"contains a metadata hash, you will get different binaries, depending on "
+"when linking is performed."
+msgstr ""
+
+#: ../../using-the-compiler.rst:99 f446f0cdd3ad4a2f9d263d2c37ad9780
+msgid ""
+"You should ask the compiler to link the libraries at the time a contract "
+"is compiled by either using the ``--libraries`` option of ``solc`` or the"
+" ``libraries`` key if you use the standard-JSON interface to the "
+"compiler."
+msgstr ""
+
+#: ../../using-the-compiler.rst:104 97dbfd2929f1457db3112f5e012eb535
+msgid ""
+"The library placeholder used to be the fully qualified name of the "
+"library itself instead of the hash of it. This format is still supported "
+"by ``solc --link`` but the compiler will no longer output it. This change"
+" was made to reduce the likelihood of a collision between libraries, "
+"since only the first 36 characters of the fully qualified library name "
+"could be used."
+msgstr ""
+
+#: ../../using-the-compiler.rst:114 9fb0fce80be34ae5a91f5ca1759a1178
+msgid "Setting the EVM Version to Target"
+msgstr ""
+
+#: ../../using-the-compiler.rst:116 ad04022aa5934258bc16590b6d1f339a
+msgid ""
+"When you compile your contract code you can specify the Ethereum virtual "
+"machine version to compile for to avoid particular features or "
+"behaviours."
+msgstr ""
+
+#: ../../using-the-compiler.rst:121 2468062deef54f51806ee570c75e29d1
+msgid ""
+"Compiling for the wrong EVM version can result in wrong, strange and "
+"failing behaviour. Please ensure, especially if running a private chain, "
+"that you use matching EVM versions."
+msgstr ""
+
+#: ../../using-the-compiler.rst:125 5e1be2ef63e447d0a681fd24002a6bbf
+msgid "On the command line, you can select the EVM version as follows:"
+msgstr ""
+
+#: ../../using-the-compiler.rst:131 b63817a348b845a69cd3c35f14c862bd
+msgid ""
+"In the :ref:`standard JSON interface <compiler-api>`, use the "
+"``\"evmVersion\"`` key in the ``\"settings\"`` field:"
+msgstr ""
+
+#: ../../using-the-compiler.rst:145 5b166c87280842c792a6168f607e94a0
+msgid "Target Options"
+msgstr ""
+
+#: ../../using-the-compiler.rst:147 9c6a28a4e462426cacd971b63c73b19f
+msgid ""
+"Below is a list of target EVM versions and the compiler-relevant changes "
+"introduced at each version. Backward compatibility is not guaranteed "
+"between each version."
+msgstr ""
+
+#: ../../using-the-compiler.rst:150 679aaa7175fe4dc0b6ac48243ee3ea72
+msgid "``homestead``"
+msgstr ""
+
+#: ../../using-the-compiler.rst:151 f73531f44ef64cb2b468b6b1816de239
+msgid "(oldest version)"
+msgstr ""
+
+#: ../../using-the-compiler.rst:153 e7d716cc677d445b9037734ad82d2015
+msgid "``tangerineWhistle``"
+msgstr ""
+
+#: ../../using-the-compiler.rst:153 907641b984f1427d9398b75148d9a4cd
+msgid ""
+"Gas cost for access to other accounts increased, relevant for gas "
+"estimation and the optimizer."
+msgstr ""
+
+#: ../../using-the-compiler.rst:154 11f01d5c1f7041e0bab23a5bc2f7d156
+msgid ""
+"All gas sent by default for external calls, previously a certain amount "
+"had to be retained."
+msgstr ""
+
+#: ../../using-the-compiler.rst:155 9a7e05ec9ec040adb6b9f966e5998c92
+msgid "``spuriousDragon``"
+msgstr ""
+
+#: ../../using-the-compiler.rst:156 39860b7e54c542ce84902532a14dc212
+msgid ""
+"Gas cost for the ``exp`` opcode increased, relevant for gas estimation "
+"and the optimizer."
+msgstr ""
+
+#: ../../using-the-compiler.rst:160 99a80666b511431ca814f04b29099829
+msgid "``byzantium``"
+msgstr ""
+
+#: ../../using-the-compiler.rst:158 b3196ee1693b4832b01071b5cce9a84c
+msgid ""
+"Opcodes ``returndatacopy``, ``returndatasize`` and ``staticcall`` are "
+"available in assembly."
+msgstr ""
+
+#: ../../using-the-compiler.rst:159 a3e293e9a47b470c999ed1aa66351a03
+msgid ""
+"The ``staticcall`` opcode is used when calling non-library view or pure "
+"functions, which prevents the functions from modifying state at the EVM "
+"level, i.e., even applies when you use invalid type conversions."
+msgstr ""
+
+#: ../../using-the-compiler.rst:160 7532c1d05c684eb8b96003487e736f7d
+msgid "It is possible to access dynamic data returned from function calls."
+msgstr ""
+
+#: ../../using-the-compiler.rst:161 e2171a7c895e40978328aab7c51e72e0
+msgid ""
+"``revert`` opcode introduced, which means that ``revert()`` will not "
+"waste gas."
+msgstr ""
+
+#: ../../using-the-compiler.rst:163 e25ef0a722394b4ba8602b7171c19078
+msgid "``constantinople``"
+msgstr ""
+
+#: ../../using-the-compiler.rst:163 a29966cffb864e9d9ff9c0cd2634dadf
+msgid ""
+"Opcodes ``create2`, ``extcodehash``, ``shl``, ``shr`` and ``sar`` are "
+"available in assembly."
+msgstr ""
+
+#: ../../using-the-compiler.rst:164 1b5bc996e2ff4f41b2a94940b49b8de0
+msgid "Shifting operators use shifting opcodes and thus need less gas."
+msgstr ""
+
+#: ../../using-the-compiler.rst:165 c16e7cc3ff0d4c6c9f2064d432612e00
+msgid "``petersburg``"
+msgstr ""
+
+#: ../../using-the-compiler.rst:166 7797b826e13a4b54bc1b959b0266fb7b
+msgid "The compiler behaves the same way as with constantinople."
+msgstr ""
+
+#: ../../using-the-compiler.rst:167 cc4ec5e2ee8c448f8fb544642baac8af
+msgid "``istanbul``"
+msgstr ""
+
+#: ../../using-the-compiler.rst:168 339ccdd99e244f21b1a00735988bf214
+msgid "Opcodes ``chainid`` and ``selfbalance`` are available in assembly."
+msgstr ""
+
+#: ../../using-the-compiler.rst:171 8e9c2d9827824a4c82dc31aab808fd4f
+msgid "``berlin``"
+msgstr ""
+
+#: ../../using-the-compiler.rst:170 74f63150de8142c0855aa1253113c3a2
+msgid ""
+"Gas costs for ``SLOAD``, ``*CALL``, ``BALANCE``, ``EXT*`` and "
+"``SELFDESTRUCT`` increased. The compiler assumes cold gas costs for such "
+"operations. This is relevant for gas estimation and the optimizer."
+msgstr ""
+
+#: ../../using-the-compiler.rst:173 f87ad2ba469f427394938c15b2057822
+msgid "``london``"
+msgstr ""
+
+#: ../../using-the-compiler.rst:174 c24e3767d42d4e82b467ebf2b2906469
+msgid ""
+"The block's base fee (`EIP-3198 "
+"<https://eips.ethereum.org/EIPS/eip-3198>`_ and `EIP-1559 "
+"<https://eips.ethereum.org/EIPS/eip-1559>`_) can be accessed via the "
+"global ``block.basefee`` or ``basefee()`` in inline assembly."
+msgstr ""
+
+#: ../../using-the-compiler.rst:176 dd6965022c8e4cff9260baee4160c4b4
+msgid "``paris`` (**default**)"
+msgstr ""
+
+#: ../../using-the-compiler.rst:176 e1b95c9188c54053bd1b445352c07ca5
+msgid ""
+"Introduces ``prevrandao()`` and ``block.prevrandao``, and changes the "
+"semantics of the now deprecated ``block.difficulty``, disallowing "
+"``difficulty()`` in inline assembly (see `EIP-4399 "
+"<https://eips.ethereum.org/EIPS/eip-4399>`_)."
+msgstr ""
+
+#: ../../using-the-compiler.rst:182 c28abe09224e453eb7183d5e9db6b0ef
+msgid "Compiler Input and Output JSON Description"
+msgstr ""
+
+#: ../../using-the-compiler.rst:184 3362862c98f44b8d92833f19434ed3f3
+msgid ""
+"The recommended way to interface with the Solidity compiler especially "
+"for more complex and automated setups is the so-called JSON-input-output "
+"interface. The same interface is provided by all distributions of the "
+"compiler."
+msgstr ""
+
+#: ../../using-the-compiler.rst:188 154904a927084ac5855c24f593ad6b41
+msgid ""
+"The fields are generally subject to change, some are optional (as noted),"
+" but we try to only make backwards compatible changes."
+msgstr ""
+
+#: ../../using-the-compiler.rst:191 2981152330754d618274962ab5ad6608
+msgid ""
+"The compiler API expects a JSON formatted input and outputs the "
+"compilation result in a JSON formatted output. The standard error output "
+"is not used and the process will always terminate in a \"success\" state,"
+" even if there were errors. Errors are always reported as part of the "
+"JSON output."
+msgstr ""
+
+#: ../../using-the-compiler.rst:195 7e18586aa0b445a384269431046d9ff0
+msgid ""
+"The following subsections describe the format through an example. "
+"Comments are of course not permitted and used here only for explanatory "
+"purposes."
+msgstr ""
+
+#: ../../using-the-compiler.rst:199 96a71e89c2ea498c8b9a0397425e52b5
+msgid "Input Description"
+msgstr ""
+
+#: ../../using-the-compiler.rst:468 c1cad78414954cee90e0216325d7e810
+msgid "Output Description"
+msgstr ""
+
+#: ../../using-the-compiler.rst:625 b1d629d36fa54df3ae7b1155bacfefa1
+msgid "Error Types"
+msgstr ""
+
+#: ../../using-the-compiler.rst:627 1211bdd2b72c4692a6a1ee2bf3171b0c
+msgid ""
+"``JSONError``: JSON input doesn't conform to the required format, e.g. "
+"input is not a JSON object, the language is not supported, etc."
+msgstr ""
+
+#: ../../using-the-compiler.rst:628 3e841f690491438d86cca07cf49903b6
+msgid ""
+"``IOError``: IO and import processing errors, such as unresolvable URL or"
+" hash mismatch in supplied sources."
+msgstr ""
+
+#: ../../using-the-compiler.rst:629 8da6b616c5de48ecb60b866bcd838900
+msgid "``ParserError``: Source code doesn't conform to the language rules."
+msgstr ""
+
+#: ../../using-the-compiler.rst:630 b9d8175875a74cc4aaf49370c2c86dec
+msgid ""
+"``DocstringParsingError``: The NatSpec tags in the comment block cannot "
+"be parsed."
+msgstr ""
+
+#: ../../using-the-compiler.rst:631 b3c110da361e4d659de5e717e623977e
+msgid ""
+"``SyntaxError``: Syntactical error, such as ``continue`` is used outside "
+"of a ``for`` loop."
+msgstr ""
+
+#: ../../using-the-compiler.rst:632 496d14ff289e4b68b39f30bf6b0124f2
+msgid ""
+"``DeclarationError``: Invalid, unresolvable or clashing identifier names."
+" e.g. ``Identifier not found``"
+msgstr ""
+
+#: ../../using-the-compiler.rst:633 4cea0232691643db8b850ce18fb4bcbc
+msgid ""
+"``TypeError``: Error within the type system, such as invalid type "
+"conversions, invalid assignments, etc."
+msgstr ""
+
+#: ../../using-the-compiler.rst:634 b1e95ff02e704e9495016eab0dc9ff66
+msgid ""
+"``UnimplementedFeatureError``: Feature is not supported by the compiler, "
+"but is expected to be supported in future versions."
+msgstr ""
+
+#: ../../using-the-compiler.rst:635 01d177f6cf5f4c0bb2895c3467c448f7
+msgid ""
+"``InternalCompilerError``: Internal bug triggered in the compiler - this "
+"should be reported as an issue."
+msgstr ""
+
+#: ../../using-the-compiler.rst:636 9372bcbca42a43e8a220417aeb03d68f
+msgid ""
+"``Exception``: Unknown failure during compilation - this should be "
+"reported as an issue."
+msgstr ""
+
+#: ../../using-the-compiler.rst:637 140a018228754498ae603850442bb750
+msgid ""
+"``CompilerError``: Invalid use of the compiler stack - this should be "
+"reported as an issue."
+msgstr ""
+
+#: ../../using-the-compiler.rst:638 53741fce6b3c45ca950ff0d641516341
+msgid ""
+"``FatalError``: Fatal error not processed correctly - this should be "
+"reported as an issue."
+msgstr ""
+
+#: ../../using-the-compiler.rst:639 149263461c7a4447849699cdcd0ff984
+msgid ""
+"``YulException``: Error during Yul Code generation - this should be "
+"reported as an issue."
+msgstr ""
+
+#: ../../using-the-compiler.rst:640 3b62034eebcb4e5491196e0869fb8a03
+msgid ""
+"``Warning``: A warning, which didn't stop the compilation, but should be "
+"addressed if possible."
+msgstr ""
+
+#: ../../using-the-compiler.rst:641 d15d771a14874d2781f5d14193c6e957
+msgid ""
+"``Info``: Information that the compiler thinks the user might find "
+"useful, but is not dangerous and does not necessarily need to be "
+"addressed."
+msgstr ""
+

@@ -1,0 +1,2755 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2023, The Solidity Authors
+# This file is distributed under the same license as the Solidity package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Solidity 0.8.20\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-18 04:40+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ja_JP\n"
+"Language-Team: ja_JP <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../internals/layout_in_calldata.rst:6 34e08ddbb07d4c7e962c05a5e1f729d1
+msgid "Layout of Call Data"
+msgstr ""
+
+#: ../../internals/layout_in_calldata.rst:8 5920bfaa293849a6b25e6cdb3267a4e1
+msgid ""
+"The input data for a function call is assumed to be in the format defined"
+" by the :ref:`ABI specification <ABI>`. Among others, the ABI "
+"specification requires arguments to be padded to multiples of 32 bytes. "
+"The internal function calls use a different convention."
+msgstr ""
+
+#: ../../internals/layout_in_calldata.rst:12 4ec8ac865204426ebb226b97ddd699ad
+msgid ""
+"Arguments for the constructor of a contract are directly appended at the "
+"end of the contract's code, also in ABI encoding. The constructor will "
+"access them through a hard-coded offset, and not by using the "
+"``codesize`` opcode, since this of course changes when appending data to "
+"the code."
+msgstr ""
+
+#: ../../internals/layout_in_memory.rst:6 716e90ef81594ef6825e7f931734a17e
+msgid "Layout in Memory"
+msgstr ""
+
+#: ../../internals/layout_in_memory.rst:8 35cdf67ce0824733bce3867479ad9a95
+msgid ""
+"Solidity reserves four 32-byte slots, with specific byte ranges "
+"(inclusive of endpoints) being used as follows:"
+msgstr ""
+
+#: ../../internals/layout_in_memory.rst:10 8e738c447659404188131c2c39043a00
+msgid "``0x00`` - ``0x3f`` (64 bytes): scratch space for hashing methods"
+msgstr ""
+
+#: ../../internals/layout_in_memory.rst:11 28c629822b704ef79ad3a06fc9e4ac1f
+msgid ""
+"``0x40`` - ``0x5f`` (32 bytes): currently allocated memory size (aka. "
+"free memory pointer)"
+msgstr ""
+
+#: ../../internals/layout_in_memory.rst:12 1fe17dc0ac4d4d70ad4c2c6123acb83b
+msgid "``0x60`` - ``0x7f`` (32 bytes): zero slot"
+msgstr ""
+
+#: ../../internals/layout_in_memory.rst:14 3ed57686fa484f17a58087a15f1d2cf3
+msgid ""
+"Scratch space can be used between statements (i.e. within inline "
+"assembly). The zero slot is used as initial value for dynamic memory "
+"arrays and should never be written to (the free memory pointer points to "
+"``0x80`` initially)."
+msgstr ""
+
+#: ../../internals/layout_in_memory.rst:18 c0f950c4fb89465a95741026421c278f
+msgid ""
+"Solidity always places new objects at the free memory pointer and memory "
+"is never freed (this might change in the future)."
+msgstr ""
+
+#: ../../internals/layout_in_memory.rst:21 8a307c6d3b354b4096b9adb5a4a8cfee
+msgid ""
+"Elements in memory arrays in Solidity always occupy multiples of 32 bytes"
+" (this is even true for ``bytes1[]``, but not for ``bytes`` and "
+"``string``). Multi-dimensional memory arrays are pointers to memory "
+"arrays. The length of a dynamic array is stored at the first slot of the "
+"array and followed by the array elements."
+msgstr ""
+
+#: ../../internals/layout_in_memory.rst:28 96e376c0cc5a411790eda12a45be21f3
+msgid ""
+"There are some operations in Solidity that need a temporary memory area "
+"larger than 64 bytes and therefore will not fit into the scratch space. "
+"They will be placed where the free memory points to, but given their "
+"short lifetime, the pointer is not updated. The memory may or may not be "
+"zeroed out. Because of this, one should not expect the free memory to "
+"point to zeroed out memory."
+msgstr ""
+
+#: ../../internals/layout_in_memory.rst:35 7a160dcb748242dcbc3c0710dff3b0c3
+msgid ""
+"While it may seem like a good idea to use ``msize`` to arrive at a "
+"definitely zeroed out memory area, using such a pointer non-temporarily "
+"without updating the free memory pointer can have unexpected results."
+msgstr ""
+
+#: ../../internals/layout_in_memory.rst:41 8c1a8cbd05c244a9a04293ec91b96ae3
+msgid "Differences to Layout in Storage"
+msgstr ""
+
+#: ../../internals/layout_in_memory.rst:43 6f6140b54831430c93017c9f09f33ac0
+msgid ""
+"As described above the layout in memory is different from the layout in "
+":ref:`storage<storage-inplace-encoding>`. Below there are some examples."
+msgstr ""
+
+#: ../../internals/layout_in_memory.rst:47 093871474fea436990f59687d196647d
+msgid "Example for Difference in Arrays"
+msgstr ""
+
+#: ../../internals/layout_in_memory.rst:49 7fcea7a737ce40ab82aaf314ec27c862
+msgid ""
+"The following array occupies 32 bytes (1 slot) in storage, but 128 bytes "
+"(4 items with 32 bytes each) in memory."
+msgstr ""
+
+#: ../../internals/layout_in_memory.rst:59 d58a396129f1416ebb6f9db4523466fc
+msgid "Example for Difference in Struct Layout"
+msgstr ""
+
+#: ../../internals/layout_in_memory.rst:61 3c75a7f56e34439f98346ce88452e02b
+msgid ""
+"The following struct occupies 96 bytes (3 slots of 32 bytes) in storage, "
+"but 128 bytes (4 items with 32 bytes each) in memory."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:5 50b02a35ab934b438005e4ba34447020
+msgid "Layout of State Variables in Storage"
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:9 c48be1d25d1343b9836dc8063ea98ba2
+msgid ""
+"State variables of contracts are stored in storage in a compact way such "
+"that multiple values sometimes use the same storage slot. Except for "
+"dynamically-sized arrays and mappings (see below), data is stored "
+"contiguously item after item starting with the first state variable, "
+"which is stored in slot ``0``. For each variable, a size in bytes is "
+"determined according to its type. Multiple, contiguous items that need "
+"less than 32 bytes are packed into a single storage slot if possible, "
+"according to the following rules:"
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:18 3b896581cb854296afda335837a12680
+msgid "The first item in a storage slot is stored lower-order aligned."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:19 b673cd76c98c43c3954f1e09b82d7958
+msgid "Value types use only as many bytes as are necessary to store them."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:20 85b5c6895bd64f9ba35b0aa303b95b1e
+msgid ""
+"If a value type does not fit the remaining part of a storage slot, it is "
+"stored in the next storage slot."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:21 54e023e696db43d4bcb9ba7699a68af4
+msgid ""
+"Structs and array data always start a new slot and their items are packed"
+" tightly according to these rules."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:22 4a858de1622a4946a9227ebda362e14e
+msgid "Items following struct or array data always start a new storage slot."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:24 e66fb23b10074f9dbd48e45a47ee0f42
+msgid ""
+"For contracts that use inheritance, the ordering of state variables is "
+"determined by the C3-linearized order of contracts starting with the most"
+" base-ward contract. If allowed by the above rules, state variables from "
+"different contracts do share the same storage slot."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:28 5c4e03f53b1041489435577a5535184e
+msgid ""
+"The elements of structs and arrays are stored after each other, just as "
+"if they were given as individual values."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:32 fcad5cc0f76a412384316993cbcc816d
+msgid ""
+"When using elements that are smaller than 32 bytes, your contract's gas "
+"usage may be higher. This is because the EVM operates on 32 bytes at a "
+"time. Therefore, if the element is smaller than that, the EVM must use "
+"more operations in order to reduce the size of the element from 32 bytes "
+"to the desired size."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:37 000cfe93a8ba4ec7ac70ef3ea6e80b14
+msgid ""
+"It might be beneficial to use reduced-size types if you are dealing with "
+"storage values because the compiler will pack multiple elements into one "
+"storage slot, and thus, combine multiple reads or writes into a single "
+"operation. If you are not reading or writing all the values in a slot at "
+"the same time, this can have the opposite effect, though: When one value "
+"is written to a multi-value storage slot, the storage slot has to be read"
+" first and then combined with the new value such that other data in the "
+"same slot is not destroyed."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:45 ee2e1f933bc2498eb6b235961944632f
+msgid ""
+"When dealing with function arguments or memory values, there is no "
+"inherent benefit because the compiler does not pack these values."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:48 37380d44ea884615ab39231bcb3c9df0
+msgid ""
+"Finally, in order to allow the EVM to optimize for this, ensure that you "
+"try to order your storage variables and ``struct`` members such that they"
+" can be packed tightly. For example, declaring your storage variables in "
+"the order of ``uint128, uint128, uint256`` instead of ``uint128, uint256,"
+" uint128``, as the former will only take up two slots of storage whereas "
+"the latter will take up three."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:55 c5fa0ab8b35042528d2ba38af1256e52
+msgid ""
+"The layout of state variables in storage is considered to be part of the "
+"external interface of Solidity due to the fact that storage pointers can "
+"be passed to libraries. This means that any change to the rules outlined "
+"in this section is considered a breaking change of the language and due "
+"to its critical nature should be considered very carefully before being "
+"executed. In the event of such a breaking change, we would want to "
+"release a compatibility mode in which the compiler would generate "
+"bytecode supporting the old layout."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:64 cc6b4641536a4949bc515776dc132723
+msgid "Mappings and Dynamic Arrays"
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:68 ada526ca4faa4baa904e54006dea4707
+msgid ""
+"Due to their unpredictable size, mappings and dynamically-sized array "
+"types cannot be stored \"in between\" the state variables preceding and "
+"following them. Instead, they are considered to occupy only 32 bytes with"
+" regards to the :ref:`rules above <storage-inplace-encoding>` and the "
+"elements they contain are stored starting at a different storage slot "
+"that is computed using a Keccak-256 hash."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:74 6db9768558244ff592fc7fe54d22ca66
+msgid ""
+"Assume the storage location of the mapping or array ends up being a slot "
+"``p`` after applying :ref:`the storage layout rules <storage-inplace-"
+"encoding>`. For dynamic arrays, this slot stores the number of elements "
+"in the array (byte arrays and strings are an exception, see :ref:`below "
+"<bytes-and-string>`). For mappings, the slot stays empty, but it is still"
+" needed to ensure that even if there are two mappings next to each other,"
+" their content ends up at different storage locations."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:82 8a8fa8b36a774e6baf787d57fcd50ff1
+#, python-format
+msgid ""
+"Array data is located starting at ``keccak256(p)`` and it is laid out in "
+"the same way as statically-sized array data would: One element after the "
+"other, potentially sharing storage slots if the elements are not longer "
+"than 16 bytes. Dynamic arrays of dynamic arrays apply this rule "
+"recursively. The location of element ``x[i][j]``, where the type of ``x``"
+" is ``uint24[][]``, is computed as follows (again, assuming ``x`` itself "
+"is stored at slot ``p``): The slot is ``keccak256(keccak256(p) + i) + "
+"floor(j / floor(256 / 24))`` and the element can be obtained from the "
+"slot data ``v`` using ``(v >> ((j % floor(256 / 24)) * 24)) & "
+"type(uint24).max``."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:90 97472d3a76f842fd869e2c45e3c1d420
+msgid ""
+"The value corresponding to a mapping key ``k`` is located at "
+"``keccak256(h(k) . p)`` where ``.`` is concatenation and ``h`` is a "
+"function that is applied to the key depending on its type:"
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:93 967e663aba124ba8a3f7e02b05daf542
+msgid ""
+"for value types, ``h`` pads the value to 32 bytes in the same way as when"
+" storing the value in memory."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:94 4227115c00114a6e8b3485a5a1184933
+msgid "for strings and byte arrays, ``h(k)`` is just the unpadded data."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:96 a2de77b437d844ed8025d7e0c90ba2b6
+msgid ""
+"If the mapping value is a non-value type, the computed slot marks the "
+"start of the data. If the value is of struct type, for example, you have "
+"to add an offset corresponding to the struct member to reach the member."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:100 91505ce9b8d84db287fc1babc33a0080
+msgid "As an example, consider the following contract:"
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:114 eaea67d533494446b1c8e7cf505127b8
+msgid ""
+"Let us compute the storage location of ``data[4][9].c``. The position of "
+"the mapping itself is ``1`` (the variable ``x`` with 32 bytes precedes "
+"it). This means ``data[4]`` is stored at ``keccak256(uint256(4) . "
+"uint256(1))``. The type of ``data[4]`` is again a mapping and the data "
+"for ``data[4][9]`` starts at slot ``keccak256(uint256(9) . "
+"keccak256(uint256(4) . uint256(1)))``. The slot offset of the member "
+"``c`` inside the struct ``S`` is ``1`` because ``a`` and ``b`` are packed"
+" in a single slot. This means the slot for ``data[4][9].c`` is "
+"``keccak256(uint256(9) . keccak256(uint256(4) . uint256(1))) + 1``. The "
+"type of the value is ``uint256``, so it uses a single slot."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:128 5bc7724795054ecbb51e52819181a64f
+msgid "``bytes`` and ``string``"
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:130 0ddbfda5ea1e40e4beea0667f48586b4
+msgid ""
+"``bytes`` and ``string`` are encoded identically. In general, the "
+"encoding is similar to ``bytes1[]``, in the sense that there is a slot "
+"for the array itself and a data area that is computed using a "
+"``keccak256`` hash of that slot's position. However, for short values "
+"(shorter than 32 bytes) the array elements are stored together with the "
+"length in the same slot."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:135 4fa02270eec145619aee2b6259e6d581
+msgid ""
+"In particular: if the data is at most ``31`` bytes long, the elements are"
+" stored in the higher-order bytes (left aligned) and the lowest-order "
+"byte stores the value ``length * 2``. For byte arrays that store data "
+"which is ``32`` or more bytes long, the main slot ``p`` stores ``length *"
+" 2 + 1`` and the data is stored as usual in ``keccak256(p)``. This means "
+"that you can distinguish a short array from a long array by checking if "
+"the lowest bit is set: short (not set) and long (set)."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:142 dd21fc7d83a445df881d92f0ceaf0cc8
+msgid ""
+"Handling invalidly encoded slots is currently not supported but may be "
+"added in the future. If you are compiling via IR, reading an invalidly "
+"encoded slot results in a ``Panic(0x22)`` error."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:146 abd664aa2691429d859ad6bcd1db0d9c
+msgid "JSON Output"
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:150 f79ae8000566411db89c468382c78010
+msgid ""
+"The storage layout of a contract can be requested via the :ref:`standard "
+"JSON interface <compiler-api>`.  The output is a JSON object containing "
+"two keys, ``storage`` and ``types``.  The ``storage`` object is an array "
+"where each element has the following form:"
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:168 c45e3c426ce04b3fa77741c0ef099be6
+msgid ""
+"The example above is the storage layout of ``contract A { uint x; }`` "
+"from source unit ``fileA`` and"
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:171 0f8d8005b78543389d647d8b3cb18161
+msgid "``astId`` is the id of the AST node of the state variable's declaration"
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:172 8ed8f446dba944ae860ae5e8df501ee3
+msgid "``contract`` is the name of the contract including its path as prefix"
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:173 6092afe1d10f4687a54f2a3242c7fd83
+msgid "``label`` is the name of the state variable"
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:174 743d13049911436db4afadc1e6be3c5b
+msgid ""
+"``offset`` is the offset in bytes within the storage slot according to "
+"the encoding"
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:175 09675dff59e64f26b68830cc8d4bf6a0
+msgid ""
+"``slot`` is the storage slot where the state variable resides or starts. "
+"This number may be very large and therefore its JSON value is represented"
+" as a string."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:178 b82a254a9d1547d69bbb2721c44fd71f
+msgid ""
+"``type`` is an identifier used as key to the variable's type information "
+"(described in the following)"
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:180 e8f209b6287640ea856e323803ac595f
+msgid ""
+"The given ``type``, in this case ``t_uint256`` represents an element in "
+"``types``, which has the form:"
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:192 12b0d57f30df447ebe6063795ecf22d9
+msgid "where"
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:194 9869b7e129904ee0ad8c3563c161b925
+msgid ""
+"``encoding`` how the data is encoded in storage, where the possible "
+"values are:"
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:196 676fa4c70f5e443ca7dbb72d292f8ee0
+msgid ""
+"``inplace``: data is laid out contiguously in storage (see :ref:`above "
+"<storage-inplace-encoding>`)."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:197 c7be0229dbc343fbae152f6fc0e42e2e
+msgid ""
+"``mapping``: Keccak-256 hash-based method (see :ref:`above <storage-"
+"hashed-encoding>`)."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:198 5d90506024bf40f08e7b869927ec4fd6
+msgid ""
+"``dynamic_array``: Keccak-256 hash-based method (see :ref:`above "
+"<storage-hashed-encoding>`)."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:199 db97ef84a3724c4282be6ed72fd3da9c
+msgid ""
+"``bytes``: single slot or Keccak-256 hash-based depending on the data "
+"size (see :ref:`above <bytes-and-string>`)."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:201 bbe64c7012f045d6ae6efa1d909e23ca
+msgid "``label`` is the canonical type name."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:202 911ddfe1ec8e4ac39c660cd7d947232a
+msgid ""
+"``numberOfBytes`` is the number of used bytes (as a decimal string). Note"
+" that if ``numberOfBytes > 32`` this means that more than one slot is "
+"used."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:205 dd757abb550d4e0eb5bbbbb4bd2476d9
+msgid ""
+"Some types have extra information besides the four above. Mappings "
+"contain its ``key`` and ``value`` types (again referencing an entry in "
+"this mapping of types), arrays have its ``base`` type, and structs list "
+"their ``members`` in the same format as the top-level ``storage`` (see "
+":ref:`above <storage-layout-top-level>`)."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:212 1f184d390e68441bbcb3200b7d6ea928
+msgid ""
+"The JSON output format of a contract's storage layout is still considered"
+" experimental and is subject to change in non-breaking releases of "
+"Solidity."
+msgstr ""
+
+#: ../../internals/layout_in_storage.rst:215 2de4f51b1f7c43f083a56de5fa593066
+msgid ""
+"The following example shows a contract and its storage layout, containing"
+" value and reference types, types that are encoded packed, and nested "
+"types."
+msgstr ""
+
+#: ../../internals/optimizer.rst:6 c4334d1582d84c949cc15c228bf0530d
+msgid "The Optimizer"
+msgstr ""
+
+#: ../../internals/optimizer.rst:8 92a67b3586a14e62b6c750bfcc19ec03
+msgid ""
+"The Solidity compiler uses two different optimizer modules: The \"old\" "
+"optimizer that operates at the opcode level and the \"new\" optimizer "
+"that operates on Yul IR code."
+msgstr ""
+
+#: ../../internals/optimizer.rst:11 d6603fceccfa41b2ad1cce600006dca4
+msgid ""
+"The opcode-based optimizer applies a set of `simplification rules "
+"<https://github.com/ethereum/solidity/blob/develop/libevmasm/RuleList.h>`_"
+" to opcodes. It also combines equal code sets and removes unused code."
+msgstr ""
+
+#: ../../internals/optimizer.rst:14 6c9cd6a64d8e424382d08fa534b2ad55
+msgid ""
+"The Yul-based optimizer is much more powerful, because it can work across"
+" function calls. For example, arbitrary jumps are not possible in Yul, so"
+" it is possible to compute the side-effects of each function. Consider "
+"two function calls, where the first does not modify storage and the "
+"second does modify storage. If their arguments and return values do not "
+"depend on each other, we can reorder the function calls. Similarly, if a "
+"function is side-effect free and its result is multiplied by zero, you "
+"can remove the function call completely."
+msgstr ""
+
+#: ../../internals/optimizer.rst:23 57b714b207b04cabba2e2aa4f8e898ca
+msgid ""
+"Currently, the parameter ``--optimize`` activates the opcode-based "
+"optimizer for the generated bytecode and the Yul optimizer for the Yul "
+"code generated internally, for example for ABI coder v2. One can use "
+"``solc --ir-optimized --optimize`` to produce an optimized Yul IR for a "
+"Solidity source. Similarly, one can use ``solc --strict-assembly "
+"--optimize`` for a stand-alone Yul mode."
+msgstr ""
+
+#: ../../internals/optimizer.rst:30 a3e8fa26727f4a5ebdb741ab9ff6c287
+msgid ""
+"The `peephole optimizer "
+"<https://en.wikipedia.org/wiki/Peephole_optimization>`_ and the inliner "
+"are always enabled by default and can only be turned off via the "
+":ref:`Standard JSON <compiler-api>`."
+msgstr ""
+
+#: ../../internals/optimizer.rst:33 b07d0c4847064a71927dc773213ff3a7
+msgid ""
+"You can find more details on both optimizer modules and their "
+"optimization steps below."
+msgstr ""
+
+#: ../../internals/optimizer.rst:36 cf2d82240dd44078b851e05d8545740d
+msgid "Benefits of Optimizing Solidity Code"
+msgstr ""
+
+#: ../../internals/optimizer.rst:38 af4c3a4b80f14eacbf825f228c1e431c
+msgid ""
+"Overall, the optimizer tries to simplify complicated expressions, which "
+"reduces both code size and execution cost, i.e., it can reduce gas needed"
+" for contract deployment as well as for external calls made to the "
+"contract. It also specializes or inlines functions. Especially function "
+"inlining is an operation that can cause much bigger code, but it is often"
+" done because it results in opportunities for more simplifications."
+msgstr ""
+
+#: ../../internals/optimizer.rst:46 9278b2c6f5c546749e8cfa4cfed8c1c7
+msgid "Differences between Optimized and Non-Optimized Code"
+msgstr ""
+
+#: ../../internals/optimizer.rst:48 8b61ff192b434b40a6adc5a09d680596
+msgid ""
+"Generally, the most visible difference is that constant expressions are "
+"evaluated at compile time. When it comes to the ASM output, one can also "
+"notice a reduction of equivalent or duplicate code blocks (compare the "
+"output of the flags ``--asm`` and ``--asm --optimize``). However, when it"
+" comes to the Yul/intermediate-representation, there can be significant "
+"differences, for example, functions may be inlined, combined, or "
+"rewritten to eliminate redundancies, etc. (compare the output between the"
+" flags ``--ir`` and ``--optimize --ir-optimized``)."
+msgstr ""
+
+#: ../../internals/optimizer.rst:59 757f767d48fa49a0b54e01470c0b6608
+msgid "Optimizer Parameter Runs"
+msgstr ""
+
+#: ../../internals/optimizer.rst:61 739cc508ca0e42da9f0ef28e99660fed
+msgid ""
+"The number of runs (``--optimize-runs``) specifies roughly how often each"
+" opcode of the deployed code will be executed across the life-time of the"
+" contract. This means it is a trade-off parameter between code size "
+"(deploy cost) and code execution cost (cost after deployment). A \"runs\""
+" parameter of \"1\" will produce short but expensive code. In contrast, a"
+" larger \"runs\" parameter will produce longer but more gas efficient "
+"code. The maximum value of the parameter is ``2**32-1``."
+msgstr ""
+
+#: ../../internals/optimizer.rst:70 ac602653fcbc493c987b8ffc435fc473
+msgid ""
+"A common misconception is that this parameter specifies the number of "
+"iterations of the optimizer. This is not true: The optimizer will always "
+"run as many times as it can still improve the code."
+msgstr ""
+
+#: ../../internals/optimizer.rst:74 c2993d7706fd461c8cb117397dc4403b
+msgid "Opcode-Based Optimizer Module"
+msgstr ""
+
+#: ../../internals/optimizer.rst:76 7180711a75f742bdb6bbfedebccee22b
+msgid ""
+"The opcode-based optimizer module operates on assembly code. It splits "
+"the sequence of instructions into basic blocks at ``JUMPs`` and "
+"``JUMPDESTs``. Inside these blocks, the optimizer analyzes the "
+"instructions and records every modification to the stack, memory, or "
+"storage as an expression which consists of an instruction and a list of "
+"arguments which are pointers to other expressions."
+msgstr ""
+
+#: ../../internals/optimizer.rst:82 1bcb6774d3064abfa7cc7947026841bd
+msgid ""
+"Additionally, the opcode-based optimizer uses a component called "
+"\"CommonSubexpressionEliminator\" that, amongst other tasks, finds "
+"expressions that are always equal (on every input) and combines them into"
+" an expression class. It first tries to find each new expression in a "
+"list of already known expressions. If no such matches are found, it "
+"simplifies the expression according to rules like ``constant + constant ="
+" sum_of_constants`` or ``X * 1 = X``. Since this is a recursive process, "
+"we can also apply the latter rule if the second factor is a more complex "
+"expression which we know always evaluates to one."
+msgstr ""
+
+#: ../../internals/optimizer.rst:92 11b14ff3bb314cfcae8399145df30833
+msgid ""
+"Certain optimizer steps symbolically track the storage and memory "
+"locations. For example, this information is used to compute Keccak-256 "
+"hashes that can be evaluated during compile time. Consider the sequence:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:106 288dea6e64974c8e8da440ed11b4c438
+msgid "or the equivalent Yul"
+msgstr ""
+
+#: ../../internals/optimizer.rst:114 d7f7db50b72f4e09879502518d714ba5
+msgid ""
+"In this case, the optimizer tracks the value at a memory location "
+"``calldataload(0)`` and then realizes that the Keccak-256 hash can be "
+"evaluated at compile time. This only works if there is no other "
+"instruction that modifies memory between the ``mstore`` and "
+"``keccak256``. So if there is an instruction that writes to memory (or "
+"storage), then we need to erase the knowledge of the current memory (or "
+"storage). There is, however, an exception to this erasing, when we can "
+"easily see that the instruction doesn't write to a certain location."
+msgstr ""
+
+#: ../../internals/optimizer.rst:121 a130de1e7fea4caea3b5442c9178e359
+msgid "For example,"
+msgstr ""
+
+#: ../../internals/optimizer.rst:134 620e1c7c17254d758b853bd39cd03cb9
+msgid ""
+"Therefore, modifications to storage and memory locations, of say location"
+" ``l``, must erase knowledge about storage or memory locations which may "
+"be equal to ``l``. More specifically, for storage, the optimizer has to "
+"erase all knowledge of symbolic locations, that may be equal to ``l`` and"
+" for memory, the optimizer has to erase all knowledge of symbolic "
+"locations that may not be at least 32 bytes away. If ``m`` denotes an "
+"arbitrary location, then this decision on erasure is done by computing "
+"the value ``sub(l, m)``. For storage, if this value evaluates to a "
+"literal that is non-zero, then the knowledge about ``m`` will be kept. "
+"For memory, if the value evaluates to a literal that is between ``32`` "
+"and ``2**256 - 32``, then the knowledge about ``m`` will be kept. In all "
+"other cases, the knowledge about ``m`` will be erased."
+msgstr ""
+
+#: ../../internals/optimizer.rst:144 d62d087d1e9342feba915977f46fe38b
+msgid ""
+"After this process, we know which expressions have to be on the stack at "
+"the end, and have a list of modifications to memory and storage. This "
+"information is stored together with the basic blocks and is used to link "
+"them. Furthermore, knowledge about the stack, storage and memory "
+"configuration is forwarded to the next block(s)."
+msgstr ""
+
+#: ../../internals/optimizer.rst:150 d49389d257ff4c71a6305ec9c6681689
+msgid ""
+"If we know the targets of all ``JUMP`` and ``JUMPI`` instructions, we can"
+" build a complete control flow graph of the program. If there is only one"
+" target we do not know (this can happen as in principle, jump targets can"
+" be computed from inputs), we have to erase all knowledge about the input"
+" state of a block as it can be the target of the unknown ``JUMP``. If the"
+" opcode-based optimizer module finds a ``JUMPI`` whose condition "
+"evaluates to a constant, it transforms it to an unconditional jump."
+msgstr ""
+
+#: ../../internals/optimizer.rst:158 5987243338cd4a988f56d93c68513e82
+msgid ""
+"As the last step, the code in each block is re-generated. The optimizer "
+"creates a dependency graph from the expressions on the stack at the end "
+"of the block, and it drops every operation that is not part of this "
+"graph. It generates code that applies the modifications to memory and "
+"storage in the order they were made in the original code (dropping "
+"modifications which were found not to be needed). Finally, it generates "
+"all values that are required to be on the stack in the correct place."
+msgstr ""
+
+#: ../../internals/optimizer.rst:166 501fd3b1ad104f8e99d5fe2191e32502
+msgid ""
+"These steps are applied to each basic block and the newly generated code "
+"is used as replacement if it is smaller. If a basic block is split at a "
+"``JUMPI`` and during the analysis, the condition evaluates to a constant,"
+" the ``JUMPI`` is replaced based on the value of the constant. Thus code "
+"like"
+msgstr ""
+
+#: ../../internals/optimizer.rst:180 f032b390ae3d427b99803ec3b61975ba
+msgid "simplifies to this:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:188 055dcb84a661493ea4ea750d549eca0a
+msgid "Simple Inlining"
+msgstr ""
+
+#: ../../internals/optimizer.rst:190 8de92964b24f4bcc865939c3dceb147f
+msgid ""
+"Since Solidity version 0.8.2, there is another optimizer step that "
+"replaces certain jumps to blocks containing \"simple\" instructions "
+"ending with a \"jump\" by a copy of these instructions. This corresponds "
+"to inlining of simple, small Solidity or Yul functions. In particular, "
+"the sequence ``PUSHTAG(tag) JUMP`` may be replaced, whenever the ``JUMP``"
+" is marked as jump \"into\" a function and behind ``tag`` there is a "
+"basic block (as described above for the "
+"\"CommonSubexpressionEliminator\") that ends in another ``JUMP`` which is"
+" marked as a jump \"out of\" a function."
+msgstr ""
+
+#: ../../internals/optimizer.rst:198 35fca327a348428a8855032595d381a9
+msgid ""
+"In particular, consider the following prototypical example of assembly "
+"generated for a call to an internal Solidity function:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:213 27ab2bf67f9a45509b534c4e5ea0b684
+msgid ""
+"As long as the body of the function is a continuous basic block, the "
+"\"Inliner\" can replace ``tag_f jump`` by the block at ``tag_f`` "
+"resulting in:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:228 52ba3c43d8a14c5993de9c51a882384c
+msgid ""
+"Now ideally, the other optimizer steps described above will result in the"
+" return tag push being moved towards the remaining jump resulting in:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:243 bff3c343b9fb4669ad6b0881e41c7f0c
+msgid ""
+"In this situation the \"PeepholeOptimizer\" will remove the return jump. "
+"Ideally, all of this can be done for all references to ``tag_f`` leaving "
+"it unused, s.t. it can be removed, yielding:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:251 2824047cb26744648bf92a504f324619
+msgid ""
+"So the call to function ``f`` is inlined and the original definition of "
+"``f`` can be removed."
+msgstr ""
+
+#: ../../internals/optimizer.rst:253 6867e5f2f2b7427eaae046ccaecee54a
+msgid ""
+"Inlining like this is attempted, whenever a heuristics suggests that "
+"inlining is cheaper over the lifetime of a contract than not inlining. "
+"This heuristics depends on the size of the function body, the number of "
+"other references to its tag (approximating the number of calls to the "
+"function) and the expected number of executions of the contract (the "
+"global optimizer parameter \"runs\")."
+msgstr ""
+
+#: ../../internals/optimizer.rst:260 967937dcfd1d45dd811daeb366d955c1
+msgid "Yul-Based Optimizer Module"
+msgstr ""
+
+#: ../../internals/optimizer.rst:262 5f28668fc4cc4679ae7719a0b052e67e
+msgid ""
+"The Yul-based optimizer consists of several stages and components that "
+"all transform the AST in a semantically equivalent way. The goal is to "
+"end up either with code that is shorter or at least only marginally "
+"longer but will allow further optimization steps."
+msgstr ""
+
+#: ../../internals/optimizer.rst:269 3cae72b8abb946c1b2f20fb33cc76599
+msgid ""
+"Since the optimizer is under heavy development, the information here "
+"might be outdated. If you rely on a certain functionality, please reach "
+"out to the team directly."
+msgstr ""
+
+#: ../../internals/optimizer.rst:272 071fc263a4d74e7f80e941e6821c5b83
+msgid ""
+"The optimizer currently follows a purely greedy strategy and does not do "
+"any backtracking."
+msgstr ""
+
+#: ../../internals/optimizer.rst:275 e37e2c52a29e41feabf18b9d8bc6de9c
+msgid ""
+"All components of the Yul-based optimizer module are explained below. The"
+" following transformation steps are the main components:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:278 ea081f5a5614436cb3f213a56bf89767
+msgid "SSA Transform"
+msgstr ""
+
+#: ../../internals/optimizer.rst:279 8951f8d5c4ad4a3089a42c20f841912f
+msgid "Common Subexpression Eliminator"
+msgstr ""
+
+#: ../../internals/optimizer.rst:280 ../../internals/optimizer.rst:830
+#: 189be5570c9d418baf52428f74924602 a34d862197a049d8baa7c0610bbccbdd
+msgid "Expression Simplifier"
+msgstr ""
+
+#: ../../internals/optimizer.rst:281 648f8f8c88d64d32a0869798b20bfc9a
+msgid "Redundant Assign Eliminator"
+msgstr ""
+
+#: ../../internals/optimizer.rst:282 fab087177cf84d34b697b6f7401299ce
+msgid "Full Inliner"
+msgstr ""
+
+#: ../../internals/optimizer.rst:287 5794b1a3fd9746e7b96e4d2536cd1915
+msgid "Optimizer Steps"
+msgstr ""
+
+#: ../../internals/optimizer.rst:289 01e0246ed2224d1b90da4cef63e0cfee
+msgid ""
+"This is a list of all steps the Yul-based optimizer sorted "
+"alphabetically. You can find more information on the individual steps and"
+" their sequence below."
+msgstr ""
+
+#: ../../internals/optimizer.rst:293 c3f9246ee70e4d92bed4050444c788ba
+msgid "Abbreviation"
+msgstr ""
+
+#: ../../internals/optimizer.rst:293 074141d19dbc430e99711e7440fc8d55
+msgid "Full name"
+msgstr ""
+
+#: ../../internals/optimizer.rst:295 439cd1e7a60241eeb717dbe2b38ed929
+msgid "``f``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:295 fe518cdccf084c05983bd063592eb2a5
+msgid ":ref:`block-flattener`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:296 0e5b9b58661d489ca6d1a4890a1923da
+msgid "``l``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:296 cf903efb898a42dbb8e3c187abb2f312
+msgid ":ref:`circular-reference-pruner`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:297 a54131f0d27d418b8b227d234aa62d4e
+msgid "``c``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:297 305748f5cbf74f50986c2b6e385d346d
+msgid ":ref:`common-subexpression-eliminator`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:298 7f318dc70cf447618a1dc7aa7f4e9299
+msgid "``C``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:298 9454eaeac197487c922e977cbf04c099
+msgid ":ref:`conditional-simplifier`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:299 606785121ea24bbfa70814c775f3a505
+msgid "``U``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:299 52e4186d7d2e480cb961c5e0473b434c
+msgid ":ref:`conditional-unsimplifier`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:300 1932b2859fc449e0ac5ec7de42d8942c
+msgid "``n``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:300 74788b43a41d4ccfa7be817f26f33286
+msgid ":ref:`control-flow-simplifier`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:301 3c2067f206d445028bfd5a466188897e
+msgid "``D``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:301 283e90153afb4a048cf048da138e7960
+msgid ":ref:`dead-code-eliminator`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:302 46bdb04892bc46e88d6ddc2ee10dfd16
+msgid "``E``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:302 77dc7dfb65c84563a7e66c5a8222cd8d
+msgid ":ref:`equal-store-eliminator`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:303 733808430980480983d772a6ec554e24
+msgid "``v``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:303 0b49a43c50df4b30b6bb7318059ca5a1
+msgid ":ref:`equivalent-function-combiner`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:304 9f4d05ee9fcd4987943a6f9913e36faf
+msgid "``e``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:304 b59b5c7fca4042b5910ee3e48918ec7a
+msgid ":ref:`expression-inliner`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:305 041a49eaf7b247b3aec89e69bc8b7061
+msgid "``j``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:305 87065ada771d40d1b030a50eef8973a7
+msgid ":ref:`expression-joiner`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:306 611a29939f724db7ac08d0c49c94c447
+msgid "``s``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:306 761f09ddff7540c1bf23ef5264518ab9
+msgid ":ref:`expression-simplifier`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:307 aa81ce8d081f4254913f2af6f78935e3
+msgid "``x``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:307 a22009bfdf6041488e02be831d100a00
+msgid ":ref:`expression-splitter`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:308 2cec270c42a242aeb2dabbd1f2d311c8
+msgid "``I``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:308 8bb99bc08f354e3a8f5d37ebac138507
+msgid ":ref:`for-loop-condition-into-body`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:309 cb18d8d0338d434ba48f3ecb8e9fc679
+msgid "``O``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:309 c371c586c9174cdd9e201b9481ac6121
+msgid ":ref:`for-loop-condition-out-of-body`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:310 e14e1c2256474493bd6a61c7c7c994a9
+msgid "``o``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:310 9e36521c1cb84d7c993a8a8b33883d89
+msgid ":ref:`for-loop-init-rewriter`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:311 0b43c4d453984f8ea34c4dbf280679ea
+msgid "``i``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:311 af0c4504e7eb422997a24a2d10aa6517
+msgid ":ref:`full-inliner`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:312 3bff196e7538489ea0ede32cdf77e3fd
+msgid "``g``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:312 a29181f29e2744a1894672991735a6f0
+msgid ":ref:`function-grouper`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:313 ebec0d45111d4692851390d0cb80f234
+msgid "``h``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:313 4c0660d2304b401d9a9a0445a4af41aa
+msgid ":ref:`function-hoister`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:314 064fc51261f043ef82b69eacfebc8d30
+msgid "``F``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:314 36debeabdf23471582a28908662c2bc5
+msgid ":ref:`function-specializer`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:315 488e259072cc4723af3bfec0ae43974f
+msgid "``T``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:315 e1fa1116896d4eb5b9e16c97591c4f8a
+msgid ":ref:`literal-rematerialiser`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:316 3930b6c0697c4806a74a4e7c3372dede
+msgid "``L``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:316 fd10ded25eb4475b8a234ffb6f236322
+msgid ":ref:`load-resolver`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:317 23cd6f87e67947c2b54a7a004794b267
+msgid "``M``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:317 dbdd7044ccac4f4e92460fb4d327499d
+msgid ":ref:`loop-invariant-code-motion`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:318 a22be2e5bd414edaa4424bfa7119722c
+msgid "``r``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:318 e96cc8da05ad4c4db364ead91d167dfa
+msgid ":ref:`redundant-assign-eliminator`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:319 902d695a726b461e953f054413e5973e
+msgid "``R``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:319 b8129d41aa404db6a91eb1c0ffcf7869
+msgid ":ref:`reasoning-based-simplifier` - highly experimental"
+msgstr ""
+
+#: ../../internals/optimizer.rst:320 6db67ba538f24f4f8fa10bb166ff4b93
+msgid "``m``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:320 d0812268ca874e018598adf2bafa398e
+msgid ":ref:`rematerialiser`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:321 a2fea48d72674cb09e0702428e6b4d6c
+msgid "``V``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:321 9adc087af2a74a24be5d26c73327f9ef
+msgid ":ref:`SSA-reverser`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:322 319bb87ee34949498ad96b6f2e08a0a1
+msgid "``a``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:322 fe59e1d99efe43d4a54bbf889f9bc0fc
+msgid ":ref:`SSA-transform`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:323 c17e81781d1c41eb84099a482bff1ccd
+msgid "``t``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:323 d6b4796c96b843fc9e55ca83387979a1
+msgid ":ref:`structural-simplifier`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:324 0d54dcc63bf046b38f775365a0f5f06b
+msgid "``p``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:324 dcf67a46f51d486eb2e29c0b4664aba1
+msgid ":ref:`unused-function-parameter-pruner`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:325 88e5878e75794fdb8d22dce7c9f13fdc
+msgid "``S``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:325 e5ac04ebce344659a0644724e44e1fbc
+msgid ":ref:`unused-store-eliminator`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:326 75c423268fb6444d98dd6fa6dcb5f354
+msgid "``u``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:326 ff5336215c8e4ef9b2c8f387af51dcf9
+msgid ":ref:`unused-pruner`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:327 cfe4ff80f5cb4ce4bdc31b0e501fa0d2
+msgid "``d``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:327 b4462b2422444966a0e8248bde92db7d
+msgid ":ref:`var-decl-initializer`"
+msgstr ""
+
+#: ../../internals/optimizer.rst:330 fe67777493894cfebe2143178da4a597
+msgid ""
+"Some steps depend on properties ensured by ``BlockFlattener``, "
+"``FunctionGrouper``, ``ForLoopInitRewriter``. For this reason the Yul "
+"optimizer always applies them before applying any steps supplied by the "
+"user."
+msgstr ""
+
+#: ../../internals/optimizer.rst:333 8960105356b34a68ae6a8f48079ad3c7
+msgid ""
+"The ReasoningBasedSimplifier is an optimizer step that is currently not "
+"enabled in the default set of steps. It uses an SMT solver to simplify "
+"arithmetic expressions and boolean conditions. It has not received "
+"thorough testing or validation yet and can produce non-reproducible "
+"results, so please use with care!"
+msgstr ""
+
+#: ../../internals/optimizer.rst:339 d028db504ee1425f8bfc37eac37ca27a
+msgid "Selecting Optimizations"
+msgstr ""
+
+#: ../../internals/optimizer.rst:341 087ad6031e5b452fb52ee21d339c72ba
+msgid ""
+"By default the optimizer applies its predefined sequence of optimization "
+"steps to the generated assembly. You can override this sequence and "
+"supply your own using the ``--yul-optimizations`` option:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:348 c18eca07e73046e082a4f51deb141051
+msgid ""
+"The order of steps is significant and affects the quality of the output. "
+"Moreover, applying a step may uncover new optimization opportunities for "
+"others that were already applied, so repeating steps is often beneficial."
+msgstr ""
+
+#: ../../internals/optimizer.rst:352 8110d7a0ceb940a5b730056203956d39
+msgid ""
+"The sequence inside ``[...]`` will be applied multiple times in a loop "
+"until the Yul code remains unchanged or until the maximum number of "
+"rounds (currently 12) has been reached. Brackets (``[]``) may be used "
+"multiple times in a sequence, but can not be nested."
+msgstr ""
+
+#: ../../internals/optimizer.rst:356 0f6b9dc83fe74658b2beb7c4facfb8c2
+msgid ""
+"An important thing to note, is that there are some hardcoded steps that "
+"are always run before and after the user-supplied sequence, or the "
+"default sequence if one was not supplied by the user."
+msgstr ""
+
+#: ../../internals/optimizer.rst:359 65f660ee337d44f995998949052c7072
+msgid ""
+"The cleanup sequence delimiter ``:`` is optional, and is used to supply a"
+" custom cleanup sequence in order to replace the default one. If omitted,"
+" the optimizer will simply apply the default cleanup sequence. In "
+"addition, the delimiter may be placed at the beginning of the user-"
+"supplied sequence, which will result in the optimization sequence being "
+"empty, whereas conversely, if placed at the end of the sequence, will be "
+"treated as an empty cleanup sequence."
+msgstr ""
+
+#: ../../internals/optimizer.rst:366 2f0a94d94c384f6e9c28afde5b1c15b7
+msgid "Preprocessing"
+msgstr ""
+
+#: ../../internals/optimizer.rst:368 a2b308b31bcf4c97b1aee080977c2a58
+msgid ""
+"The preprocessing components perform transformations to get the program "
+"into a certain normal form that is easier to work with. This normal form "
+"is kept during the rest of the optimization process."
+msgstr ""
+
+#: ../../internals/optimizer.rst:375 fa96e0e154e7490cb8333eac1db0bf4d
+msgid "Disambiguator"
+msgstr ""
+
+#: ../../internals/optimizer.rst:377 1dd1963b0b864dd08299d763816c4437
+msgid ""
+"The disambiguator takes an AST and returns a fresh copy where all "
+"identifiers have unique names in the input AST. This is a prerequisite "
+"for all other optimizer stages. One of the benefits is that identifier "
+"lookup does not need to take scopes into account which simplifies the "
+"analysis needed for other steps."
+msgstr ""
+
+#: ../../internals/optimizer.rst:382 877340b2dbf544bd83c1c2b9a3cc483f
+msgid ""
+"All subsequent stages have the property that all names stay unique. This "
+"means if a new identifier needs to be introduced, a new unique name is "
+"generated."
+msgstr ""
+
+#: ../../internals/optimizer.rst:388 a96b36e7176e45c5b0545221cfc99b3c
+msgid "FunctionHoister"
+msgstr ""
+
+#: ../../internals/optimizer.rst:390 34a84cc7f4cf4b76a24a9d705c7a51eb
+msgid ""
+"The function hoister moves all function definitions to the end of the "
+"topmost block. This is a semantically equivalent transformation as long "
+"as it is performed after the disambiguation stage. The reason is that "
+"moving a definition to a higher-level block cannot decrease its "
+"visibility and it is impossible to reference variables defined in a "
+"different function."
+msgstr ""
+
+#: ../../internals/optimizer.rst:395 d8830969100d4868a50c4288d19466c5
+msgid ""
+"The benefit of this stage is that function definitions can be looked up "
+"more easily and functions can be optimized in isolation without having to"
+" traverse the AST completely."
+msgstr ""
+
+#: ../../internals/optimizer.rst:401 5bd23d201d78428c950e4e813bf0da30
+msgid "FunctionGrouper"
+msgstr ""
+
+#: ../../internals/optimizer.rst:403 160a7641df294d6a8b35735fc2d08728
+msgid ""
+"The function grouper has to be applied after the disambiguator and the "
+"function hoister. Its effect is that all topmost elements that are not "
+"function definitions are moved into a single block which is the first "
+"statement of the root block."
+msgstr ""
+
+#: ../../internals/optimizer.rst:407 2fa797265c8e42c197b6c5800ed3e6e7
+msgid "After this step, a program has the following normal form:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:413 bb842d903ac147218bef00f83804cc15
+msgid ""
+"Where ``I`` is a (potentially empty) block that does not contain any "
+"function definitions (not even recursively) and ``F`` is a list of "
+"function definitions such that no function contains a function "
+"definition."
+msgstr ""
+
+#: ../../internals/optimizer.rst:416 e170c56a68254bbc8e6032d801783b4b
+msgid ""
+"The benefit of this stage is that we always know where the list of "
+"function begins."
+msgstr ""
+
+#: ../../internals/optimizer.rst:421 2a4372d415e1442d9d6a33321833e3c4
+msgid "ForLoopConditionIntoBody"
+msgstr ""
+
+#: ../../internals/optimizer.rst:423 b59744bb295743be98516d5b0f418c3a
+msgid ""
+"This transformation moves the loop-iteration condition of a for-loop into"
+" loop body. We need this transformation because :ref:`expression-"
+"splitter` will not apply to iteration condition expressions (the ``C`` in"
+" the following example)."
+msgstr ""
+
+#: ../../internals/optimizer.rst:433 ../../internals/optimizer.rst:459
+#: ../../internals/optimizer.rst:608 ../../internals/optimizer.rst:1041
+#: a265adb132d54d248e9ac18ad8a2929a aaa764b20c5e4001b7a2b9c1efa3cc32
+#: b655ec6efd734358908bfcd6e694455f f0295086e47546cca9e3a97ce6466ef5
+msgid "is transformed to"
+msgstr ""
+
+#: ../../internals/optimizer.rst:442 5e483f83c2ba4c4495c555bb8e87dfd0
+msgid ""
+"This transformation can also be useful when paired with "
+"``LoopInvariantCodeMotion``, since invariants in the loop-invariant "
+"conditions can then be taken outside the loop."
+msgstr ""
+
+#: ../../internals/optimizer.rst:448 99108c11f4dd44b4833d6f9e866e2a92
+msgid "ForLoopInitRewriter"
+msgstr ""
+
+#: ../../internals/optimizer.rst:450 61bae03e3d6a45c7a989eede1d7e1e5d
+msgid ""
+"This transformation moves the initialization part of a for-loop to before"
+" the loop:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:468 e09c78468882495c8b271f066296a151
+msgid ""
+"This eases the rest of the optimization process because we can ignore the"
+" complicated scoping rules of the for loop initialisation block."
+msgstr ""
+
+#: ../../internals/optimizer.rst:474 55525934a5ab4a8982c95645277ef6ce
+msgid "VarDeclInitializer"
+msgstr ""
+
+#: ../../internals/optimizer.rst:475 73db243ca68c4e5dbca043db32af9848
+msgid ""
+"This step rewrites variable declarations so that all of them are "
+"initialized. Declarations like ``let x, y`` are split into multiple "
+"declaration statements."
+msgstr ""
+
+#: ../../internals/optimizer.rst:478 522a6407ba2044c1aeff446f0c83cbe7
+msgid "Only supports initializing with the zero literal for now."
+msgstr ""
+
+#: ../../internals/optimizer.rst:481 cd5c0b6992294470b1e9a08f403b7691
+msgid "Pseudo-SSA Transformation"
+msgstr ""
+
+#: ../../internals/optimizer.rst:483 486db7cf598c4f00a40307e2c1b4fe89
+msgid ""
+"The purpose of this components is to get the program into a longer form, "
+"so that other components can more easily work with it. The final "
+"representation will be similar to a static-single-assignment (SSA) form, "
+"with the difference that it does not make use of explicit \"phi\" "
+"functions which combines the values from different branches of control "
+"flow because such a feature does not exist in the Yul language. Instead, "
+"when control flow merges, if a variable is re-assigned in one of the "
+"branches, a new SSA variable is declared to hold its current value, so "
+"that the following expressions still only need to reference SSA "
+"variables."
+msgstr ""
+
+#: ../../internals/optimizer.rst:492 2d4ed829c2c04b34ba87ff1b12080156
+msgid "An example transformation is the following:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:507 d979a95453614de0be54e49bdfcbd771
+msgid ""
+"When all the following transformation steps are applied, the program will"
+" look as follows:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:535 2724aee8c2434df4a5c194de87d544f7
+msgid ""
+"Note that the only variable that is re-assigned in this snippet is ``b``."
+" This re-assignment cannot be avoided because ``b`` has different values "
+"depending on the control flow. All other variables never change their "
+"value once they are defined. The advantage of this property is that "
+"variables can be freely moved around and references to them can be "
+"exchanged by their initial value (and vice-versa), as long as these "
+"values are still valid in the new context."
+msgstr ""
+
+#: ../../internals/optimizer.rst:543 e769ebc65cc54503b62251ce428257e2
+msgid ""
+"Of course, the code here is far from being optimized. To the contrary, it"
+" is much longer. The hope is that this code will be easier to work with "
+"and furthermore, there are optimizer steps that undo these changes and "
+"make the code more compact again at the end."
+msgstr ""
+
+#: ../../internals/optimizer.rst:551 c1f0671369b14874957fc9a6d1859816
+msgid "ExpressionSplitter"
+msgstr ""
+
+#: ../../internals/optimizer.rst:553 f4dc3d19a0c44b9dad29b0e889ba9ec3
+msgid ""
+"The expression splitter turns expressions like ``add(mload(0x123), "
+"mul(mload(0x456), 0x20))`` into a sequence of declarations of unique "
+"variables that are assigned sub-expressions of that expression so that "
+"each function call has only variables as arguments."
+msgstr ""
+
+#: ../../internals/optimizer.rst:558 e74118364405485ba09123e824e15405
+msgid "The above would be transformed into"
+msgstr ""
+
+#: ../../internals/optimizer.rst:572 d7862c88c2f947879f426f86612a31dd
+msgid ""
+"Note that this transformation does not change the order of opcodes or "
+"function calls."
+msgstr ""
+
+#: ../../internals/optimizer.rst:574 36e3fb57b32c40d1a1400ddfc9e153cb
+msgid ""
+"It is not applied to loop iteration-condition, because the loop control "
+"flow does not allow this \"outlining\" of the inner expressions in all "
+"cases. We can sidestep this limitation by applying :ref:`for-loop-"
+"condition-into-body` to move the iteration condition into loop body."
+msgstr ""
+
+#: ../../internals/optimizer.rst:578 6077e37729904b1a8d2aed288fa54a93
+msgid ""
+"The final program should be in a form such that (with the exception of "
+"loop conditions) function calls cannot appear nested inside expressions "
+"and all function call arguments have to be variables."
+msgstr ""
+
+#: ../../internals/optimizer.rst:582 92ad215956c445eb887409d2a1b4d6a1
+msgid ""
+"The benefits of this form are that it is much easier to re-order the "
+"sequence of opcodes and it is also easier to perform function call "
+"inlining. Furthermore, it is simpler to replace individual parts of "
+"expressions or re-organize the \"expression tree\". The drawback is that "
+"such code is much harder to read for humans."
+msgstr ""
+
+#: ../../internals/optimizer.rst:590 f2ce02ef8a3246c6beb1e6953344137a
+msgid "SSATransform"
+msgstr ""
+
+#: ../../internals/optimizer.rst:592 cb8df7581f5e4802b17686417dee14e1
+msgid ""
+"This stage tries to replace repeated assignments to existing variables by"
+" declarations of new variables as much as possible. The reassignments are"
+" still there, but all references to the reassigned variables are replaced"
+" by the newly declared variables."
+msgstr ""
+
+#: ../../internals/optimizer.rst:598 851f8a5dc2824f6caa98aafc5d5f6d9f
+msgid "Example:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:620 8e0b71e704e04b2fa4c8bc7bb896db5d
+msgid "Exact semantics:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:622 be4ba8d296f746b5a984a89dd36ee60f
+msgid ""
+"For any variable ``a`` that is assigned to somewhere in the code "
+"(variables that are declared with value and never re-assigned are not "
+"modified) perform the following transforms:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:626 b8b8b1cf1b6b448f90fb0d7ba5286757
+msgid "replace ``let a := v`` by ``let a_i := v   let a := a_i``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:627 02a04de567174a2d9c0c7544dd09e51a
+msgid ""
+"replace ``a := v`` by ``let a_i := v   a := a_i`` where ``i`` is a number"
+" such that ``a_i`` is yet unused."
+msgstr ""
+
+#: ../../internals/optimizer.rst:629 2f99ebd60c23494b85e5cabf8822c283
+msgid ""
+"Furthermore, always record the current value of ``i`` used for ``a`` and "
+"replace each reference to ``a`` by ``a_i``. The current value mapping is "
+"cleared for a variable ``a`` at the end of each block in which it was "
+"assigned to and at the end of the for loop init block if it is assigned "
+"inside the for loop body or post block. If a variable's value is cleared "
+"according to the rule above and the variable is declared outside the "
+"block, a new SSA variable will be created at the location where control "
+"flow joins, this includes the beginning of loop post/body block and the "
+"location right after If/Switch/ForLoop/Block statement."
+msgstr ""
+
+#: ../../internals/optimizer.rst:639 4d8f28c7ca4b4ae8b6bdb9085791d17a
+msgid ""
+"After this stage, the Redundant Assign Eliminator is recommended to "
+"remove the unnecessary intermediate assignments."
+msgstr ""
+
+#: ../../internals/optimizer.rst:642 f0445852dd174fdf94222d0724cdf246
+msgid ""
+"This stage provides best results if the Expression Splitter and the "
+"Common Subexpression Eliminator are run right before it, because then it "
+"does not generate excessive amounts of variables. On the other hand, the "
+"Common Subexpression Eliminator could be more efficient if run after the "
+"SSA transform."
+msgstr ""
+
+#: ../../internals/optimizer.rst:650 792e6e7379ed4ff5862bf51964ce2c47
+msgid "RedundantAssignEliminator"
+msgstr ""
+
+#: ../../internals/optimizer.rst:652 7b3a7318a1d740b1bd515fc1749b7c07
+msgid ""
+"The SSA transform always generates an assignment of the form ``a := "
+"a_i``, even though these might be unnecessary in many cases, like the "
+"following example:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:664 b84470980a094e24b484f6488f2cd6ef
+msgid "The SSA transform converts this snippet to the following:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:678 9d01988f64584dadbd020f29928dfc99
+msgid ""
+"The Redundant Assign Eliminator removes all the three assignments to "
+"``a``, because the value of ``a`` is not used and thus turn this snippet "
+"into strict SSA form:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:691 f41358c9b2104c6da0a4dd74507f0bcb
+msgid ""
+"Of course the intricate parts of determining whether an assignment is "
+"redundant or not are connected to joining control flow."
+msgstr ""
+
+#: ../../internals/optimizer.rst:694 ae754d371aa3402fb36fe5c09aaeba67
+msgid "The component works as follows in detail:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:696 ff24c3a46bed4e9b8121fbe4910b7de0
+msgid ""
+"The AST is traversed twice: in an information gathering step and in the "
+"actual removal step. During information gathering, we maintain a mapping "
+"from assignment statements to the three states \"unused\", \"undecided\" "
+"and \"used\" which signifies whether the assigned value will be used "
+"later by a reference to the variable."
+msgstr ""
+
+#: ../../internals/optimizer.rst:702 ef71665934d248e988412be46ad3ffb6
+msgid ""
+"When an assignment is visited, it is added to the mapping in the "
+"\"undecided\" state (see remark about for loops below) and every other "
+"assignment to the same variable that is still in the \"undecided\" state "
+"is changed to \"unused\". When a variable is referenced, the state of any"
+" assignment to that variable still in the \"undecided\" state is changed "
+"to \"used\"."
+msgstr ""
+
+#: ../../internals/optimizer.rst:708 29720dd22f5546158f42b0b3e8a8dc09
+msgid ""
+"At points where control flow splits, a copy of the mapping is handed over"
+" to each branch. At points where control flow joins, the two mappings "
+"coming from the two branches are combined in the following way: "
+"Statements that are only in one mapping or have the same state are used "
+"unchanged. Conflicting values are resolved in the following way:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:714 74165d939bd4462cb3edf24d6e441455
+msgid "\"unused\", \"undecided\" -> \"undecided\""
+msgstr ""
+
+#: ../../internals/optimizer.rst:715 6aa9ca7097324ef69900c9ec7bba703c
+msgid "\"unused\", \"used\" -> \"used\""
+msgstr ""
+
+#: ../../internals/optimizer.rst:716 2ead6ebdbe394954bf4f8b2d078f6b93
+msgid "\"undecided\", \"used\" -> \"used\""
+msgstr ""
+
+#: ../../internals/optimizer.rst:718 ee56424f044749fa8f28e45fbaf3c741
+msgid ""
+"For for-loops, the condition, body and post-part are visited twice, "
+"taking the joining control-flow at the condition into account. In other "
+"words, we create three control flow paths: Zero runs of the loop, one run"
+" and two runs and then combine them at the end."
+msgstr ""
+
+#: ../../internals/optimizer.rst:723 361d71e831724554acfe96642cf3daa2
+msgid ""
+"Simulating a third run or even more is unnecessary, which can be seen as "
+"follows:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:725 37aabdf2c1af46c9a08be96cbe831d74
+msgid ""
+"A state of an assignment at the beginning of the iteration will "
+"deterministically result in a state of that assignment at the end of the "
+"iteration. Let this state mapping function be called ``f``. The "
+"combination of the three different states ``unused``, ``undecided`` and "
+"``used`` as explained above is the ``max`` operation where ``unused = "
+"0``, ``undecided = 1`` and ``used = 2``."
+msgstr ""
+
+#: ../../internals/optimizer.rst:731 280daf0c53054280a1b5e3b1496a10ca
+msgid "The proper way would be to compute"
+msgstr ""
+
+#: ../../internals/optimizer.rst:737 f0d685bb467540928920138e410be865
+msgid ""
+"as state after the loop. Since ``f`` just has a range of three different "
+"values, iterating it has to reach a cycle after at most three iterations,"
+" and thus ``f(f(f(s)))`` has to equal one of ``s``, ``f(s)``, or "
+"``f(f(s))`` and thus"
+msgstr ""
+
+#: ../../internals/optimizer.rst:746 c2836f13e6e341b7950f821b942c2cc8
+msgid ""
+"In summary, running the loop at most twice is enough because there are "
+"only three different states."
+msgstr ""
+
+#: ../../internals/optimizer.rst:749 47b52e0d34b5483987f499607906c17e
+msgid ""
+"For switch statements that have a \"default\"-case, there is no control-"
+"flow part that skips the switch."
+msgstr ""
+
+#: ../../internals/optimizer.rst:752 fad8b91fd2be4b68a3d69822207eab09
+msgid ""
+"When a variable goes out of scope, all statements still in the "
+"\"undecided\" state are changed to \"unused\", unless the variable is the"
+" return parameter of a function - there, the state changes to \"used\"."
+msgstr ""
+
+#: ../../internals/optimizer.rst:756 b4a702e6197346d8ba9d7f18af01c3c2
+msgid ""
+"In the second traversal, all assignments that are in the \"unused\" state"
+" are removed."
+msgstr ""
+
+#: ../../internals/optimizer.rst:758 ca8ac0f59cab4756ba8d1fbc06554aa5
+msgid ""
+"This step is usually run right after the SSA transform to complete the "
+"generation of the pseudo-SSA."
+msgstr ""
+
+#: ../../internals/optimizer.rst:762 04d458a963f347408996fca2bb7fc600
+msgid "Tools"
+msgstr ""
+
+#: ../../internals/optimizer.rst:765 013cb6f6dacd4edb979f7112f59b0f75
+msgid "Movability"
+msgstr ""
+
+#: ../../internals/optimizer.rst:767 5cede4f4fc5a4715a915eae6fef56894
+msgid ""
+"Movability is a property of an expression. It roughly means that the "
+"expression is side-effect free and its evaluation only depends on the "
+"values of variables and the call-constant state of the environment. Most "
+"expressions are movable. The following parts make an expression non-"
+"movable:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:772 6f86f1aacd7d482da219f66648b591ce
+msgid ""
+"function calls (might be relaxed in the future if all statements in the "
+"function are movable)"
+msgstr ""
+
+#: ../../internals/optimizer.rst:773 fd54e3eea91b44718ad2e84611d15585
+msgid "opcodes that (can) have side-effects (like ``call`` or ``selfdestruct``)"
+msgstr ""
+
+#: ../../internals/optimizer.rst:774 cbc4313f1c1e48918476e78733c2aa11
+msgid "opcodes that read or write memory, storage or external state information"
+msgstr ""
+
+#: ../../internals/optimizer.rst:775 35398051ecd34281bd3e3198c7430428
+msgid "opcodes that depend on the current PC, memory size or returndata size"
+msgstr ""
+
+#: ../../internals/optimizer.rst:778 13701768377f4aabbc125f5690fb881a
+msgid "DataflowAnalyzer"
+msgstr ""
+
+#: ../../internals/optimizer.rst:780 396a13b35f684ddbab82763d7251b9a2
+msgid ""
+"The Dataflow Analyzer is not an optimizer step itself but is used as a "
+"tool by other components. While traversing the AST, it tracks the current"
+" value of each variable, as long as that value is a movable expression. "
+"It records the variables that are part of the expression that is "
+"currently assigned to each other variable. Upon each assignment to a "
+"variable ``a``, the current stored value of ``a`` is updated and all "
+"stored values of all variables ``b`` are cleared whenever ``a`` is part "
+"of the currently stored expression for ``b``."
+msgstr ""
+
+#: ../../internals/optimizer.rst:789 c370c181c9b64ded9b81c7aadda8dade
+msgid ""
+"At control-flow joins, knowledge about variables is cleared if they have "
+"or would be assigned in any of the control-flow paths. For instance, upon"
+" entering a for loop, all variables are cleared that will be assigned "
+"during the body or the post block."
+msgstr ""
+
+#: ../../internals/optimizer.rst:795 9641e638b75144e98dab36af000c005a
+msgid "Expression-Scale Simplifications"
+msgstr ""
+
+#: ../../internals/optimizer.rst:797 0ec804d0c0f34452b4de28292ee17522
+msgid ""
+"These simplification passes change expressions and replace them by "
+"equivalent and hopefully simpler expressions."
+msgstr ""
+
+#: ../../internals/optimizer.rst:803 6ac93359a163452e897d018832e51778
+msgid "CommonSubexpressionEliminator"
+msgstr ""
+
+#: ../../internals/optimizer.rst:805 f656be71cd9840c193187bc570441e3d
+msgid ""
+"This step uses the Dataflow Analyzer and replaces subexpressions that "
+"syntactically match the current value of a variable by a reference to "
+"that variable. This is an equivalence transform because such "
+"subexpressions have to be movable."
+msgstr ""
+
+#: ../../internals/optimizer.rst:810 2ebca3f4ebcb4550b8888b5547cf6047
+msgid ""
+"All subexpressions that are identifiers themselves are replaced by their "
+"current value if the value is an identifier."
+msgstr ""
+
+#: ../../internals/optimizer.rst:813 a9c33fabde384343b8bfe32f209faf00
+msgid ""
+"The combination of the two rules above allow to compute a local value "
+"numbering, which means that if two variables have the same value, one of "
+"them will always be unused. The Unused Pruner or the Redundant Assign "
+"Eliminator will then be able to fully eliminate such variables."
+msgstr ""
+
+#: ../../internals/optimizer.rst:819 d10ad0b282844faba9b52eb0919648d9
+msgid ""
+"This step is especially efficient if the expression splitter is run "
+"before. If the code is in pseudo-SSA form, the values of variables are "
+"available for a longer time and thus we have a higher chance of "
+"expressions to be replaceable."
+msgstr ""
+
+#: ../../internals/optimizer.rst:824 803ec0780a6b47a38efb1e8b46430288
+msgid ""
+"The expression simplifier will be able to perform better replacements if "
+"the common subexpression eliminator was run right before it."
+msgstr ""
+
+#: ../../internals/optimizer.rst:832 f63caad9f827443187d6b30976336d8b
+msgid ""
+"The Expression Simplifier uses the Dataflow Analyzer and makes use of a "
+"list of equivalence transforms on expressions like ``X + 0 -> X`` to "
+"simplify the code."
+msgstr ""
+
+#: ../../internals/optimizer.rst:836 7a6d3e5a0323473196d3fe5bd5713e23
+msgid ""
+"It tries to match patterns like ``X + 0`` on each subexpression. During "
+"the matching procedure, it resolves variables to their currently assigned"
+" expressions to be able to match more deeply nested patterns even when "
+"the code is in pseudo-SSA form."
+msgstr ""
+
+#: ../../internals/optimizer.rst:841 43f0980c1f814a3788aefad53784d9b8
+msgid ""
+"Some of the patterns like ``X - X -> 0`` can only be applied as long as "
+"the expression ``X`` is movable, because otherwise it would remove its "
+"potential side-effects. Since variable references are always movable, "
+"even if their current value might not be, the Expression Simplifier is "
+"again more powerful in split or pseudo-SSA form."
+msgstr ""
+
+#: ../../internals/optimizer.rst:850 661cafbe480f4c8c9630ef0df9a36be2
+msgid "LiteralRematerialiser"
+msgstr ""
+
+#: ../../internals/optimizer.rst:852 58a54dc1931e484384fc9b1828d8410b
+msgid "To be documented."
+msgstr ""
+
+#: ../../internals/optimizer.rst:857 42b6742959b440a5ace1df6206a83aff
+msgid "LoadResolver"
+msgstr ""
+
+#: ../../internals/optimizer.rst:859 8b579705a023490fba43703c24ed220c
+msgid ""
+"Optimisation stage that replaces expressions of type ``sload(x)`` and "
+"``mload(x)`` by the value currently stored in storage resp. memory, if "
+"known."
+msgstr ""
+
+#: ../../internals/optimizer.rst:862 10b1f4e557cb4507aaa556828184e017
+msgid "Works best if the code is in SSA form."
+msgstr ""
+
+#: ../../internals/optimizer.rst:864 98e94da799714ef495097a9ad26ad599
+msgid "Prerequisite: Disambiguator, ForLoopInitRewriter."
+msgstr ""
+
+#: ../../internals/optimizer.rst:869 26660955d5d84c26b3ba71d77b749014
+msgid "ReasoningBasedSimplifier"
+msgstr ""
+
+#: ../../internals/optimizer.rst:871 e8f5cf796e0f461bbce3aaa31f95525a
+msgid ""
+"This optimizer uses SMT solvers to check whether ``if`` conditions are "
+"constant."
+msgstr ""
+
+#: ../../internals/optimizer.rst:873 604226b88b92432cbc06e071d10ed68b
+msgid ""
+"If ``constraints AND condition`` is UNSAT, the condition is never true "
+"and the whole body can be removed."
+msgstr ""
+
+#: ../../internals/optimizer.rst:874 4aebeeda1aad4f1f8b15faba4b4164b3
+msgid ""
+"If ``constraints AND NOT condition`` is UNSAT, the condition is always "
+"true and can be replaced by ``1``."
+msgstr ""
+
+#: ../../internals/optimizer.rst:876 50e7292c05504ee0a5a3ff5d5be9d40c
+msgid "The simplifications above can only be applied if the condition is movable."
+msgstr ""
+
+#: ../../internals/optimizer.rst:878 b13722639ad541cc9ea867418036bc68
+msgid ""
+"It is only effective on the EVM dialect, but safe to use on other "
+"dialects."
+msgstr ""
+
+#: ../../internals/optimizer.rst:880 cc82d134629c4995b331585e20af6841
+msgid "Prerequisite: Disambiguator, SSATransform."
+msgstr ""
+
+#: ../../internals/optimizer.rst:883 635fbad31e72487ca96b319220ad0155
+msgid "Statement-Scale Simplifications"
+msgstr ""
+
+#: ../../internals/optimizer.rst:888 c89fddf685ec458ba29fbb5cd0e207aa
+msgid "CircularReferencesPruner"
+msgstr ""
+
+#: ../../internals/optimizer.rst:890 1e662d6721b1467f86e65c3c298e2329
+msgid ""
+"This stage removes functions that call each other but are neither "
+"externally referenced nor referenced from the outermost context."
+msgstr ""
+
+#: ../../internals/optimizer.rst:896 7a66b85b6b10463cb4bd339ccf94ada6
+msgid "ConditionalSimplifier"
+msgstr ""
+
+#: ../../internals/optimizer.rst:898 dae8ad2175564921a75352dfb22eb1da
+msgid ""
+"The Conditional Simplifier inserts assignments to condition variables if "
+"the value can be determined from the control-flow."
+msgstr ""
+
+#: ../../internals/optimizer.rst:901 2e2b4fa2ea2d49b5a76789abc24d9c7b
+msgid "Destroys SSA form."
+msgstr ""
+
+#: ../../internals/optimizer.rst:903 cd05b1f428904b7aaaf98d274025d73d
+msgid ""
+"Currently, this tool is very limited, mostly because we do not yet have "
+"support for boolean types. Since conditions only check for expressions "
+"being nonzero, we cannot assign a specific value."
+msgstr ""
+
+#: ../../internals/optimizer.rst:907 404791df539242c5b52b1164aa2f7200
+msgid "Current features:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:909 8132343302cf4f5b91c86a0ee2c2524b
+msgid "switch cases: insert \"<condition> := <caseLabel>\""
+msgstr ""
+
+#: ../../internals/optimizer.rst:910 e4fa17708e00416c924fbc2b36388d4e
+msgid ""
+"after if statement with terminating control-flow, insert \"<condition> :="
+" 0\""
+msgstr ""
+
+#: ../../internals/optimizer.rst:912 f1ca442eb0f84dc1b81fa4cc6ec7f2c9
+msgid "Future features:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:914 6f55987783324f13942dc2ced968cca1
+msgid "allow replacements by \"1\""
+msgstr ""
+
+#: ../../internals/optimizer.rst:915 d1580c3608fd4ed3afed9bbe813316a4
+msgid "take termination of user-defined functions into account"
+msgstr ""
+
+#: ../../internals/optimizer.rst:917 779101b1577448bf9c5dedd6b4ad2bb9
+msgid "Works best with SSA form and if dead code removal has run before."
+msgstr ""
+
+#: ../../internals/optimizer.rst:919 775ef50a76e44059b48adaebbe36fc41
+msgid "Prerequisite: Disambiguator."
+msgstr ""
+
+#: ../../internals/optimizer.rst:924 3b425a7ba1124d4a8c57a369e8cf34c4
+msgid "ConditionalUnsimplifier"
+msgstr ""
+
+#: ../../internals/optimizer.rst:926 898b141cd9834b91940cacd114f101df
+msgid "Reverse of Conditional Simplifier."
+msgstr ""
+
+#: ../../internals/optimizer.rst:931 4dc9f546019f424db75c33c3b72c3ee9
+msgid "ControlFlowSimplifier"
+msgstr ""
+
+#: ../../internals/optimizer.rst:933 9620afc6eacf44cea4108264981febcc
+msgid "Simplifies several control-flow structures:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:935 57c18b04c4534cd3993fb54d4608822f
+msgid "replace if with empty body with pop(condition)"
+msgstr ""
+
+#: ../../internals/optimizer.rst:936 f87f7b31af034d7ab6d6805f91b36ef4
+msgid "remove empty default switch case"
+msgstr ""
+
+#: ../../internals/optimizer.rst:937 3a1efd996b67456ea89057e38faf4e0b
+msgid "remove empty switch case if no default case exists"
+msgstr ""
+
+#: ../../internals/optimizer.rst:938 277d0e2400384731b352212ac37be4c9
+msgid "replace switch with no cases with pop(expression)"
+msgstr ""
+
+#: ../../internals/optimizer.rst:939 ../../internals/optimizer.rst:1012
+#: 5a25b20ffc964a10a623aa0169361c0a 958e80198a4545979d591aa1729c257e
+msgid "turn switch with single case into if"
+msgstr ""
+
+#: ../../internals/optimizer.rst:940 24a0bc77ce43400986aa4cc3bc7229e4
+msgid "replace switch with only default case with pop(expression) and body"
+msgstr ""
+
+#: ../../internals/optimizer.rst:941 d2d2be7f18b1472e9c2c603228948a54
+msgid "replace switch with const expr with matching case body"
+msgstr ""
+
+#: ../../internals/optimizer.rst:942 e471ee54e4244f90a68160095bcd6174
+msgid ""
+"replace ``for`` with terminating control flow and without other "
+"break/continue by ``if``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:943 b097dfe0725c499aa9a99756a1a8fd8a
+msgid "remove ``leave`` at the end of a function."
+msgstr ""
+
+#: ../../internals/optimizer.rst:945 32a45b99f3a24b919a66dbc578ad0bcc
+msgid ""
+"None of these operations depend on the data flow. The "
+"StructuralSimplifier performs similar tasks that do depend on data flow."
+msgstr ""
+
+#: ../../internals/optimizer.rst:948 b54cbd4d8d5f41d6b4992bf75cce7f30
+msgid ""
+"The ControlFlowSimplifier does record the presence or absence of "
+"``break`` and ``continue`` statements during its traversal."
+msgstr ""
+
+#: ../../internals/optimizer.rst:951 cdaee1b4ee8048c18a8a3a1ea70484bb
+msgid ""
+"Prerequisite: Disambiguator, FunctionHoister, ForLoopInitRewriter. "
+"Important: Introduces EVM opcodes and thus can only be used on EVM code "
+"for now."
+msgstr ""
+
+#: ../../internals/optimizer.rst:957 208417210c6c4337ae98d2498fad5e25
+msgid "DeadCodeEliminator"
+msgstr ""
+
+#: ../../internals/optimizer.rst:959 6f26ab6822d94793a70563f32edc2d03
+msgid "This optimization stage removes unreachable code."
+msgstr ""
+
+#: ../../internals/optimizer.rst:961 066c6fc3afd64e039a9f06e3d35a578e
+msgid ""
+"Unreachable code is any code within a block which is preceded by a leave,"
+" return, invalid, break, continue, selfdestruct, revert or by a call to a"
+" user-defined function that recurses infinitely."
+msgstr ""
+
+#: ../../internals/optimizer.rst:964 19742de14752492e9c69d1a47337c744
+msgid ""
+"Function definitions are retained as they might be called by earlier code"
+" and thus are considered reachable."
+msgstr ""
+
+#: ../../internals/optimizer.rst:967 05cac85d9ee14b398ea0e48468652b9a
+msgid ""
+"Because variables declared in a for loop's init block have their scope "
+"extended to the loop body, we require ForLoopInitRewriter to run before "
+"this step."
+msgstr ""
+
+#: ../../internals/optimizer.rst:970 8cbdcfd7b841408cb24975224edc75f5
+msgid "Prerequisite: ForLoopInitRewriter, Function Hoister, Function Grouper"
+msgstr ""
+
+#: ../../internals/optimizer.rst:975 179bbcca44bf4afe950350949e62a764
+msgid "EqualStoreEliminator"
+msgstr ""
+
+#: ../../internals/optimizer.rst:977 abc3e648f650425e9a7313b69f9d787d
+msgid ""
+"This steps removes ``mstore(k, v)`` and ``sstore(k, v)`` calls if there "
+"was a previous call to ``mstore(k, v)`` / ``sstore(k, v)``, no other "
+"store in between and the values of ``k`` and ``v`` did not change."
+msgstr ""
+
+#: ../../internals/optimizer.rst:981 391f4879a5f5478688a20bfb9cdda2df
+msgid ""
+"This simple step is effective if run after the SSA transform and the "
+"Common Subexpression Eliminator, because SSA will make sure that the "
+"variables will not change and the Common Subexpression Eliminator re-uses"
+" exactly the same variable if the value is known to be the same."
+msgstr ""
+
+#: ../../internals/optimizer.rst:986 b62746b3a37b4ddb960e86e5dc31ddd5
+msgid "Prerequisites: Disambiguator, ForLoopInitRewriter"
+msgstr ""
+
+#: ../../internals/optimizer.rst:991 bfd52fb5705a4d9997f5393f3851987d
+msgid "UnusedPruner"
+msgstr ""
+
+#: ../../internals/optimizer.rst:993 0d57bd8e24674be5b79dba5b6d6ec152
+msgid ""
+"This step removes the definitions of all functions that are never "
+"referenced."
+msgstr ""
+
+#: ../../internals/optimizer.rst:995 f4506b45791d4f4f9e2a8ba7bbdbd45e
+msgid ""
+"It also removes the declaration of variables that are never referenced. "
+"If the declaration assigns a value that is not movable, the expression is"
+" retained, but its value is discarded."
+msgstr ""
+
+#: ../../internals/optimizer.rst:999 a81e00a63d054b75aa925cd5e91b5c1c
+msgid ""
+"All movable expression statements (expressions that are not assigned) are"
+" removed."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1004 f974d0b7f5e5494a9d6c977c51034962
+msgid "StructuralSimplifier"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1006 f0c53f6e4ca54a009ca2e5c429864474
+msgid ""
+"This is a general step that performs various kinds of simplifications on "
+"a structural level:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1009 0873eab6de744988bd64c1034776c161
+msgid "replace if statement with empty body by ``pop(condition)``"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1010 813844d1ad1e4e2d9db8e8ad545ca0eb
+msgid "replace if statement with true condition by its body"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1011 18ea71a2559e489aa164cc67dddb8441
+msgid "remove if statement with false condition"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1013 c8c283f9911c450dacd8642060d1c9a0
+msgid "replace switch with only default case by ``pop(expression)`` and body"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1014 c4d945f1828148559142cfc4f62d26f9
+msgid "replace switch with literal expression by matching case body"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1015 4caf761528d0442c8180e57566bcf740
+msgid "replace for loop with false condition by its initialization part"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1017 04a35a4227c345b18acf325486b637a2
+msgid "This component uses the Dataflow Analyzer."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1022 1a3cea84556c45208e266b21e8a5daa8
+msgid "BlockFlattener"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1024 814eb3ff4e90435c9855aac7f3ebd5a1
+msgid ""
+"This stage eliminates nested blocks by inserting the statement in the "
+"inner block at the appropriate place in the outer block. It depends on "
+"the FunctionGrouper and does not flatten the outermost block to keep the "
+"form produced by the FunctionGrouper."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1053 7cd7e5ac358c4000b33426f45b18770c
+msgid ""
+"As long as the code is disambiguated, this does not cause a problem "
+"because the scopes of variables can only grow."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1059 c8cdfc4bbc8d45d2a8b0f1c41178f7e9
+msgid "LoopInvariantCodeMotion"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1060 9c50ef627a254017afe7d2eaefc76063
+msgid ""
+"This optimization moves movable SSA variable declarations outside the "
+"loop."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1062 059ed12e8ac04e7899c71c2373c80fbb
+msgid ""
+"Only statements at the top level in a loop's body or post block are "
+"considered, i.e variable declarations inside conditional branches will "
+"not be moved out of the loop."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1065 86d4b9f8af594000bd5e01fa127d47e1
+msgid "Requirements:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1067 e9858a7d36af499a9aea083b23f0ef59
+msgid ""
+"The Disambiguator, ForLoopInitRewriter and FunctionHoister must be run "
+"upfront."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1068 51de2a2b147a41f5a9978122639a4cc9
+msgid ""
+"Expression splitter and SSA transform should be run upfront to obtain "
+"better result."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1072 b3a394ae0df14125b283de236b699932
+msgid "Function-Level Optimizations"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1077 d59ac42b5664479081e74a1d88e819d0
+msgid "FunctionSpecializer"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1079 877e92d1362f4bde8183fdae6232a456
+msgid "This step specializes the function with its literal arguments."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1081 2742881e5950407a991d102b98ea566d
+msgid ""
+"If a function, say, ``function f(a, b) { sstore (a, b) }``, is called "
+"with literal arguments, for example, ``f(x, 5)``, where ``x`` is an "
+"identifier, it could be specialized by creating a new function ``f_1`` "
+"that takes only one argument, i.e.,"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1092 da09406a11cb43749214829436a0e569
+msgid ""
+"Other optimization steps will be able to make more simplifications to the"
+" function. The optimization step is mainly useful for functions that "
+"would not be inlined."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1095 9e07a27f9301485ea38bccc34d72b610
+msgid "Prerequisites: Disambiguator, FunctionHoister"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1097 a350d95535854de1b6e9daf3e40e4e8a
+msgid ""
+"LiteralRematerialiser is recommended as a prerequisite, even though it's "
+"not required for correctness."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1103 8ae82d8dc1224771bb2ac1c082245df4
+msgid "UnusedFunctionParameterPruner"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1105 83badd08fe104063b62125e09bdb571e
+msgid "This step removes unused parameters in a function."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1107 5f6b350913c24acbbc5296c2a835ca13
+msgid ""
+"If a parameter is unused, like ``c`` and ``y`` in, ``function f(a,b,c) ->"
+" x, y { x := div(a,b) }``, we remove the parameter and create a new "
+"\"linking\" function as follows:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1115 5ae89fa70c774323b6cfbe33daab6d20
+msgid ""
+"and replace all references to ``f`` by ``f2``. The inliner should be run "
+"afterwards to make sure that all references to ``f2`` are replaced by "
+"``f``."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1119 e6816a515ceb422cad3dec1e5ec6c056
+msgid "Prerequisites: Disambiguator, FunctionHoister, LiteralRematerialiser."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1121 cba4fea5dd2a479a8671802aa2fcb1ff
+msgid ""
+"The step LiteralRematerialiser is not required for correctness. It helps "
+"deal with cases such as: ``function f(x) -> y { revert(y, y} }`` where "
+"the literal ``y`` will be replaced by its value ``0``, allowing us to "
+"rewrite the function."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1129 4fe00b7b79d847b4b10aeba6d5471b58
+msgid "UnusedStoreEliminator"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1131 42562561ff094a948666fbc5ea3cf02a
+msgid ""
+"Optimizer component that removes redundant ``sstore`` and memory store "
+"statements. In case of an ``sstore``, if all outgoing code paths revert "
+"(due to an explicit ``revert()``, ``invalid()``, or infinite recursion) "
+"or lead to another ``sstore`` for which the optimizer can tell that it "
+"will overwrite the first store, the statement will be removed. However, "
+"if there is a read operation between the initial ``sstore`` and the "
+"revert, or the overwriting ``sstore``, the statement will not be removed."
+" Such read operations include: external calls, user-defined functions "
+"with any storage access, and ``sload`` of a slot that cannot be proven to"
+" differ from the slot written by the initial ``sstore``."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1139 781fd8f5997f4fed8a201023d332a404
+msgid "For example, the following code"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1152 fd90829cc4814cf1a13d00b8f37ecefc
+msgid ""
+"will be transformed into the code below after the Unused Store Eliminator"
+" step is run"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1162 20662f82e8be4310a2d3ac0c6fb6fbe4
+msgid ""
+"For memory store operations, things are generally simpler, at least in "
+"the outermost yul block as all such statements will be removed if they "
+"are never read from in any code path. At function analysis level, "
+"however, the approach is similar to ``sstore``, as we do not know whether"
+" the memory location will be read once we leave the function's scope, so "
+"the statement will be removed only if all code paths lead to a memory "
+"overwrite."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1167 b9cbc44c079c49ec92e6ddd7c38b7d88
+msgid "Best run in SSA form."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1169 ffa81dfa5d01442a8da6fadcc5cff9c7
+msgid "Prerequisites: Disambiguator, ForLoopInitRewriter."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1174 5dd8d91c314642118c84a85b221d9e98
+msgid "EquivalentFunctionCombiner"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1176 2f27d3ce8ce848eabf4335aae6f49488
+msgid ""
+"If two functions are syntactically equivalent, while allowing variable "
+"renaming but not any re-ordering, then any reference to one of the "
+"functions is replaced by the other."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1180 b8ed7132bdfa437d9598e4ffb988c4e9
+msgid "The actual removal of the function is performed by the Unused Pruner."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1184 9e03ad98c7e84778818a3c2fd0591253
+msgid "Function Inlining"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1189 44b27d18755640c68d99a3e10bd115bd
+msgid "ExpressionInliner"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1191 d8c4bb7e1af94cd9a8255687afc087a0
+msgid ""
+"This component of the optimizer performs restricted function inlining by "
+"inlining functions that can be inlined inside functional expressions, "
+"i.e. functions that:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1194 a07690230c9348b4a16cba3b24102db3
+msgid "return a single value."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1195 b8a7ebae8a3c41fd91989591d07093dd
+msgid "have a body like ``r := <functional expression>``."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1196 b9e2bbc4a7a04a50892ff5963e06f78d
+msgid "neither reference themselves nor ``r`` in the right hand side."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1198 ea6bf94d178b40a9a5ca4520b04d0dbc
+msgid "Furthermore, for all parameters, all of the following need to be true:"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1200 5307b72cee144e03bb18d6c5ca6949b3
+msgid "The argument is movable."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1201 78b16acb89a340a590831feae5968873
+msgid ""
+"The parameter is either referenced less than twice in the function body, "
+"or the argument is rather cheap (\"cost\" of at most 1, like a constant "
+"up to 0xff)."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1204 2961231db59441e78e047f7281131ee8
+msgid ""
+"Example: The function to be inlined has the form of ``function f(...) -> "
+"r { r := E }`` where ``E`` is an expression that does not reference ``r``"
+" and all arguments in the function call are movable expressions."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1207 f4c4e968a376464ba63b266f459c620e
+msgid "The result of this inlining is always a single expression."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1209 b4927ed3ae0f43dc8dd3cd5d8e2a86fb
+msgid "This component can only be used on sources with unique names."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1214 0e07e7e163144d16b23ca71b4f93d562
+msgid "FullInliner"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1216 d1d6ff6ac74846deb7df4b3ef05e6153
+msgid ""
+"The Full Inliner replaces certain calls of certain functions by the "
+"function's body. This is not very helpful in most cases, because it just "
+"increases the code size but does not have a benefit. Furthermore, code is"
+" usually very expensive and we would often rather have shorter code than "
+"more efficient code. In same cases, though, inlining a function can have "
+"positive effects on subsequent optimizer steps. This is the case if one "
+"of the function arguments is a constant, for example."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1224 16b1bf94b0094b9cbad057f1d8e8b8ab
+msgid ""
+"During inlining, a heuristic is used to tell if the function call should "
+"be inlined or not. The current heuristic does not inline into \"large\" "
+"functions unless the called function is tiny. Functions that are only "
+"used once are inlined, as well as medium-sized functions, while function "
+"calls with constant arguments allow slightly larger functions."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1232 f537d6c30ce849d1bbfb31be12a6c05f
+msgid ""
+"In the future, we may include a backtracking component that, instead of "
+"inlining a function right away, only specializes it, which means that a "
+"copy of the function is generated where a certain parameter is always "
+"replaced by a constant. After that, we can run the optimizer on this "
+"specialized function. If it results in heavy gains, the specialized "
+"function is kept, otherwise the original function is used instead."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1241 e0143e4fbcc44510a2b92caf62a48664
+msgid "Cleanup"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1243 76b9f4d94d634ae0a9079ef3e6732263
+msgid ""
+"The cleanup is performed at the end of the optimizer run. It tries to "
+"combine split expressions into deeply nested ones again and also improves"
+" the \"compilability\" for stack machines by eliminating variables as "
+"much as possible."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1251 16374d8630bd43bfb60d216ab98b6e80
+msgid "ExpressionJoiner"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1253 fd5afd146c1548e091689abe6a4ed821
+msgid ""
+"This is the opposite operation of the expression splitter. It turns a "
+"sequence of variable declarations that have exactly one reference into a "
+"complex expression. This stage fully preserves the order of function "
+"calls and opcode executions. It does not make use of any information "
+"concerning the commutativity of the opcodes; if moving the value of a "
+"variable to its place of use would change the order of any function call "
+"or opcode execution, the transformation is not performed."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1260 d9c10fd23eb7401cb7d005b94f29e464
+msgid ""
+"Note that the component will not move the assigned value of a variable "
+"assignment or a variable that is referenced more than once."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1263 42d6ce31d1294d0c9c364446144094eb
+msgid ""
+"The snippet ``let x := add(0, 2) let y := mul(x, mload(2))`` is not "
+"transformed, because it would cause the order of the call to the opcodes "
+"``add`` and ``mload`` to be swapped - even though this would not make a "
+"difference because ``add`` is movable."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1268 60682d22a87944368438d5154bb8e577
+msgid ""
+"When reordering opcodes like that, variable references and literals are "
+"ignored. Because of that, the snippet ``let x := add(0, 2) let y := "
+"mul(x, 3)`` is transformed to ``let y := mul(add(0, 2), 3)``, even though"
+" the ``add`` opcode would be executed after the evaluation of the literal"
+" ``3``."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1276 2a01ea0fdd5d490eb043d61acf53a379
+msgid "SSAReverser"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1278 600023f9d2614265a3249964f472b0f3
+msgid ""
+"This is a tiny step that helps in reversing the effects of the SSA "
+"transform if it is combined with the Common Subexpression Eliminator and "
+"the Unused Pruner."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1282 cdad0dda570e4d8b824e14f6b57fdde5
+msgid ""
+"The SSA form we generate is detrimental to code generation on the EVM and"
+" WebAssembly alike because it generates many local variables. It would be"
+" better to just re-use existing variables with assignments instead of "
+"fresh variable declarations."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1287 64ca542b2add41309843f8a89f64ccd3
+msgid "The SSA transform rewrites"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1294 35f1c7ac7f3e4ea5b660b35f4779db6d
+msgid "to"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1304 a9d147979c3e45deae7f2092e19410c5
+msgid ""
+"The problem is that instead of ``a``, the variable ``a_1`` is used "
+"whenever ``a`` was referenced. The SSA transform changes statements of "
+"this form by just swapping out the declaration and the assignment. The "
+"above snippet is turned into"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1317 e9bf0941e9be484d9552d2bbff35db93
+msgid ""
+"This is a very simple equivalence transform, but when we now run the "
+"Common Subexpression Eliminator, it will replace all occurrences of "
+"``a_1`` by ``a`` (until ``a`` is re-assigned). The Unused Pruner will "
+"then eliminate the variable ``a_1`` altogether and thus fully reverse the"
+" SSA transform."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1326 e051f3370b95492b8710f87e3be824ef
+msgid "StackCompressor"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1328 3f47afda539f44558e2e3296a7eb265d
+msgid ""
+"One problem that makes code generation for the Ethereum Virtual Machine "
+"hard is the fact that there is a hard limit of 16 slots for reaching down"
+" the expression stack. This more or less translates to a limit of 16 "
+"local variables. The stack compressor takes Yul code and compiles it to "
+"EVM bytecode. Whenever the stack difference is too large, it records the "
+"function this happened in."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1335 09c79413f3b745db80d61a7b708acf34
+msgid ""
+"For each function that caused such a problem, the Rematerialiser is "
+"called with a special request to aggressively eliminate specific "
+"variables sorted by the cost of their values."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1339 fd817c6d06d6462f97608832ca7f6852
+msgid "On failure, this procedure is repeated multiple times."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1344 7c9cb22819f841db80e5d04cdf46d51f
+msgid "Rematerialiser"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1346 7350d2187b1a4f91810634e219b831c1
+msgid ""
+"The rematerialisation stage tries to replace variable references by the "
+"expression that was last assigned to the variable. This is of course only"
+" beneficial if this expression is comparatively cheap to evaluate. "
+"Furthermore, it is only semantically equivalent if the value of the "
+"expression did not change between the point of assignment and the point "
+"of use. The main benefit of this stage is that it can save stack slots if"
+" it leads to a variable being eliminated completely (see below), but it "
+"can also save a DUP opcode on the EVM if the expression is very cheap."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1354 88bc5333f7864816b6e56a46bd0a4be1
+msgid ""
+"The Rematerialiser uses the Dataflow Analyzer to track the current values"
+" of variables, which are always movable. If the value is very cheap or "
+"the variable was explicitly requested to be eliminated, the variable "
+"reference is replaced by its current value."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1362 7334c34d6c1d41b9856b8c56226f8fff
+msgid "ForLoopConditionOutOfBody"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1364 da9574b65950449f8bdc72726f25bf2e
+msgid "Reverses the transformation of ForLoopConditionIntoBody."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1366 979c7df327a642fda8766b5c31232c7a
+msgid "For any movable ``c``, it turns"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1375 ../../internals/optimizer.rst:1392
+#: 0ea9cfcd8b6a4bd79b23b5b626402a62 168694fc07cd4515beaee4b4da706871
+msgid "into"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1383 e58d58bbfd0049839fe95a04fe6d6dbd
+msgid "and it turns"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1400 66fdd0a258a7499695e05d88a9426e83
+msgid "The LiteralRematerialiser should be run before this step."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1404 62079c5453cc4732852a196c962bd0ca
+msgid "WebAssembly specific"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1407 6b1d4f0259be43b681e17f0fb77988a3
+msgid "MainFunction"
+msgstr ""
+
+#: ../../internals/optimizer.rst:1409 187657861c8141d6a83fe4c2bed5074f
+msgid ""
+"Changes the topmost block to be a function with a specific name "
+"(\"main\") which has no inputs nor outputs."
+msgstr ""
+
+#: ../../internals/optimizer.rst:1412 c30a9ac0b0934df8a9e9d20a24f0fc39
+msgid "Depends on the Function Grouper."
+msgstr ""
+
+#: ../../internals/source_mappings.rst:5 3334d5c2057b418887411b00e00cc90a
+msgid "Source Mappings"
+msgstr ""
+
+#: ../../internals/source_mappings.rst:7 d5d31d98e1674e46adc6fee332543ef5
+msgid ""
+"As part of the AST output, the compiler provides the range of the source "
+"code that is represented by the respective node in the AST. This can be "
+"used for various purposes ranging from static analysis tools that report "
+"errors based on the AST and debugging tools that highlight local "
+"variables and their uses."
+msgstr ""
+
+#: ../../internals/source_mappings.rst:13 16c22773e15645e9b71a524db14b6b2d
+msgid ""
+"Furthermore, the compiler can also generate a mapping from the bytecode "
+"to the range in the source code that generated the instruction. This is "
+"again important for static analysis tools that operate on bytecode level "
+"and for displaying the current position in the source code inside a "
+"debugger or for breakpoint handling. This mapping also contains other "
+"information, like the jump type and the modifier depth (see below)."
+msgstr ""
+
+#: ../../internals/source_mappings.rst:20 fb7768ac5bfe428295d6b55c13c165f6
+msgid ""
+"Both kinds of source mappings use integer identifiers to refer to source "
+"files. The identifier of a source file is stored in "
+"``output['sources'][sourceName]['id']`` where ``output`` is the output of"
+" the standard-json compiler interface parsed as JSON. For some utility "
+"routines, the compiler generates \"internal\" source files that are not "
+"part of the original input but are referenced from the source mappings. "
+"These source files together with their identifiers can be obtained via "
+"``output['contracts'][sourceName][contractName]['evm']['bytecode']['generatedSources']``."
+msgstr ""
+
+#: ../../internals/source_mappings.rst:30 4e61c7c4154b4288888cd9b1c0596c96
+msgid ""
+"In the case of instructions that are not associated with any particular "
+"source file, the source mapping assigns an integer identifier of ``-1``. "
+"This may happen for bytecode sections stemming from compiler-generated "
+"inline assembly statements."
+msgstr ""
+
+#: ../../internals/source_mappings.rst:34 e9c5baefcb5f493f9fc9c60d9744d30d
+msgid "The source mappings inside the AST use the following notation:"
+msgstr ""
+
+#: ../../internals/source_mappings.rst:37 c61845607016403f8cbd0211fc505327
+msgid "``s:l:f``"
+msgstr ""
+
+#: ../../internals/source_mappings.rst:39 a8d8be68e9b14cda871dc7148c449130
+msgid ""
+"Where ``s`` is the byte-offset to the start of the range in the source "
+"file, ``l`` is the length of the source range in bytes and ``f`` is the "
+"source index mentioned above."
+msgstr ""
+
+#: ../../internals/source_mappings.rst:43 939f1a5009494dfe82b0817f9fb205c0
+msgid ""
+"The encoding in the source mapping for the bytecode is more complicated: "
+"It is a list of ``s:l:f:j:m`` separated by ``;``. Each of these elements "
+"corresponds to an instruction, i.e. you cannot use the byte offset but "
+"have to use the instruction offset (push instructions are longer than a "
+"single byte). The fields ``s``, ``l`` and ``f`` are as above. ``j`` can "
+"be either ``i``, ``o`` or ``-`` signifying whether a jump instruction "
+"goes into a function, returns from a function or is a regular jump as "
+"part of e.g. a loop. The last field, ``m``, is an integer that denotes "
+"the \"modifier depth\". This depth is increased whenever the placeholder "
+"statement (``_``) is entered in a modifier and decreased when it is left "
+"again. This allows debuggers to track tricky cases like the same modifier"
+" being used twice or multiple placeholder statements being used in a "
+"single modifier."
+msgstr ""
+
+#: ../../internals/source_mappings.rst:56 6e429b14fc9844699b0e7d120547a37f
+msgid ""
+"In order to compress these source mappings especially for bytecode, the "
+"following rules are used:"
+msgstr ""
+
+#: ../../internals/source_mappings.rst:59 6ac17c3c1eda411b90301af5c2462102
+msgid "If a field is empty, the value of the preceding element is used."
+msgstr ""
+
+#: ../../internals/source_mappings.rst:60 b9c64b0b7b244b29bd841a96d2f6a1a7
+msgid "If a ``:`` is missing, all following fields are considered empty."
+msgstr ""
+
+#: ../../internals/source_mappings.rst:62 22aac309c8ac42b4aa35216bf40d6b47
+msgid "This means the following source mappings represent the same information:"
+msgstr ""
+
+#: ../../internals/source_mappings.rst:64 836bbe771d4f4ce8adba6e94d8019267
+msgid "``1:2:1;1:9:1;2:1:2;2:1:2;2:1:2``"
+msgstr ""
+
+#: ../../internals/source_mappings.rst:66 81ff2322039f46a4a0688c6b71ad08e2
+msgid "``1:2:1;:9;2:1:2;;``"
+msgstr ""
+
+#: ../../internals/source_mappings.rst:68 1e57211b1f1f4667b3ca4e61e5314c22
+msgid ""
+"Important to note is that when the :ref:`verbatim <yul-verbatim>` builtin"
+" is used, the source mappings will be invalid: The builtin is considered "
+"a single instruction instead of potentially multiple."
+msgstr ""
+
+#: ../../internals/variable_cleanup.rst:5 d0eaa8186371471c9b294cd6257caf20
+msgid "Cleaning Up Variables"
+msgstr ""
+
+#: ../../internals/variable_cleanup.rst:7 c9abf36f431b4687bf95ec3356a08f8e
+msgid ""
+"Ultimately, all values in the EVM are stored in 256 bit words. Thus, in "
+"some cases, when the type of a value has less than 256 bits, it is "
+"necessary to clean the remaining bits. The Solidity compiler is designed "
+"to do such cleaning before any operations that might be adversely "
+"affected by the potential garbage in the remaining bits. For example, "
+"before writing a value to  memory, the remaining bits need to be cleared "
+"because the memory contents can be used for computing hashes or sent as "
+"the data of a message call.  Similarly, before storing a value in the "
+"storage, the remaining bits need to be cleaned because otherwise the "
+"garbled value can be observed."
+msgstr ""
+
+#: ../../internals/variable_cleanup.rst:18 0dc2b6ba0406447bab3e6be317733c7c
+msgid ""
+"Note that access via inline assembly is not considered such an operation:"
+" If you use inline assembly to access Solidity variables shorter than 256"
+" bits, the compiler does not guarantee that the value is properly cleaned"
+" up."
+msgstr ""
+
+#: ../../internals/variable_cleanup.rst:23 012f56adf95d4789802e656bb5fff529
+msgid ""
+"Moreover, we do not clean the bits if the immediately following operation"
+" is not affected.  For instance, since any non-zero value is considered "
+"``true`` by ``JUMPI`` instruction, we do not clean the boolean values "
+"before they are used as the condition for ``JUMPI``."
+msgstr ""
+
+#: ../../internals/variable_cleanup.rst:29 8994319acd0c420abf7899a35b13ee63
+msgid ""
+"In addition to the design principle above, the Solidity compiler cleans "
+"input data when it is loaded onto the stack."
+msgstr ""
+
+#: ../../internals/variable_cleanup.rst:32 f170338251884ee8a2645cb6fc6968c3
+msgid ""
+"The following table describes the cleaning rules applied to different "
+"types, where ``higher bits`` refers to the remaining bits in case the "
+"type has less than 256 bits."
+msgstr ""
+
+#: ../../internals/variable_cleanup.rst:36 fb17433d839e462eaeed01637e8b5121
+msgid "Type"
+msgstr ""
+
+#: ../../internals/variable_cleanup.rst:36 c0b384cbbca44d149f236ce4d6a2a232
+msgid "Valid Values"
+msgstr ""
+
+#: ../../internals/variable_cleanup.rst:36 b7b707545b8d4fbfada030d75def9f0e
+msgid "Cleanup of Invalid Values"
+msgstr ""
+
+#: ../../internals/variable_cleanup.rst:38 03887c95f8ca4e519593356bb8ad49fc
+msgid "enum of n members"
+msgstr ""
+
+#: ../../internals/variable_cleanup.rst:38 4012933c28b044afbd094dc3cfc02477
+msgid "0 until n - 1"
+msgstr ""
+
+#: ../../internals/variable_cleanup.rst:38 98b075aee1314ad89b7fc0f2d4d3ad82
+msgid "throws exception"
+msgstr ""
+
+#: ../../internals/variable_cleanup.rst:41 5c4e05f4358d430bb98d677a4169866c
+msgid "bool"
+msgstr ""
+
+#: ../../internals/variable_cleanup.rst:41 5f66f01300b84e8f847700c7968658b6
+msgid "0 or 1"
+msgstr ""
+
+#: ../../internals/variable_cleanup.rst:41 6bc77b2f28934c6b8836adf5174272e3
+msgid "results in 1"
+msgstr ""
+
+#: ../../internals/variable_cleanup.rst:43 73c7009ce3a840cab956619e1e519da6
+msgid "signed integers"
+msgstr ""
+
+#: ../../internals/variable_cleanup.rst:43 19e09038d6b646c5b8fb569ff8cfa563
+msgid "higher bits set to the sign bit"
+msgstr ""
+
+#: ../../internals/variable_cleanup.rst:43 245ba52c9ea24c1db2364c53f06e4826
+msgid ""
+"currently silently signextends to a valid value, i.e. all higher bits are"
+" set to the sign bit; may throw an exception in the future"
+msgstr ""
+
+#: ../../internals/variable_cleanup.rst:50 1d6cb6c234e3425086c5670292c85e75
+msgid "unsigned integers"
+msgstr ""
+
+#: ../../internals/variable_cleanup.rst:50 c810e605c196411c8dd5d5d111e95902
+msgid "higher bits zeroed"
+msgstr ""
+
+#: ../../internals/variable_cleanup.rst:50 3492ef4f4e004651af4ad1c9d066c2d2
+msgid ""
+"currently silently masks to a valid value, i.e. all higher bits are set "
+"to zero; may throw an exception in the future"
+msgstr ""
+
+#: ../../internals/variable_cleanup.rst:57 a297f6150b754e6c84f432c238d8a493
+msgid ""
+"Note that valid and invalid values are dependent on their type size. "
+"Consider ``uint8``, the unsigned 8-bit type, which has the following "
+"valid values:"
+msgstr ""
+
+#: ../../internals/variable_cleanup.rst:68 b0e186513ae341d3b35ed45b61ded83b
+msgid "Any invalid value will have the higher bits set to zero:"
+msgstr ""
+
+#: ../../internals/variable_cleanup.rst:75 984ec9a87cc54cdf8f51645188e544f5
+msgid "For ``int8``, the signed 8-bit type, the valid values are:"
+msgstr ""
+
+#: ../../internals/variable_cleanup.rst:77
+#: ../../internals/variable_cleanup.rst:99 60da10b754054c4c9b60fed1f5bdaa8c
+#: 960834e8f15c4711b1d9948f3a40d7ed
+msgid "Negative"
+msgstr ""
+
+#: ../../internals/variable_cleanup.rst:86
+#: ../../internals/variable_cleanup.rst:106 426429ed1179431394390d6160996cf1
+#: fb4c9ee1dfbb407c8ad7625898929604
+msgid "Positive"
+msgstr ""
+
+#: ../../internals/variable_cleanup.rst:96 3b26c4aa0e684274bac5d0b95dd77146
+msgid ""
+"The compiler will ``signextend`` the sign bit, which is 1 for negative "
+"and 0 for positive values, overwriting the higher bits:"
+msgstr ""
+

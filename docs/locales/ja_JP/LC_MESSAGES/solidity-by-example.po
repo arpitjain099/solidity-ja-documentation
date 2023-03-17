@@ -1,0 +1,630 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2023, The Solidity Authors
+# This file is distributed under the same license as the Solidity package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Solidity 0.8.20\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-18 04:40+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ja_JP\n"
+"Language-Team: ja_JP <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../solidity-by-example.rst:3 73bb1ba5c9684a159c2da7c2794db36c
+msgid "Solidity by Example"
+msgstr ""
+
+#: ../../examples/voting.rst:7 280a903b1cbc446faca314bd55ed7cde
+msgid "Voting"
+msgstr ""
+
+#: ../../examples/voting.rst:9 c4be3a115f8b40a082d399e9ae0a5ac9
+msgid ""
+"The following contract is quite complex, but showcases a lot of "
+"Solidity's features. It implements a voting contract. Of course, the main"
+" problems of electronic voting is how to assign voting rights to the "
+"correct persons and how to prevent manipulation. We will not solve all "
+"problems here, but at least we will show how delegated voting can be done"
+" so that vote counting is **automatic and completely transparent** at the"
+" same time."
+msgstr ""
+
+#: ../../examples/voting.rst:19 8221137fcc8b4266916dda1d72212581
+msgid ""
+"The idea is to create one contract per ballot, providing a short name for"
+" each option. Then the creator of the contract who serves as chairperson "
+"will give the right to vote to each address individually."
+msgstr ""
+
+#: ../../examples/voting.rst:25 5c5d06e78b8649bca01a18dc5e15d574
+msgid ""
+"The persons behind the addresses can then choose to either vote "
+"themselves or to delegate their vote to a person they trust."
+msgstr ""
+
+#: ../../examples/voting.rst:29 e486c9b77b634079be97cb9db14788e7
+msgid ""
+"At the end of the voting time, ``winningProposal()`` will return the "
+"proposal with the largest number of votes."
+msgstr ""
+
+#: ../../examples/voting.rst:194 3b223cef792749b098fbaaa937f931d3
+msgid "Possible Improvements"
+msgstr ""
+
+#: ../../examples/voting.rst:196 e85aa715c1704cd29c2b9c749f6b7dd7
+msgid ""
+"Currently, many transactions are needed to assign the rights to vote to "
+"all participants. Moreover, if two or more proposals have the same number"
+" of votes, ``winningProposal()`` is not able to register a tie. Can you "
+"think of a way to fix these issues?"
+msgstr ""
+
+#: ../../examples/blind-auction.rst:5 ../../examples/blind-auction.rst:168
+#: 2ede579b98d24f2d90c7477027ebc819 abad53c413c741f0953b7df9a7ea8e61
+msgid "Blind Auction"
+msgstr ""
+
+#: ../../examples/blind-auction.rst:7 294129f6b2e14315b19c4fdb029c2077
+msgid ""
+"In this section, we will show how easy it is to create a completely blind"
+" auction contract on Ethereum.  We will start with an open auction where "
+"everyone can see the bids that are made and then extend this contract "
+"into a blind auction where it is not possible to see the actual bid until"
+" the bidding period ends."
+msgstr ""
+
+#: ../../examples/blind-auction.rst:16 82aa79e78d114770afd8a6ce0b93dc26
+msgid "Simple Open Auction"
+msgstr ""
+
+#: ../../examples/blind-auction.rst:18 bf040f5f738f4e019983571c44794f47
+msgid ""
+"The general idea of the following simple auction contract is that "
+"everyone can send their bids during a bidding period. The bids already "
+"include sending money / Ether in order to bind the bidders to their bid. "
+"If the highest bid is raised, the previous highest bidder gets their "
+"money back.  After the end of the bidding period, the contract has to be "
+"called manually for the beneficiary to receive their money - contracts "
+"cannot activate themselves."
+msgstr ""
+
+#: ../../examples/blind-auction.rst:170 f8c3a0a01e5243b2b5b09ab4706211e8
+msgid ""
+"The previous open auction is extended to a blind auction in the "
+"following. The advantage of a blind auction is that there is no time "
+"pressure towards the end of the bidding period. Creating a blind auction "
+"on a transparent computing platform might sound like a contradiction, but"
+" cryptography comes to the rescue."
+msgstr ""
+
+#: ../../examples/blind-auction.rst:176 a0dd458856bc4c97940096449647875f
+msgid ""
+"During the **bidding period**, a bidder does not actually send their bid,"
+" but only a hashed version of it.  Since it is currently considered "
+"practically impossible to find two (sufficiently long) values whose hash "
+"values are equal, the bidder commits to the bid by that.  After the end "
+"of the bidding period, the bidders have to reveal their bids: They send "
+"their values unencrypted, and the contract checks that the hash value is "
+"the same as the one provided during the bidding period."
+msgstr ""
+
+#: ../../examples/blind-auction.rst:184 0bfc2ee091a6401498ad6dd7df600308
+msgid ""
+"Another challenge is how to make the auction **binding and blind** at the"
+" same time: The only way to prevent the bidder from just not sending the "
+"money after they won the auction is to make them send it together with "
+"the bid. Since value transfers cannot be blinded in Ethereum, anyone can "
+"see the value."
+msgstr ""
+
+#: ../../examples/blind-auction.rst:189 a4100e06b9044a46bdbb418360bc5452
+msgid ""
+"The following contract solves this problem by accepting any value that is"
+" larger than the highest bid. Since this can of course only be checked "
+"during the reveal phase, some bids might be **invalid**, and this is on "
+"purpose (it even provides an explicit flag to place invalid bids with "
+"high-value transfers): Bidders can confuse competition by placing several"
+" high or low invalid bids."
+msgstr ""
+
+#: ../../examples/safe-remote.rst:5 a1a98507a9d84e3293c284ea9fbf9f51
+msgid "Safe Remote Purchase"
+msgstr ""
+
+#: ../../examples/safe-remote.rst:7 eabeae8deb404cb5875f72a0e1a84fc7
+msgid ""
+"Purchasing goods remotely currently requires multiple parties that need "
+"to trust each other. The simplest configuration involves a seller and a "
+"buyer. The buyer would like to receive an item from the seller and the "
+"seller would like to get money (or an equivalent) in return. The "
+"problematic part is the shipment here: There is no way to determine for "
+"sure that the item arrived at the buyer."
+msgstr ""
+
+#: ../../examples/safe-remote.rst:13 a1778a111cf849a394d15b8d790ad1e8
+msgid ""
+"There are multiple ways to solve this problem, but all fall short in one "
+"or the other way. In the following example, both parties have to put "
+"twice the value of the item into the contract as escrow. As soon as this "
+"happened, the money will stay locked inside the contract until the buyer "
+"confirms that they received the item. After that, the buyer is returned "
+"the value (half of their deposit) and the seller gets three times the "
+"value (their deposit plus the value). The idea behind this is that both "
+"parties have an incentive to resolve the situation or otherwise their "
+"money is locked forever."
+msgstr ""
+
+#: ../../examples/safe-remote.rst:22 13f82ec31bcc48ab81d555e27928d650
+msgid ""
+"This contract of course does not solve the problem, but gives an overview"
+" of how you can use state machine-like constructs inside a contract."
+msgstr ""
+
+#: ../../examples/micropayment.rst:3 c85395c4b31d4ae1841f7384d4e29232
+msgid "Micropayment Channel"
+msgstr ""
+
+#: ../../examples/micropayment.rst:5 706e2333e68642e8a7afc7d929ed480f
+msgid ""
+"In this section, we will learn how to build an example implementation of "
+"a payment channel. It uses cryptographic signatures to make repeated "
+"transfers of Ether between the same parties secure, instantaneous, and "
+"without transaction fees. For the example, we need to understand how to "
+"sign and verify signatures, and setup the payment channel."
+msgstr ""
+
+#: ../../examples/micropayment.rst:12 8d32efff87504f089f7fb9cd1ad0c354
+msgid "Creating and verifying signatures"
+msgstr ""
+
+#: ../../examples/micropayment.rst:14 28a41f82ac1045a5b6ccc722c8c2f04a
+msgid ""
+"Imagine Alice wants to send some Ether to Bob, i.e. Alice is the sender "
+"and Bob is the recipient."
+msgstr ""
+
+#: ../../examples/micropayment.rst:17 d9a1f463d1c6409286a5d9a1d4c63a30
+msgid ""
+"Alice only needs to send cryptographically signed messages off-chain "
+"(e.g. via email) to Bob and it is similar to writing checks."
+msgstr ""
+
+#: ../../examples/micropayment.rst:20 434adf08130a4cd6b38c8aac162383ab
+msgid ""
+"Alice and Bob use signatures to authorize transactions, which is possible"
+" with smart contracts on Ethereum. Alice will build a simple smart "
+"contract that lets her transmit Ether, but instead of calling a function "
+"herself to initiate a payment, she will let Bob do that, and therefore "
+"pay the transaction fee."
+msgstr ""
+
+#: ../../examples/micropayment.rst:24 6bfb3c325bc14a88aeb9343fa90141a9
+msgid "The contract will work as follows:"
+msgstr ""
+
+#: ../../examples/micropayment.rst:26 4e5c0991da9d475286637b2120706ba8
+msgid ""
+"Alice deploys the ``ReceiverPays`` contract, attaching enough Ether to "
+"cover the payments that will be made."
+msgstr ""
+
+#: ../../examples/micropayment.rst:27 7d0989f5fad7491e8c178350e3d09a6d
+msgid "Alice authorizes a payment by signing a message with her private key."
+msgstr ""
+
+#: ../../examples/micropayment.rst:28 8f6615225e694beabc2952f6197ad179
+msgid ""
+"Alice sends the cryptographically signed message to Bob. The message does"
+" not need to be kept secret (explained later), and the mechanism for "
+"sending it does not matter."
+msgstr ""
+
+#: ../../examples/micropayment.rst:30 198041fc6db34611b28da5b4fd6ab17a
+msgid ""
+"Bob claims his payment by presenting the signed message to the smart "
+"contract, it verifies the authenticity of the message and then releases "
+"the funds."
+msgstr ""
+
+#: ../../examples/micropayment.rst:34 715ba3111f81466487bf935dcf0fa9c6
+msgid "Creating the signature"
+msgstr ""
+
+#: ../../examples/micropayment.rst:36 095190f331114670afb7e9a4043c74c6
+msgid ""
+"Alice does not need to interact with the Ethereum network to sign the "
+"transaction, the process is completely offline. In this tutorial, we will"
+" sign messages in the browser using `web3.js "
+"<https://github.com/web3/web3.js>`_ and `MetaMask "
+"<https://metamask.io>`_, using the method described in `EIP-712 "
+"<https://github.com/ethereum/EIPs/pull/712>`_, as it provides a number of"
+" other security benefits."
+msgstr ""
+
+#: ../../examples/micropayment.rst:50 04bcaf5877dd400d9f9d014bab6c41a3
+msgid ""
+"The ``web3.eth.personal.sign`` prepends the length of the message to the "
+"signed data. Since we hash first, the message will always be exactly 32 "
+"bytes long, and thus this length prefix is always the same."
+msgstr ""
+
+#: ../../examples/micropayment.rst:56 dfa7ae244e2a4c04bb8a41843cc49826
+msgid "What to Sign"
+msgstr ""
+
+#: ../../examples/micropayment.rst:58 c966d4db422a4daaab44f2116a0d47ac
+msgid "For a contract that fulfils payments, the signed message must include:"
+msgstr ""
+
+#: ../../examples/micropayment.rst:60 3bc12b1ad70c4e1b9865e98f32d85049
+msgid "The recipient's address."
+msgstr ""
+
+#: ../../examples/micropayment.rst:61 7b71e3f9e00b4523b569d52608eb1025
+msgid "The amount to be transferred."
+msgstr ""
+
+#: ../../examples/micropayment.rst:62 b9686344d68b4edba4f76a87b530452d
+msgid "Protection against replay attacks."
+msgstr ""
+
+#: ../../examples/micropayment.rst:64 711429f6a8474daaa9c5af3344c7d0a2
+msgid ""
+"A replay attack is when a signed message is reused to claim authorization"
+" for a second action. To avoid replay attacks we use the same technique "
+"as in Ethereum transactions themselves, a so-called nonce, which is the "
+"number of transactions sent by an account. The smart contract checks if a"
+" nonce is used multiple times."
+msgstr ""
+
+#: ../../examples/micropayment.rst:70 ac661fb1c41e4ff3a0fb3f4b2747bdfb
+msgid ""
+"Another type of replay attack can occur when the owner deploys a "
+"``ReceiverPays`` smart contract, makes some payments, and then destroys "
+"the contract. Later, they decide to deploy the ``RecipientPays`` smart "
+"contract again, but the new contract does not know the nonces used in the"
+" previous deployment, so the attacker can use the old messages again."
+msgstr ""
+
+#: ../../examples/micropayment.rst:77 75b138fb4f4149a4ba8e3c3e89d841c4
+msgid ""
+"Alice can protect against this attack by including the contract's address"
+" in the message, and only messages containing the contract's address "
+"itself will be accepted. You can find an example of this in the first two"
+" lines of the ``claimPayment()`` function of the full contract at the end"
+" of this section."
+msgstr ""
+
+#: ../../examples/micropayment.rst:84 317e62bc9eb34a19ad40be46eef1eee0
+msgid "Packing arguments"
+msgstr ""
+
+#: ../../examples/micropayment.rst:86 890096702f0b4c2f80c0e3a4dfa91064
+msgid ""
+"Now that we have identified what information to include in the signed "
+"message, we are ready to put the message together, hash it, and sign it. "
+"For simplicity, we concatenate the data. The `ethereumjs-abi "
+"<https://github.com/ethereumjs/ethereumjs-abi>`_ library provides a "
+"function called ``soliditySHA3`` that mimics the behaviour of Solidity's "
+"``keccak256`` function applied to arguments encoded using "
+"``abi.encodePacked``. Here is a JavaScript function that creates the "
+"proper signature for the ``ReceiverPays`` example:"
+msgstr ""
+
+#: ../../examples/micropayment.rst:109 ba607618f88c48bf8bd0453a677c6cbe
+msgid "Recovering the Message Signer in Solidity"
+msgstr ""
+
+#: ../../examples/micropayment.rst:111 5b31322b96ad4a2e880ae4722bb58429
+msgid ""
+"In general, ECDSA signatures consist of two parameters, ``r`` and ``s``. "
+"Signatures in Ethereum include a third parameter called ``v``, that you "
+"can use to verify which account's private key was used to sign the "
+"message, and the transaction's sender. Solidity provides a built-in "
+"function :ref:`ecrecover <mathematical-and-cryptographic-functions>` that"
+" accepts a message along with the ``r``, ``s`` and ``v`` parameters and "
+"returns the address that was used to sign the message."
+msgstr ""
+
+#: ../../examples/micropayment.rst:121 0f12891f47c34ef09f324f2d0b10ed38
+msgid "Extracting the Signature Parameters"
+msgstr ""
+
+#: ../../examples/micropayment.rst:123 94ab1dfcc0e54383a0c6cb53ebcd0ae8
+msgid ""
+"Signatures produced by web3.js are the concatenation of ``r``, ``s`` and "
+"``v``, so the first step is to split these parameters apart. You can do "
+"this on the client-side, but doing it inside the smart contract means you"
+" only need to send one signature parameter rather than three. Splitting "
+"apart a byte array into its constituent parts is a mess, so we use "
+":doc:`inline assembly <assembly>` to do the job in the ``splitSignature``"
+" function (the third function in the full contract at the end of this "
+"section)."
+msgstr ""
+
+#: ../../examples/micropayment.rst:133 6d700f5cf56e49b5990a4b71f52e2a9d
+msgid "Computing the Message Hash"
+msgstr ""
+
+#: ../../examples/micropayment.rst:135 2e2cc8261ee54644b0ad26c91810812e
+msgid ""
+"The smart contract needs to know exactly what parameters were signed, and"
+" so it must recreate the message from the parameters and use that for "
+"signature verification. The functions ``prefixed`` and ``recoverSigner`` "
+"do this in the ``claimPayment`` function."
+msgstr ""
+
+#: ../../examples/micropayment.rst:140 ../../examples/micropayment.rst:338
+#: 4a90dc999f2a4cd0bc39f5e6cccfbe79 e5331060264a4cc0bb1f3ff393631ebb
+msgid "The full contract"
+msgstr ""
+
+#: ../../examples/micropayment.rst:211 213be038a96e46b49f534e647c8bfa41
+msgid "Writing a Simple Payment Channel"
+msgstr ""
+
+#: ../../examples/micropayment.rst:213 413807ca922e45ce8abffea052f24418
+msgid ""
+"Alice now builds a simple but complete implementation of a payment "
+"channel. Payment channels use cryptographic signatures to make repeated "
+"transfers of Ether securely, instantaneously, and without transaction "
+"fees."
+msgstr ""
+
+#: ../../examples/micropayment.rst:218 abca913d31af432fa43ee000eb82c129
+msgid "What is a Payment Channel?"
+msgstr ""
+
+#: ../../examples/micropayment.rst:220 5b9c36ca282b47838e60dce86d21530f
+msgid ""
+"Payment channels allow participants to make repeated transfers of Ether "
+"without using transactions. This means that you can avoid the delays and "
+"fees associated with transactions. We are going to explore a simple "
+"unidirectional payment channel between two parties (Alice and Bob). It "
+"involves three steps:"
+msgstr ""
+
+#: ../../examples/micropayment.rst:225 27e3aeb3f9a64e418e82bfd8d112ddba
+msgid ""
+"Alice funds a smart contract with Ether. This \"opens\" the payment "
+"channel."
+msgstr ""
+
+#: ../../examples/micropayment.rst:226 1e514f9d9d0647169fb7db22c5ef6e78
+msgid ""
+"Alice signs messages that specify how much of that Ether is owed to the "
+"recipient. This step is repeated for each payment."
+msgstr ""
+
+#: ../../examples/micropayment.rst:227 60feb8143b0e4c47bf4f658618894285
+msgid ""
+"Bob \"closes\" the payment channel, withdrawing his portion of the Ether "
+"and sending the remainder back to the sender."
+msgstr ""
+
+#: ../../examples/micropayment.rst:230 4902404097114e66b51c68b52a4eae1b
+msgid ""
+"Only steps 1 and 3 require Ethereum transactions, step 2 means that the "
+"sender transmits a cryptographically signed message to the recipient via "
+"off chain methods (e.g. email). This means only two transactions are "
+"required to support any number of transfers."
+msgstr ""
+
+#: ../../examples/micropayment.rst:235 1cbf17c453784d6daef96f5dc4ccf662
+msgid ""
+"Bob is guaranteed to receive his funds because the smart contract escrows"
+" the Ether and honours a valid signed message. The smart contract also "
+"enforces a timeout, so Alice is guaranteed to eventually recover her "
+"funds even if the recipient refuses to close the channel. It is up to the"
+" participants in a payment channel to decide how long to keep it open. "
+"For a short-lived transaction, such as paying an internet café for each "
+"minute of network access, the payment channel may be kept open for a "
+"limited duration. On the other hand, for a recurring payment, such as "
+"paying an employee an hourly wage, the payment channel may be kept open "
+"for several months or years."
+msgstr ""
+
+#: ../../examples/micropayment.rst:246 59f053b404c64464bdacc0081b04507a
+msgid "Opening the Payment Channel"
+msgstr ""
+
+#: ../../examples/micropayment.rst:248 6cc8b36f4b06467e8059f44f2709e646
+msgid ""
+"To open the payment channel, Alice deploys the smart contract, attaching "
+"the Ether to be escrowed and specifying the intended recipient and a "
+"maximum duration for the channel to exist. This is the function "
+"``SimplePaymentChannel`` in the contract, at the end of this section."
+msgstr ""
+
+#: ../../examples/micropayment.rst:254 013743b795df4487b1cc5eada33a8248
+msgid "Making Payments"
+msgstr ""
+
+#: ../../examples/micropayment.rst:256 7f905283202f45c294c26e6d326d6d6e
+msgid ""
+"Alice makes payments by sending signed messages to Bob. This step is "
+"performed entirely outside of the Ethereum network. Messages are "
+"cryptographically signed by the sender and then transmitted directly to "
+"the recipient."
+msgstr ""
+
+#: ../../examples/micropayment.rst:260 446fa2119967448da23e592ec0f9105b
+msgid "Each message includes the following information:"
+msgstr ""
+
+#: ../../examples/micropayment.rst:262 bcc84c76564f473fb2b181b3844b58a0
+msgid ""
+"The smart contract's address, used to prevent cross-contract replay "
+"attacks."
+msgstr ""
+
+#: ../../examples/micropayment.rst:263 7cffb3edb4ed4b7ca54c98b2dcb6118f
+msgid "The total amount of Ether that is owed to the recipient so far."
+msgstr ""
+
+#: ../../examples/micropayment.rst:265 76acd237f43e4c1aa1246f53158065bb
+msgid ""
+"A payment channel is closed just once, at the end of a series of "
+"transfers. Because of this, only one of the messages sent is redeemed. "
+"This is why each message specifies a cumulative total amount of Ether "
+"owed, rather than the amount of the individual micropayment. The "
+"recipient will naturally choose to redeem the most recent message because"
+" that is the one with the highest total. The nonce per-message is not "
+"needed anymore, because the smart contract only honours a single message."
+" The address of the smart contract is still used to prevent a message "
+"intended for one payment channel from being used for a different channel."
+msgstr ""
+
+#: ../../examples/micropayment.rst:274 d9ab8fb79fe1451a8940de890358a86c
+msgid ""
+"Here is the modified JavaScript code to cryptographically sign a message "
+"from the previous section:"
+msgstr ""
+
+#: ../../examples/micropayment.rst:303 30f360e70d7e499ab6cf30bf0d27cd5a
+msgid "Closing the Payment Channel"
+msgstr ""
+
+#: ../../examples/micropayment.rst:305 999e629065c941a2b4ac336d175dc05c
+msgid ""
+"When Bob is ready to receive his funds, it is time to close the payment "
+"channel by calling a ``close`` function on the smart contract. Closing "
+"the channel pays the recipient the Ether they are owed and destroys the "
+"contract, sending any remaining Ether back to Alice. To close the "
+"channel, Bob needs to provide a message signed by Alice."
+msgstr ""
+
+#: ../../examples/micropayment.rst:311 feb17627dd334c3e8036bec8ee0911a6
+msgid ""
+"The smart contract must verify that the message contains a valid "
+"signature from the sender. The process for doing this verification is the"
+" same as the process the recipient uses. The Solidity functions "
+"``isValidSignature`` and ``recoverSigner`` work just like their "
+"JavaScript counterparts in the previous section, with the latter function"
+" borrowed from the ``ReceiverPays`` contract."
+msgstr ""
+
+#: ../../examples/micropayment.rst:316 5d0152294f1e47df86d40b597d1e7db3
+msgid ""
+"Only the payment channel recipient can call the ``close`` function, who "
+"naturally passes the most recent payment message because that message "
+"carries the highest total owed. If the sender were allowed to call this "
+"function, they could provide a message with a lower amount and cheat the "
+"recipient out of what they are owed."
+msgstr ""
+
+#: ../../examples/micropayment.rst:321 e30aef1923754bfbb93fdd91ce1c6a37
+msgid ""
+"The function verifies the signed message matches the given parameters. If"
+" everything checks out, the recipient is sent their portion of the Ether,"
+" and the sender is sent the rest via a ``selfdestruct``. You can see the "
+"``close`` function in the full contract."
+msgstr ""
+
+#: ../../examples/micropayment.rst:327 d75583a6c22f47039c4989b6eae759b4
+msgid "Channel Expiration"
+msgstr ""
+
+#: ../../examples/micropayment.rst:329 5cef932676b3404e93e139b7831f36cf
+msgid ""
+"Bob can close the payment channel at any time, but if they fail to do so,"
+" Alice needs a way to recover her escrowed funds. An *expiration* time "
+"was set at the time of contract deployment. Once that time is reached, "
+"Alice can call ``claimTimeout`` to recover her funds. You can see the "
+"``claimTimeout`` function in the full contract."
+msgstr ""
+
+#: ../../examples/micropayment.rst:334 522e988ec4b54593813ad1babbeb58f9
+msgid ""
+"After this function is called, Bob can no longer receive any Ether, so it"
+" is important that Bob closes the channel before the expiration is "
+"reached."
+msgstr ""
+
+#: ../../examples/micropayment.rst:436 c9b7bfb3a36a4d06a71e8f61d57e4a21
+msgid ""
+"The function ``splitSignature`` does not use all security checks. A real "
+"implementation should use a more rigorously tested library, such as "
+"openzepplin's `version  <https://github.com/OpenZeppelin/openzeppelin-"
+"contracts/blob/master/contracts/utils/cryptography/ECDSA.sol>`_ of this "
+"code."
+msgstr ""
+
+#: ../../examples/micropayment.rst:441 0f2696a2987c4141b47714c2b6150cf0
+msgid "Verifying Payments"
+msgstr ""
+
+#: ../../examples/micropayment.rst:443 373b8067f2174381bb61c9b7fb4d02c6
+msgid ""
+"Unlike in the previous section, messages in a payment channel aren't "
+"redeemed right away. The recipient keeps track of the latest message and "
+"redeems it when it's time to close the payment channel. This means it's "
+"critical that the recipient perform their own verification of each "
+"message. Otherwise there is no guarantee that the recipient will be able "
+"to get paid in the end."
+msgstr ""
+
+#: ../../examples/micropayment.rst:450 2ccc927e776143d4806b361a22e5472c
+msgid "The recipient should verify each message using the following process:"
+msgstr ""
+
+#: ../../examples/micropayment.rst:452 a39775af43224ae9945ef04782ccf5e8
+msgid ""
+"Verify that the contract address in the message matches the payment "
+"channel."
+msgstr ""
+
+#: ../../examples/micropayment.rst:453 907acb8e63314150868463d1eea8b097
+msgid "Verify that the new total is the expected amount."
+msgstr ""
+
+#: ../../examples/micropayment.rst:454 0b0a18c604db41b7a07a2a98d569fcb2
+msgid "Verify that the new total does not exceed the amount of Ether escrowed."
+msgstr ""
+
+#: ../../examples/micropayment.rst:455 4edad8f1e34a4e1495211fa178a4dbb6
+msgid ""
+"Verify that the signature is valid and comes from the payment channel "
+"sender."
+msgstr ""
+
+#: ../../examples/micropayment.rst:457 c79700930f9649a194be2483d80841aa
+msgid ""
+"We'll use the `ethereumjs-util <https://github.com/ethereumjs/ethereumjs-"
+"util>`_ library to write this verification. The final step can be done a "
+"number of ways, and we use JavaScript. The following code borrows the "
+"``constructPaymentMessage`` function from the signing **JavaScript code**"
+" above:"
+msgstr ""
+
+#: ../../examples/modular.rst:5 c8b07d9ef61d4a5dbebc85adc43b5dc6
+msgid "Modular Contracts"
+msgstr ""
+
+#: ../../examples/modular.rst:7 93e190823ade4201a5c36f4844edd15e
+msgid ""
+"A modular approach to building your contracts helps you reduce the "
+"complexity and improve the readability which will help to identify bugs "
+"and vulnerabilities during development and code review. If you specify "
+"and control the behaviour of each module in isolation, the interactions "
+"you have to consider are only those between the module specifications and"
+" not every other moving part of the contract. In the example below, the "
+"contract uses the ``move`` method of the ``Balances`` :ref:`library "
+"<libraries>` to check that balances sent between addresses match what you"
+" expect. In this way, the ``Balances`` library provides an isolated "
+"component that properly tracks balances of accounts. It is easy to verify"
+" that the ``Balances`` library never produces negative balances or "
+"overflows and the sum of all balances is an invariant across the lifetime"
+" of the contract."
+msgstr ""
+

@@ -1,0 +1,347 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2023, The Solidity Authors
+# This file is distributed under the same license as the Solidity package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Solidity 0.8.20\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-18 04:40+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ja_JP\n"
+"Language-Team: ja_JP <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../natspec-format.rst:5 c2c0231971c2434ebdb4c23791a6246e
+msgid "NatSpec Format"
+msgstr ""
+
+#: ../../natspec-format.rst:7 4a5b0a47906548989cb015d8fe05bf59
+msgid ""
+"Solidity contracts can use a special form of comments to provide rich "
+"documentation for functions, return variables and more. This special form"
+" is named the Ethereum Natural Language Specification Format (NatSpec)."
+msgstr ""
+
+#: ../../natspec-format.rst:13 9670d5679af14e0699107882cf0b5dfa
+msgid ""
+"NatSpec was inspired by `Doxygen "
+"<https://en.wikipedia.org/wiki/Doxygen>`_. While it uses Doxygen-style "
+"comments and tags, there is no intention to keep strict compatibility "
+"with Doxygen. Please carefully examine the supported tags listed below."
+msgstr ""
+
+#: ../../natspec-format.rst:18 cca982b3eb6043be9f33653d5d93156a
+msgid ""
+"This documentation is segmented into developer-focused messages and end-"
+"user-facing messages. These messages may be shown to the end user (the "
+"human) at the time that they will interact with the contract (i.e. sign a"
+" transaction)."
+msgstr ""
+
+#: ../../natspec-format.rst:22 94234c352a724de6b8e65c7eb87c44ef
+msgid ""
+"It is recommended that Solidity contracts are fully annotated using "
+"NatSpec for all public interfaces (everything in the ABI)."
+msgstr ""
+
+#: ../../natspec-format.rst:25 ca3c3db9b13e4dc6ba3304eb319eceab
+msgid ""
+"NatSpec includes the formatting for comments that the smart contract "
+"author will use, and which are understood by the Solidity compiler. Also "
+"detailed below is output of the Solidity compiler, which extracts these "
+"comments into a machine-readable format."
+msgstr ""
+
+#: ../../natspec-format.rst:30 0112c15c54ad42efb6834363f5d014de
+msgid ""
+"NatSpec may also include annotations used by third-party tools. These are"
+" most likely accomplished via the ``@custom:<name>`` tag, and a good use "
+"case is analysis and verification tools."
+msgstr ""
+
+#: ../../natspec-format.rst:37 8953f292a4274e04b4954e98da46f178
+msgid "Documentation Example"
+msgstr ""
+
+#: ../../natspec-format.rst:39 ab093dfc507546eaa20590716bdc3c58
+msgid ""
+"Documentation is inserted above each ``contract``, ``interface``, "
+"``library``, ``function``, and ``event`` using the Doxygen notation "
+"format. A ``public`` state variable is equivalent to a ``function`` for "
+"the purposes of NatSpec."
+msgstr ""
+
+#: ../../natspec-format.rst:44 e0fce37c152d499aaf577eb929969a4c
+msgid ""
+"For Solidity you may choose ``///`` for single or multi-line comments, or"
+" ``/**`` and ending with ``*/``."
+msgstr ""
+
+#: ../../natspec-format.rst:47 20e6edb6aeb9493b94bd2a86117ff86a
+msgid ""
+"For Vyper, use ``\"\"\"`` indented to the inner contents with bare "
+"comments. See the `Vyper documentation "
+"<https://docs.vyperlang.org/en/latest/natspec.html>`__."
+msgstr ""
+
+#: ../../natspec-format.rst:51 0e72fffdeef843899084bfda3ed0c797
+msgid ""
+"The following example shows a contract and a function using all available"
+" tags."
+msgstr ""
+
+#: ../../natspec-format.rst:55 54e9b68be5c64d9f99e2b137b8280ba0
+msgid ""
+"The Solidity compiler only interprets tags if they are external or "
+"public. You are welcome to use similar comments for your internal and "
+"private functions, but those will not be parsed."
+msgstr ""
+
+#: ../../natspec-format.rst:59 0356bffb12b7437fb7da33dabf33644f
+msgid "This may change in the future."
+msgstr ""
+
+#: ../../natspec-format.rst:108 961d274f6f5445c7928caf93f5ba60e8
+msgid "Tags"
+msgstr ""
+
+#: ../../natspec-format.rst:110 10b7166cddd74eb48df006ca6f8bc09d
+msgid ""
+"All tags are optional. The following table explains the purpose of each "
+"NatSpec tag and where it may be used. As a special case, if no tags are "
+"used then the Solidity compiler will interpret a ``///`` or ``/**`` "
+"comment in the same way as if it were tagged with ``@notice``."
+msgstr ""
+
+#: ../../natspec-format.rst:116 1e67a35fb71146ac92ac8d8d9c0265af
+msgid "Tag"
+msgstr ""
+
+#: ../../natspec-format.rst:116 5c6ce586594b454c9e87c88b359ce97e
+msgid "Context"
+msgstr ""
+
+#: ../../natspec-format.rst:118 1708326e4d8e4b73b39fcd96896feef9
+msgid "``@title``"
+msgstr ""
+
+#: ../../natspec-format.rst:118 4c1d03cdd03f4d0b9387ef8294d8bb9c
+msgid "A title that should describe the contract/interface"
+msgstr ""
+
+#: ../../natspec-format.rst:118 ../../natspec-format.rst:119
+#: 52104e6adce540128fa96e7d56824cc5 eaf50e2787994c4db38746aaffdf4454
+msgid "contract, library, interface"
+msgstr ""
+
+#: ../../natspec-format.rst:119 2bca480cb59a418f9913300fafe7b861
+msgid "``@author``"
+msgstr ""
+
+#: ../../natspec-format.rst:119 07c1244bf8664978a4855502e5d332f1
+msgid "The name of the author"
+msgstr ""
+
+#: ../../natspec-format.rst:120 f96b397341144f5e9a310aaaceb5e078
+msgid "``@notice``"
+msgstr ""
+
+#: ../../natspec-format.rst:120 01d59d5946ab4f7b8ba95ccc12d3aa4b
+msgid "Explain to an end user what this does"
+msgstr ""
+
+#: ../../natspec-format.rst:120 fa7ca4ada49941d58756cfcb9afbaeab
+msgid "contract, library, interface, function, public state variable, event"
+msgstr ""
+
+#: ../../natspec-format.rst:121 b92498bdf4214aafb9927ca801181de6
+msgid "``@dev``"
+msgstr ""
+
+#: ../../natspec-format.rst:121 3ed7eb4aafbb4c36b7b12ebc62d5c865
+msgid "Explain to a developer any extra details"
+msgstr ""
+
+#: ../../natspec-format.rst:121 f0ac56f847cb48dfa5e2acfdc52aa36c
+msgid "contract, library, interface, function, state variable, event"
+msgstr ""
+
+#: ../../natspec-format.rst:122 6ff6f3bd6acf4354baa46c2412712bc0
+msgid "``@param``"
+msgstr ""
+
+#: ../../natspec-format.rst:122 ae03c237a5b54141a203d6d680ec6359
+msgid ""
+"Documents a parameter just like in Doxygen (must be followed by parameter"
+" name)"
+msgstr ""
+
+#: ../../natspec-format.rst:122 aee07b5fd23a419a835b5d98ed0f43f6
+msgid "function, event"
+msgstr ""
+
+#: ../../natspec-format.rst:123 407845a1c9b149faa058ffcd64b9740b
+msgid "``@return``"
+msgstr ""
+
+#: ../../natspec-format.rst:123 755b2153312c4363adb3839f4655fec3
+msgid "Documents the return variables of a contract's function"
+msgstr ""
+
+#: ../../natspec-format.rst:123 ../../natspec-format.rst:124
+#: e6757c8ef1b649bb83497d7ffe2b5ced f5403bdf639d4ca7aad753bfc8973aac
+msgid "function, public state variable"
+msgstr ""
+
+#: ../../natspec-format.rst:124 42b8f22a300f44c790a116c3022e5773
+msgid "``@inheritdoc``"
+msgstr ""
+
+#: ../../natspec-format.rst:124 0372473252074330bef696fc4634f0b2
+msgid ""
+"Copies all missing tags from the base function (must be followed by the "
+"contract name)"
+msgstr ""
+
+#: ../../natspec-format.rst:125 fcf5997085a744b98ab1eace23bfb904
+msgid "``@custom:...``"
+msgstr ""
+
+#: ../../natspec-format.rst:125 4597a7aa99ff421fbe26c75917e48d20
+msgid "Custom tag, semantics is application-defined"
+msgstr ""
+
+#: ../../natspec-format.rst:125 5767ba782831442cac84ee493fbdc93f
+msgid "everywhere"
+msgstr ""
+
+#: ../../natspec-format.rst:128 bbfce2da7fda4654b37f4db04087493f
+msgid ""
+"If your function returns multiple values, like ``(int quotient, int "
+"remainder)`` then use multiple ``@return`` statements in the same format "
+"as the ``@param`` statements."
+msgstr ""
+
+#: ../../natspec-format.rst:131 5e9783c7838244cf8eeff7f8079c4d6b
+msgid ""
+"Custom tags start with ``@custom:`` and must be followed by one or more "
+"lowercase letters or hyphens. It cannot start with a hyphen however. They"
+" can be used everywhere and are part of the developer documentation."
+msgstr ""
+
+#: ../../natspec-format.rst:137 5bf0886475d0409f9c3d2fcc1567cc3b
+msgid "Dynamic expressions"
+msgstr ""
+
+#: ../../natspec-format.rst:139 5b0ebcb4ce384ffebd2b8ce30e960cb1
+msgid ""
+"The Solidity compiler will pass through NatSpec documentation from your "
+"Solidity source code to the JSON output as described in this guide. The "
+"consumer of this JSON output, for example the end-user client software, "
+"may present this to the end-user directly or it may apply some pre-"
+"processing."
+msgstr ""
+
+#: ../../natspec-format.rst:143 b562446ac44846c8aed7e725b37dae5b
+msgid "For example, some client software will render:"
+msgstr ""
+
+#: ../../natspec-format.rst:149 fb605113b5d447408c4bd40551914d23
+msgid "to the end-user as:"
+msgstr ""
+
+#: ../../natspec-format.rst:155 6f9c79e95fe741f285216f25e6082dd0
+msgid ""
+"if a function is being called and the input ``a`` is assigned a value of "
+"10."
+msgstr ""
+
+#: ../../natspec-format.rst:160 a74da05a3abc4e4e8c05ac2d93c928b4
+msgid "Inheritance Notes"
+msgstr ""
+
+#: ../../natspec-format.rst:162 62fa12b834854a74a19bf9e822dd3c17
+msgid ""
+"Functions without NatSpec will automatically inherit the documentation of"
+" their base function. Exceptions to this are:"
+msgstr ""
+
+#: ../../natspec-format.rst:165 c477bda77bdc425cb32879c3e7fc5453
+msgid "When the parameter names are different."
+msgstr ""
+
+#: ../../natspec-format.rst:166 87f2c861c8914d528a9c925a4a56f094
+msgid "When there is more than one base function."
+msgstr ""
+
+#: ../../natspec-format.rst:167 230ecb433f53481ea1c6a321eb1cd439
+msgid ""
+"When there is an explicit ``@inheritdoc`` tag which specifies which "
+"contract should be used to inherit."
+msgstr ""
+
+#: ../../natspec-format.rst:172 afffb1895a544e9d9fd61143d8cbeef1
+msgid "Documentation Output"
+msgstr ""
+
+#: ../../natspec-format.rst:174 7389ac3ef93f49adae4e957625096264
+msgid ""
+"When parsed by the compiler, documentation such as the one from the above"
+" example will produce two different JSON files. One is meant to be "
+"consumed by the end user as a notice when a function is executed and the "
+"other to be used by the developer."
+msgstr ""
+
+#: ../../natspec-format.rst:179 e00d3c058ea647dbaedf9012234595ab
+msgid ""
+"If the above contract is saved as ``ex1.sol`` then you can generate the "
+"documentation using:"
+msgstr ""
+
+#: ../../natspec-format.rst:186 1245a945a42842c393f0a25d0b80d15e
+msgid "And the output is below."
+msgstr ""
+
+#: ../../natspec-format.rst:189 647e5c4e0b3248b7ab22f56e53915bb2
+msgid ""
+"Starting Solidity version 0.6.11 the NatSpec output also contains a "
+"``version`` and a ``kind`` field. Currently the ``version`` is set to "
+"``1`` and ``kind`` must be one of ``user`` or ``dev``. In the future it "
+"is possible that new versions will be introduced, deprecating older ones."
+msgstr ""
+
+#: ../../natspec-format.rst:196 6f1075b83d414586840652aa740a2dbc
+msgid "User Documentation"
+msgstr ""
+
+#: ../../natspec-format.rst:198 82299defce2943058f99cf707a90ca76
+msgid ""
+"The above documentation will produce the following user documentation "
+"JSON file as output:"
+msgstr ""
+
+#: ../../natspec-format.rst:216 fc15534a81d74c9eaf5f7b3a696d3bd8
+msgid ""
+"Note that the key by which to find the methods is the function's "
+"canonical signature as defined in the :ref:`Contract ABI "
+"<abi_function_selector>` and not simply the function's name."
+msgstr ""
+
+#: ../../natspec-format.rst:224 c9a72b88ef0145caade96e10ee2b7b5f
+msgid "Developer Documentation"
+msgstr ""
+
+#: ../../natspec-format.rst:226 0491f0d32fab4755ad0846dff1b098ff
+msgid ""
+"Apart from the user documentation file, a developer documentation JSON "
+"file should also be produced and should look like this:"
+msgstr ""
+

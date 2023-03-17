@@ -1,0 +1,2711 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2023, The Solidity Authors
+# This file is distributed under the same license as the Solidity package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Solidity 0.8.20\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-18 04:40+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ja_JP\n"
+"Language-Team: ja_JP <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../types.rst:7 8f43a626d87041c7891535d8b1661760
+msgid "Types"
+msgstr ""
+
+#: ../../types.rst:9 f3bc85b0814c4ccda99734bea6f218d3
+msgid ""
+"Solidity is a statically typed language, which means that the type of "
+"each variable (state and local) needs to be specified. Solidity provides "
+"several elementary types which can be combined to form complex types."
+msgstr ""
+
+#: ../../types.rst:13 15576384970b410b9d913323d36d6fde
+msgid ""
+"In addition, types can interact with each other in expressions containing"
+" operators. For a quick reference of the various operators, see "
+":ref:`order`."
+msgstr ""
+
+#: ../../types.rst:16 b2134aaee5ba4381a6b88fe604d19ab7
+msgid ""
+"The concept of \"undefined\" or \"null\" values does not exist in "
+"Solidity, but newly declared variables always have a :ref:`default value"
+"<default-value>` dependent on its type. To handle any unexpected values, "
+"you should use the :ref:`revert function<assert-and-require>` to revert "
+"the whole transaction, or return a tuple with a second ``bool`` value "
+"denoting success."
+msgstr ""
+
+#: ../../types/value-types.rst:5 a9ff15c675394ad8a24938836cb92b82
+msgid "Value Types"
+msgstr ""
+
+#: ../../types/value-types.rst:7 a84b867a549a47728514429f3ddb33f5
+msgid ""
+"The following are called value types because their variables will always "
+"be passed by value, i.e. they are always copied when they are used as "
+"function arguments or in assignments."
+msgstr ""
+
+#: ../../types/value-types.rst:13 e5f11eca6c4d453ebef3c319624f2e8f
+msgid "Booleans"
+msgstr ""
+
+#: ../../types/value-types.rst:15 f6423ad7d0d5444f9c9cc7783cddc49a
+msgid "``bool``: The possible values are constants ``true`` and ``false``."
+msgstr ""
+
+#: ../../types/value-types.rst:17 ../../types/value-types.rst:35
+#: ../../types/value-types.rst:166 ../../types/value-types.rst:217
+#: ../../types/value-types.rst:395 3776706d13ef4d1eb66e6c13e32c40a2
+#: 54a061d7de1143f08d85bf7061c3d1f5 9c69b1fd2ca14393a9dcd9a6b3a1e24a
+#: d37db8b3629e4a3789a40ce5993150e8 f5ffe2e2b3c54b1196dad65718aba287
+msgid "Operators:"
+msgstr ""
+
+#: ../../types/value-types.rst:19 437e29de4e6d423b98a27c4787cb4a6a
+msgid "``!`` (logical negation)"
+msgstr ""
+
+#: ../../types/value-types.rst:20 fc4752df7c4e41909601d5ecc4a39a13
+msgid "``&&`` (logical conjunction, \"and\")"
+msgstr ""
+
+#: ../../types/value-types.rst:21 a7e20d9456654ff7951dc9280c10a5c3
+msgid "``||`` (logical disjunction, \"or\")"
+msgstr ""
+
+#: ../../types/value-types.rst:22 7f0c27f4c6514d14b768f0201af268a9
+msgid "``==`` (equality)"
+msgstr ""
+
+#: ../../types/value-types.rst:23 35939b0d620944be8d24ec8551115e81
+msgid "``!=`` (inequality)"
+msgstr ""
+
+#: ../../types/value-types.rst:25 38c791d3a46b45af96cda11a9cd0a249
+msgid ""
+"The operators ``||`` and ``&&`` apply the common short-circuiting rules. "
+"This means that in the expression ``f(x) || g(y)``, if ``f(x)`` evaluates"
+" to ``true``, ``g(y)`` will not be evaluated even if it may have side-"
+"effects."
+msgstr ""
+
+#: ../../types/value-types.rst:31 ab6f21338c5f49118c8dc19af8a47b4a
+msgid "Integers"
+msgstr ""
+
+#: ../../types/value-types.rst:33 31406ca5410a4c76954752a72c6ae123
+msgid ""
+"``int`` / ``uint``: Signed and unsigned integers of various sizes. "
+"Keywords ``uint8`` to ``uint256`` in steps of ``8`` (unsigned of 8 up to "
+"256 bits) and ``int8`` to ``int256``. ``uint`` and ``int`` are aliases "
+"for ``uint256`` and ``int256``, respectively."
+msgstr ""
+
+#: ../../types/value-types.rst:37 ../../types/value-types.rst:168
+#: ../../types/value-types.rst:397 5c1510433b5c44de92a5b867e57b13ba
+#: 71219bca5ac241a3bff15f774f20d5a1 fbd77d52c3c54c3ca4b35efd91609da7
+msgid ""
+"Comparisons: ``<=``, ``<``, ``==``, ``!=``, ``>=``, ``>`` (evaluate to "
+"``bool``)"
+msgstr ""
+
+#: ../../types/value-types.rst:38 ../../types/value-types.rst:398
+#: 5b4831c09e154994b8e98b517ba99942 c7efcf62c707498e8046ccaf54b95926
+msgid ""
+"Bit operators: ``&``, ``|``, ``^`` (bitwise exclusive or), ``~`` (bitwise"
+" negation)"
+msgstr ""
+
+#: ../../types/value-types.rst:39 ../../types/value-types.rst:399
+#: 045a6e28458d42ddaedecf65015340f4 8255bfb17ecd46e8b419f42582dbbd7e
+msgid "Shift operators: ``<<`` (left shift), ``>>`` (right shift)"
+msgstr ""
+
+#: ../../types/value-types.rst:40 eb065e1a63774a5c92a3e4842ba18f02
+msgid ""
+"Arithmetic operators: ``+``, ``-``, unary ``-`` (only for signed "
+"integers), ``*``, ``/``, ``%`` (modulo), ``**`` (exponentiation)"
+msgstr ""
+
+#: ../../types/value-types.rst:42 658208ae68a94e9bbb1adb21cf7ddfac
+msgid ""
+"For an integer type ``X``, you can use ``type(X).min`` and "
+"``type(X).max`` to access the minimum and maximum value representable by "
+"the type."
+msgstr ""
+
+#: ../../types/value-types.rst:47 80b42ea1f01c4fea8582ebaf2d39657e
+msgid ""
+"Integers in Solidity are restricted to a certain range. For example, with"
+" ``uint32``, this is ``0`` up to ``2**32 - 1``. There are two modes in "
+"which arithmetic is performed on these types: The \"wrapping\" or "
+"\"unchecked\" mode and the \"checked\" mode. By default, arithmetic is "
+"always \"checked\", meaning that if an operation's result falls outside "
+"the value range of the type, the call is reverted through a :ref:`failing"
+" assertion<assert-and-require>`. You can switch to \"unchecked\" mode "
+"using ``unchecked { ... }``. More details can be found in the section "
+"about :ref:`unchecked <unchecked>`."
+msgstr ""
+
+#: ../../types/value-types.rst:54 6380298e1ddc4e659abfc7cfc88fb669
+msgid "Comparisons"
+msgstr ""
+
+#: ../../types/value-types.rst:56 004650077226459587728e14c4ddd574
+msgid ""
+"The value of a comparison is the one obtained by comparing the integer "
+"value."
+msgstr ""
+
+#: ../../types/value-types.rst:59 9e19df56a9ff401b86790abbc852a252
+msgid "Bit operations"
+msgstr ""
+
+#: ../../types/value-types.rst:61 2a6966fdee7f400c9e291ad26a3435c0
+msgid ""
+"Bit operations are performed on the two's complement representation of "
+"the number. This means that, for example ``~int256(0) == int256(-1)``."
+msgstr ""
+
+#: ../../types/value-types.rst:65 3674512b9f9c49aca1fd6ae9656fc3a1
+msgid "Shifts"
+msgstr ""
+
+#: ../../types/value-types.rst:67 264f552bf4a4484ea3f1c78c6ed49473
+msgid ""
+"The result of a shift operation has the type of the left operand, "
+"truncating the result to match the type. The right operand must be of "
+"unsigned type, trying to shift by a signed type will produce a "
+"compilation error."
+msgstr ""
+
+#: ../../types/value-types.rst:70 521f08d0101d445bbd04979daecab57a
+msgid ""
+"Shifts can be \"simulated\" using multiplication by powers of two in the "
+"following way. Note that the truncation to the type of the left operand "
+"is always performed at the end, but not mentioned explicitly."
+msgstr ""
+
+#: ../../types/value-types.rst:73 d6fdfe028d584aaea7f65abb71c3c0d2
+msgid "``x << y`` is equivalent to the mathematical expression ``x * 2**y``."
+msgstr ""
+
+#: ../../types/value-types.rst:74 008b5b6e6f224dcc82045d79f52dddeb
+msgid ""
+"``x >> y`` is equivalent to the mathematical expression ``x / 2**y``, "
+"rounded towards negative infinity."
+msgstr ""
+
+#: ../../types/value-types.rst:77 b3f97949989f4ddbbbe7b498ba80151a
+msgid ""
+"Before version ``0.5.0`` a right shift ``x >> y`` for negative ``x`` was "
+"equivalent to the mathematical expression ``x / 2**y`` rounded towards "
+"zero, i.e., right shifts used rounding up (towards zero) instead of "
+"rounding down (towards negative infinity)."
+msgstr ""
+
+#: ../../types/value-types.rst:82 458a1474d3cf472cad52afd48f4bde6a
+msgid ""
+"Overflow checks are never performed for shift operations as they are done"
+" for arithmetic operations. Instead, the result is always truncated."
+msgstr ""
+
+#: ../../types/value-types.rst:86 a2591fd1621a4702923ecf04b690e54b
+msgid "Addition, Subtraction and Multiplication"
+msgstr ""
+
+#: ../../types/value-types.rst:88 3179229b682141ca95f2e9795d71e798
+msgid ""
+"Addition, subtraction and multiplication have the usual semantics, with "
+"two different modes in regard to over- and underflow:"
+msgstr ""
+
+#: ../../types/value-types.rst:91 1d555bfc5d6f4ecb8c3b700f25ed2296
+msgid ""
+"By default, all arithmetic is checked for under- or overflow, but this "
+"can be disabled using the :ref:`unchecked block<unchecked>`, resulting in"
+" wrapping arithmetic. More details can be found in that section."
+msgstr ""
+
+#: ../../types/value-types.rst:95 a513a4c70abb428298354a4401c99a15
+msgid ""
+"The expression ``-x`` is equivalent to ``(T(0) - x)`` where ``T`` is the "
+"type of ``x``. It can only be applied to signed types. The value of "
+"``-x`` can be positive if ``x`` is negative. There is another caveat also"
+" resulting from two's complement representation:"
+msgstr ""
+
+#: ../../types/value-types.rst:101 98ff6e02dbfd4f6eb31476903bc8f96e
+msgid ""
+"If you have ``int x = type(int).min;``, then ``-x`` does not fit the "
+"positive range. This means that ``unchecked { assert(-x == x); }`` works,"
+" and the expression ``-x`` when used in checked mode will result in a "
+"failing assertion."
+msgstr ""
+
+#: ../../types/value-types.rst:106 7551b84558f3475e9cf86aa988f26bb1
+msgid "Division"
+msgstr ""
+
+#: ../../types/value-types.rst:108 fc2a7152bf594d3b8486c1684fa4e2b2
+msgid ""
+"Since the type of the result of an operation is always the type of one of"
+" the operands, division on integers always results in an integer. In "
+"Solidity, division rounds towards zero. This means that ``int256(-5) / "
+"int256(2) == int256(-2)``."
+msgstr ""
+
+#: ../../types/value-types.rst:112 ee342862b5b14964a0c60f7191025904
+msgid ""
+"Note that in contrast, division on :ref:`literals<rational_literals>` "
+"results in fractional values of arbitrary precision."
+msgstr ""
+
+#: ../../types/value-types.rst:116 9562ba30425a42408f185e048edacb69
+msgid ""
+"Division by zero causes a :ref:`Panic error<assert-and-require>`. This "
+"check can **not** be disabled through ``unchecked { ... }``."
+msgstr ""
+
+#: ../../types/value-types.rst:119 098044dc215f41e988616611cbf9d0ba
+msgid ""
+"The expression ``type(int).min / (-1)`` is the only case where division "
+"causes an overflow. In checked arithmetic mode, this will cause a failing"
+" assertion, while in wrapping mode, the value will be ``type(int).min``."
+msgstr ""
+
+#: ../../types/value-types.rst:124 872ac549e3ff47dc9fcdf4e7976aa796
+msgid "Modulo"
+msgstr ""
+
+#: ../../types/value-types.rst:126 3ba3e8acd12f4ba383079ce73a73d47c
+msgid ""
+"The modulo operation ``a % n`` yields the remainder ``r`` after the "
+"division of the operand ``a`` by the operand ``n``, where ``q = int(a / "
+"n)`` and ``r = a - (n * q)``. This means that modulo results in the same "
+"sign as its left operand (or zero) and ``a % n == -(-a % n)`` holds for "
+"negative ``a``:"
+msgstr ""
+
+#: ../../types/value-types.rst:130 b3531784e05a4df18e4e3d766f60326e
+#, python-format
+msgid "``int256(5) % int256(2) == int256(1)``"
+msgstr ""
+
+#: ../../types/value-types.rst:131 a866f036dd5b4102a50dc4848cf94998
+#, python-format
+msgid "``int256(5) % int256(-2) == int256(1)``"
+msgstr ""
+
+#: ../../types/value-types.rst:132 8a2f072fc42d4414b23e37fa32e489ee
+#, python-format
+msgid "``int256(-5) % int256(2) == int256(-1)``"
+msgstr ""
+
+#: ../../types/value-types.rst:133 6f52bb1270b84066a3ace0c2ae4d0d24
+#, python-format
+msgid "``int256(-5) % int256(-2) == int256(-1)``"
+msgstr ""
+
+#: ../../types/value-types.rst:136 86949dc4302342369886c0cb41820c85
+msgid ""
+"Modulo with zero causes a :ref:`Panic error<assert-and-require>`. This "
+"check can **not** be disabled through ``unchecked { ... }``."
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:28 ../../types/value-types.rst:139
+#: cbbe7e04c558422cb0170b2d0132a58b e67d0747907b430ba879a4b207dad9ca
+msgid "Exponentiation"
+msgstr ""
+
+#: ../../types/value-types.rst:141 db3d11824c65428a8878a6b5ff253e4d
+msgid ""
+"Exponentiation is only available for unsigned types in the exponent. The "
+"resulting type of an exponentiation is always equal to the type of the "
+"base. Please take care that it is large enough to hold the result and "
+"prepare for potential assertion failures or wrapping behaviour."
+msgstr ""
+
+#: ../../types/value-types.rst:146 b5558dcfd69f463186b325499c4206b6
+msgid ""
+"In checked mode, exponentiation only uses the comparatively cheap ``exp``"
+" opcode for small bases. For the cases of ``x**3``, the expression "
+"``x*x*x`` might be cheaper. In any case, gas cost tests and the use of "
+"the optimizer are advisable."
+msgstr ""
+
+#: ../../types/value-types.rst:151 c1fa4d488f5541f2b1627cf3602c9fed
+msgid "Note that ``0**0`` is defined by the EVM as ``1``."
+msgstr ""
+
+#: ../../types/value-types.rst:156 7d2eb31f45f0471cace682f39d298bcb
+msgid "Fixed Point Numbers"
+msgstr ""
+
+#: ../../types/value-types.rst:159 28c47ea00b3f40338506880ddd3a20b8
+msgid ""
+"Fixed point numbers are not fully supported by Solidity yet. They can be "
+"declared, but cannot be assigned to or from."
+msgstr ""
+
+#: ../../types/value-types.rst:162 7e6d711f699548349ff2f61429b01882
+msgid ""
+"``fixed`` / ``ufixed``: Signed and unsigned fixed point number of various"
+" sizes. Keywords ``ufixedMxN`` and ``fixedMxN``, where ``M`` represents "
+"the number of bits taken by the type and ``N`` represents how many "
+"decimal points are available. ``M`` must be divisible by 8 and goes from "
+"8 to 256 bits. ``N`` must be between 0 and 80, inclusive. ``ufixed`` and "
+"``fixed`` are aliases for ``ufixed128x18`` and ``fixed128x18``, "
+"respectively."
+msgstr ""
+
+#: ../../types/value-types.rst:169 956bda266bd248979b7d667b38c12e6d
+msgid ""
+"Arithmetic operators: ``+``, ``-``, unary ``-``, ``*``, ``/``, ``%`` "
+"(modulo)"
+msgstr ""
+
+#: ../../types/value-types.rst:172 247229d2b37f4037a4ad4360e93a1842
+msgid ""
+"The main difference between floating point (``float`` and ``double`` in "
+"many languages, more precisely IEEE 754 numbers) and fixed point numbers "
+"is that the number of bits used for the integer and the fractional part "
+"(the part after the decimal dot) is flexible in the former, while it is "
+"strictly defined in the latter. Generally, in floating point almost the "
+"entire space is used to represent the number, while only a small number "
+"of bits define where the decimal point is."
+msgstr ""
+
+#: ../../types/value-types.rst:182 dca603761a32495abb83f08de8fa9a4b
+msgid "Address"
+msgstr ""
+
+#: ../../types/value-types.rst:184 feffb94d81c749bebeb5a64e05d57c2a
+msgid "The address type comes in two largely identical flavors:"
+msgstr ""
+
+#: ../../types/value-types.rst:186 fe4321ebe74b42f5be2687bf5ea5e633
+msgid "``address``: Holds a 20 byte value (size of an Ethereum address)."
+msgstr ""
+
+#: ../../types/value-types.rst:187 f17cf169ba384392a9dfd00cacb4193c
+msgid ""
+"``address payable``: Same as ``address``, but with the additional members"
+" ``transfer`` and ``send``."
+msgstr ""
+
+#: ../../types/value-types.rst:189 c9dde21ab0324c1e89cce775f4693513
+msgid ""
+"The idea behind this distinction is that ``address payable`` is an "
+"address you can send Ether to, while you are not supposed to send Ether "
+"to a plain ``address``, for example because it might be a smart contract "
+"that was not built to accept Ether."
+msgstr ""
+
+#: ../../types/value-types.rst:193 b72b97e926824244978ed907c1a59415
+msgid "Type conversions:"
+msgstr ""
+
+#: ../../types/value-types.rst:195 f47c2d5255c743ae8ac9e51a101bf488
+msgid ""
+"Implicit conversions from ``address payable`` to ``address`` are allowed,"
+" whereas conversions from ``address`` to ``address payable`` must be "
+"explicit via ``payable(<address>)``."
+msgstr ""
+
+#: ../../types/value-types.rst:198 67b06d2d5fcc487c897c8b62c125ce50
+msgid ""
+"Explicit conversions to and from ``address`` are allowed for ``uint160``,"
+" integer literals, ``bytes20`` and contract types."
+msgstr ""
+
+#: ../../types/value-types.rst:201 a8bf344bcda64ec0a1d218eeecc40e1c
+msgid ""
+"Only expressions of type ``address`` and contract-type can be converted "
+"to the type ``address payable`` via the explicit conversion "
+"``payable(...)``. For contract-type, this conversion is only allowed if "
+"the contract can receive Ether, i.e., the contract either has a "
+":ref:`receive <receive-ether-function>` or a payable fallback function. "
+"Note that ``payable(0)`` is valid and is an exception to this rule."
+msgstr ""
+
+#: ../../types/value-types.rst:208 65d8b9b5348843a295a67f5188592157
+msgid ""
+"If you need a variable of type ``address`` and plan to send Ether to it, "
+"then declare its type as ``address payable`` to make this requirement "
+"visible. Also, try to make this distinction or conversion as early as "
+"possible."
+msgstr ""
+
+#: ../../types/value-types.rst:212 2379b8751cb74b09ac0bb56ec70a961f
+msgid ""
+"The distinction between ``address`` and ``address payable`` was "
+"introduced with version 0.5.0. Also starting from that version, contracts"
+" are not implicitly convertible to the ``address`` type, but can still be"
+" explicitly converted to ``address`` or to ``address payable``, if they "
+"have a receive or payable fallback function."
+msgstr ""
+
+#: ../../types/value-types.rst:219 a31a189d736f4a94b2dd719123a7d0ac
+msgid "``<=``, ``<``, ``==``, ``!=``, ``>=`` and ``>``"
+msgstr ""
+
+#: ../../types/value-types.rst:222 41aa2f029ad346228a6f2f1914bcc822
+msgid ""
+"If you convert a type that uses a larger byte size to an ``address``, for"
+" example ``bytes32``, then the ``address`` is truncated. To reduce "
+"conversion ambiguity, starting with version 0.4.24, the compiler will "
+"force you to make the truncation explicit in the conversion. Take for "
+"example the 32-byte value "
+"``0x111122223333444455556666777788889999AAAABBBBCCCCDDDDEEEEFFFFCCCC``."
+msgstr ""
+
+#: ../../types/value-types.rst:226 f30fe74f4f7947c6bf655cbe00092d1c
+msgid ""
+"You can use ``address(uint160(bytes20(b)))``, which results in "
+"``0x111122223333444455556666777788889999aAaa``, or you can use "
+"``address(uint160(uint256(b)))``, which results in "
+"``0x777788889999AaAAbBbbCcccddDdeeeEfFFfCcCc``."
+msgstr ""
+
+#: ../../types/value-types.rst:230 88757aea04814865a2d42197f2224654
+msgid ""
+"Mixed-case hexadecimal numbers conforming to `EIP-55 "
+"<https://github.com/ethereum/EIPs/blob/master/EIPS/eip-55.md>`_ are "
+"automatically treated as literals of the ``address`` type. See "
+":ref:`Address Literals<address_literals>`."
+msgstr ""
+
+#: ../../types/value-types.rst:235 cfa6b0efc4144458b88d1fb6e56cf849
+msgid "Members of Addresses"
+msgstr ""
+
+#: ../../types/value-types.rst:237 594c6f2a378047fa8ccf255cbeece271
+msgid ""
+"For a quick reference of all members of address, see "
+":ref:`address_related`."
+msgstr ""
+
+#: ../../types/value-types.rst:239 477e52c6f83842349b375146365a61ea
+msgid "``balance`` and ``transfer``"
+msgstr ""
+
+#: ../../types/value-types.rst:241 70e859df37904a8a96ea6b806dc97e76
+msgid ""
+"It is possible to query the balance of an address using the property "
+"``balance`` and to send Ether (in units of wei) to a payable address "
+"using the ``transfer`` function:"
+msgstr ""
+
+#: ../../types/value-types.rst:251 dc9eb991f2e1481dac25ae1fb416d799
+msgid ""
+"The ``transfer`` function fails if the balance of the current contract is"
+" not large enough or if the Ether transfer is rejected by the receiving "
+"account. The ``transfer`` function reverts on failure."
+msgstr ""
+
+#: ../../types/value-types.rst:256 97d47a27a2564803a125489694f7a539
+msgid ""
+"If ``x`` is a contract address, its code (more specifically: its :ref"
+":`receive-ether-function`, if present, or otherwise its :ref:`fallback-"
+"function`, if present) will be executed together with the ``transfer`` "
+"call (this is a feature of the EVM and cannot be prevented). If that "
+"execution runs out of gas or fails in any way, the Ether transfer will be"
+" reverted and the current contract will stop with an exception."
+msgstr ""
+
+#: ../../types/value-types.rst:258 806d24ada44542bc966170a966389b04
+msgid "``send``"
+msgstr ""
+
+#: ../../types/value-types.rst:260 a4f1ac36ea314f8dbfd378cf9670ce66
+msgid ""
+"Send is the low-level counterpart of ``transfer``. If the execution "
+"fails, the current contract will not stop with an exception, but ``send``"
+" will return ``false``."
+msgstr ""
+
+#: ../../types/value-types.rst:263 95f1680e29514c08936d7b4cd4e8a0f0
+msgid ""
+"There are some dangers in using ``send``: The transfer fails if the call "
+"stack depth is at 1024 (this can always be forced by the caller) and it "
+"also fails if the recipient runs out of gas. So in order to make safe "
+"Ether transfers, always check the return value of ``send``, use "
+"``transfer`` or even better: use a pattern where the recipient withdraws "
+"the money."
+msgstr ""
+
+#: ../../types/value-types.rst:268 bf9a22533c43476680c0e723cdca2505
+msgid "``call``, ``delegatecall`` and ``staticcall``"
+msgstr ""
+
+#: ../../types/value-types.rst:270 4acce05615344faf85ca68d1e42f286d
+msgid ""
+"In order to interface with contracts that do not adhere to the ABI, or to"
+" get more direct control over the encoding, the functions ``call``, "
+"``delegatecall`` and ``staticcall`` are provided. They all take a single "
+"``bytes memory`` parameter and return the success condition (as a "
+"``bool``) and the returned data (``bytes memory``). The functions "
+"``abi.encode``, ``abi.encodePacked``, ``abi.encodeWithSelector`` and "
+"``abi.encodeWithSignature`` can be used to encode structured data."
+msgstr ""
+
+#: ../../types/value-types.rst:279 ffeaad7c120846eb8db690042e1bea85
+msgid "Example:"
+msgstr ""
+
+#: ../../types/value-types.rst:288 cf3720f77b0442c2ba6065df2282375a
+msgid ""
+"All these functions are low-level functions and should be used with care."
+" Specifically, any unknown contract might be malicious and if you call "
+"it, you hand over control to that contract which could in turn call back "
+"into your contract, so be prepared for changes to your state variables "
+"when the call returns. The regular way to interact with other contracts "
+"is to call a function on a contract object (``x.f()``)."
+msgstr ""
+
+#: ../../types/value-types.rst:296 fc846960f3564c4ead45f109b15af470
+msgid ""
+"Previous versions of Solidity allowed these functions to receive "
+"arbitrary arguments and would also handle a first argument of type "
+"``bytes4`` differently. These edge cases were removed in version 0.5.0."
+msgstr ""
+
+#: ../../types/value-types.rst:300 58565e53e2ea4ea8a46f7cd3e606b386
+msgid "It is possible to adjust the supplied gas with the ``gas`` modifier:"
+msgstr ""
+
+#: ../../types/value-types.rst:306 2c10f28e4d05472091d9a94e0d264653
+msgid "Similarly, the supplied Ether value can be controlled too:"
+msgstr ""
+
+#: ../../types/value-types.rst:312 42f62216542d451baedac9c25e202e31
+msgid "Lastly, these modifiers can be combined. Their order does not matter:"
+msgstr ""
+
+#: ../../types/value-types.rst:318 8aefffb46cc440b4b76882cf55f5e2b2
+msgid ""
+"In a similar way, the function ``delegatecall`` can be used: the "
+"difference is that only the code of the given address is used, all other "
+"aspects (storage, balance, ...) are taken from the current contract. The "
+"purpose of ``delegatecall`` is to use library code which is stored in "
+"another contract. The user has to ensure that the layout of storage in "
+"both contracts is suitable for delegatecall to be used."
+msgstr ""
+
+#: ../../types/value-types.rst:321 039b6e0e63914299895be95de13e0211
+msgid ""
+"Prior to homestead, only a limited variant called ``callcode`` was "
+"available that did not provide access to the original ``msg.sender`` and "
+"``msg.value`` values. This function was removed in version 0.5.0."
+msgstr ""
+
+#: ../../types/value-types.rst:323 ba2a347a4d694380872e0791aca5790f
+msgid ""
+"Since byzantium ``staticcall`` can be used as well. This is basically the"
+" same as ``call``, but will revert if the called function modifies the "
+"state in any way."
+msgstr ""
+
+#: ../../types/value-types.rst:325 3ae70815b3364cb2b06bd55f057ef557
+msgid ""
+"All three functions ``call``, ``delegatecall`` and ``staticcall`` are "
+"very low-level functions and should only be used as a *last resort* as "
+"they break the type-safety of Solidity."
+msgstr ""
+
+#: ../../types/value-types.rst:327 918f5bc7d4244d849135bb68b7ebcca4
+msgid ""
+"The ``gas`` option is available on all three methods, while the ``value``"
+" option is only available on ``call``."
+msgstr ""
+
+#: ../../types/value-types.rst:331 6395bf9a97074e0f8107c84f4a4e41e2
+msgid ""
+"It is best to avoid relying on hardcoded gas values in your smart "
+"contract code, regardless of whether state is read from or written to, as"
+" this can have many pitfalls. Also, access to gas might change in the "
+"future."
+msgstr ""
+
+#: ../../types/value-types.rst:335 fbea73e598814a7aa50d2d8ee0d6c87b
+msgid "``code`` and ``codehash``"
+msgstr ""
+
+#: ../../types/value-types.rst:337 97e93cdee7d54dcb9a066059fa10ea65
+msgid ""
+"You can query the deployed code for any smart contract. Use ``.code`` to "
+"get the EVM bytecode as a ``bytes memory``, which might be empty. Use "
+"``.codehash`` to get the Keccak-256 hash of that code (as a ``bytes32``)."
+" Note that ``addr.codehash`` is cheaper than using "
+"``keccak256(addr.code)``."
+msgstr ""
+
+#: ../../types/value-types.rst:342 9e82e4c8711a44a3a2a3be598ff5a2ff
+msgid ""
+"All contracts can be converted to ``address`` type, so it is possible to "
+"query the balance of the current contract using "
+"``address(this).balance``."
+msgstr ""
+
+#: ../../types/value-types.rst:350 e80699853ef341499c39ecf1b49c42f5
+msgid "Contract Types"
+msgstr ""
+
+#: ../../types/value-types.rst:352 32d0959a1a644e18b77132eee34a88a2
+msgid ""
+"Every :ref:`contract<contracts>` defines its own type. You can implicitly"
+" convert contracts to contracts they inherit from. Contracts can be "
+"explicitly converted to and from the ``address`` type."
+msgstr ""
+
+#: ../../types/value-types.rst:356 113e7471543d4143890e3116750c65b3
+msgid ""
+"Explicit conversion to and from the ``address payable`` type is only "
+"possible if the contract type has a receive or payable fallback function."
+"  The conversion is still performed using ``address(x)``. If the contract"
+" type does not have a receive or payable fallback function, the "
+"conversion to ``address payable`` can be done using "
+"``payable(address(x))``. You can find more information in the section "
+"about the :ref:`address type<address>`."
+msgstr ""
+
+#: ../../types/value-types.rst:365 eedfe3817cc34b27a8d5b9dfd5a20d3a
+msgid ""
+"Before version 0.5.0, contracts directly derived from the address type "
+"and there was no distinction between ``address`` and ``address payable``."
+msgstr ""
+
+#: ../../types/value-types.rst:368 d774e5c376be484a8aa63d7c9c4a9c06
+msgid ""
+"If you declare a local variable of contract type (``MyContract c``), you "
+"can call functions on that contract. Take care to assign it from "
+"somewhere that is the same contract type."
+msgstr ""
+
+#: ../../types/value-types.rst:372 83b7d1fd84e94feaa27a924d0bac1245
+msgid ""
+"You can also instantiate contracts (which means they are newly created). "
+"You can find more details in the :ref:`'Contracts via new'<creating-"
+"contracts>` section."
+msgstr ""
+
+#: ../../types/value-types.rst:376 62734ee844b44fdc98370922d4871b7e
+msgid ""
+"The data representation of a contract is identical to that of the "
+"``address`` type and this type is also used in the :ref:`ABI<ABI>`."
+msgstr ""
+
+#: ../../types/value-types.rst:379 9ccf9de1428b48bbb324dc96fb452ee5
+msgid "Contracts do not support any operators."
+msgstr ""
+
+#: ../../types/value-types.rst:381 9e0e736a4e3b4e4d8bd1d7a5d69b1d60
+msgid ""
+"The members of contract types are the external functions of the contract "
+"including any state variables marked as ``public``."
+msgstr ""
+
+#: ../../types/value-types.rst:384 90c3274c482242aea6e9c6d814360390
+msgid ""
+"For a contract ``C`` you can use ``type(C)`` to access :ref:`type "
+"information<meta-type>` about the contract."
+msgstr ""
+
+#: ../../types/value-types.rst:390 cc2e41cb02f248889d9a417845cd0c6b
+msgid "Fixed-size byte arrays"
+msgstr ""
+
+#: ../../types/value-types.rst:392 ca6ab113e54b45d0b6c9a52f973507bd
+msgid ""
+"The value types ``bytes1``, ``bytes2``, ``bytes3``, ..., ``bytes32`` hold"
+" a sequence of bytes from one to up to 32."
+msgstr ""
+
+#: ../../types/value-types.rst:400 cdfe535cdae84e979beb2f6b99ae47c3
+msgid ""
+"Index access: If ``x`` is of type ``bytesI``, then ``x[k]`` for ``0 <= k "
+"< I`` returns the ``k`` th byte (read-only)."
+msgstr ""
+
+#: ../../types/value-types.rst:402 cfcf44633f574164b800a175e1799f42
+msgid ""
+"The shifting operator works with unsigned integer type as right operand "
+"(but returns the type of the left operand), which denotes the number of "
+"bits to shift by. Shifting by a signed type will produce a compilation "
+"error."
+msgstr ""
+
+#: ../../types/value-types.rst:406 ../../types/value-types.rst:817
+#: 001c278263af445a9587c7ffc19fd3e9 0ad8c8146b844ea2b97556360e21dc05
+msgid "Members:"
+msgstr ""
+
+#: ../../types/value-types.rst:408 d12ee6fc87cf4f47ab4b849e62514608
+msgid "``.length`` yields the fixed length of the byte array (read-only)."
+msgstr ""
+
+#: ../../types/value-types.rst:411 8aa76c4d16d741abaad878827a11884a
+msgid ""
+"The type ``bytes1[]`` is an array of bytes, but due to padding rules, it "
+"wastes 31 bytes of space for each element (except in storage). It is "
+"better to use the ``bytes`` type instead."
+msgstr ""
+
+#: ../../types/value-types.rst:416 857959a7a68b4fabb27850356187adb6
+msgid "Prior to version 0.8.0, ``byte`` used to be an alias for ``bytes1``."
+msgstr ""
+
+#: ../../types/value-types.rst:419 98d56a10df5d487590bb7ff0b2861388
+msgid "Dynamically-sized byte array"
+msgstr ""
+
+#: ../../types/value-types.rst:421 ad1e1ba519c94c05b0e90685934369e5
+msgid "``bytes``:"
+msgstr ""
+
+#: ../../types/value-types.rst:422 a3a1078ceeb5439592ef27ca0042998b
+msgid "Dynamically-sized byte array, see :ref:`arrays`. Not a value-type!"
+msgstr ""
+
+#: ../../types/value-types.rst:424 b1e0c16b870e4ea694c02902098df388
+msgid "``string``:"
+msgstr ""
+
+#: ../../types/value-types.rst:424 98ce6724c4694246a99cd6b71afad670
+msgid ""
+"Dynamically-sized UTF-8-encoded string, see :ref:`arrays`. Not a value-"
+"type!"
+msgstr ""
+
+#: ../../types/value-types.rst:431 d13c58ad39864eae818c4dae12c9d26b
+msgid "Address Literals"
+msgstr ""
+
+#: ../../types/value-types.rst:433 0c129390503846f38822ea149cd07120
+msgid ""
+"Hexadecimal literals that pass the address checksum test, for example "
+"``0xdCad3a6d3569DF655070DEd06cb7A1b2Ccd1D3AF`` are of ``address`` type. "
+"Hexadecimal literals that are between 39 and 41 digits long and do not "
+"pass the checksum test produce an error. You can prepend (for integer "
+"types) or append (for bytesNN types) zeros to remove the error."
+msgstr ""
+
+#: ../../types/value-types.rst:440 7416724e201a49d9b05411d11348f491
+msgid ""
+"The mixed-case address checksum format is defined in `EIP-55 "
+"<https://github.com/ethereum/EIPs/blob/master/EIPS/eip-55.md>`_."
+msgstr ""
+
+#: ../../types/value-types.rst:447 02605aeaa93941599835345cdc1b2c92
+msgid "Rational and Integer Literals"
+msgstr ""
+
+#: ../../types/value-types.rst:449 a92468d73683496281621593b613b3d8
+msgid ""
+"Integer literals are formed from a sequence of digits in the range 0-9. "
+"They are interpreted as decimals. For example, ``69`` means sixty nine. "
+"Octal literals do not exist in Solidity and leading zeros are invalid."
+msgstr ""
+
+#: ../../types/value-types.rst:453 ad6beb18f9544073be0c3f0e47e89310
+msgid ""
+"Decimal fractional literals are formed by a ``.`` with at least one "
+"number after the decimal point. Examples include ``.1`` and ``1.3`` (but "
+"not ``1.``)."
+msgstr ""
+
+#: ../../types/value-types.rst:456 27749922213245fe8ff171f30a0157f5
+msgid ""
+"Scientific notation in the form of ``2e10`` is also supported, where the "
+"mantissa can be fractional but the exponent has to be an integer. The "
+"literal ``MeE`` is equivalent to ``M * 10**E``. Examples include "
+"``2e10``, ``-2e10``, ``2e-10``, ``2.5e1``."
+msgstr ""
+
+#: ../../types/value-types.rst:461 09ab026840b44ababbfeff941e2e3f74
+msgid ""
+"Underscores can be used to separate the digits of a numeric literal to "
+"aid readability. For example, decimal ``123_000``, hexadecimal "
+"``0x2eff_abde``, scientific decimal notation ``1_2e345_678`` are all "
+"valid. Underscores are only allowed between two digits and only one "
+"consecutive underscore is allowed. There is no additional semantic "
+"meaning added to a number literal containing underscores, the underscores"
+" are ignored."
+msgstr ""
+
+#: ../../types/value-types.rst:467 8e4af1cc528e4462a1b59cc972c054a1
+msgid ""
+"Number literal expressions retain arbitrary precision until they are "
+"converted to a non-literal type (i.e. by using them together with "
+"anything other than a number literal expression (like boolean literals) "
+"or by explicit conversion). This means that computations do not overflow "
+"and divisions do not truncate in number literal expressions."
+msgstr ""
+
+#: ../../types/value-types.rst:472 2736e522d2a74ec5829141ea21b1e00b
+msgid ""
+"For example, ``(2**800 + 1) - 2**800`` results in the constant ``1`` (of "
+"type ``uint8``) although intermediate results would not even fit the "
+"machine word size. Furthermore, ``.5 * 8`` results in the integer ``4`` "
+"(although non-integers were used in between)."
+msgstr ""
+
+#: ../../types/value-types.rst:477 79454a81a43f4e8ca7db661f6d6fb9c6
+msgid ""
+"While most operators produce a literal expression when applied to "
+"literals, there are certain operators that do not follow this pattern:"
+msgstr ""
+
+#: ../../types/value-types.rst:479 95f96c454bac4f50a4daa6069d7ec361
+msgid "Ternary operator (``... ? ... : ...``),"
+msgstr ""
+
+#: ../../types/value-types.rst:480 f4f20c0dd71a4a95ad7de7534b1e6ea1
+msgid "Array subscript (``<array>[<index>]``)."
+msgstr ""
+
+#: ../../types/value-types.rst:482 901b742d4deb4fcb935f40eea0b72a49
+msgid ""
+"You might expect expressions like ``255 + (true ? 1 : 0)`` or ``255 + [1,"
+" 2, 3][0]`` to be equivalent to using the literal 256 directly, but in "
+"fact they are computed within the type ``uint8`` and can overflow."
+msgstr ""
+
+#: ../../types/value-types.rst:485 19686c35c6484ff6b2e98f7f228e132a
+msgid ""
+"Any operator that can be applied to integers can also be applied to "
+"number literal expressions as long as the operands are integers. If any "
+"of the two is fractional, bit operations are disallowed and "
+"exponentiation is disallowed if the exponent is fractional (because that "
+"might result in a non-rational number)."
+msgstr ""
+
+#: ../../types/value-types.rst:490 cfbb3581f50b4e7bab6389f8851518f8
+msgid ""
+"Shifts and exponentiation with literal numbers as left (or base) operand "
+"and integer types as the right (exponent) operand are always performed in"
+" the ``uint256`` (for non-negative literals) or ``int256`` (for a "
+"negative literals) type, regardless of the type of the right (exponent) "
+"operand."
+msgstr ""
+
+#: ../../types/value-types.rst:496 8fdc1aa10c8b4fcf8bfa318baa77a212
+msgid ""
+"Division on integer literals used to truncate in Solidity prior to "
+"version 0.4.0, but it now converts into a rational number, i.e. ``5 / 2``"
+" is not equal to ``2``, but to ``2.5``."
+msgstr ""
+
+#: ../../types/value-types.rst:499 2a44a8218edd4c598fee007c5457609d
+msgid ""
+"Solidity has a number literal type for each rational number. Integer "
+"literals and rational number literals belong to number literal types. "
+"Moreover, all number literal expressions (i.e. the expressions that "
+"contain only number literals and operators) belong to number literal "
+"types.  So the number literal expressions ``1 + 2`` and ``2 + 1`` both "
+"belong to the same number literal type for the rational number three."
+msgstr ""
+
+#: ../../types/value-types.rst:508 7959ea59fb2f4ca192621f9d7125e871
+msgid ""
+"Number literal expressions are converted into a non-literal type as soon "
+"as they are used with non-literal expressions. Disregarding types, the "
+"value of the expression assigned to ``b`` below evaluates to an integer. "
+"Because ``a`` is of type ``uint128``, the expression ``2.5 + a`` has to "
+"have a proper type, though. Since there is no common type for the type of"
+" ``2.5`` and ``uint128``, the Solidity compiler does not accept this "
+"code."
+msgstr ""
+
+#: ../../types/value-types.rst:524 62ddc267d86d4de9a38a6bbe509d3706
+msgid "String Literals and Types"
+msgstr ""
+
+#: ../../types/value-types.rst:526 5807d865cbb5480a8f2178b4d0eab142
+msgid ""
+"String literals are written with either double or single-quotes "
+"(``\"foo\"`` or ``'bar'``), and they can also be split into multiple "
+"consecutive parts (``\"foo\" \"bar\"`` is equivalent to ``\"foobar\"``) "
+"which can be helpful when dealing with long strings.  They do not imply "
+"trailing zeroes as in C; ``\"foo\"`` represents three bytes, not four.  "
+"As with integer literals, their type can vary, but they are implicitly "
+"convertible to ``bytes1``, ..., ``bytes32``, if they fit, to ``bytes`` "
+"and to ``string``."
+msgstr ""
+
+#: ../../types/value-types.rst:528 5f336acb8c264c52bf306c13fae67e7d
+msgid ""
+"For example, with ``bytes32 samevar = \"stringliteral\"`` the string "
+"literal is interpreted in its raw byte form when assigned to a "
+"``bytes32`` type."
+msgstr ""
+
+#: ../../types/value-types.rst:530 3f26e38b1465433abae04d6d5561ced7
+msgid ""
+"String literals can only contain printable ASCII characters, which means "
+"the characters between and including 0x20 .. 0x7E."
+msgstr ""
+
+#: ../../types/value-types.rst:532 e3d2f159bf494857841c4458fe3d80e5
+msgid ""
+"Additionally, string literals also support the following escape "
+"characters:"
+msgstr ""
+
+#: ../../types/value-types.rst:534 8abcc62637c440a1a2892134686e617c
+msgid "``\\<newline>`` (escapes an actual newline)"
+msgstr ""
+
+#: ../../types/value-types.rst:535 d619cab3eda449df8dc1263eb3ee78e6
+msgid "``\\\\`` (backslash)"
+msgstr ""
+
+#: ../../types/value-types.rst:536 6694030cd8c042e297e025c7fe2a0d33
+msgid "``\\'`` (single quote)"
+msgstr ""
+
+#: ../../types/value-types.rst:537 06666967b63f4d0386b30efbbdc1e326
+msgid "``\\\"`` (double quote)"
+msgstr ""
+
+#: ../../types/value-types.rst:538 56ae8d9970d24e36986bca09f683415b
+msgid "``\\n`` (newline)"
+msgstr ""
+
+#: ../../types/value-types.rst:539 1bad1a1d25c74a549b2c857e8e222e45
+msgid "``\\r`` (carriage return)"
+msgstr ""
+
+#: ../../types/value-types.rst:540 f869e34bf4ee444e9106de6421ceeaba
+msgid "``\\t`` (tab)"
+msgstr ""
+
+#: ../../types/value-types.rst:541 65b9562c1394449298a3aa202def312e
+msgid "``\\xNN`` (hex escape, see below)"
+msgstr ""
+
+#: ../../types/value-types.rst:542 54760fcb6dff4bba857f6bd15b95df67
+msgid "``\\uNNNN`` (unicode escape, see below)"
+msgstr ""
+
+#: ../../types/value-types.rst:544 27ef3e107dad42d7b72b044112de73a0
+msgid ""
+"``\\xNN`` takes a hex value and inserts the appropriate byte, while "
+"``\\uNNNN`` takes a Unicode codepoint and inserts an UTF-8 sequence."
+msgstr ""
+
+#: ../../types/value-types.rst:548 95a38911e5ee4a8eb70998c643efe245
+msgid ""
+"Until version 0.8.0 there were three additional escape sequences: "
+"``\\b``, ``\\f`` and ``\\v``. They are commonly available in other "
+"languages but rarely needed in practice. If you do need them, they can "
+"still be inserted via hexadecimal escapes, i.e. ``\\x08``, ``\\x0c`` and "
+"``\\x0b``, respectively, just as any other ASCII character."
+msgstr ""
+
+#: ../../types/value-types.rst:553 f5091c26629b459683c46978146b8e2d
+msgid ""
+"The string in the following example has a length of ten bytes. It starts "
+"with a newline byte, followed by a double quote, a single quote a "
+"backslash character and then (without separator) the character sequence "
+"``abcdef``."
+msgstr ""
+
+#: ../../types/value-types.rst:564 465cfcd2a0284bac806a28e711ed8d0e
+msgid ""
+"Any Unicode line terminator which is not a newline (i.e. LF, VF, FF, CR, "
+"NEL, LS, PS) is considered to terminate the string literal. Newline only "
+"terminates the string literal if it is not preceded by a ``\\``."
+msgstr ""
+
+#: ../../types/value-types.rst:568 cacd790a56324018a7b051dc9dbf90a0
+msgid "Unicode Literals"
+msgstr ""
+
+#: ../../types/value-types.rst:570 c4c17d493c1b471d990d3f1b5fa7a02d
+msgid ""
+"While regular string literals can only contain ASCII, Unicode literals – "
+"prefixed with the keyword ``unicode`` – can contain any valid UTF-8 "
+"sequence. They also support the very same escape sequences as regular "
+"string literals."
+msgstr ""
+
+#: ../../types/value-types.rst:580 ff6ff8fdc7b44caaafb1da50d388622f
+msgid "Hexadecimal Literals"
+msgstr ""
+
+#: ../../types/value-types.rst:582 83ffe5dd0f5a40c29abdd9c8b1f23707
+msgid ""
+"Hexadecimal literals are prefixed with the keyword ``hex`` and are "
+"enclosed in double or single-quotes (``hex\"001122FF\"``, "
+"``hex'0011_22_FF'``). Their content must be hexadecimal digits which can "
+"optionally use a single underscore as separator between byte boundaries. "
+"The value of the literal will be the binary representation of the "
+"hexadecimal sequence."
+msgstr ""
+
+#: ../../types/value-types.rst:588 a76ffc4d5cf545858265d8129ea1a4f2
+msgid ""
+"Multiple hexadecimal literals separated by whitespace are concatenated "
+"into a single literal: ``hex\"00112233\" hex\"44556677\"`` is equivalent "
+"to ``hex\"0011223344556677\"``"
+msgstr ""
+
+#: ../../types/value-types.rst:591 b2e877794d0841d2bc4d9e7ca54e0c72
+msgid ""
+"Hexadecimal literals behave like :ref:`string literals <string_literals>`"
+" and have the same convertibility restrictions."
+msgstr ""
+
+#: ../../types/value-types.rst:598 4bb89163d19d40a69a8b8600168f321a
+msgid "Enums"
+msgstr ""
+
+#: ../../types/value-types.rst:600 d00a46dc7b3743739276290c0df5607a
+msgid ""
+"Enums are one way to create a user-defined type in Solidity. They are "
+"explicitly convertible to and from all integer types but implicit "
+"conversion is not allowed.  The explicit conversion from integer checks "
+"at runtime that the value lies inside the range of the enum and causes a "
+":ref:`Panic error<assert-and-require>` otherwise. Enums require at least "
+"one member, and its default value when declared is the first member. "
+"Enums cannot have more than 256 members."
+msgstr ""
+
+#: ../../types/value-types.rst:607 f0efc4f078d44d9888ba70dd40e0acaa
+msgid ""
+"The data representation is the same as for enums in C: The options are "
+"represented by subsequent unsigned integer values starting from ``0``."
+msgstr ""
+
+#: ../../types/value-types.rst:610 498b4766b8a94f8793c900997f89fc6e
+msgid ""
+"Using ``type(NameOfEnum).min`` and ``type(NameOfEnum).max`` you can get "
+"the smallest and respectively largest value of the given enum."
+msgstr ""
+
+#: ../../types/value-types.rst:649 b90e23cf07d64339ac2ad869fd036340
+msgid ""
+"Enums can also be declared on the file level, outside of contract or "
+"library definitions."
+msgstr ""
+
+#: ../../types/value-types.rst:656 c2da443eaa1e4680bf080c310399acb8
+msgid "User-defined Value Types"
+msgstr ""
+
+#: ../../types/value-types.rst:658 24715f4eb55248cdb2b204b2808f434d
+msgid ""
+"A user-defined value type allows creating a zero cost abstraction over an"
+" elementary value type. This is similar to an alias, but with stricter "
+"type requirements."
+msgstr ""
+
+#: ../../types/value-types.rst:661 b5b97b5e853b4b58aabf4e58e3949d3a
+msgid ""
+"A user-defined value type is defined using ``type C is V``, where ``C`` "
+"is the name of the newly introduced type and ``V`` has to be a built-in "
+"value type (the \"underlying type\"). The function ``C.wrap`` is used to "
+"convert from the underlying type to the custom type. Similarly, the "
+"function ``C.unwrap`` is used to convert from the custom type to the "
+"underlying type."
+msgstr ""
+
+#: ../../types/value-types.rst:666 48fa82445d96406daa87fd3d98b60194
+msgid ""
+"The type ``C`` does not have any operators or attached member functions. "
+"In particular, even the operator ``==`` is not defined. Explicit and "
+"implicit conversions to and from other types are disallowed."
+msgstr ""
+
+#: ../../types/value-types.rst:670 799e25f399fe4b4bae0e849b390076a6
+msgid ""
+"The data-representation of values of such types are inherited from the "
+"underlying type and the underlying type is also used in the ABI."
+msgstr ""
+
+#: ../../types/value-types.rst:673 8e5de6b2ff524aaca8e677827f02f6d0
+msgid ""
+"The following example illustrates a custom type ``UFixed256x18`` "
+"representing a decimal fixed point type with 18 decimals and a minimal "
+"library to do arithmetic operations on the type."
+msgstr ""
+
+#: ../../types/value-types.rst:711 fc3bdd2644884a99befd296b76da3fc3
+msgid ""
+"Notice how ``UFixed256x18.wrap`` and ``FixedMath.toUFixed256x18`` have "
+"the same signature but perform two very different operations: The "
+"``UFixed256x18.wrap`` function returns a ``UFixed256x18`` that has the "
+"same data representation as the input, whereas ``toUFixed256x18`` returns"
+" a ``UFixed256x18`` that has the same numerical value."
+msgstr ""
+
+#: ../../types/value-types.rst:721 d9a001a38d7f4cae8b5ad59afc4e7f6a
+msgid "Function Types"
+msgstr ""
+
+#: ../../types/value-types.rst:723 647f893e304641e6911e29485f148ef1
+msgid ""
+"Function types are the types of functions. Variables of function type can"
+" be assigned from functions and function parameters of function type can "
+"be used to pass functions to and return functions from function calls. "
+"Function types come in two flavours - *internal* and *external* "
+"functions:"
+msgstr ""
+
+#: ../../types/value-types.rst:728 808c389a988b46abadb5a51e51ac7ed5
+msgid ""
+"Internal functions can only be called inside the current contract (more "
+"specifically, inside the current code unit, which also includes internal "
+"library functions and inherited functions) because they cannot be "
+"executed outside of the context of the current contract. Calling an "
+"internal function is realized by jumping to its entry label, just like "
+"when calling a function of the current contract internally."
+msgstr ""
+
+#: ../../types/value-types.rst:735 ebbc222a6b524dd39f19bd229a847301
+msgid ""
+"External functions consist of an address and a function signature and "
+"they can be passed via and returned from external function calls."
+msgstr ""
+
+#: ../../types/value-types.rst:738 63bef35114ce4c2c82bbfe8df89995a3
+msgid "Function types are notated as follows:"
+msgstr ""
+
+#: ../../types/value-types.rst:745 898c04f4ef6e4de885011ffc4a27bc5e
+msgid ""
+"In contrast to the parameter types, the return types cannot be empty - if"
+" the function type should not return anything, the whole ``returns "
+"(<return types>)`` part has to be omitted."
+msgstr ""
+
+#: ../../types/value-types.rst:749 e1c9d29adccf404cb1bbc1d4415ae7e9
+msgid ""
+"By default, function types are internal, so the ``internal`` keyword can "
+"be omitted. Note that this only applies to function types. Visibility has"
+" to be specified explicitly for functions defined in contracts, they do "
+"not have a default."
+msgstr ""
+
+#: ../../types/value-types.rst:754 d0fed28556044eddb85080fa19b44be2
+msgid "Conversions:"
+msgstr ""
+
+#: ../../types/value-types.rst:756 2f17681cfc7e47ed9fdc8a57e3b1fb3b
+msgid ""
+"A function type ``A`` is implicitly convertible to a function type ``B`` "
+"if and only if their parameter types are identical, their return types "
+"are identical, their internal/external property is identical and the "
+"state mutability of ``A`` is more restrictive than the state mutability "
+"of ``B``. In particular:"
+msgstr ""
+
+#: ../../types/value-types.rst:761 5220473625cb43ac8214ecc8d06bdaf4
+msgid ""
+"``pure`` functions can be converted to ``view`` and ``non-payable`` "
+"functions"
+msgstr ""
+
+#: ../../types/value-types.rst:762 5c5f5cbc46fd49e7836bd31549937a9c
+msgid "``view`` functions can be converted to ``non-payable`` functions"
+msgstr ""
+
+#: ../../types/value-types.rst:763 a05d0edd1330430aa6faab8f84c905c5
+msgid "``payable`` functions can be converted to ``non-payable`` functions"
+msgstr ""
+
+#: ../../types/value-types.rst:765 3d26c2b6b377419c80e528ae0819dec7
+msgid "No other conversions between function types are possible."
+msgstr ""
+
+#: ../../types/value-types.rst:767 2756644c9ca84126b8b8776422c9be91
+msgid ""
+"The rule about ``payable`` and ``non-payable`` might be a little "
+"confusing, but in essence, if a function is ``payable``, this means that "
+"it also accepts a payment of zero Ether, so it also is ``non-payable``. "
+"On the other hand, a ``non-payable`` function will reject Ether sent to "
+"it, so ``non-payable`` functions cannot be converted to ``payable`` "
+"functions. To clarify, rejecting ether is more restrictive than not "
+"rejecting ether. This means you can override a payable function with a "
+"non-payable but not the other way around."
+msgstr ""
+
+#: ../../types/value-types.rst:776 f56bbdbedb8540f8b19f9d5feca178c7
+msgid ""
+"Additionally, When you define a ``non-payable`` function pointer, the "
+"compiler does not enforce that the pointed function will actually reject "
+"ether. Instead, it enforces that the function pointer is never used to "
+"send ether. Which makes it possible to assign a ``payable`` function "
+"pointer to a ``non-payable`` function pointer ensuring both types behave "
+"the same way, i.e, both cannot be used to send ether."
+msgstr ""
+
+#: ../../types/value-types.rst:783 16c6979ea85f4c8398cf757b33cfb243
+msgid ""
+"If a function type variable is not initialised, calling it results in a "
+":ref:`Panic error<assert-and-require>`. The same happens if you call a "
+"function after using ``delete`` on it."
+msgstr ""
+
+#: ../../types/value-types.rst:787 34a032fdf5c94b8da8ad6fe0d6cb18ac
+msgid ""
+"If external function types are used outside of the context of Solidity, "
+"they are treated as the ``function`` type, which encodes the address "
+"followed by the function identifier together in a single ``bytes24`` "
+"type."
+msgstr ""
+
+#: ../../types/value-types.rst:791 1b8b39fe79654a09bc779aebd508e137
+msgid ""
+"Note that public functions of the current contract can be used both as an"
+" internal and as an external function. To use ``f`` as an internal "
+"function, just use ``f``, if you want to use its external form, use "
+"``this.f``."
+msgstr ""
+
+#: ../../types/value-types.rst:795 97db048beaf64620a469ffc2969eb582
+msgid ""
+"A function of an internal type can be assigned to a variable of an "
+"internal function type regardless of where it is defined. This includes "
+"private, internal and public functions of both contracts and libraries as"
+" well as free functions. External function types, on the other hand, are "
+"only compatible with public and external contract functions."
+msgstr ""
+
+#: ../../types/value-types.rst:803 f12a4bac9b59466c8aee8e143392b836
+msgid ""
+"External functions with ``calldata`` parameters are incompatible with "
+"external function types with ``calldata`` parameters. They are compatible"
+" with the corresponding types with ``memory`` parameters instead. For "
+"example, there is no function that can be pointed at by a value of type "
+"``function (string calldata) external`` while ``function (string memory) "
+"external`` can point at both ``function f(string memory) external {}`` "
+"and ``function g(string calldata) external {}``. This is because for both"
+" locations the arguments are passed to the function in the same way. The "
+"caller cannot pass its calldata directly to an external function and "
+"always ABI-encodes the arguments into memory. Marking the parameters as "
+"``calldata`` only affects the implementation of the external function and"
+" is meaningless in a function pointer on the caller's side."
+msgstr ""
+
+#: ../../types/value-types.rst:813 6613f669e239471a8e5db5d15fcecba9
+msgid ""
+"Libraries are excluded because they require a ``delegatecall`` and use "
+":ref:`a different ABI convention for their selectors <library-"
+"selectors>`. Functions declared in interfaces do not have definitions so "
+"pointing at them does not make sense either."
+msgstr ""
+
+#: ../../types/value-types.rst:819 65f0e9cb93fb45249e292fb1641386b5
+msgid "External (or public) functions have the following members:"
+msgstr ""
+
+#: ../../types/value-types.rst:821 8fa5521b5c1d47e180c37f81f79925ce
+msgid "``.address`` returns the address of the contract of the function."
+msgstr ""
+
+#: ../../types/value-types.rst:822 c0623686f96d4c59b727a8dad45361af
+msgid ""
+"``.selector`` returns the :ref:`ABI function selector "
+"<abi_function_selector>`"
+msgstr ""
+
+#: ../../types/value-types.rst:825 b3a4eb241b1d4b4ba9cb5cefa24db6d7
+msgid ""
+"External (or public) functions used to have the additional members "
+"``.gas(uint)`` and ``.value(uint)``. These were deprecated in Solidity "
+"0.6.2 and removed in Solidity 0.7.0. Instead use ``{gas: ...}`` and "
+"``{value: ...}`` to specify the amount of gas or the amount of wei sent "
+"to a function, respectively. See :ref:`External Function Calls <external-"
+"function-calls>` for more information."
+msgstr ""
+
+#: ../../types/value-types.rst:832 9282622e84404e61bde7ded5b963a3c6
+msgid "Example that shows how to use the members:"
+msgstr ""
+
+#: ../../types/value-types.rst:850 162be0cc742941d29d4e7ee0a02da7c8
+msgid "Example that shows how to use internal function types:"
+msgstr ""
+
+#: ../../types/value-types.rst:910 90fbce681f884e129336e29ae93ea86d
+msgid "Another example that uses external function types:"
+msgstr ""
+
+#: ../../types/value-types.rst:957 dd13420ac6eb4614ae3cdf933f9a0143
+msgid "Lambda or inline functions are planned but not yet supported."
+msgstr ""
+
+#: ../../types/reference-types.rst:6 dcbe7eda976046de825832b62398a5a9
+msgid "Reference Types"
+msgstr ""
+
+#: ../../types/reference-types.rst:8 73fd16c4159c4062a069582fea99fb71
+msgid ""
+"Values of reference type can be modified through multiple different "
+"names. Contrast this with value types where you get an independent copy "
+"whenever a variable of value type is used. Because of that, reference "
+"types have to be handled more carefully than value types. Currently, "
+"reference types comprise structs, arrays and mappings. If you use a "
+"reference type, you always have to explicitly provide the data area where"
+" the type is stored: ``memory`` (whose lifetime is limited to an external"
+" function call), ``storage`` (the location where the state variables are "
+"stored, where the lifetime is limited to the lifetime of a contract) or "
+"``calldata`` (special data location that contains the function "
+"arguments)."
+msgstr ""
+
+#: ../../types/reference-types.rst:18 084359fb01c949b385027458a6f90c4f
+msgid ""
+"An assignment or type conversion that changes the data location will "
+"always incur an automatic copy operation, while assignments inside the "
+"same data location only copy in some cases for storage types."
+msgstr ""
+
+#: ../../types/reference-types.rst:24 d1d5e4fd515e4f23b5402b1f374c7d4c
+msgid "Data location"
+msgstr ""
+
+#: ../../types/reference-types.rst:26 3858b92f70b54e5490028a6ae543fc59
+msgid ""
+"Every reference type has an additional annotation, the \"data location\","
+" about where it is stored. There are three data locations: ``memory``, "
+"``storage`` and ``calldata``. Calldata is a non-modifiable, non-"
+"persistent area where function arguments are stored, and behaves mostly "
+"like memory."
+msgstr ""
+
+#: ../../types/reference-types.rst:32 79d3a5f52cd847339924deef7b5cc9ac
+msgid ""
+"If you can, try to use ``calldata`` as data location because it will "
+"avoid copies and also makes sure that the data cannot be modified. Arrays"
+" and structs with ``calldata`` data location can also be returned from "
+"functions, but it is not possible to allocate such types."
+msgstr ""
+
+#: ../../types/reference-types.rst:38 b00b8092d09741b2ae8d078bdb3ab875
+msgid ""
+"Prior to version 0.6.9 data location for reference-type arguments was "
+"limited to ``calldata`` in external functions, ``memory`` in public "
+"functions and either ``memory`` or ``storage`` in internal and private "
+"ones. Now ``memory`` and ``calldata`` are allowed in all functions "
+"regardless of their visibility."
+msgstr ""
+
+#: ../../types/reference-types.rst:44 895e5e3e97dd4dd692b3318c0f73c55c
+msgid ""
+"Prior to version 0.5.0 the data location could be omitted, and would "
+"default to different locations depending on the kind of variable, "
+"function type, etc., but all complex types must now give an explicit data"
+" location."
+msgstr ""
+
+#: ../../types/reference-types.rst:51 6405f417f5d64755ac879debd5e1c191
+msgid "Data location and assignment behaviour"
+msgstr ""
+
+#: ../../types/reference-types.rst:53 86f856e7a04e483c8520a1e10df340e4
+msgid ""
+"Data locations are not only relevant for persistency of data, but also "
+"for the semantics of assignments:"
+msgstr ""
+
+#: ../../types/reference-types.rst:55 c133a3d42b9840099852721dcd3d5698
+msgid ""
+"Assignments between ``storage`` and ``memory`` (or from ``calldata``) "
+"always create an independent copy."
+msgstr ""
+
+#: ../../types/reference-types.rst:57 34f660bf15324220adbd871395d6a484
+msgid ""
+"Assignments from ``memory`` to ``memory`` only create references. This "
+"means that changes to one memory variable are also visible in all other "
+"memory variables that refer to the same data."
+msgstr ""
+
+#: ../../types/reference-types.rst:60 d7205166c169445791b3cd8123b24bb6
+msgid ""
+"Assignments from ``storage`` to a **local** storage variable also only "
+"assign a reference."
+msgstr ""
+
+#: ../../types/reference-types.rst:62 5a0d6328c7bc470c960db2f95dcb8abf
+msgid ""
+"All other assignments to ``storage`` always copy. Examples for this case "
+"are assignments to state variables or to members of local variables of "
+"storage struct type, even if the local variable itself is just a "
+"reference."
+msgstr ""
+
+#: ../../types/reference-types.rst:106 fd0fe6b1c0c8427ea729bd3fa7a55542
+msgid "Arrays"
+msgstr ""
+
+#: ../../types/reference-types.rst:108 b317b2a1be294810977ae0a93b5d4f66
+msgid ""
+"Arrays can have a compile-time fixed size, or they can have a dynamic "
+"size."
+msgstr ""
+
+#: ../../types/reference-types.rst:110 358708f38db84c518d94e3df6d17bc83
+msgid ""
+"The type of an array of fixed size ``k`` and element type ``T`` is "
+"written as ``T[k]``, and an array of dynamic size as ``T[]``."
+msgstr ""
+
+#: ../../types/reference-types.rst:113 14d1412929b3445dba624807867fd4ae
+msgid ""
+"For example, an array of 5 dynamic arrays of ``uint`` is written as "
+"``uint[][5]``. The notation is reversed compared to some other languages."
+" In Solidity, ``X[3]`` is always an array containing three elements of "
+"type ``X``, even if ``X`` is itself an array. This is not the case in "
+"other languages such as C."
+msgstr ""
+
+#: ../../types/reference-types.rst:119 e663685677174be0a78709835968dc24
+msgid ""
+"Indices are zero-based, and access is in the opposite direction of the "
+"declaration."
+msgstr ""
+
+#: ../../types/reference-types.rst:122 9835cf5bbfc44014b813b5dcc123d179
+msgid ""
+"For example, if you have a variable ``uint[][5] memory x``, you access "
+"the seventh ``uint`` in the third dynamic array using ``x[2][6]``, and to"
+" access the third dynamic array, use ``x[2]``. Again, if you have an "
+"array ``T[5] a`` for a type ``T`` that can also be an array, then "
+"``a[2]`` always has type ``T``."
+msgstr ""
+
+#: ../../types/reference-types.rst:128 2dd8e4c333e5487386b4940ee4f47d3a
+msgid ""
+"Array elements can be of any type, including mapping or struct. The "
+"general restrictions for types apply, in that mappings can only be stored"
+" in the ``storage`` data location and publicly-visible functions need "
+"parameters that are :ref:`ABI types <ABI>`."
+msgstr ""
+
+#: ../../types/reference-types.rst:132 dff27777880549179ab1d35d7a8c86cb
+msgid ""
+"It is possible to mark state variable arrays ``public`` and have Solidity"
+" create a :ref:`getter <visibility-and-getters>`. The numeric index "
+"becomes a required parameter for the getter."
+msgstr ""
+
+#: ../../types/reference-types.rst:135 bef43464bfe14085a85ddb93bba4d8d3
+msgid ""
+"Accessing an array past its end causes a failing assertion. Methods "
+"``.push()`` and ``.push(value)`` can be used to append a new element at "
+"the end of a dynamically-sized array, where ``.push()`` appends a zero-"
+"initialized element and returns a reference to it."
+msgstr ""
+
+#: ../../types/reference-types.rst:140 9dfc78e760e84d57a7e13b25527f81a4
+msgid ""
+"Dynamically-sized arrays can only be resized in storage. In memory, such "
+"arrays can be of arbitrary size but the size cannot be changed once an "
+"array is allocated."
+msgstr ""
+
+#: ../../types/reference-types.rst:150 c7ac7e361c464688b9204653a9418d96
+msgid "``bytes`` and ``string`` as Arrays"
+msgstr ""
+
+#: ../../types/reference-types.rst:152 5f7dc9336dc743aeabb8246b8cc84443
+msgid ""
+"Variables of type ``bytes`` and ``string`` are special arrays. The "
+"``bytes`` type is similar to ``bytes1[]``, but it is packed tightly in "
+"calldata and memory. ``string`` is equal to ``bytes`` but does not allow "
+"length or index access."
+msgstr ""
+
+#: ../../types/reference-types.rst:156 c3dff607bd604ff0a64e2ea4f9ce6b4a
+msgid ""
+"Solidity does not have string manipulation functions, but there are "
+"third-party string libraries. You can also compare two strings by their "
+"keccak256-hash using ``keccak256(abi.encodePacked(s1)) == "
+"keccak256(abi.encodePacked(s2))`` and concatenate two strings using "
+"``string.concat(s1, s2)``."
+msgstr ""
+
+#: ../../types/reference-types.rst:161 43e61678c6c84f26be3478089f5d0d0a
+msgid ""
+"You should use ``bytes`` over ``bytes1[]`` because it is cheaper, since "
+"using ``bytes1[]`` in ``memory`` adds 31 padding bytes between the "
+"elements. Note that in ``storage``, the padding is absent due to tight "
+"packing, see :ref:`bytes and string <bytes-and-string>`. As a general "
+"rule, use ``bytes`` for arbitrary-length raw byte data and ``string`` for"
+" arbitrary-length string (UTF-8) data. If you can limit the length to a "
+"certain number of bytes, always use one of the value types ``bytes1`` to "
+"``bytes32`` because they are much cheaper."
+msgstr ""
+
+#: ../../types/reference-types.rst:169 54a2738ed88c4285ab651bf715fc857b
+msgid ""
+"If you want to access the byte-representation of a string ``s``, use "
+"``bytes(s).length`` / ``bytes(s)[7] = 'x';``. Keep in mind that you are "
+"accessing the low-level bytes of the UTF-8 representation, and not the "
+"individual characters."
+msgstr ""
+
+#: ../../types/reference-types.rst:180 1640826a60314c64bd201332c1e4c84d
+msgid "The functions ``bytes.concat`` and ``string.concat``"
+msgstr ""
+
+#: ../../types/reference-types.rst:182 29a1dbd3ccff4cf49c5f52c83d0c9511
+msgid ""
+"You can concatenate an arbitrary number of ``string`` values using "
+"``string.concat``. The function returns a single ``string memory`` array "
+"that contains the contents of the arguments without padding. If you want "
+"to use parameters of other types that are not implicitly convertible to "
+"``string``, you need to convert them to ``string`` first."
+msgstr ""
+
+#: ../../types/reference-types.rst:186 28fd8f9dfb3c42a391a3c3acb40e9673
+msgid ""
+"Analogously, the ``bytes.concat`` function can concatenate an arbitrary "
+"number of ``bytes`` or ``bytes1 ... bytes32`` values. The function "
+"returns a single ``bytes memory`` array that contains the contents of the"
+" arguments without padding. If you want to use string parameters or other"
+" types that are not implicitly convertible to ``bytes``, you need to "
+"convert them to ``bytes`` or ``bytes1``/.../``bytes32`` first."
+msgstr ""
+
+#: ../../types/reference-types.rst:207 673b92436d564d099aa2a74ad0a8aede
+msgid ""
+"If you call ``string.concat`` or ``bytes.concat`` without arguments they "
+"return an empty array."
+msgstr ""
+
+#: ../../types/reference-types.rst:212 1a023307faa9458cb7353ec23561af11
+msgid "Allocating Memory Arrays"
+msgstr ""
+
+#: ../../types/reference-types.rst:214 537fda459d3c45f4b3276186a28dec85
+msgid ""
+"Memory arrays with dynamic length can be created using the ``new`` "
+"operator. As opposed to storage arrays, it is **not** possible to resize "
+"memory arrays (e.g. the ``.push`` member functions are not available). "
+"You either have to calculate the required size in advance or create a new"
+" memory array and copy every element."
+msgstr ""
+
+#: ../../types/reference-types.rst:220 7a8d433910434397be6be8124169b887
+msgid ""
+"As all variables in Solidity, the elements of newly allocated arrays are "
+"always initialized with the :ref:`default value<default-value>`."
+msgstr ""
+
+#: ../../types/reference-types.rst:241 4c30d7d41ef0437f9052a7b0f8ba0bde
+msgid "Array Literals"
+msgstr ""
+
+#: ../../types/reference-types.rst:243 1ccbb476af1c4ba9b5586bba04f7d529
+msgid ""
+"An array literal is a comma-separated list of one or more expressions, "
+"enclosed in square brackets (``[...]``). For example ``[1, a, f(3)]``. "
+"The type of the array literal is determined as follows:"
+msgstr ""
+
+#: ../../types/reference-types.rst:247 391ab9ae751847f5900279d361b97cac
+msgid ""
+"It is always a statically-sized memory array whose length is the number "
+"of expressions."
+msgstr ""
+
+#: ../../types/reference-types.rst:250 461ecd5e12c748e6bf98cff09de9bea0
+msgid ""
+"The base type of the array is the type of the first expression on the "
+"list such that all other expressions can be implicitly converted to it. "
+"It is a type error if this is not possible."
+msgstr ""
+
+#: ../../types/reference-types.rst:254 e97ed98488c2440fa34aa8936bd6d2a2
+msgid ""
+"It is not enough that there is a type all the elements can be converted "
+"to. One of the elements has to be of that type."
+msgstr ""
+
+#: ../../types/reference-types.rst:257 681f411b70d84c63aac17dea6caa7a9e
+msgid ""
+"In the example below, the type of ``[1, 2, 3]`` is ``uint8[3] memory``, "
+"because the type of each of these constants is ``uint8``. If you want the"
+" result to be a ``uint[3] memory`` type, you need to convert the first "
+"element to ``uint``."
+msgstr ""
+
+#: ../../types/reference-types.rst:276 2c980e0c506b4cabbe12d41c6efcb24c
+msgid ""
+"The array literal ``[1, -1]`` is invalid because the type of the first "
+"expression is ``uint8`` while the type of the second is ``int8`` and they"
+" cannot be implicitly converted to each other. To make it work, you can "
+"use ``[int8(1), -1]``, for example."
+msgstr ""
+
+#: ../../types/reference-types.rst:280 49e5f1b6353f4370b7a36b35296f330a
+msgid ""
+"Since fixed-size memory arrays of different type cannot be converted into"
+" each other (even if the base types can), you always have to specify a "
+"common base type explicitly if you want to use two-dimensional array "
+"literals:"
+msgstr ""
+
+#: ../../types/reference-types.rst:298 ed0aa9c4ea05495583899eaabf3e51b4
+msgid ""
+"Fixed size memory arrays cannot be assigned to dynamically-sized memory "
+"arrays, i.e. the following is not possible:"
+msgstr ""
+
+#: ../../types/reference-types.rst:315 a6816b41b3fe4f85bb25c989e44bc523
+msgid ""
+"It is planned to remove this restriction in the future, but it creates "
+"some complications because of how arrays are passed in the ABI."
+msgstr ""
+
+#: ../../types/reference-types.rst:318 0487420924f342079e779945777c8aee
+msgid ""
+"If you want to initialize dynamically-sized arrays, you have to assign "
+"the individual elements:"
+msgstr ""
+
+#: ../../types/reference-types.rst:340 96bb11acf729404a8a9e3a51af10c6d5
+msgid "Array Members"
+msgstr ""
+
+#: ../../types/reference-types.rst:344 26f961a1fd454ea3bb6a3a7cc688f1e6
+msgid "**length**:"
+msgstr ""
+
+#: ../../types/reference-types.rst:343 41c704385ff745e29d1c9c579590a197
+msgid ""
+"Arrays have a ``length`` member that contains their number of elements. "
+"The length of memory arrays is fixed (but dynamic, i.e. it can depend on "
+"runtime parameters) once they are created."
+msgstr ""
+
+#: ../../types/reference-types.rst:349 dd3be7a9c77a42859395c3a3fe43a34e
+msgid "**push()**:"
+msgstr ""
+
+#: ../../types/reference-types.rst:347 a8b64c4585b94470b718b8dea5e1c72e
+msgid ""
+"Dynamic storage arrays and ``bytes`` (not ``string``) have a member "
+"function called ``push()`` that you can use to append a zero-initialised "
+"element at the end of the array. It returns a reference to the element, "
+"so that it can be used like ``x.push().t = 2`` or ``x.push() = b``."
+msgstr ""
+
+#: ../../types/reference-types.rst:353 71ede7f9b8e044fb96d4e63352a03195
+msgid "**push(x)**:"
+msgstr ""
+
+#: ../../types/reference-types.rst:352 471d0bbece9645be8aa1a918bef107a3
+msgid ""
+"Dynamic storage arrays and ``bytes`` (not ``string``) have a member "
+"function called ``push(x)`` that you can use to append a given element at"
+" the end of the array. The function returns nothing."
+msgstr ""
+
+#: ../../types/reference-types.rst:358 2b967dd53a624416b5c6f1bc3f72dc3a
+msgid "**pop()**:"
+msgstr ""
+
+#: ../../types/reference-types.rst:356 0a0b3353acbc4ee4a7987a4d4f8be2fc
+msgid ""
+"Dynamic storage arrays and ``bytes`` (not ``string``) have a member "
+"function called ``pop()`` that you can use to remove an element from the "
+"end of the array. This also implicitly calls :ref:`delete<delete>` on the"
+" removed element. The function returns nothing."
+msgstr ""
+
+#: ../../types/reference-types.rst:361 82e5e60ed4db42fdb011f0565f5f44fd
+msgid ""
+"Increasing the length of a storage array by calling ``push()`` has "
+"constant gas costs because storage is zero-initialised, while decreasing "
+"the length by calling ``pop()`` has a cost that depends on the \"size\" "
+"of the element being removed. If that element is an array, it can be very"
+" costly, because it includes explicitly clearing the removed elements "
+"similar to calling :ref:`delete<delete>` on them."
+msgstr ""
+
+#: ../../types/reference-types.rst:370 89f4c6ce60b44c8189c0ec1ca272e005
+msgid ""
+"To use arrays of arrays in external (instead of public) functions, you "
+"need to activate ABI coder v2."
+msgstr ""
+
+#: ../../types/reference-types.rst:374 973c212ce0864401af3cb735a4d6bfa1
+msgid ""
+"In EVM versions before Byzantium, it was not possible to access dynamic "
+"arrays return from function calls. If you call functions that return "
+"dynamic arrays, make sure to use an EVM that is set to Byzantium mode."
+msgstr ""
+
+#: ../../types/reference-types.rst:482 0fe278ab2dd44c4fb084e64fa03130cb
+msgid "Dangling References to Storage Array Elements"
+msgstr ""
+
+#: ../../types/reference-types.rst:484 32edb6abdea14e18b514d39d8e4a892f
+msgid ""
+"When working with storage arrays, you need to take care to avoid dangling"
+" references. A dangling reference is a reference that points to something"
+" that no longer exists or has been moved without updating the reference. "
+"A dangling reference can for example occur, if you store a reference to "
+"an array element in a local variable and then ``.pop()`` from the "
+"containing array:"
+msgstr ""
+
+#: ../../types/reference-types.rst:511 e20e6fe24d8b4360a0c5558465b074a4
+msgid ""
+"The write in ``ptr.push(0x42)`` will **not** revert, despite the fact "
+"that ``ptr`` no longer refers to a valid element of ``s``. Since the "
+"compiler assumes that unused storage is always zeroed, a subsequent "
+"``s.push()`` will not explicitly write zeroes to storage, so the last "
+"element of ``s`` after that ``push()`` will have length ``1`` and contain"
+" ``0x42`` as its first element."
+msgstr ""
+
+#: ../../types/reference-types.rst:517 3581ebde809e430d8f41d1706000c2ce
+msgid ""
+"Note that Solidity does not allow to declare references to value types in"
+" storage. These kinds of explicit dangling references are restricted to "
+"nested reference types. However, dangling references can also occur "
+"temporarily when using complex expressions in tuple assignments:"
+msgstr ""
+
+#: ../../types/reference-types.rst:554 5dafcc5fbf944210b5eee241996c18ff
+msgid ""
+"It is always safer to only assign to storage once per statement and to "
+"avoid complex expressions on the left-hand-side of an assignment."
+msgstr ""
+
+#: ../../types/reference-types.rst:557 5dd760a3a1be447791b1590628bebee3
+msgid ""
+"You need to take particular care when dealing with references to elements"
+" of ``bytes`` arrays, since a ``.push()`` on a bytes array may switch "
+":ref:`from short to long layout in storage<bytes-and-string>`."
+msgstr ""
+
+#: ../../types/reference-types.rst:576 f88da4ccf37d440f86470f07b924790c
+msgid ""
+"Here, when the first ``x.push()`` is evaluated, ``x`` is still stored in "
+"short layout, thereby ``x.push()`` returns a reference to an element in "
+"the first storage slot of ``x``. However, the second ``x.push()`` "
+"switches the bytes array to large layout. Now the element that "
+"``x.push()`` referred to is in the data area of the array while the "
+"reference still points at its original location, which is now a part of "
+"the length field and the assignment will effectively garble the length of"
+" ``x``. To be safe, only enlarge bytes arrays by at most one element "
+"during a single assignment and do not simultaneously index-access the "
+"array in the same statement."
+msgstr ""
+
+#: ../../types/reference-types.rst:585 6e93be84d2114277801696475a9a5cc4
+msgid ""
+"While the above describes the behaviour of dangling storage references in"
+" the current version of the compiler, any code with dangling references "
+"should be considered to have *undefined behaviour*. In particular, this "
+"means that any future version of the compiler may change the behaviour of"
+" code that involves dangling references."
+msgstr ""
+
+#: ../../types/reference-types.rst:591 16bf29572b26422289c94455b052def8
+msgid "Be sure to avoid dangling references in your code!"
+msgstr ""
+
+#: ../../types/reference-types.rst:598 7e60b7f5b67643b7bef8eac973fb4e04
+msgid "Array Slices"
+msgstr ""
+
+#: ../../types/reference-types.rst:601 edd6c38245b141dfb4f8418b54749cb2
+msgid ""
+"Array slices are a view on a contiguous portion of an array. They are "
+"written as ``x[start:end]``, where ``start`` and ``end`` are expressions "
+"resulting in a uint256 type (or implicitly convertible to it). The first "
+"element of the slice is ``x[start]`` and the last element is ``x[end - "
+"1]``."
+msgstr ""
+
+#: ../../types/reference-types.rst:607 c9245df26f534da0a4dce714fd0fa69d
+msgid ""
+"If ``start`` is greater than ``end`` or if ``end`` is greater than the "
+"length of the array, an exception is thrown."
+msgstr ""
+
+#: ../../types/reference-types.rst:610 f2e6a2e9689c480398223b3ba0c9b10d
+msgid ""
+"Both ``start`` and ``end`` are optional: ``start`` defaults to ``0`` and "
+"``end`` defaults to the length of the array."
+msgstr ""
+
+#: ../../types/reference-types.rst:613 7c9c415865e3450da0944b69b5e3ba83
+msgid ""
+"Array slices do not have any members. They are implicitly convertible to "
+"arrays of their underlying type and support index access. Index access is"
+" not absolute in the underlying array, but relative to the start of the "
+"slice."
+msgstr ""
+
+#: ../../types/reference-types.rst:619 e0b7a952792041bd9c8d0ee3e8c942b1
+msgid ""
+"Array slices do not have a type name which means no variable can have an "
+"array slices as type, they only exist in intermediate expressions."
+msgstr ""
+
+#: ../../types/reference-types.rst:624 be4ad25d7a08431e9669440b848593cb
+msgid "As of now, array slices are only implemented for calldata arrays."
+msgstr ""
+
+#: ../../types/reference-types.rst:626 2973cb0479d947b2a2e662bf389c1d8e
+msgid ""
+"Array slices are useful to ABI-decode secondary data passed in function "
+"parameters:"
+msgstr ""
+
+#: ../../types/reference-types.rst:662 7d79e49023384c76af419a10fa8cb7ec
+msgid "Structs"
+msgstr ""
+
+#: ../../types/reference-types.rst:664 68baffd9d2a14e4b92f24ea2ab9f6c75
+msgid ""
+"Solidity provides a way to define new types in the form of structs, which"
+" is shown in the following example:"
+msgstr ""
+
+#: ../../types/reference-types.rst:724 d55ff9dd072e44278b4b74d3f7dfbf07
+msgid ""
+"The contract does not provide the full functionality of a crowdfunding "
+"contract, but it contains the basic concepts necessary to understand "
+"structs. Struct types can be used inside mappings and arrays and they can"
+" themselves contain mappings and arrays."
+msgstr ""
+
+#: ../../types/reference-types.rst:729 5db1e2e370454e58acc8248516f6114e
+msgid ""
+"It is not possible for a struct to contain a member of its own type, "
+"although the struct itself can be the value type of a mapping member or "
+"it can contain a dynamically-sized array of its type. This restriction is"
+" necessary, as the size of the struct has to be finite."
+msgstr ""
+
+#: ../../types/reference-types.rst:734 c45ee7547a334ad8a1fc1c97272a0806
+msgid ""
+"Note how in all the functions, a struct type is assigned to a local "
+"variable with data location ``storage``. This does not copy the struct "
+"but only stores a reference so that assignments to members of the local "
+"variable actually write to the state."
+msgstr ""
+
+#: ../../types/reference-types.rst:739 1641e7e5897a4aa9a352325ae16f7779
+msgid ""
+"Of course, you can also directly access the members of the struct without"
+" assigning it to a local variable, as in ``campaigns[campaignID].amount ="
+" 0``."
+msgstr ""
+
+#: ../../types/reference-types.rst:744 8b181b21a8d14f4798cb7e8f3a03e413
+msgid ""
+"Until Solidity 0.7.0, memory-structs containing members of storage-only "
+"types (e.g. mappings) were allowed and assignments like "
+"``campaigns[campaignID] = Campaign(beneficiary, goal, 0, 0)`` in the "
+"example above would work and just silently skip those members."
+msgstr ""
+
+#: ../../types/mapping-types.rst:5 58cba897200c480d8df4693ab0d09f57
+msgid "Mapping Types"
+msgstr ""
+
+#: ../../types/mapping-types.rst:7 7b403f098ad14309a2b707e11a743508
+msgid ""
+"Mapping types use the syntax ``mapping(KeyType KeyName? => ValueType "
+"ValueName?)`` and variables of mapping type are declared using the syntax"
+" ``mapping(KeyType KeyName? => ValueType ValueName?) VariableName``. The "
+"``KeyType`` can be any built-in value type, ``bytes``, ``string``, or any"
+" contract or enum type. Other user-defined or complex types, such as "
+"mappings, structs or array types are not allowed. ``ValueType`` can be "
+"any type, including mappings, arrays and structs. ``KeyName`` and "
+"``ValueName`` are optional (so ``mapping(KeyType => ValueType)`` works as"
+" well) and can be any valid identifier that is not a type."
+msgstr ""
+
+#: ../../types/mapping-types.rst:15 a000cec38247455b91ee74a6de183229
+msgid ""
+"You can think of mappings as `hash tables "
+"<https://en.wikipedia.org/wiki/Hash_table>`_, which are virtually "
+"initialised such that every possible key exists and is mapped to a value "
+"whose byte-representation is all zeros, a type's :ref:`default value "
+"<default-value>`. The similarity ends there, the key data is not stored "
+"in a mapping, only its ``keccak256`` hash is used to look up the value."
+msgstr ""
+
+#: ../../types/mapping-types.rst:21 33b3c2a8ca284f5da746d62a9ec7191e
+msgid ""
+"Because of this, mappings do not have a length or a concept of a key or "
+"value being set, and therefore cannot be erased without extra information"
+" regarding the assigned keys (see :ref:`clearing-mappings`)."
+msgstr ""
+
+#: ../../types/mapping-types.rst:25 a22f4a22504d42c7b4957ff713a57fbd
+msgid ""
+"Mappings can only have a data location of ``storage`` and thus are "
+"allowed for state variables, as storage reference types in functions, or "
+"as parameters for library functions. They cannot be used as parameters or"
+" return parameters of contract functions that are publicly visible. These"
+" restrictions are also true for arrays and structs that contain mappings."
+msgstr ""
+
+#: ../../types/mapping-types.rst:32 850793dcea8f42adb2a99780a152f7b8
+msgid ""
+"You can mark state variables of mapping type as ``public`` and Solidity "
+"creates a :ref:`getter <visibility-and-getters>` for you. The ``KeyType``"
+" becomes a parameter with name ``KeyName`` (if specified) for the getter."
+" If ``ValueType`` is a value type or a struct, the getter returns "
+"``ValueType`` with name ``ValueName`` (if specified). If ``ValueType`` is"
+" an array or a mapping, the getter has one parameter for each "
+"``KeyType``, recursively."
+msgstr ""
+
+#: ../../types/mapping-types.rst:40 3f187f79715648dc9b84e6029d78af73
+msgid ""
+"In the example below, the ``MappingExample`` contract defines a public "
+"``balances`` mapping, with the key type an ``address``, and a value type "
+"a ``uint``, mapping an Ethereum address to an unsigned integer value. As "
+"``uint`` is a value type, the getter returns a value that matches the "
+"type, which you can see in the ``MappingUser`` contract that returns the "
+"value at the specified address."
+msgstr ""
+
+#: ../../types/mapping-types.rst:67 fd25e4ab3f2040619f96dc95496c942c
+msgid ""
+"The example below is a simplified version of an `ERC20 token "
+"<https://github.com/OpenZeppelin/openzeppelin-"
+"contracts/blob/master/contracts/token/ERC20/ERC20.sol>`_. ``_allowances``"
+" is an example of a mapping type inside another mapping type."
+msgstr ""
+
+#: ../../types/mapping-types.rst:71 f6df621679ff40818d4c50278129a24e
+msgid ""
+"In the example below, the optional ``KeyName`` and ``ValueName`` are "
+"provided for the mapping. It does not affect any contract functionality "
+"or bytecode, it only sets the ``name`` field for the inputs and outputs "
+"in the ABI for the mapping's getter."
+msgstr ""
+
+#: ../../types/mapping-types.rst:89 21abbadec54245d2a3535593e9cab25d
+msgid ""
+"The example below uses ``_allowances`` to record the amount someone else "
+"is allowed to withdraw from your account."
+msgstr ""
+
+#: ../../types/mapping-types.rst:139 cac79dff895444f4902f79f1f48fa5fc
+msgid "Iterable Mappings"
+msgstr ""
+
+#: ../../types/mapping-types.rst:141 df6c8fb795a2400f82ffc3d7fd51910a
+msgid ""
+"You cannot iterate over mappings, i.e. you cannot enumerate their keys. "
+"It is possible, though, to implement a data structure on top of them and "
+"iterate over that. For example, the code below implements an "
+"``IterableMapping`` library that the ``User`` contract then adds data to,"
+" and the ``sum`` function iterates over to sum all the values."
+msgstr ""
+
+#: ../../types/operators.rst:4 bebbb7a4922b41a5a39b58a5a6c79090
+msgid "Operators"
+msgstr ""
+
+#: ../../types/operators.rst:6 2a0c466924ef48f2ab8ac5f0813c0837
+msgid ""
+"Arithmetic and bit operators can be applied even if the two operands do "
+"not have the same type. For example, you can compute ``y = x + z``, where"
+" ``x`` is a ``uint8`` and ``z`` has the type ``uint32``. In these cases, "
+"the following mechanism will be used to determine the type in which the "
+"operation is computed (this is important in case of overflow) and the "
+"type of the operator's result:"
+msgstr ""
+
+#: ../../types/operators.rst:12 cfe9d3f31135427ea69e15daa0c3ecef
+msgid ""
+"If the type of the right operand can be implicitly converted to the type "
+"of the left operand, use the type of the left operand,"
+msgstr ""
+
+#: ../../types/operators.rst:14 48c5055730174509b79357773740e98d
+msgid ""
+"if the type of the left operand can be implicitly converted to the type "
+"of the right operand, use the type of the right operand,"
+msgstr ""
+
+#: ../../types/operators.rst:16 6c2c8c6080d3497998397fa2876ddaa8
+msgid "otherwise, the operation is not allowed."
+msgstr ""
+
+#: ../../types/operators.rst:18 f20c82e4f65547a2b15e098916f66b33
+msgid ""
+"In case one of the operands is a :ref:`literal number "
+"<rational_literals>` it is first converted to its \"mobile type\", which "
+"is the smallest type that can hold the value (unsigned types of the same "
+"bit-width are considered \"smaller\" than the signed types). If both are "
+"literal numbers, the operation is computed with effectively unlimited "
+"precision in that the expression is evaluated to whatever precision is "
+"necessary so that none is lost when the result is used with a non-literal"
+" type."
+msgstr ""
+
+#: ../../types/operators.rst:25 815ac7410cba4e3fb071b821d0106206
+msgid ""
+"The operator's result type is the same as the type the operation is "
+"performed in, except for comparison operators where the result is always "
+"``bool``."
+msgstr ""
+
+#: ../../types/operators.rst:28 8e0da2f95aaa424f873853b1a78c14db
+msgid ""
+"The operators ``**`` (exponentiation), ``<<``  and ``>>`` use the type of"
+" the left operand for the operation and the result."
+msgstr ""
+
+#: ../../types/operators.rst:32 66ae9d892b934d33b83b4cf7dbc3cb4c
+msgid "Ternary Operator"
+msgstr ""
+
+#: ../../types/operators.rst:33 31a0c8b048ab43e19738d77f7d722b03
+msgid ""
+"The ternary operator is used in expressions of the form ``<expression> ? "
+"<trueExpression> : <falseExpression>``. It evaluates one of the latter "
+"two given expressions depending upon the result of the evaluation of the "
+"main ``<expression>``. If ``<expression>`` evaluates to ``true``, then "
+"``<trueExpression>`` will be evaluated, otherwise ``<falseExpression>`` "
+"is evaluated."
+msgstr ""
+
+#: ../../types/operators.rst:37 1175e7a375214887937a365a4a490c67
+msgid ""
+"The result of the ternary operator does not have a rational number type, "
+"even if all of its operands are rational number literals. The result type"
+" is determined from the types of the two operands in the same way as "
+"above, converting to their mobile type first if required."
+msgstr ""
+
+#: ../../types/operators.rst:40 d3d2ceba04b241b99ed17501d73606ca
+msgid ""
+"As a consequence, ``255 + (true ? 1 : 0)`` will revert due to arithmetic "
+"overflow. The reason is that ``(true ? 1 : 0)`` is of ``uint8`` type, "
+"which forces the addition to be performed in ``uint8`` as well, and 256 "
+"exceeds the range allowed for this type."
+msgstr ""
+
+#: ../../types/operators.rst:44 36c9f08bbd0f4614975b8fddb80f87a2
+msgid ""
+"Another consequence is that an expression like ``1.5 + 1.5`` is valid but"
+" ``1.5 + (true ? 1.5 : 2.5)`` is not. This is because the former is a "
+"rational expression evaluated in unlimited precision and only its final "
+"value matters. The latter involves a conversion of a fractional rational "
+"number to an integer, which is currently disallowed."
+msgstr ""
+
+#: ../../types/operators.rst:51 994aec1fd1c24f79a5792cfbf91f9249
+msgid "Compound and Increment/Decrement Operators"
+msgstr ""
+
+#: ../../types/operators.rst:53 619afa8159d74da994094f7a10031158
+msgid ""
+"If ``a`` is an LValue (i.e. a variable or something that can be assigned "
+"to), the following operators are available as shorthands:"
+msgstr ""
+
+#: ../../types/operators.rst:56 74cb57ecc19d4e87b8368be771694272
+msgid ""
+"``a += e`` is equivalent to ``a = a + e``. The operators ``-=``, ``*=``, "
+"``/=``, ``%=``, ``|=``, ``&=``, ``^=``, ``<<=`` and ``>>=`` are defined "
+"accordingly. ``a++`` and ``a--`` are equivalent to ``a += 1`` / ``a -= "
+"1`` but the expression itself still has the previous value of ``a``. In "
+"contrast, ``--a`` and ``++a`` have the same effect on ``a`` but return "
+"the value after the change."
+msgstr ""
+
+#: ../../types/operators.rst:67 bdc50dbb4320417ca4f601b257257489
+msgid "delete"
+msgstr ""
+
+#: ../../types/operators.rst:69 022e2f59724846d3b47b6ac45775b238
+msgid ""
+"``delete a`` assigns the initial value for the type to ``a``. I.e. for "
+"integers it is equivalent to ``a = 0``, but it can also be used on "
+"arrays, where it assigns a dynamic array of length zero or a static array"
+" of the same length with all elements set to their initial value. "
+"``delete a[x]`` deletes the item at index ``x`` of the array and leaves "
+"all other elements and the length of the array untouched. This especially"
+" means that it leaves a gap in the array. If you plan to remove items, a "
+":ref:`mapping <mapping-types>` is probably a better choice."
+msgstr ""
+
+#: ../../types/operators.rst:76 f45ff9c958154f4ab3912620d4d0bb49
+msgid ""
+"For structs, it assigns a struct with all members reset. In other words, "
+"the value of ``a`` after ``delete a`` is the same as if ``a`` would be "
+"declared without assignment, with the following caveat:"
+msgstr ""
+
+#: ../../types/operators.rst:80 2c5fa3be52a6410686dc0b9f1c246ac6
+msgid ""
+"``delete`` has no effect on mappings (as the keys of mappings may be "
+"arbitrary and are generally unknown). So if you delete a struct, it will "
+"reset all members that are not mappings and also recurse into the members"
+" unless they are mappings. However, individual keys and what they map to "
+"can be deleted: If ``a`` is a mapping, then ``delete a[x]`` will delete "
+"the value stored at ``x``."
+msgstr ""
+
+#: ../../types/operators.rst:86 c5d0a25352624262b46346763763fb49
+msgid ""
+"It is important to note that ``delete a`` really behaves like an "
+"assignment to ``a``, i.e. it stores a new object in ``a``. This "
+"distinction is visible when ``a`` is reference variable: It will only "
+"reset ``a`` itself, not the value it referred to previously."
+msgstr ""
+
+#: ../../types/operators.rst:118 a20bccfbcc9647738f6cb5ce2ef4d600
+msgid "Order of Precedence of Operators"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:1 55fcb52ce1a04a7b9d9ed0e067f09733
+msgid ""
+"The following is the order of precedence for operators, listed in order "
+"of evaluation."
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:4 55b32a0913f549e182afd0a49a8d9103
+msgid "Precedence"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:4 48d544a2845c4a82b40e8b7377954a7a
+msgid "Description"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:4 469ecbe6f6a447e6b5c31a6421ea1f00
+msgid "Operator"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:6 d35ab290fc0940a8af1675bfbe6ecb57
+msgid "*1*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:6 e22157635c1041349be3d1e6db8f5d69
+msgid "Postfix increment and decrement"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:6
+#: ../../types/operator-precedence-table.rst:18
+#: 97397a286eec48fe8557ee9bebfe8da3 ddee610badc44283a38b36b65c6242cc
+msgid "``++``, ``--``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:8 298053ea31744ae9960214bbd35c28fa
+msgid "New expression"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:8 abc0e982ae65468a8983dacd5997e3fd
+msgid "``new <typename>``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:10
+#: ac11836dba7c47c294a906a35d1eb4b0
+msgid "Array subscripting"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:10
+#: c349e446e6cd487a9db51bbaa601c340
+msgid "``<array>[<index>]``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:12
+#: ceb40f363ad2478ca24479e01a7734d0
+msgid "Member access"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:12
+#: dca82b65b4b84501ae1feaab5fa9dc95
+msgid "``<object>.<member>``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:14
+#: 5d19b9d3d04d4c18a8d0d2fd4e70c847
+msgid "Function-like call"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:14
+#: b4e9f09758f247a6a24853b17ceb9885
+msgid "``<func>(<args...>)``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:16
+#: 16b2cc677bab4339a61fcba89508e722
+msgid "Parentheses"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:16
+#: 6d4a9948f6a1480583f37334d48bfb48
+msgid "``(<statement>)``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:18
+#: 2e7a340fe7f14c169ea3fa6ae1f59352
+msgid "*2*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:18
+#: 69c95e74658544cfb5195c22c06a5bcb
+msgid "Prefix increment and decrement"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:20
+#: 1770399cc2aa4ad28c03b06aa9157ec7
+msgid "Unary minus"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:20
+#: 5ede283036bb47209eeeb4d5acf28b35
+msgid "``-``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:22
+#: 3da0e1932ee14631a37d612df6c40fa4
+msgid "Unary operations"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:22
+#: 84f3e44216ae414a9c24962239057932
+msgid "``delete``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:24
+#: 6e975ccb585645c3835e9e0681535dc0
+msgid "Logical NOT"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:24
+#: a321644695fb4d27b26ab267f7e85000
+msgid "``!``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:26
+#: eb15d180011943ad84dfadc2a79f6ea8
+msgid "Bitwise NOT"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:26
+#: 881c2a83b05945a6acdb0dcfe2c3a147
+msgid "``~``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:28
+#: 9f373546fe9e4ed3b36627a32d085690
+msgid "*3*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:28
+#: 5d00f227e92d4942900d75810c6f8440
+msgid "``**``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:30
+#: 74a4a913d40b43d6a418079292477380
+msgid "*4*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:30
+#: 36f4c6641afb48c8a737fe3aa18bf99e
+msgid "Multiplication, division and modulo"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:30
+#: 42f0a90a46e245d1b9054ac1672e25f3
+msgid "``*``, ``/``, ``%``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:32
+#: b0bf09be50854ee69fdcd12d4d8a0040
+msgid "*5*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:32
+#: d64289d29f284d1c9948df0141e1f0d7
+msgid "Addition and subtraction"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:32
+#: 6aa34de8508e4540a0044c106f677b21
+msgid "``+``, ``-``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:34
+#: 7b072f24dd3d44a494e927dbd7e8c8dd
+msgid "*6*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:34
+#: 4a842dc805e14594ad91afc8e2850cf5
+msgid "Bitwise shift operators"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:34
+#: 6d98475898e84da39edf754dd2f8d1ff
+msgid "``<<``, ``>>``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:36
+#: 276d3a3aa6ef4d76b2e9868251dc7880
+msgid "*7*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:36
+#: fca6efecd27c478aa346512b3ee6d511
+msgid "Bitwise AND"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:36
+#: 6703b4cf90e641baa4eebb7eeff30927
+msgid "``&``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:38
+#: 48b09e344a0848e6968a2e484fdb0598
+msgid "*8*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:38
+#: 353adc4f4310455e8caafe9ba41d7d6e
+msgid "Bitwise XOR"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:38
+#: 907a86616c514778bd264d4c6e0a8ff9
+msgid "``^``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:40
+#: 6d18dd10c32b4bb1afed3fc0cc6a00fc
+msgid "*9*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:40
+#: e4b8fc85c1c44d5d9944985d74f556fd
+msgid "Bitwise OR"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:40
+#: 056bc40f30b4412caee3fc319c557f7e
+msgid "``|``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:42
+#: 71fd7b187d2345ee809ffdaa7ba941df
+msgid "*10*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:42
+#: 5b2b6562c128475fb7cd610ac3a7aada
+msgid "Inequality operators"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:42
+#: 914cf4dc632a47af8ccb08eab946fe15
+msgid "``<``, ``>``, ``<=``, ``>=``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:44
+#: 6759079409704f2ba0119dad984dcc5f
+msgid "*11*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:44
+#: 6c684aeba5e64b7582a3281395928afd
+msgid "Equality operators"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:44
+#: 0a16f5e6516d4cd69255dc6079732fe3
+msgid "``==``, ``!=``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:46
+#: 2c2b0d276ff241a8b73b8787e01b8828
+msgid "*12*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:46
+#: a99f3a7612c04112af624813ed5f43c2
+msgid "Logical AND"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:46
+#: 510dcabc163e4ced9f62638635eae975
+msgid "``&&``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:48
+#: e6d405c132f54b9b8c478fe53434874f
+msgid "*13*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:48
+#: 6dffac2f77504c779c95dd948d60adfc
+msgid "Logical OR"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:48
+#: 567c7d4b0b0f46a39bf4403e696589e0
+msgid "``||``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:50
+#: ecd0d374ba304d8384b1a14fddb95c3a
+msgid "*14*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:50
+#: f35b798a810449239fe44d0f10ba982a
+msgid "Ternary operator"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:50
+#: 0bdd44c4c95a47139215cf8040fb4ea4
+msgid "``<conditional> ? <if-true> : <if-false>``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:52
+#: 7512549200584ab1a4ac590e68266354
+msgid "Assignment operators"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:52
+#: 1b11c03a2e064ffe8df19e6bc6079fdc
+msgid ""
+"``=``, ``|=``, ``^=``, ``&=``, ``<<=``, ``>>=``, ``+=``, ``-=``, ``*=``, "
+"``/=``, ``%=``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:56
+#: 07a05705a43b46a29b34ca33f2486b99
+msgid "*15*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:56
+#: 3f61b9f2d4994084897b833595b8e64f
+msgid "Comma operator"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:56
+#: 6a5ee273e9fc49798946841b6018f2b5
+msgid "``,``"
+msgstr ""
+
+#: ../../types/conversion.rst:6 e84c9f8eeb3148c58ede5ac0a711632c
+msgid "Conversions between Elementary Types"
+msgstr ""
+
+#: ../../types/conversion.rst:9 53ef668353564e80b493669885710d25
+msgid "Implicit Conversions"
+msgstr ""
+
+#: ../../types/conversion.rst:11 675899cfad4740e5b22f671bd013ef73
+msgid ""
+"An implicit type conversion is automatically applied by the compiler in "
+"some cases during assignments, when passing arguments to functions and "
+"when applying operators. In general, an implicit conversion between "
+"value-types is possible if it makes sense semantically and no information"
+" is lost."
+msgstr ""
+
+#: ../../types/conversion.rst:16 c969dd83b4df4b4ead349c784b48c8fb
+msgid ""
+"For example, ``uint8`` is convertible to ``uint16`` and ``int128`` to "
+"``int256``, but ``int8`` is not convertible to ``uint256``, because "
+"``uint256`` cannot hold values such as ``-1``."
+msgstr ""
+
+#: ../../types/conversion.rst:20 a7b5888de6bd4ea1b8a5ebb5b29ed026
+msgid ""
+"If an operator is applied to different types, the compiler tries to "
+"implicitly convert one of the operands to the type of the other (the same"
+" is true for assignments). This means that operations are always "
+"performed in the type of one of the operands."
+msgstr ""
+
+#: ../../types/conversion.rst:24 d84e2ee6a2ae46098fffa8da1f6a070d
+msgid ""
+"For more details about which implicit conversions are possible, please "
+"consult the sections about the types themselves."
+msgstr ""
+
+#: ../../types/conversion.rst:27 367bfaf908204e5a930a04e4fcf7a92c
+msgid ""
+"In the example below, ``y`` and ``z``, the operands of the addition, do "
+"not have the same type, but ``uint8`` can be implicitly converted to "
+"``uint16`` and not vice-versa. Because of that, ``y`` is converted to the"
+" type of ``z`` before the addition is performed in the ``uint16`` type. "
+"The resulting type of the expression ``y + z`` is ``uint16``. Because it "
+"is assigned to a variable of type ``uint32`` another implicit conversion "
+"is performed after the addition."
+msgstr ""
+
+#: ../../types/conversion.rst:43 8d07a81c14ce425a80e294cb0c4af879
+msgid "Explicit Conversions"
+msgstr ""
+
+#: ../../types/conversion.rst:45 618529aa10434d3daa8510a51d8255a7
+msgid ""
+"If the compiler does not allow implicit conversion but you are confident "
+"a conversion will work, an explicit type conversion is sometimes "
+"possible. This may result in unexpected behaviour and allows you to "
+"bypass some security features of the compiler, so be sure to test that "
+"the result is what you want and expect!"
+msgstr ""
+
+#: ../../types/conversion.rst:51 dfe58be81c23416d8a084968c8bc8210
+msgid "Take the following example that converts a negative ``int`` to a ``uint``:"
+msgstr ""
+
+#: ../../types/conversion.rst:58 1def7e0a3c204edc8ce0f4b9e05a77de
+msgid ""
+"At the end of this code snippet, ``x`` will have the value "
+"``0xfffff..fd`` (64 hex characters), which is -3 in the two's complement "
+"representation of 256 bits."
+msgstr ""
+
+#: ../../types/conversion.rst:61 6322bde5189447a28e5490163c1578ab
+msgid ""
+"If an integer is explicitly converted to a smaller type, higher-order "
+"bits are cut off:"
+msgstr ""
+
+#: ../../types/conversion.rst:69 ba68c7291d954d75a34c2ccc59e1edb6
+msgid ""
+"If an integer is explicitly converted to a larger type, it is padded on "
+"the left (i.e., at the higher order end). The result of the conversion "
+"will compare equal to the original integer:"
+msgstr ""
+
+#: ../../types/conversion.rst:78 ec2e92987bb048e9a6ceee0d97e808e5
+msgid ""
+"Fixed-size bytes types behave differently during conversions. They can be"
+" thought of as sequences of individual bytes and converting to a smaller "
+"type will cut off the sequence:"
+msgstr ""
+
+#: ../../types/conversion.rst:87 304f812923c4420ea667cbb930680f37
+msgid ""
+"If a fixed-size bytes type is explicitly converted to a larger type, it "
+"is padded on the right. Accessing the byte at a fixed index will result "
+"in the same value before and after the conversion (if the index is still "
+"in range):"
+msgstr ""
+
+#: ../../types/conversion.rst:98 57dbe8e8d82c4cecac3e357737b7c38d
+msgid ""
+"Since integers and fixed-size byte arrays behave differently when "
+"truncating or padding, explicit conversions between integers and fixed-"
+"size byte arrays are only allowed, if both have the same size. If you "
+"want to convert between integers and fixed-size byte arrays of different "
+"size, you have to use intermediate conversions that make the desired "
+"truncation and padding rules explicit:"
+msgstr ""
+
+#: ../../types/conversion.rst:112 17ca1198a78940b38b5eed1e66d6f716
+msgid ""
+"``bytes`` arrays and ``bytes`` calldata slices can be converted "
+"explicitly to fixed bytes types (``bytes1``/.../``bytes32``). In case the"
+" array is longer than the target fixed bytes type, truncation at the end "
+"will happen. If the array is shorter than the target type, it will be "
+"padded with zeros at the end."
+msgstr ""
+
+#: ../../types/conversion.rst:136 afa5208cb70d4bb19d3ea1ec5e168ff7
+msgid "Conversions between Literals and Elementary Types"
+msgstr ""
+
+#: ../../types/conversion.rst:139 f801ad624b6e4711bb00a3f1618d1dfa
+msgid "Integer Types"
+msgstr ""
+
+#: ../../types/conversion.rst:141 c1a79afcd10a40b2808c9fa624b85339
+msgid ""
+"Decimal and hexadecimal number literals can be implicitly converted to "
+"any integer type that is large enough to represent it without truncation:"
+msgstr ""
+
+#: ../../types/conversion.rst:151 236bd10dc53a481990b97e2adcdd3ff2
+msgid ""
+"Prior to version 0.8.0, any decimal or hexadecimal number literals could "
+"be explicitly converted to an integer type. From 0.8.0, such explicit "
+"conversions are as strict as implicit conversions, i.e., they are only "
+"allowed if the literal fits in the resulting range."
+msgstr ""
+
+#: ../../types/conversion.rst:156 575491a8d1e34c4b8a3a8e713de55fca
+msgid "Fixed-Size Byte Arrays"
+msgstr ""
+
+#: ../../types/conversion.rst:158 1b1ed8e0e9554441914237133137e02c
+msgid ""
+"Decimal number literals cannot be implicitly converted to fixed-size byte"
+" arrays. Hexadecimal number literals can be, but only if the number of "
+"hex digits exactly fits the size of the bytes type. As an exception both "
+"decimal and hexadecimal literals which have a value of zero can be "
+"converted to any fixed-size bytes type:"
+msgstr ""
+
+#: ../../types/conversion.rst:173 7cec0b94a7884776af84d7ae56b56fbb
+msgid ""
+"String literals and hex string literals can be implicitly converted to "
+"fixed-size byte arrays, if their number of characters matches the size of"
+" the bytes type:"
+msgstr ""
+
+#: ../../types/conversion.rst:186 113b435cb54b4d9ca312541b1d1e3d80
+msgid "Addresses"
+msgstr ""
+
+#: ../../types/conversion.rst:188 101f124992274776af70f4371a5ec3a7
+msgid ""
+"As described in :ref:`address_literals`, hex literals of the correct size"
+" that pass the checksum test are of ``address`` type. No other literals "
+"can be implicitly converted to the ``address`` type."
+msgstr ""
+
+#: ../../types/conversion.rst:191 c16e400c809d4027abd9218dc4c80163
+msgid ""
+"Explicit conversions to ``address`` are allowed only from ``bytes20`` and"
+" ``uint160``."
+msgstr ""
+
+#: ../../types/conversion.rst:193 5163d586a7214b2d8ef2dc1af38c1dcf
+msgid ""
+"An ``address a`` can be converted explicitly to ``address payable`` via "
+"``payable(a)``."
+msgstr ""
+
+#: ../../types/conversion.rst:196 c009b77353e04aaa97fa65fe6a0a2709
+msgid ""
+"Prior to version 0.8.0, it was possible to explicitly convert from any "
+"integer type (of any size, signed or unsigned) to  ``address`` or "
+"``address payable``. Starting with in 0.8.0 only conversion from "
+"``uint160`` is allowed."
+msgstr ""
+

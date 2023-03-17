@@ -1,0 +1,728 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2023, The Solidity Authors
+# This file is distributed under the same license as the Solidity package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Solidity 0.8.20\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-18 04:40+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ja_JP\n"
+"Language-Team: ja_JP <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../cheatsheet.rst:3 b4db745e159c420f898df96624981bb3
+msgid "Cheatsheet"
+msgstr ""
+
+#: ../../cheatsheet.rst:8 630411e8312741f5a1c7252ae0af10dd
+msgid "Order of Precedence of Operators"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:1 9c33f080c9e04db08aceb4d346819808
+msgid ""
+"The following is the order of precedence for operators, listed in order "
+"of evaluation."
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:4 0c9e75eec49d46f99d55204eb7e813d1
+msgid "Precedence"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:4 d72e54e303ae4cd085e6d41d9f40c21b
+msgid "Description"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:4 a15fbc298d4f4e9cbd7d6372e222e77a
+msgid "Operator"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:6 17b13ebc837c4fca8cebcce43ab151ad
+msgid "*1*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:6 973a603f58f84a1ca8e492532e7961e4
+msgid "Postfix increment and decrement"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:6
+#: ../../types/operator-precedence-table.rst:18
+#: 2556477df5d94bdd8cd70b9259f779a1 4fbc94582edd41a19449a9f72f374a33
+msgid "``++``, ``--``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:8 bb0136ac9e784aa8b44581c721527b7b
+msgid "New expression"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:8 dde1a966460d4752b62bbe1c7f66dfb7
+msgid "``new <typename>``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:10
+#: aacfb87617754417ad48ac29ee5607a1
+msgid "Array subscripting"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:10
+#: ef20b024b2fa47a5aa7ded49af879bc2
+msgid "``<array>[<index>]``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:12
+#: 2fc547dccd874dcaa19bff268624345a
+msgid "Member access"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:12
+#: ac4fd036096d46b0a6f0627bcb07d640
+msgid "``<object>.<member>``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:14
+#: e7f71a2d475244bcaf545190fc9d7183
+msgid "Function-like call"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:14
+#: 7b9d3bc4261d4959bc0a86484366d212
+msgid "``<func>(<args...>)``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:16
+#: bf54beacc8034db5a031ce5eedd8c400
+msgid "Parentheses"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:16
+#: 532fcc19730f4625b0ab1162c9e55151
+msgid "``(<statement>)``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:18
+#: e6fe6a1bee384cab9ec95f1229ea9c7c
+msgid "*2*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:18
+#: d3bfe73afe7e4a02a2704c3703f90297
+msgid "Prefix increment and decrement"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:20
+#: a7f3904ddf964c41891d982e504adbce
+msgid "Unary minus"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:20
+#: 67fe93e92e9b45d1b8fba4946f4552b9
+msgid "``-``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:22
+#: cff429de198f42aea97c96e0fa99a0cc
+msgid "Unary operations"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:22
+#: a1252995d78740f79fb0785b07b1dc5e
+msgid "``delete``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:24
+#: c9c52556bb3348288e52eaa5fe6f946b
+msgid "Logical NOT"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:24
+#: b45d3108993e4eeb825aab4e358a9135
+msgid "``!``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:26
+#: 4552df106abb489382392016f099948a
+msgid "Bitwise NOT"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:26
+#: 8821c0c53ce74c08a23d3e5752f09ba1
+msgid "``~``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:28
+#: 2c2a6097aa7f4d06a830a9d21632c798
+msgid "*3*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:28
+#: 15356a08ced34c52977f682e834d74d5
+msgid "Exponentiation"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:28
+#: 3c98337767a44380bcb8328be48756f5
+msgid "``**``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:30
+#: 3bcc4192f7e141b1978ae65b72daf300
+msgid "*4*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:30
+#: d37d7b5e35644d5785aa9714292563fb
+msgid "Multiplication, division and modulo"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:30
+#: 514928b52e4d4226a92f5684300cd7c8
+msgid "``*``, ``/``, ``%``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:32
+#: ebcfc9aa27564134a21b57114e2a7784
+msgid "*5*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:32
+#: fa83d44b537046a697b112454148530b
+msgid "Addition and subtraction"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:32
+#: f4f14c6beffa400f83fcdb4379642eeb
+msgid "``+``, ``-``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:34
+#: 9d4cc4f4cdba428ba9b503c76ffc96a0
+msgid "*6*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:34
+#: 6cc20513ebde40ca840a1fbfbf006efd
+msgid "Bitwise shift operators"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:34
+#: 8999dbf0b604480b83753988afaf8bb5
+msgid "``<<``, ``>>``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:36
+#: 11071372d81d4db193ef5f8baf3fcc25
+msgid "*7*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:36
+#: c9ce5ad185dc48c094e938b103a6a348
+msgid "Bitwise AND"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:36
+#: e59d55af2b3b4c09aa78f3333e8c00e8
+msgid "``&``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:38
+#: 9cf9d95c45584bb68b9c4dbb90128511
+msgid "*8*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:38
+#: 810f265a4e31423694bbad8aa3d15307
+msgid "Bitwise XOR"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:38
+#: 2a539a5f5d83471a89286daa000e784e
+msgid "``^``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:40
+#: dbab6b3455524f2e9390292377d2a99a
+msgid "*9*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:40
+#: 61191a1340e1456c993f789d30320553
+msgid "Bitwise OR"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:40
+#: 28080c27643145ccbe1d3a43b7740b1a
+msgid "``|``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:42
+#: 723bf859595e474b8a08fd126e4688ef
+msgid "*10*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:42
+#: cbe2d3b1d2484a29b6e206f1754c6b6c
+msgid "Inequality operators"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:42
+#: a535d466f49c42f5bd3be72816a77881
+msgid "``<``, ``>``, ``<=``, ``>=``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:44
+#: 828aec9cf3d14ff5aa27e38daaea5022
+msgid "*11*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:44
+#: d49f1f912a5943999a5e49c3f7f3164a
+msgid "Equality operators"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:44
+#: 435c20ae16914663a59faaacf542e2d7
+msgid "``==``, ``!=``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:46
+#: d2a2046e5b6d42b68060df3d1ea573ea
+msgid "*12*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:46
+#: 8b8452ca28f04d1f894ba22c2510d676
+msgid "Logical AND"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:46
+#: af07a296798a4c57b1f867500ae7b171
+msgid "``&&``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:48
+#: c679b11292934c8ea43d1d51f4fa78da
+msgid "*13*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:48
+#: 60fd1f1798504448874a98c261767c68
+msgid "Logical OR"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:48
+#: 398007f627f04beeb584568222c5b323
+msgid "``||``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:50
+#: e86945203896478885ac5fbde489920c
+msgid "*14*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:50
+#: d858cccc92e645de9a6e1a813a3ac18f
+msgid "Ternary operator"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:50
+#: 3b5fc239d8bf42739bbc3cbb354d2756
+msgid "``<conditional> ? <if-true> : <if-false>``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:52
+#: f3979f025c21440893575c0f6e127941
+msgid "Assignment operators"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:52
+#: 219db0a5d2b145e1906692917bfcc704
+msgid ""
+"``=``, ``|=``, ``^=``, ``&=``, ``<<=``, ``>>=``, ``+=``, ``-=``, ``*=``, "
+"``/=``, ``%=``"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:56
+#: 4787515c1bf34a69ad4d5492f5e6efa6
+msgid "*15*"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:56
+#: 804fac0347dd4d7dbf4b7c2441e19fca
+msgid "Comma operator"
+msgstr ""
+
+#: ../../types/operator-precedence-table.rst:56
+#: 1b9bd82cc0154b169328ac0d62203b0d
+msgid "``,``"
+msgstr ""
+
+#: ../../cheatsheet.rst:14 498d91d548774454a9ebb4ed050e3c2c
+msgid "Global Variables"
+msgstr ""
+
+#: ../../cheatsheet.rst:16 6db99fad28cd4fd18b931b7d3f94ac7e
+msgid ""
+"``abi.decode(bytes memory encodedData, (...)) returns (...)``: :ref:`ABI "
+"<ABI>`-decodes the provided data. The types are given in parentheses as "
+"second argument. Example: ``(uint a, uint[2] memory b, bytes memory c) = "
+"abi.decode(data, (uint, uint[2], bytes))``"
+msgstr ""
+
+#: ../../cheatsheet.rst:19 da6a1ee32b5d4859b2fd24f57d1611d0
+msgid ""
+"``abi.encode(...) returns (bytes memory)``: :ref:`ABI <ABI>`-encodes the "
+"given arguments"
+msgstr ""
+
+#: ../../cheatsheet.rst:20 1c4e169ac80a4d8c81fa3e4218fdad46
+msgid ""
+"``abi.encodePacked(...) returns (bytes memory)``: Performs :ref:`packed "
+"encoding <abi_packed_mode>` of the given arguments. Note that this "
+"encoding can be ambiguous!"
+msgstr ""
+
+#: ../../cheatsheet.rst:22 981ee8be38334dc0b0ddbe544b2970d1
+msgid ""
+"``abi.encodeWithSelector(bytes4 selector, ...) returns (bytes memory)``: "
+":ref:`ABI <ABI>`-encodes the given arguments starting from the second and"
+" prepends the given four-byte selector"
+msgstr ""
+
+#: ../../cheatsheet.rst:24 b5ce93dde9574f90a1e50cb3fc3fbc61
+msgid ""
+"``abi.encodeCall(function functionPointer, (...)) returns (bytes "
+"memory)``: ABI-encodes a call to ``functionPointer`` with the arguments "
+"found in the tuple. Performs a full type-check, ensuring the types match "
+"the function signature. Result equals "
+"``abi.encodeWithSelector(functionPointer.selector, (...))``"
+msgstr ""
+
+#: ../../cheatsheet.rst:26 6e8c2e7c1dcf4db38c063e5cdbec5cfc
+msgid ""
+"``abi.encodeWithSignature(string memory signature, ...) returns (bytes "
+"memory)``: Equivalent to "
+"``abi.encodeWithSelector(bytes4(keccak256(bytes(signature))), ...)``"
+msgstr ""
+
+#: ../../cheatsheet.rst:28 fb0abc04f5f84945940538f81bdba5a8
+msgid ""
+"``bytes.concat(...) returns (bytes memory)``: :ref:`Concatenates variable"
+" number of arguments to one byte array<bytes-concat>`"
+msgstr ""
+
+#: ../../cheatsheet.rst:30 327af8403a6c4b49beae173a7f22f8de
+msgid ""
+"``string.concat(...) returns (string memory)``: :ref:`Concatenates "
+"variable number of arguments to one string array<string-concat>`"
+msgstr ""
+
+#: ../../cheatsheet.rst:32 796b9b60953545d389d71a0c4d441177
+msgid ""
+"``block.basefee`` (``uint``): current block's base fee (`EIP-3198 "
+"<https://eips.ethereum.org/EIPS/eip-3198>`_ and `EIP-1559 "
+"<https://eips.ethereum.org/EIPS/eip-1559>`_)"
+msgstr ""
+
+#: ../../cheatsheet.rst:33 96c853631819412f844b3d9ca99e66c5
+msgid "``block.chainid`` (``uint``): current chain id"
+msgstr ""
+
+#: ../../cheatsheet.rst:34 f3e68cd7ab4945d3b095cb5552209406
+msgid "``block.coinbase`` (``address payable``): current block miner's address"
+msgstr ""
+
+#: ../../cheatsheet.rst:35 f427e8b1e14e4ad0b05b58cdae44cb81
+msgid ""
+"``block.difficulty`` (``uint``): current block difficulty (``EVM < "
+"Paris``). For other EVM versions it behaves as a deprecated alias for "
+"``block.prevrandao`` that will be removed in the next breaking release"
+msgstr ""
+
+#: ../../cheatsheet.rst:36 95d25bdfcd904a3292389a3b5b2d3960
+msgid "``block.gaslimit`` (``uint``): current block gaslimit"
+msgstr ""
+
+#: ../../cheatsheet.rst:37 451b9f66315240d7aa9287853881b6ac
+msgid "``block.number`` (``uint``): current block number"
+msgstr ""
+
+#: ../../cheatsheet.rst:38 00b279a5d13d4fe199c3b0727139ac30
+msgid ""
+"``block.prevrandao`` (``uint``): random number provided by the beacon "
+"chain (``EVM >= Paris``) (see `EIP-4399 "
+"<https://eips.ethereum.org/EIPS/eip-4399>`_ )"
+msgstr ""
+
+#: ../../cheatsheet.rst:39 51b05793591343059d29398e5be6c148
+msgid ""
+"``block.timestamp`` (``uint``): current block timestamp in seconds since "
+"Unix epoch"
+msgstr ""
+
+#: ../../cheatsheet.rst:40 ccdb5d666e5b4bd3a248875080503c5b
+msgid "``gasleft() returns (uint256)``: remaining gas"
+msgstr ""
+
+#: ../../cheatsheet.rst:41 82ea04a5b9af48efa5b27f75dec522e6
+msgid "``msg.data`` (``bytes``): complete calldata"
+msgstr ""
+
+#: ../../cheatsheet.rst:42 7e530ea73fda497da93c7a204941c4a5
+msgid "``msg.sender`` (``address``): sender of the message (current call)"
+msgstr ""
+
+#: ../../cheatsheet.rst:43 47b604735de943b7b0dc47d81b26c316
+msgid ""
+"``msg.sig`` (``bytes4``): first four bytes of the calldata (i.e. function"
+" identifier)"
+msgstr ""
+
+#: ../../cheatsheet.rst:44 9ac965715be244259e1c41d277f6d419
+msgid "``msg.value`` (``uint``): number of wei sent with the message"
+msgstr ""
+
+#: ../../cheatsheet.rst:45 60fb22829be54bd1b57a604d2d8632ad
+msgid "``tx.gasprice`` (``uint``): gas price of the transaction"
+msgstr ""
+
+#: ../../cheatsheet.rst:46 85dcb7093a294773a6a36978c3990fc9
+msgid "``tx.origin`` (``address``): sender of the transaction (full call chain)"
+msgstr ""
+
+#: ../../cheatsheet.rst:47 fd8c253ed23249b4b4112552783ab10e
+msgid ""
+"``assert(bool condition)``: abort execution and revert state changes if "
+"condition is ``false`` (use for internal error)"
+msgstr ""
+
+#: ../../cheatsheet.rst:48 d51d1e56cbbc4da892a010e9c4f25437
+msgid ""
+"``require(bool condition)``: abort execution and revert state changes if "
+"condition is ``false`` (use for malformed input or error in external "
+"component)"
+msgstr ""
+
+#: ../../cheatsheet.rst:50 71aed5a56e8c447bb5cbdc38841a4a62
+msgid ""
+"``require(bool condition, string memory message)``: abort execution and "
+"revert state changes if condition is ``false`` (use for malformed input "
+"or error in external component). Also provide error message."
+msgstr ""
+
+#: ../../cheatsheet.rst:52 f29a059b84c242a48c4878abd18a6d84
+msgid "``revert()``: abort execution and revert state changes"
+msgstr ""
+
+#: ../../cheatsheet.rst:53 60dfb59872fe4e5ea3b5e07747c10d7b
+msgid ""
+"``revert(string memory message)``: abort execution and revert state "
+"changes providing an explanatory string"
+msgstr ""
+
+#: ../../cheatsheet.rst:54 1f84827d5b4a4e55b9931149ea93ca82
+msgid ""
+"``blockhash(uint blockNumber) returns (bytes32)``: hash of the given "
+"block - only works for 256 most recent blocks"
+msgstr ""
+
+#: ../../cheatsheet.rst:55 197fd33870bf4ff7ab9653df11f43056
+msgid ""
+"``keccak256(bytes memory) returns (bytes32)``: compute the Keccak-256 "
+"hash of the input"
+msgstr ""
+
+#: ../../cheatsheet.rst:56 802db4f7f702415c9dc60720200da2d8
+msgid ""
+"``sha256(bytes memory) returns (bytes32)``: compute the SHA-256 hash of "
+"the input"
+msgstr ""
+
+#: ../../cheatsheet.rst:57 791831bd0b504dbf8e46d6d5d19bad24
+msgid ""
+"``ripemd160(bytes memory) returns (bytes20)``: compute the RIPEMD-160 "
+"hash of the input"
+msgstr ""
+
+#: ../../cheatsheet.rst:58 76ac721fa7e24b039d0e3b5411b3b393
+msgid ""
+"``ecrecover(bytes32 hash, uint8 v, bytes32 r, bytes32 s) returns "
+"(address)``: recover address associated with the public key from elliptic"
+" curve signature, return zero on error"
+msgstr ""
+
+#: ../../cheatsheet.rst:60 4c8179fb4d444498bfc4bc1e7374df9f
+msgid ""
+"``addmod(uint x, uint y, uint k) returns (uint)``: compute ``(x + y) % "
+"k`` where the addition is performed with arbitrary precision and does not"
+" wrap around at ``2**256``. Assert that ``k != 0`` starting from version "
+"0.5.0."
+msgstr ""
+
+#: ../../cheatsheet.rst:62 caee6344b62f435c88264c01e1c9ea1d
+msgid ""
+"``mulmod(uint x, uint y, uint k) returns (uint)``: compute ``(x * y) % "
+"k`` where the multiplication is performed with arbitrary precision and "
+"does not wrap around at ``2**256``. Assert that ``k != 0`` starting from "
+"version 0.5.0."
+msgstr ""
+
+#: ../../cheatsheet.rst:64 9109e337606f4e1392b7df072b9147c7
+msgid ""
+"``this`` (current contract's type): the current contract, explicitly "
+"convertible to ``address`` or ``address payable``"
+msgstr ""
+
+#: ../../cheatsheet.rst:65 2ef17227885d407e8eacc2c6d900a743
+msgid "``super``: the contract one level higher in the inheritance hierarchy"
+msgstr ""
+
+#: ../../cheatsheet.rst:66 d3b631b4bf5d4e1e91f66a01826477b4
+msgid ""
+"``selfdestruct(address payable recipient)``: destroy the current "
+"contract, sending its funds to the given address"
+msgstr ""
+
+#: ../../cheatsheet.rst:67 7461ffe8b50843f2b680d7ca096f6c72
+msgid "``<address>.balance`` (``uint256``): balance of the :ref:`address` in Wei"
+msgstr ""
+
+#: ../../cheatsheet.rst:68 811a046f463249518b3941cd403dbe2d
+msgid ""
+"``<address>.code`` (``bytes memory``): code at the :ref:`address` (can be"
+" empty)"
+msgstr ""
+
+#: ../../cheatsheet.rst:69 1f6263447a744bf5be2bc96d8943361d
+msgid "``<address>.codehash`` (``bytes32``): the codehash of the :ref:`address`"
+msgstr ""
+
+#: ../../cheatsheet.rst:70 8d3c3d03498745158c34e9aeb6bc78ec
+msgid ""
+"``<address payable>.send(uint256 amount) returns (bool)``: send given "
+"amount of Wei to :ref:`address`, returns ``false`` on failure"
+msgstr ""
+
+#: ../../cheatsheet.rst:72 998100400a354b199ebf7c23b7055db7
+msgid ""
+"``<address payable>.transfer(uint256 amount)``: send given amount of Wei "
+"to :ref:`address`, throws on failure"
+msgstr ""
+
+#: ../../cheatsheet.rst:73 fce68640f5bc4840a0c6bae233270dda
+msgid "``type(C).name`` (``string``): the name of the contract"
+msgstr ""
+
+#: ../../cheatsheet.rst:74 316ab8aac56c47258e56a7036d9231d9
+msgid ""
+"``type(C).creationCode`` (``bytes memory``): creation bytecode of the "
+"given contract, see :ref:`Type Information<meta-type>`."
+msgstr ""
+
+#: ../../cheatsheet.rst:75 80f09640a97849d38e2bf10dfbbb0c49
+msgid ""
+"``type(C).runtimeCode`` (``bytes memory``): runtime bytecode of the given"
+" contract, see :ref:`Type Information<meta-type>`."
+msgstr ""
+
+#: ../../cheatsheet.rst:76 b3644e8b12f14483b6fc121ccb3d3776
+msgid ""
+"``type(I).interfaceId`` (``bytes4``): value containing the EIP-165 "
+"interface identifier of the given interface, see :ref:`Type Information"
+"<meta-type>`."
+msgstr ""
+
+#: ../../cheatsheet.rst:77 ecb7e92a53bd4c698d32ff5c4ade7ed3
+msgid ""
+"``type(T).min`` (``T``): the minimum value representable by the integer "
+"type ``T``, see :ref:`Type Information<meta-type>`."
+msgstr ""
+
+#: ../../cheatsheet.rst:78 d149ac1fd1834328a5f05cb4761d02c6
+msgid ""
+"``type(T).max`` (``T``): the maximum value representable by the integer "
+"type ``T``, see :ref:`Type Information<meta-type>`."
+msgstr ""
+
+#: ../../cheatsheet.rst:84 0109f26779ce4074a969c7c77dc59e23
+msgid "Function Visibility Specifiers"
+msgstr ""
+
+#: ../../cheatsheet.rst:93 aa831f2d39744192964e6a288860664d
+msgid ""
+"``public``: visible externally and internally (creates a :ref:`getter "
+"function<getter-functions>` for storage/state variables)"
+msgstr ""
+
+#: ../../cheatsheet.rst:94 1760dd4f8d24400dbdbbd13f0b6006b4
+msgid "``private``: only visible in the current contract"
+msgstr ""
+
+#: ../../cheatsheet.rst:95 da225041675244a8a763c1b4237f6954
+msgid ""
+"``external``: only visible externally (only for functions) - i.e. can "
+"only be message-called (via ``this.func``)"
+msgstr ""
+
+#: ../../cheatsheet.rst:96 39c79fc77f92407e8d42f9693d86cd36
+msgid "``internal``: only visible internally"
+msgstr ""
+
+#: ../../cheatsheet.rst:102 2333f5c38f3d4f7a8c5ae3a88ac79220
+msgid "Modifiers"
+msgstr ""
+
+#: ../../cheatsheet.rst:104 33e46cfa408f4affa99d0714e36b6828
+msgid "``pure`` for functions: Disallows modification or access of state."
+msgstr ""
+
+#: ../../cheatsheet.rst:105 b192b1969b084f4594f138b34df623bd
+msgid "``view`` for functions: Disallows modification of state."
+msgstr ""
+
+#: ../../cheatsheet.rst:106 36e6224a33d6443a9c948b4459ff815f
+msgid ""
+"``payable`` for functions: Allows them to receive Ether together with a "
+"call."
+msgstr ""
+
+#: ../../cheatsheet.rst:107 28afcc54ff3f405e83437ff639adc908
+msgid ""
+"``constant`` for state variables: Disallows assignment (except "
+"initialisation), does not occupy storage slot."
+msgstr ""
+
+#: ../../cheatsheet.rst:108 d8d9e143bb384e2a827787565a63f1f7
+msgid ""
+"``immutable`` for state variables: Allows exactly one assignment at "
+"construction time and is constant afterwards. Is stored in code."
+msgstr ""
+
+#: ../../cheatsheet.rst:109 27932fe24ef54803ad390ef6e221620c
+msgid "``anonymous`` for events: Does not store event signature as topic."
+msgstr ""
+
+#: ../../cheatsheet.rst:110 209cbcdf03924a108ece6f1b008aeb80
+msgid "``indexed`` for event parameters: Stores the parameter as topic."
+msgstr ""
+
+#: ../../cheatsheet.rst:111 79aa29f56904486abbee1ea106bf82f6
+msgid ""
+"``virtual`` for functions and modifiers: Allows the function's or "
+"modifier's behaviour to be changed in derived contracts."
+msgstr ""
+
+#: ../../cheatsheet.rst:113 711b0c6084fb4bda938cb0537282e8ed
+msgid ""
+"``override``: States that this function, modifier or public state "
+"variable changes the behaviour of a function or modifier in a base "
+"contract."
+msgstr ""
+

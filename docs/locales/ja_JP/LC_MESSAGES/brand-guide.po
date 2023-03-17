@@ -1,0 +1,167 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2023, The Solidity Authors
+# This file is distributed under the same license as the Solidity package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Solidity 0.8.20\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-18 04:40+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ja_JP\n"
+"Language-Team: ja_JP <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../brand-guide.rst:3 84fb2c1511a3405dad03f59099838647
+msgid "Solidity Brand Guide"
+msgstr ""
+
+#: ../../brand-guide.rst:5 78b07bbde56544938c93fc33daaf62f5
+msgid ""
+"This brand guide features information on Solidity's brand policy and logo"
+" usage guidelines."
+msgstr ""
+
+#: ../../brand-guide.rst:9 fea685996b5a4d019923a2e5b5e5cebf
+msgid "The Solidity Brand"
+msgstr ""
+
+#: ../../brand-guide.rst:11 5e947a25e1db40a184d95ac5065d23d7
+msgid ""
+"The Solidity programming language is an open-source, community project "
+"governed by a core team. The core team is sponsored by the `Ethereum "
+"Foundation <https://ethereum.foundation/>`_."
+msgstr ""
+
+#: ../../brand-guide.rst:15 a8fbd56464cf4db0afc48d156e94c4bd
+msgid ""
+"This document aims to provide information about how to best use the "
+"Solidity brand name and logo."
+msgstr ""
+
+#: ../../brand-guide.rst:18 43b2815e4b5b4df28569b5ef54093d51
+msgid ""
+"We encourage you to read this document carefully before using the brand "
+"name or the logo. Your cooperation is highly appreciated!"
+msgstr ""
+
+#: ../../brand-guide.rst:22 1f230d9ed23a4fb0a6287d4b534a6519
+msgid "Solidity Brand Name"
+msgstr ""
+
+#: ../../brand-guide.rst:24 00fa1a3fe42443419fb65f5b8fff0575
+msgid ""
+"\"Solidity\" should be used to refer to the Solidity programming language"
+" solely."
+msgstr ""
+
+#: ../../brand-guide.rst:27 88a79c57a15c471cb29a51c309dd7971
+msgid "Please do not use \"Solidity\":"
+msgstr ""
+
+#: ../../brand-guide.rst:29 92e76371f2f24581a498c0c386b8c0cb
+msgid "To refer to any other programming language."
+msgstr ""
+
+#: ../../brand-guide.rst:31 4ad8aef133ee4eb788703923b959cc6c
+msgid ""
+"In a way that is misleading or may imply association of unrelated "
+"modules, tools, documentation, or other resources with the Solidity "
+"programming language."
+msgstr ""
+
+#: ../../brand-guide.rst:35 cd2b2d6a215f43759e2be726154e49f4
+msgid ""
+"In ways that confuse the community as to whether the Solidity programming"
+" language is open-source and free to use."
+msgstr ""
+
+#: ../../brand-guide.rst:39 95215eb4f5804a85843a83123d4e27b5
+msgid "Solidity Logo License"
+msgstr ""
+
+#: ../../brand-guide.rst:-1 c38c6a69f5024d2fb18cb59c77ac001c
+msgid "Creative Commons License"
+msgstr ""
+
+#: ../../brand-guide.rst:45 f8688e72ec9a44729ac135df79ce22a3
+msgid ""
+"The Solidity logo is distributed and licensed under a `Creative Commons "
+"Attribution 4.0 International License "
+"<https://creativecommons.org/licenses/by/4.0/>`_."
+msgstr ""
+
+#: ../../brand-guide.rst:48 2b4d3442ff464fe0913cf404e8d1264e
+msgid ""
+"This is the most permissive Creative Commons license and allows reuse and"
+" modifications for any purpose."
+msgstr ""
+
+#: ../../brand-guide.rst:51 d791f6d99c5a4f1fbf4c8fcaf2582923
+msgid "You are free to:"
+msgstr ""
+
+#: ../../brand-guide.rst:53 3a7d4e49972f470ab4a9aaf18e69dcba
+msgid "**Share** — Copy and redistribute the material in any medium or format."
+msgstr ""
+
+#: ../../brand-guide.rst:55 7444969d34f94c439b302c561a9bc0ca
+msgid ""
+"**Adapt** — Remix, transform, and build upon the material for any "
+"purpose, even commercially."
+msgstr ""
+
+#: ../../brand-guide.rst:58 58930b0d99514ea1881e4f778520ab60
+msgid "Under the following terms:"
+msgstr ""
+
+#: ../../brand-guide.rst:60 a1125a35bd55464da2bd5fa5c98f86f4
+msgid ""
+"**Attribution** — You must give appropriate credit, provide a link to the"
+" license, and indicate if changes were made. You may do so in any "
+"reasonable manner, but not in any way that suggests that the Solidity "
+"core team endorses you or your use."
+msgstr ""
+
+#: ../../brand-guide.rst:65 2006ea715e67471fb7647bdfdbbf3330
+msgid "When using the Solidity logo, please respect the Solidity logo guidelines."
+msgstr ""
+
+#: ../../brand-guide.rst:68 626ae4d3a68c48488c43fbb28a7c2b71
+msgid "Solidity Logo Guidelines"
+msgstr ""
+
+#: ../../brand-guide.rst:73 594363658a40419e952d3d3c846cd8cb
+msgid "*(Right click on the logo to download it.)*"
+msgstr ""
+
+#: ../../brand-guide.rst:75 fdc95fccbb7640fea30fc48a9ac0b0ff
+msgid "Please do not:"
+msgstr ""
+
+#: ../../brand-guide.rst:77 78b8d16e54bd4fcd870bc26853355bf5
+msgid "Change the ratio of the logo (do not stretch it or cut it)."
+msgstr ""
+
+#: ../../brand-guide.rst:79 f2156af437f14e60ab4b40ac3f14f0fb
+msgid "Change the colors of the logo, unless it is absolutely necessary."
+msgstr ""
+
+#: ../../brand-guide.rst:82 77381b1432344b60b3c7741a4c598e8a
+msgid "Credits"
+msgstr ""
+
+#: ../../brand-guide.rst:84 7b41402d35fe41a7bee1f16f8753c23d
+msgid ""
+"This document was, in parts, derived from the `Python Software Foundation"
+" Trademark Usage Policy <https://www.python.org/psf/trademarks/>`_ and "
+"the `Rust Media Guide <https://www.rust-lang.org/policies/media-guide>`_."
+msgstr ""
+

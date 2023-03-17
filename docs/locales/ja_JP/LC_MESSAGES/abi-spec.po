@@ -1,0 +1,1412 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2023, The Solidity Authors
+# This file is distributed under the same license as the Solidity package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Solidity 0.8.20\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-18 04:40+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ja_JP\n"
+"Language-Team: ja_JP <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../abi-spec.rst:7 eaee780e90cb435a9071a456ec4fff2b
+msgid "Contract ABI Specification"
+msgstr ""
+
+#: ../../abi-spec.rst:10 ce443084e8b64fc9956fb817f5c5684b
+msgid "Basic Design"
+msgstr ""
+
+#: ../../abi-spec.rst:12 230c551ed4124ef59355894be4625510
+msgid ""
+"The Contract Application Binary Interface (ABI) is the standard way to "
+"interact with contracts in the Ethereum ecosystem, both from outside the "
+"blockchain and for contract-to-contract interaction. Data is encoded "
+"according to its type, as described in this specification. The encoding "
+"is not self describing and thus requires a schema in order to decode."
+msgstr ""
+
+#: ../../abi-spec.rst:16 37e129e8fec742a6b0075fa5233da38e
+msgid ""
+"We assume that the interface functions of a contract are strongly typed, "
+"known at compilation time and static. We assume that all contracts will "
+"have the interface definitions of any contracts they call available at "
+"compile-time."
+msgstr ""
+
+#: ../../abi-spec.rst:19 447bfbce607746eea339c0780fb9e54e
+msgid ""
+"This specification does not address contracts whose interface is dynamic "
+"or otherwise known only at run-time."
+msgstr ""
+
+#: ../../abi-spec.rst:25 12388daeb6bb4840a303939ad84eaf62
+msgid "Function Selector"
+msgstr ""
+
+#: ../../abi-spec.rst:27 3ba58c76c24240ae86516d5a0efb799a
+msgid ""
+"The first four bytes of the call data for a function call specifies the "
+"function to be called. It is the first (left, high-order in big-endian) "
+"four bytes of the Keccak-256 hash of the signature of the function. The "
+"signature is defined as the canonical expression of the basic prototype "
+"without data location specifier, i.e. the function name with the "
+"parenthesised list of parameter types. Parameter types are split by a "
+"single comma — no spaces are used."
+msgstr ""
+
+#: ../../abi-spec.rst:35 1810c618303f40b2aefd40ef01d3bcc3
+msgid ""
+"The return type of a function is not part of this signature. In "
+":ref:`Solidity's function overloading <overload-function>` return types "
+"are not considered. The reason is to keep function call resolution "
+"context-independent. The :ref:`JSON description of the ABI<abi_json>` "
+"however contains both inputs and outputs."
+msgstr ""
+
+#: ../../abi-spec.rst:41 da30e3ac2651424c891ac3c9bd478800
+msgid "Argument Encoding"
+msgstr ""
+
+#: ../../abi-spec.rst:43 a54d7969e6bb452fb6966acfee4ec766
+msgid ""
+"Starting from the fifth byte, the encoded arguments follow. This encoding"
+" is also used in other places, e.g. the return values and also event "
+"arguments are encoded in the same way, without the four bytes specifying "
+"the function."
+msgstr ""
+
+#: ../../abi-spec.rst:48 78fd1f0ecf054ac2925026035ba0bfaf
+msgid "Types"
+msgstr ""
+
+#: ../../abi-spec.rst:50 d4890dad24594314a0e1b110afce62f8
+msgid "The following elementary types exist:"
+msgstr ""
+
+#: ../../abi-spec.rst:52 c0b306cb058e48b9915604fb4a38d4a1
+msgid ""
+"``uint<M>``: unsigned integer type of ``M`` bits, ``0 < M <= 256``, ``M %"
+" 8 == 0``. e.g. ``uint32``, ``uint8``, ``uint256``."
+msgstr ""
+
+#: ../../abi-spec.rst:54 89df55820f7f4be9b9a292c4e5c8763b
+msgid ""
+"``int<M>``: two's complement signed integer type of ``M`` bits, ``0 < M "
+"<= 256``, ``M % 8 == 0``."
+msgstr ""
+
+#: ../../abi-spec.rst:56 a8c1f0651e9341f68cc4b0a29f92a819
+msgid ""
+"``address``: equivalent to ``uint160``, except for the assumed "
+"interpretation and language typing. For computing the function selector, "
+"``address`` is used."
+msgstr ""
+
+#: ../../abi-spec.rst:59 e7ee169ae7354a27abb162c42b66eba4
+msgid ""
+"``uint``, ``int``: synonyms for ``uint256``, ``int256`` respectively. For"
+" computing the function selector, ``uint256`` and ``int256`` have to be "
+"used."
+msgstr ""
+
+#: ../../abi-spec.rst:62 e6c5e1037bc64e318a67855185a2b228
+msgid ""
+"``bool``: equivalent to ``uint8`` restricted to the values 0 and 1. For "
+"computing the function selector, ``bool`` is used."
+msgstr ""
+
+#: ../../abi-spec.rst:64 cec544f2e99d4257aa1a93b232739f36
+msgid ""
+"``fixed<M>x<N>``: signed fixed-point decimal number of ``M`` bits, ``8 <="
+" M <= 256``, ``M % 8 == 0``, and ``0 < N <= 80``, which denotes the value"
+" ``v`` as ``v / (10 ** N)``."
+msgstr ""
+
+#: ../../abi-spec.rst:67 22b796efa60749fbaa8959c430e9cb20
+msgid "``ufixed<M>x<N>``: unsigned variant of ``fixed<M>x<N>``."
+msgstr ""
+
+#: ../../abi-spec.rst:69 e8e6b2df02bb45eab28a7233a6260ca1
+msgid ""
+"``fixed``, ``ufixed``: synonyms for ``fixed128x18``, ``ufixed128x18`` "
+"respectively. For computing the function selector, ``fixed128x18`` and "
+"``ufixed128x18`` have to be used."
+msgstr ""
+
+#: ../../abi-spec.rst:72 f813bdee75f24f1cbd57a777f9257f99
+msgid "``bytes<M>``: binary type of ``M`` bytes, ``0 < M <= 32``."
+msgstr ""
+
+#: ../../abi-spec.rst:74 c0393e1d1d9e42d7932460c5e3bbec76
+msgid ""
+"``function``: an address (20 bytes) followed by a function selector (4 "
+"bytes). Encoded identical to ``bytes24``."
+msgstr ""
+
+#: ../../abi-spec.rst:76 de6f685dfb0f49ccb7742eb76e353889
+msgid "The following (fixed-size) array type exists:"
+msgstr ""
+
+#: ../../abi-spec.rst:78 644252e386e043df897a9f20f303ec75
+msgid ""
+"``<type>[M]``: a fixed-length array of ``M`` elements, ``M >= 0``, of the"
+" given type."
+msgstr ""
+
+#: ../../abi-spec.rst:82 fc249fa86202482c80bdf19f831b2502
+msgid ""
+"While this ABI specification can express fixed-length arrays with zero "
+"elements, they're not supported by the compiler."
+msgstr ""
+
+#: ../../abi-spec.rst:84 1afd74d423b04eb7952444f7dfa74d6e
+msgid "The following non-fixed-size types exist:"
+msgstr ""
+
+#: ../../abi-spec.rst:86 bdfcdaea6ea2427b9ad8c90e9d8c7091
+msgid "``bytes``: dynamic sized byte sequence."
+msgstr ""
+
+#: ../../abi-spec.rst:88 d5dbe3ad5c2a473d8523973a6cd3b874
+msgid "``string``: dynamic sized unicode string assumed to be UTF-8 encoded."
+msgstr ""
+
+#: ../../abi-spec.rst:90 ad56e1d59d36403baf685301a7666483
+msgid "``<type>[]``: a variable-length array of elements of the given type."
+msgstr ""
+
+#: ../../abi-spec.rst:92 e8f373f2d79a486dbde9591c9f6c7a56
+msgid ""
+"Types can be combined to a tuple by enclosing them inside parentheses, "
+"separated by commas:"
+msgstr ""
+
+#: ../../abi-spec.rst:94 07dedc9eb3074ea0a33a2d07c0a3b4c1
+msgid ""
+"``(T1,T2,...,Tn)``: tuple consisting of the types ``T1``, ..., ``Tn``, "
+"``n >= 0``"
+msgstr ""
+
+#: ../../abi-spec.rst:96 35e2a4ed735041e2bb423169a5cd3dd6
+msgid ""
+"It is possible to form tuples of tuples, arrays of tuples and so on. It "
+"is also possible to form zero-tuples (where ``n == 0``)."
+msgstr ""
+
+#: ../../abi-spec.rst:99 8165a291d8e2413ca78142481ae9ffff
+msgid "Mapping Solidity to ABI types"
+msgstr ""
+
+#: ../../abi-spec.rst:101 ca4f34b214894bb8ac3ee8c5d08d0c31
+msgid ""
+"Solidity supports all the types presented above with the same names with "
+"the exception of tuples. On the other hand, some Solidity types are not "
+"supported by the ABI. The following table shows on the left column "
+"Solidity types that are not part of the ABI, and on the right column the "
+"ABI types that represent them."
+msgstr ""
+
+#: ../../abi-spec.rst:108 48e7eeb0f51b42b3a6635394af17e0f4
+msgid "Solidity"
+msgstr ""
+
+#: ../../abi-spec.rst:108 c2358ab6d8cd48aa90b522ee41d9618f
+msgid "ABI"
+msgstr ""
+
+#: ../../abi-spec.rst:110 c7a662217ac64b7c9c9c2255f299a2b4
+msgid ":ref:`address payable<address>`"
+msgstr ""
+
+#: ../../abi-spec.rst:110 ../../abi-spec.rst:112
+#: 5068a06d46ed481591589bd5854f2967 d1000fcd68f4473d9f77f5d30673f1c9
+msgid "``address``"
+msgstr ""
+
+#: ../../abi-spec.rst:112 553d0e731d6346268f2f404563410389
+msgid ":ref:`contract<contracts>`"
+msgstr ""
+
+#: ../../abi-spec.rst:114 c038045d9d3e4a898d73b7345dff8cc1
+msgid ":ref:`enum<enums>`"
+msgstr ""
+
+#: ../../abi-spec.rst:114 a644b72ee2444f4484fbe38f06b7713e
+msgid "``uint8``"
+msgstr ""
+
+#: ../../abi-spec.rst:116 113af7f5cbfe47558a89880b745ba837
+msgid ":ref:`user defined value types <user-defined-value-types>`"
+msgstr ""
+
+#: ../../abi-spec.rst:116 e91d8876a60b4c6fbb74c77b41b061a5
+msgid "its underlying value type"
+msgstr ""
+
+#: ../../abi-spec.rst:119 5db4347cb0f2424680df4c99257929d2
+msgid ":ref:`struct<structs>`"
+msgstr ""
+
+#: ../../abi-spec.rst:119 0a16c66f306741df8ef217fee250e6d5
+msgid "``tuple``"
+msgstr ""
+
+#: ../../abi-spec.rst:123 b09b102ec9dd4adeb5e686d9cfe70a38
+msgid ""
+"Before version ``0.8.0`` enums could have more than 256 members and were "
+"represented by the smallest integer type just big enough to hold the "
+"value of any member."
+msgstr ""
+
+#: ../../abi-spec.rst:127 b16044b9c8ce4990b7acba08e1a76b20
+msgid "Design Criteria for the Encoding"
+msgstr ""
+
+#: ../../abi-spec.rst:129 71c32015e7044541b5b79fc3afbfa3da
+msgid ""
+"The encoding is designed to have the following properties, which are "
+"especially useful if some arguments are nested arrays:"
+msgstr ""
+
+#: ../../abi-spec.rst:131 3496aad37cbc4024881abf23287999ed
+msgid ""
+"The number of reads necessary to access a value is at most the depth of "
+"the value inside the argument array structure, i.e. four reads are needed"
+" to retrieve ``a_i[k][l][r]``. In a previous version of the ABI, the "
+"number of reads scaled linearly with the total number of dynamic "
+"parameters in the worst case."
+msgstr ""
+
+#: ../../abi-spec.rst:136 13f36ecb10064b168a0d45f47bb7eced
+msgid ""
+"The data of a variable or an array element is not interleaved with other "
+"data and it is relocatable, i.e. it only uses relative \"addresses\"."
+msgstr ""
+
+#: ../../abi-spec.rst:141 47816ccafbd348f2a9fd0fa44aef8c6c
+msgid "Formal Specification of the Encoding"
+msgstr ""
+
+#: ../../abi-spec.rst:143 191d9ad20efe486789ea0057a62bb98f
+msgid ""
+"We distinguish static and dynamic types. Static types are encoded in-"
+"place and dynamic types are encoded at a separately allocated location "
+"after the current block."
+msgstr ""
+
+#: ../../abi-spec.rst:146 9387f419635a449289dbefc9ada3b638
+msgid "**Definition:** The following types are called \"dynamic\":"
+msgstr ""
+
+#: ../../abi-spec.rst:148 1e3c05df14404e98a1235d0e3f59bba1
+msgid "``bytes``"
+msgstr ""
+
+#: ../../abi-spec.rst:149 d918f68969234f91814046de32487fbc
+msgid "``string``"
+msgstr ""
+
+#: ../../abi-spec.rst:150 0f11ed00d520498db47d085b5e8a26d9
+msgid "``T[]`` for any ``T``"
+msgstr ""
+
+#: ../../abi-spec.rst:151 4a5c6e7ba14f405ca90c3ee4bfa65f50
+msgid "``T[k]`` for any dynamic ``T`` and any ``k >= 0``"
+msgstr ""
+
+#: ../../abi-spec.rst:152 b96b7b4c26d9455b9e1b43bf0fb32f86
+msgid "``(T1,...,Tk)`` if ``Ti`` is dynamic for some ``1 <= i <= k``"
+msgstr ""
+
+#: ../../abi-spec.rst:154 9f26b510f1f64d85b11c8936dd404d58
+msgid "All other types are called \"static\"."
+msgstr ""
+
+#: ../../abi-spec.rst:156 8cbf150876ec4f76afa3528007840b6a
+msgid ""
+"**Definition:** ``len(a)`` is the number of bytes in a binary string "
+"``a``. The type of ``len(a)`` is assumed to be ``uint256``."
+msgstr ""
+
+#: ../../abi-spec.rst:159 3e7e191abe77480f92626ccf9f2ef978
+msgid ""
+"We define ``enc``, the actual encoding, as a mapping of values of the ABI"
+" types to binary strings such that ``len(enc(X))`` depends on the value "
+"of ``X`` if and only if the type of ``X`` is dynamic."
+msgstr ""
+
+#: ../../abi-spec.rst:162 e952003ba77a4de68acbfca790893ae0
+msgid ""
+"**Definition:** For any ABI value ``X``, we recursively define "
+"``enc(X)``, depending on the type of ``X`` being"
+msgstr ""
+
+#: ../../abi-spec.rst:165 e49106ef27fb4b78a3a27db97c2c401e
+msgid "``(T1,...,Tk)`` for ``k >= 0`` and any types ``T1``, ..., ``Tk``"
+msgstr ""
+
+#: ../../abi-spec.rst:167 c4ac4a14a2a64a148a18c0f0d07d766f
+msgid "``enc(X) = head(X(1)) ... head(X(k)) tail(X(1)) ... tail(X(k))``"
+msgstr ""
+
+#: ../../abi-spec.rst:169 da758d7617554abda2daaafbfb2c59cf
+msgid ""
+"where ``X = (X(1), ..., X(k))`` and ``head`` and ``tail`` are defined for"
+" ``Ti`` as follows:"
+msgstr ""
+
+#: ../../abi-spec.rst:172 7aa9b02d29674ebfaa563a27fbe90be3
+msgid "if ``Ti`` is static:"
+msgstr ""
+
+#: ../../abi-spec.rst:174 b430c2801f4a485aab9537d89dbc8c03
+msgid "``head(X(i)) = enc(X(i))`` and ``tail(X(i)) = \"\"`` (the empty string)"
+msgstr ""
+
+#: ../../abi-spec.rst:176 0b2699d1192a48a38e85267049dafadd
+msgid "otherwise, i.e. if ``Ti`` is dynamic:"
+msgstr ""
+
+#: ../../abi-spec.rst:178 92051217b1f04dfe8bf6e2e43da83df2
+msgid ""
+"``head(X(i)) = enc(len( head(X(1)) ... head(X(k)) tail(X(1)) ... "
+"tail(X(i-1)) ))`` ``tail(X(i)) = enc(X(i))``"
+msgstr ""
+
+#: ../../abi-spec.rst:181 93c309a3d17145ff882dd0dbae2aa7cc
+msgid ""
+"Note that in the dynamic case, ``head(X(i))`` is well-defined since the "
+"lengths of the head parts only depend on the types and not the values. "
+"The value of ``head(X(i))`` is the offset of the beginning of "
+"``tail(X(i))`` relative to the start of ``enc(X)``."
+msgstr ""
+
+#: ../../abi-spec.rst:185 836b241f222343b7a61e99f1d424db25
+msgid "``T[k]`` for any ``T`` and ``k``:"
+msgstr ""
+
+#: ../../abi-spec.rst:187 c49119d30dbb4666be9b639eb712ddc6
+msgid "``enc(X) = enc((X[0], ..., X[k-1]))``"
+msgstr ""
+
+#: ../../abi-spec.rst:189 80185f534500407f9082764d150406bb
+msgid ""
+"i.e. it is encoded as if it were a tuple with ``k`` elements of the same "
+"type."
+msgstr ""
+
+#: ../../abi-spec.rst:192 071da31e4c9748ffbf5fd9651a47af75
+msgid ""
+"``T[]`` where ``X`` has ``k`` elements (``k`` is assumed to be of type "
+"``uint256``):"
+msgstr ""
+
+#: ../../abi-spec.rst:194 3693afd156ba4379818a4104152075ae
+msgid "``enc(X) = enc(k) enc((X[0], ..., X[k-1]))``"
+msgstr ""
+
+#: ../../abi-spec.rst:196 6250954e0ebb4af6a9a267e55ea1405a
+msgid ""
+"i.e. it is encoded as if it were a tuple with ``k`` elements of the same "
+"type (resp. an array of static size ``k``), prefixed with the number of "
+"elements."
+msgstr ""
+
+#: ../../abi-spec.rst:199 91b762c935aa4ecb8dda7ecc9cd46ec3
+msgid "``bytes``, of length ``k`` (which is assumed to be of type ``uint256``):"
+msgstr ""
+
+#: ../../abi-spec.rst:201 dacd6f0241c242d2badbf984121fac96
+msgid ""
+"``enc(X) = enc(k) pad_right(X)``, i.e. the number of bytes is encoded as "
+"a ``uint256`` followed by the actual value of ``X`` as a byte sequence, "
+"followed by the minimum number of zero-bytes such that ``len(enc(X))`` is"
+" a multiple of 32."
+msgstr ""
+
+#: ../../abi-spec.rst:205 8a82a40db90248cb9d667f35ea808a7a
+msgid "``string``:"
+msgstr ""
+
+#: ../../abi-spec.rst:207 1ccf2593fa5a4be7a6b8075bdd048b7b
+msgid ""
+"``enc(X) = enc(enc_utf8(X))``, i.e. ``X`` is UTF-8 encoded and this value"
+" is interpreted as of ``bytes`` type and encoded further. Note that the "
+"length used in this subsequent encoding is the number of bytes of the "
+"UTF-8 encoded string, not its number of characters."
+msgstr ""
+
+#: ../../abi-spec.rst:211 33c7aba7ad284764a59b23bdead0ddea
+msgid ""
+"``uint<M>``: ``enc(X)`` is the big-endian encoding of ``X``, padded on "
+"the higher-order (left) side with zero-bytes such that the length is 32 "
+"bytes."
+msgstr ""
+
+#: ../../abi-spec.rst:213 3d1ecb9afe424efcb2c825d270b5039d
+msgid "``address``: as in the ``uint160`` case"
+msgstr ""
+
+#: ../../abi-spec.rst:214 5be4fa0ef4d542fcb449fd421028ccf7
+msgid ""
+"``int<M>``: ``enc(X)`` is the big-endian two's complement encoding of "
+"``X``, padded on the higher-order (left) side with ``0xff`` bytes for "
+"negative ``X`` and with zero-bytes for non-negative ``X`` such that the "
+"length is 32 bytes."
+msgstr ""
+
+#: ../../abi-spec.rst:215 074fa28ea5544587a4f24323f1afedd7
+msgid ""
+"``bool``: as in the ``uint8`` case, where ``1`` is used for ``true`` and "
+"``0`` for ``false``"
+msgstr ""
+
+#: ../../abi-spec.rst:216 0406546bc3a24ff48f6ed552b01b1fd4
+msgid ""
+"``fixed<M>x<N>``: ``enc(X)`` is ``enc(X * 10**N)`` where ``X * 10**N`` is"
+" interpreted as a ``int256``."
+msgstr ""
+
+#: ../../abi-spec.rst:217 ec8b8b539d3f4c1288fb8b6e0cab96e3
+msgid "``fixed``: as in the ``fixed128x18`` case"
+msgstr ""
+
+#: ../../abi-spec.rst:218 0acc0d4b623044b69e11d7774cddef50
+msgid ""
+"``ufixed<M>x<N>``: ``enc(X)`` is ``enc(X * 10**N)`` where ``X * 10**N`` "
+"is interpreted as a ``uint256``."
+msgstr ""
+
+#: ../../abi-spec.rst:219 6d0374f3bfdc49da8e0a07b1ec794768
+msgid "``ufixed``: as in the ``ufixed128x18`` case"
+msgstr ""
+
+#: ../../abi-spec.rst:220 1fb5cbb75a784ebb842b9b519699cfae
+msgid ""
+"``bytes<M>``: ``enc(X)`` is the sequence of bytes in ``X`` padded with "
+"trailing zero-bytes to a length of 32 bytes."
+msgstr ""
+
+#: ../../abi-spec.rst:222 87c3b5ff70de4aacabfd0888b2486636
+msgid "Note that for any ``X``, ``len(enc(X))`` is a multiple of 32."
+msgstr ""
+
+#: ../../abi-spec.rst:225 0215749c16b04f8b8bd70bdbdeb1450b
+msgid "Function Selector and Argument Encoding"
+msgstr ""
+
+#: ../../abi-spec.rst:227 a7dbe1b9f24c4399bdbbed7ab424fa91
+msgid ""
+"All in all, a call to the function ``f`` with parameters ``a_1, ..., "
+"a_n`` is encoded as"
+msgstr ""
+
+#: ../../abi-spec.rst:229 f28b844ba6ed44ffa11c0c20c383b61b
+msgid "``function_selector(f) enc((a_1, ..., a_n))``"
+msgstr ""
+
+#: ../../abi-spec.rst:231 ded883ce3c7e4e17a8c232d80cc58825
+msgid "and the return values ``v_1, ..., v_k`` of ``f`` are encoded as"
+msgstr ""
+
+#: ../../abi-spec.rst:233 bade60315d4b41c4b800254be22e1c20
+msgid "``enc((v_1, ..., v_k))``"
+msgstr ""
+
+#: ../../abi-spec.rst:235 288b775f5dbd4c3fa94594dbb7a742fc
+msgid "i.e. the values are combined into a tuple and encoded."
+msgstr ""
+
+#: ../../abi-spec.rst:238 822f5e14a53c4e66a85ffecdd4500b41
+msgid "Examples"
+msgstr ""
+
+#: ../../abi-spec.rst:240 9bd872a527b044078a6126c0f89253b4
+msgid "Given the contract:"
+msgstr ""
+
+#: ../../abi-spec.rst:255 94aa5aa33c9a4c64b2e92c365740d790
+msgid ""
+"Thus, for our ``Foo`` example if we wanted to call ``baz`` with the "
+"parameters ``69`` and ``true``, we would pass 68 bytes total, which can "
+"be broken down into:"
+msgstr ""
+
+#: ../../abi-spec.rst:258 d857cd72e12849988a0cecaf6c6ef9bf
+msgid ""
+"``0xcdcd77c0``: the Method ID. This is derived as the first 4 bytes of "
+"the Keccak hash of the ASCII form of the signature ``baz(uint32,bool)``."
+msgstr ""
+
+#: ../../abi-spec.rst:260 ad37ea9b2ab0487baeb5f755fe25809f
+msgid ""
+"``0x0000000000000000000000000000000000000000000000000000000000000045``: "
+"the first parameter, a uint32 value ``69`` padded to 32 bytes"
+msgstr ""
+
+#: ../../abi-spec.rst:262 957990b3f4a74e408fe6828dd187c54f
+msgid ""
+"``0x0000000000000000000000000000000000000000000000000000000000000001``: "
+"the second parameter - boolean ``true``, padded to 32 bytes"
+msgstr ""
+
+#: ../../abi-spec.rst:265 ../../abi-spec.rst:282 ../../abi-spec.rst:302
+#: 7be85476d53e442a8c6275ab43d1c412 91747dcce1054033b6623c2af9223d96
+#: c42ff29d0c664f67bcede25d587555ff
+msgid "In total:"
+msgstr ""
+
+#: ../../abi-spec.rst:271 4e8085e8f46b4de8a646b58e2306d5ee
+msgid ""
+"It returns a single ``bool``. If, for example, it were to return "
+"``false``, its output would be the single byte array "
+"``0x0000000000000000000000000000000000000000000000000000000000000000``, a"
+" single bool."
+msgstr ""
+
+#: ../../abi-spec.rst:274 7c34da43201f47aab3fef5f561412c1f
+msgid ""
+"If we wanted to call ``bar`` with the argument ``[\"abc\", \"def\"]``, we"
+" would pass 68 bytes total, broken down into:"
+msgstr ""
+
+#: ../../abi-spec.rst:276 122fccda7ef442cea755633f2e6ced64
+msgid ""
+"``0xfce353f6``: the Method ID. This is derived from the signature "
+"``bar(bytes3[2])``."
+msgstr ""
+
+#: ../../abi-spec.rst:277 f6c0bf882fb14e2e9ee95532f891932b
+msgid ""
+"``0x6162630000000000000000000000000000000000000000000000000000000000``: "
+"the first part of the first parameter, a ``bytes3`` value ``\"abc\"`` "
+"(left-aligned)."
+msgstr ""
+
+#: ../../abi-spec.rst:279 b348016cd89d49eeb7cb1a28c1075b9a
+msgid ""
+"``0x6465660000000000000000000000000000000000000000000000000000000000``: "
+"the second part of the first parameter, a ``bytes3`` value ``\"def\"`` "
+"(left-aligned)."
+msgstr ""
+
+#: ../../abi-spec.rst:288 663dee564c8c4be0b2e2f93b427eebe5
+msgid ""
+"If we wanted to call ``sam`` with the arguments ``\"dave\"``, ``true`` "
+"and ``[1,2,3]``, we would pass 292 bytes total, broken down into:"
+msgstr ""
+
+#: ../../abi-spec.rst:291 b926048910e94a2e9f7a55bca084510b
+msgid ""
+"``0xa5643bf2``: the Method ID. This is derived from the signature "
+"``sam(bytes,bool,uint256[])``. Note that ``uint`` is replaced with its "
+"canonical representation ``uint256``."
+msgstr ""
+
+#: ../../abi-spec.rst:292 49ada63accbe49129a03d7592162a0c5
+msgid ""
+"``0x0000000000000000000000000000000000000000000000000000000000000060``: "
+"the location of the data part of the first parameter (dynamic type), "
+"measured in bytes from the start of the arguments block. In this case, "
+"``0x60``."
+msgstr ""
+
+#: ../../abi-spec.rst:293 72458a2b0cab4cefad794cfec38c4ced
+msgid ""
+"``0x0000000000000000000000000000000000000000000000000000000000000001``: "
+"the second parameter: boolean true."
+msgstr ""
+
+#: ../../abi-spec.rst:294 b5e11ce04a15456693d15a445ae409a2
+msgid ""
+"``0x00000000000000000000000000000000000000000000000000000000000000a0``: "
+"the location of the data part of the third parameter (dynamic type), "
+"measured in bytes. In this case, ``0xa0``."
+msgstr ""
+
+#: ../../abi-spec.rst:295 898bb714a7f04644a71f0405261181f7
+msgid ""
+"``0x0000000000000000000000000000000000000000000000000000000000000004``: "
+"the data part of the first argument, it starts with the length of the "
+"byte array in elements, in this case, 4."
+msgstr ""
+
+#: ../../abi-spec.rst:296 b65b6026b341497fba28e9e8b924a708
+msgid ""
+"``0x6461766500000000000000000000000000000000000000000000000000000000``: "
+"the contents of the first argument: the UTF-8 (equal to ASCII in this "
+"case) encoding of ``\"dave\"``, padded on the right to 32 bytes."
+msgstr ""
+
+#: ../../abi-spec.rst:297 9a8e8245728a4bcaab74aa9b302893a4
+msgid ""
+"``0x0000000000000000000000000000000000000000000000000000000000000003``: "
+"the data part of the third argument, it starts with the length of the "
+"array in elements, in this case, 3."
+msgstr ""
+
+#: ../../abi-spec.rst:298 fa0e64c91ced41cb950b3bbf763936e9
+msgid ""
+"``0x0000000000000000000000000000000000000000000000000000000000000001``: "
+"the first entry of the third parameter."
+msgstr ""
+
+#: ../../abi-spec.rst:299 438a2509e0284111a88920e1d29b819b
+msgid ""
+"``0x0000000000000000000000000000000000000000000000000000000000000002``: "
+"the second entry of the third parameter."
+msgstr ""
+
+#: ../../abi-spec.rst:300 34d830e09bb24c60b9cd72f476286a43
+msgid ""
+"``0x0000000000000000000000000000000000000000000000000000000000000003``: "
+"the third entry of the third parameter."
+msgstr ""
+
+#: ../../abi-spec.rst:309 aeecf06e6e58457ab4ffae96798ee06b
+msgid "Use of Dynamic Types"
+msgstr ""
+
+#: ../../abi-spec.rst:311 ed183c9c92d34152b653ae9846cc3908
+msgid ""
+"A call to a function with the signature "
+"``f(uint256,uint32[],bytes10,bytes)`` with values ``(0x123, [0x456, "
+"0x789], \"1234567890\", \"Hello, world!\")`` is encoded in the following "
+"way:"
+msgstr ""
+
+#: ../../abi-spec.rst:314 be88bb237fd84380a6bf011f51dde224
+msgid ""
+"We take the first four bytes of "
+"``keccak(\"f(uint256,uint32[],bytes10,bytes)\")``, i.e. ``0x8be65246``. "
+"Then we encode the head parts of all four arguments. For the static types"
+" ``uint256`` and ``bytes10``, these are directly the values we want to "
+"pass, whereas for the dynamic types ``uint32[]`` and ``bytes``, we use "
+"the offset in bytes to the start of their data area, measured from the "
+"start of the value encoding (i.e. not counting the first four bytes "
+"containing the hash of the function signature). These are:"
+msgstr ""
+
+#: ../../abi-spec.rst:320 9c04f91c20ad4262ab6cf525286a397a
+msgid ""
+"``0x0000000000000000000000000000000000000000000000000000000000000123`` "
+"(``0x123`` padded to 32 bytes)"
+msgstr ""
+
+#: ../../abi-spec.rst:321 f7ce250310c8461db088b7a5ae920398
+msgid ""
+"``0x0000000000000000000000000000000000000000000000000000000000000080`` "
+"(offset to start of data part of second parameter, 4*32 bytes, exactly "
+"the size of the head part)"
+msgstr ""
+
+#: ../../abi-spec.rst:322 6119b816ff334998b04a41c60f1ab0ad
+msgid ""
+"``0x3132333435363738393000000000000000000000000000000000000000000000`` "
+"(``\"1234567890\"`` padded to 32 bytes on the right)"
+msgstr ""
+
+#: ../../abi-spec.rst:323 ed3a0bfdb250442f8031b6e1e5fcafdd
+msgid ""
+"``0x00000000000000000000000000000000000000000000000000000000000000e0`` "
+"(offset to start of data part of fourth parameter = offset to start of "
+"data part of first dynamic parameter + size of data part of first dynamic"
+" parameter = 4\\*32 + 3\\*32 (see below))"
+msgstr ""
+
+#: ../../abi-spec.rst:325 5b5a287a85f645f0acc13a62c32a1114
+msgid ""
+"After this, the data part of the first dynamic argument, ``[0x456, "
+"0x789]`` follows:"
+msgstr ""
+
+#: ../../abi-spec.rst:327 8cebf47de7bf4aed9f726ec8498bd919
+msgid ""
+"``0x0000000000000000000000000000000000000000000000000000000000000002`` "
+"(number of elements of the array, 2)"
+msgstr ""
+
+#: ../../abi-spec.rst:328 82374a7241284c0f83c16e1b2fe5aff0
+msgid ""
+"``0x0000000000000000000000000000000000000000000000000000000000000456`` "
+"(first element)"
+msgstr ""
+
+#: ../../abi-spec.rst:329 1fcb46477420459a8cc432faeae71590
+msgid ""
+"``0x0000000000000000000000000000000000000000000000000000000000000789`` "
+"(second element)"
+msgstr ""
+
+#: ../../abi-spec.rst:331 ca94afdc0c7c4147833ce3f3924d2007
+msgid ""
+"Finally, we encode the data part of the second dynamic argument, "
+"``\"Hello, world!\"``:"
+msgstr ""
+
+#: ../../abi-spec.rst:333 e4ee7750d4a94de98ec4a837a2266fa5
+msgid ""
+"``0x000000000000000000000000000000000000000000000000000000000000000d`` "
+"(number of elements (bytes in this case): 13)"
+msgstr ""
+
+#: ../../abi-spec.rst:334 9403ca6f13944a05a0e6af634a5a6592
+msgid ""
+"``0x48656c6c6f2c20776f726c642100000000000000000000000000000000000000`` "
+"(``\"Hello, world!\"`` padded to 32 bytes on the right)"
+msgstr ""
+
+#: ../../abi-spec.rst:336 dd372591355049d6946446f75e45933f
+msgid ""
+"All together, the encoding is (newline after function selector and each "
+"32-bytes for clarity):"
+msgstr ""
+
+#: ../../abi-spec.rst:351 62353e96355d4a69b82d2539e6d291fd
+msgid ""
+"Let us apply the same principle to encode the data for a function with a "
+"signature ``g(uint256[][],string[])`` with values ``([[1, 2], [3]], "
+"[\"one\", \"two\", \"three\"])`` but start from the most atomic parts of "
+"the encoding:"
+msgstr ""
+
+#: ../../abi-spec.rst:354 570efb7af13e4422a76265cdce9f1c4b
+msgid ""
+"First we encode the length and data of the first embedded dynamic array "
+"``[1, 2]`` of the first root array ``[[1, 2], [3]]``:"
+msgstr ""
+
+#: ../../abi-spec.rst:356 fbe5f4493a4a40bf98c9d3d4c88eeff5
+msgid ""
+"``0x0000000000000000000000000000000000000000000000000000000000000002`` "
+"(number of elements in the first array, 2; the elements themselves are "
+"``1`` and ``2``)"
+msgstr ""
+
+#: ../../abi-spec.rst:357 a3309dce35fe478e9c9ba843f0e75abc
+msgid ""
+"``0x0000000000000000000000000000000000000000000000000000000000000001`` "
+"(first element)"
+msgstr ""
+
+#: ../../abi-spec.rst:358 e1dc857504e04a9ba80eb675f6a5154b
+msgid ""
+"``0x0000000000000000000000000000000000000000000000000000000000000002`` "
+"(second element)"
+msgstr ""
+
+#: ../../abi-spec.rst:360 cac23211f49f401891d624283ba73198
+msgid ""
+"Then we encode the length and data of the second embedded dynamic array "
+"``[3]`` of the first root array ``[[1, 2], [3]]``:"
+msgstr ""
+
+#: ../../abi-spec.rst:362 a8cbb1eed7ad4270a237cbb8e3a315e2
+msgid ""
+"``0x0000000000000000000000000000000000000000000000000000000000000001`` "
+"(number of elements in the second array, 1; the element is ``3``)"
+msgstr ""
+
+#: ../../abi-spec.rst:363 eb51cb74cdd7470aaae2b26793c28ff3
+msgid ""
+"``0x0000000000000000000000000000000000000000000000000000000000000003`` "
+"(first element)"
+msgstr ""
+
+#: ../../abi-spec.rst:365 9be91dc2811e4da898740f474e6811a5
+msgid ""
+"Then we need to find the offsets ``a`` and ``b`` for their respective "
+"dynamic arrays ``[1, 2]`` and ``[3]``. To calculate the offsets we can "
+"take a look at the encoded data of the first root array ``[[1, 2], [3]]``"
+" enumerating each line in the encoding:"
+msgstr ""
+
+#: ../../abi-spec.rst:379 7b7dd0bcf07b447c9ee46535b024a56e
+msgid ""
+"Offset ``a`` points to the start of the content of the array ``[1, 2]`` "
+"which is line 2 (64 bytes); thus ``a = "
+"0x0000000000000000000000000000000000000000000000000000000000000040``."
+msgstr ""
+
+#: ../../abi-spec.rst:382 c280ff139e7c45aa91e90fe54e81d7c2
+msgid ""
+"Offset ``b`` points to the start of the content of the array ``[3]`` "
+"which is line 5 (160 bytes); thus ``b = "
+"0x00000000000000000000000000000000000000000000000000000000000000a0``."
+msgstr ""
+
+#: ../../abi-spec.rst:386 a10534a6c6614deeab844f6b0f9cf472
+msgid "Then we encode the embedded strings of the second root array:"
+msgstr ""
+
+#: ../../abi-spec.rst:388 74f5159e0e614f0aa6b5ca1e86bb8327
+msgid ""
+"``0x0000000000000000000000000000000000000000000000000000000000000003`` "
+"(number of characters in word ``\"one\"``)"
+msgstr ""
+
+#: ../../abi-spec.rst:389 4a510d57edc244a3a25da36602a9b054
+msgid ""
+"``0x6f6e650000000000000000000000000000000000000000000000000000000000`` "
+"(utf8 representation of word ``\"one\"``)"
+msgstr ""
+
+#: ../../abi-spec.rst:390 55b5de38828e40ebbf9c96681bf94c3c
+msgid ""
+"``0x0000000000000000000000000000000000000000000000000000000000000003`` "
+"(number of characters in word ``\"two\"``)"
+msgstr ""
+
+#: ../../abi-spec.rst:391 40adec207a0541baaa92f5b209355eb4
+msgid ""
+"``0x74776f0000000000000000000000000000000000000000000000000000000000`` "
+"(utf8 representation of word ``\"two\"``)"
+msgstr ""
+
+#: ../../abi-spec.rst:392 c345d61e47ff42e9882cc19ad9d1868f
+msgid ""
+"``0x0000000000000000000000000000000000000000000000000000000000000005`` "
+"(number of characters in word ``\"three\"``)"
+msgstr ""
+
+#: ../../abi-spec.rst:393 f7acadac84cd45c7b831bc962c9883b5
+msgid ""
+"``0x7468726565000000000000000000000000000000000000000000000000000000`` "
+"(utf8 representation of word ``\"three\"``)"
+msgstr ""
+
+#: ../../abi-spec.rst:395 5e13f90b89a044cfb38faf68942eb448
+msgid ""
+"In parallel to the first root array, since strings are dynamic elements "
+"we need to find their offsets ``c``, ``d`` and ``e``:"
+msgstr ""
+
+#: ../../abi-spec.rst:409 650d2f4509414d06983a3fcc40de876f
+msgid ""
+"Offset ``c`` points to the start of the content of the string ``\"one\"``"
+" which is line 3 (96 bytes); thus ``c = "
+"0x0000000000000000000000000000000000000000000000000000000000000060``."
+msgstr ""
+
+#: ../../abi-spec.rst:412 ecc7fb19831f470e9dba1eee41d36df5
+msgid ""
+"Offset ``d`` points to the start of the content of the string ``\"two\"``"
+" which is line 5 (160 bytes); thus ``d = "
+"0x00000000000000000000000000000000000000000000000000000000000000a0``."
+msgstr ""
+
+#: ../../abi-spec.rst:415 f414458f6ae24b0898c059f753bdc264
+msgid ""
+"Offset ``e`` points to the start of the content of the string "
+"``\"three\"`` which is line 7 (224 bytes); thus ``e = "
+"0x00000000000000000000000000000000000000000000000000000000000000e0``."
+msgstr ""
+
+#: ../../abi-spec.rst:419 cc007760548f4f9ea925d758d5ef22df
+msgid ""
+"Note that the encodings of the embedded elements of the root arrays are "
+"not dependent on each other and have the same encodings for a function "
+"with a signature ``g(string[],uint256[][])``."
+msgstr ""
+
+#: ../../abi-spec.rst:422 8f0ee2a255864451b4b0f07d6b27406d
+msgid "Then we encode the length of the first root array:"
+msgstr ""
+
+#: ../../abi-spec.rst:424 3d73e9f5f4b94b1eaa389d1dea880b4a
+msgid ""
+"``0x0000000000000000000000000000000000000000000000000000000000000002`` "
+"(number of elements in the first root array, 2; the elements themselves "
+"are ``[1, 2]``  and ``[3]``)"
+msgstr ""
+
+#: ../../abi-spec.rst:426 9fc6ede3abef435d8348cd7ff9500612
+msgid "Then we encode the length of the second root array:"
+msgstr ""
+
+#: ../../abi-spec.rst:428 4403414a06f647619e3d5f1a5f436f83
+msgid ""
+"``0x0000000000000000000000000000000000000000000000000000000000000003`` "
+"(number of strings in the second root array, 3; the strings themselves "
+"are ``\"one\"``, ``\"two\"`` and ``\"three\"``)"
+msgstr ""
+
+#: ../../abi-spec.rst:430 94712019274f447db9941eed8850d0c6
+msgid ""
+"Finally we find the offsets ``f`` and ``g`` for their respective root "
+"dynamic arrays ``[[1, 2], [3]]`` and ``[\"one\", \"two\", \"three\"]``, "
+"and assemble parts in the correct order:"
+msgstr ""
+
+#: ../../abi-spec.rst:457 29a1006d995e4cfeb812ca66f95adc81
+msgid ""
+"Offset ``f`` points to the start of the content of the array ``[[1, 2], "
+"[3]]`` which is line 2 (64 bytes); thus ``f = "
+"0x0000000000000000000000000000000000000000000000000000000000000040``."
+msgstr ""
+
+#: ../../abi-spec.rst:460 b5f7913abaee4324935b04657615c993
+msgid ""
+"Offset ``g`` points to the start of the content of the array ``[\"one\", "
+"\"two\", \"three\"]`` which is line 10 (320 bytes); thus ``g = "
+"0x0000000000000000000000000000000000000000000000000000000000000140``."
+msgstr ""
+
+#: ../../abi-spec.rst:466 f0504daac87644278cebd28d92ba4c82
+msgid "Events"
+msgstr ""
+
+#: ../../abi-spec.rst:468 d3fabfe2c23a45abbfd8df4374a54cfa
+msgid ""
+"Events are an abstraction of the Ethereum logging/event-watching "
+"protocol. Log entries provide the contract's address, a series of up to "
+"four topics and some arbitrary length binary data. Events leverage the "
+"existing function ABI in order to interpret this (together with an "
+"interface spec) as a properly typed structure."
+msgstr ""
+
+#: ../../abi-spec.rst:472 69e4285acc54497080331ce136b251eb
+msgid ""
+"Given an event name and series of event parameters, we split them into "
+"two sub-series: those which are indexed and those which are not. Those "
+"which are indexed, which may number up to 3 (for non-anonymous events) or"
+" 4 (for anonymous ones), are used alongside the Keccak hash of the event "
+"signature to form the topics of the log entry. Those which are not "
+"indexed form the byte array of the event."
+msgstr ""
+
+#: ../../abi-spec.rst:478 0e9a7623b64645e78fdb89d31c8bc8df
+msgid "In effect, a log entry using this ABI is described as:"
+msgstr ""
+
+#: ../../abi-spec.rst:480 d2b7798a235b456e82de961806e7516e
+msgid ""
+"``address``: the address of the contract (intrinsically provided by "
+"Ethereum);"
+msgstr ""
+
+#: ../../abi-spec.rst:481 09ee9cf49af644f0811113bb0daa1fff
+msgid ""
+"``topics[0]``: "
+"``keccak(EVENT_NAME+\"(\"+EVENT_ARGS.map(canonical_type_of).join(\",\")+\")\")``"
+" (``canonical_type_of`` is a function that simply returns the canonical "
+"type of a given argument, e.g. for ``uint indexed foo``, it would return "
+"``uint256``). This value is only present in ``topics[0]`` if the event is"
+" not declared as ``anonymous``;"
+msgstr ""
+
+#: ../../abi-spec.rst:484 e3bf591eeffa4931a960f74243ac085b
+msgid ""
+"``topics[n]``: ``abi_encode(EVENT_INDEXED_ARGS[n - 1])`` if the event is "
+"not declared as ``anonymous`` or ``abi_encode(EVENT_INDEXED_ARGS[n])`` if"
+" it is (``EVENT_INDEXED_ARGS`` is the series of ``EVENT_ARGS`` that are "
+"indexed);"
+msgstr ""
+
+#: ../../abi-spec.rst:487 52326dca0bc84b3b97df87f9dc700a22
+msgid ""
+"``data``: ABI encoding of ``EVENT_NON_INDEXED_ARGS`` "
+"(``EVENT_NON_INDEXED_ARGS`` is the series of ``EVENT_ARGS`` that are not "
+"indexed, ``abi_encode`` is the ABI encoding function used for returning a"
+" series of typed values from a function, as described above)."
+msgstr ""
+
+#: ../../abi-spec.rst:491 33f1e8db23f74dc19551f3002eda6420
+msgid ""
+"For all types of length at most 32 bytes, the ``EVENT_INDEXED_ARGS`` "
+"array contains the value directly, padded or sign-extended (for signed "
+"integers) to 32 bytes, just as for regular ABI encoding. However, for all"
+" \"complex\" types or types of dynamic length, including all arrays, "
+"``string``, ``bytes`` and structs, ``EVENT_INDEXED_ARGS`` will contain "
+"the *Keccak hash* of a special in-place encoded value (see "
+":ref:`indexed_event_encoding`), rather than the encoded value directly. "
+"This allows applications to efficiently query for values of dynamic-"
+"length types (by setting the hash of the encoded value as the topic), but"
+" leaves applications unable to decode indexed values they have not "
+"queried for. For dynamic-length types, application developers face a "
+"trade-off between fast search for predetermined values (if the argument "
+"is indexed) and legibility of arbitrary values (which requires that the "
+"arguments not be indexed). Developers may overcome this tradeoff and "
+"achieve both efficient search and arbitrary legibility by defining events"
+" with two arguments — one indexed, one not — intended to hold the same "
+"value."
+msgstr ""
+
+#: ../../abi-spec.rst:509 030107d1b3794a0ca6229a2ba1867296
+msgid "Errors"
+msgstr ""
+
+#: ../../abi-spec.rst:511 e31beb2acfd641ea86860f9aa1247960
+msgid ""
+"In case of a failure inside a contract, the contract can use a special "
+"opcode to abort execution and revert all state changes. In addition to "
+"these effects, descriptive data can be returned to the caller. This "
+"descriptive data is the encoding of an error and its arguments in the "
+"same way as data for a function call."
+msgstr ""
+
+#: ../../abi-spec.rst:516 028e5fc33e8e43ff8f1e53f305e22f7e
+msgid ""
+"As an example, let us consider the following contract whose ``transfer`` "
+"function always reverts with a custom error of \"insufficient balance\":"
+msgstr ""
+
+#: ../../abi-spec.rst:531 c52b6f4bc3354579a518acbae2b349ee
+msgid ""
+"The return data would be encoded in the same way as the function call "
+"``InsufficientBalance(0, amount)`` to the function "
+"``InsufficientBalance(uint256,uint256)``, i.e. ``0xcf479181``, "
+"``uint256(0)``, ``uint256(amount)``."
+msgstr ""
+
+#: ../../abi-spec.rst:535 085b3413a43449518266f8cbcc7a830e
+msgid ""
+"The error selectors ``0x00000000`` and ``0xffffffff`` are reserved for "
+"future use."
+msgstr ""
+
+#: ../../abi-spec.rst:538 8f11e94b39324d8ab8615198646dba4c
+msgid ""
+"Never trust error data. The error data by default bubbles up through the "
+"chain of external calls, which means that a contract may receive an error"
+" not defined in any of the contracts it calls directly. Furthermore, any "
+"contract can fake any error by returning data that matches an error "
+"signature, even if the error is not defined anywhere."
+msgstr ""
+
+#: ../../abi-spec.rst:548 46c2e7f9ad444de38f627b9f75506ff2
+msgid "JSON"
+msgstr ""
+
+#: ../../abi-spec.rst:550 cf962f98c76945a78861cfdac1530e88
+msgid ""
+"The JSON format for a contract's interface is given by an array of "
+"function, event and error descriptions. A function description is a JSON "
+"object with the fields:"
+msgstr ""
+
+#: ../../abi-spec.rst:553 9b6548789ef64411b85163661342398f
+msgid ""
+"``type``: ``\"function\"``, ``\"constructor\"``, ``\"receive\"`` (the "
+":ref:`\"receive Ether\" function <receive-ether-function>`) or "
+"``\"fallback\"`` (the :ref:`\"default\" function <fallback-function>`);"
+msgstr ""
+
+#: ../../abi-spec.rst:554 55d94202c7e449488ea293453ac2143f
+msgid "``name``: the name of the function;"
+msgstr ""
+
+#: ../../abi-spec.rst:555 ../../abi-spec.rst:579 ../../abi-spec.rst:592
+#: 4d4e9cb7b6244ef2aa08583c204c83d2 f0f666f0962849e792269e2b57963e5f
+#: f6e0d729714f4492bab3cb9430b991f9
+msgid "``inputs``: an array of objects, each of which contains:"
+msgstr ""
+
+#: ../../abi-spec.rst:557 ../../abi-spec.rst:581 ../../abi-spec.rst:594
+#: 12ff0fd757d54946801192b78592026c 745f12bbf791405ba6ad6b6dbf5b194f
+#: 7e53c06894674b78961ef3d7fafa7a24
+msgid "``name``: the name of the parameter."
+msgstr ""
+
+#: ../../abi-spec.rst:558 ../../abi-spec.rst:582 ../../abi-spec.rst:595
+#: 2cde51d6ec8a4e2d8674dd080e8929f2 502e37503f874e17aaaa6ceae3961ae1
+#: b5ea429b93b04cd9b9c833096e3cf0e1
+msgid "``type``: the canonical type of the parameter (more below)."
+msgstr ""
+
+#: ../../abi-spec.rst:559 ../../abi-spec.rst:583 ../../abi-spec.rst:596
+#: 23638ef5d31c4076a4e9a39cd7c2ba9e 3f9f1021ce4f49bb993c2168637b4dad
+#: 625a8d3f9e5d45358c8930995b9b849b
+msgid "``components``: used for tuple types (more below)."
+msgstr ""
+
+#: ../../abi-spec.rst:561 0148a782c2044b2b870854e524a40ed6
+msgid "``outputs``: an array of objects similar to ``inputs``."
+msgstr ""
+
+#: ../../abi-spec.rst:562 579def2c695e41c3a16473d3b999be7a
+msgid ""
+"``stateMutability``: a string with one of the following values: ``pure`` "
+"(:ref:`specified to not read blockchain state <pure-functions>`), "
+"``view`` (:ref:`specified to not modify the blockchain state <view-"
+"functions>`), ``nonpayable`` (function does not accept Ether - the "
+"default) and ``payable`` (function accepts Ether)."
+msgstr ""
+
+#: ../../abi-spec.rst:566 a738522cd0634906a4b7008ac84c7a26
+msgid ""
+"Constructor, receive, and fallback never have ``name`` or ``outputs``. "
+"Receive and fallback don't have ``inputs`` either."
+msgstr ""
+
+#: ../../abi-spec.rst:569 e197bb5efe424c6aae55d0cec26596ab
+msgid ""
+"Sending non-zero Ether to non-payable function will revert the "
+"transaction."
+msgstr ""
+
+#: ../../abi-spec.rst:572 7d1303c161fd4549bee7e5adc010c59d
+msgid ""
+"The state mutability ``nonpayable`` is reflected in Solidity by not "
+"specifying a state mutability modifier at all."
+msgstr ""
+
+#: ../../abi-spec.rst:575 8e1ca60da83647fcaaccb734adfca619
+msgid "An event description is a JSON object with fairly similar fields:"
+msgstr ""
+
+#: ../../abi-spec.rst:577 c79962961ef445829386f2150fa69ae4
+msgid "``type``: always ``\"event\"``"
+msgstr ""
+
+#: ../../abi-spec.rst:578 cce1517deb584275a0836c470a1de945
+msgid "``name``: the name of the event."
+msgstr ""
+
+#: ../../abi-spec.rst:584 0af5f7e98c2c4d8a834151534b32d004
+msgid ""
+"``indexed``: ``true`` if the field is part of the log's topics, ``false``"
+" if it one of the log's data segment."
+msgstr ""
+
+#: ../../abi-spec.rst:586 3f648800af63466daa3c77daf138b69a
+msgid "``anonymous``: ``true`` if the event was declared as ``anonymous``."
+msgstr ""
+
+#: ../../abi-spec.rst:588 9620eb3c22d94a2abba5cd9bf801e316
+msgid "Errors look as follows:"
+msgstr ""
+
+#: ../../abi-spec.rst:590 029891701f5b47b8b2d1008cf183a877
+msgid "``type``: always ``\"error\"``"
+msgstr ""
+
+#: ../../abi-spec.rst:591 fac80c462b60414f9b0c779fe4125829
+msgid "``name``: the name of the error."
+msgstr ""
+
+#: ../../abi-spec.rst:599 294a37f0aa774c229a9117b88462eced
+msgid ""
+"There can be multiple errors with the same name and even with identical "
+"signature in the JSON array; for example, if the errors originate from "
+"different files in the smart contract or are referenced from another "
+"smart contract. For the ABI, only the name of the error itself is "
+"relevant and not where it is defined."
+msgstr ""
+
+#: ../../abi-spec.rst:606 0b4b2154060d48d9af36b183f12f5427
+msgid "For example,"
+msgstr ""
+
+#: ../../abi-spec.rst:623 ../../abi-spec.rst:675
+#: 3473241891694a569625a2b39e081126 672e912a30934197bb7ac700f9823d42
+msgid "would result in the JSON:"
+msgstr ""
+
+#: ../../abi-spec.rst:647 4ce9cb5122af4be3bdd3260d3fd9e749
+msgid "Handling tuple types"
+msgstr ""
+
+#: ../../abi-spec.rst:649 a1a63ce27699422da85f51bc8eeaebf5
+msgid ""
+"Despite the fact that names are intentionally not part of the ABI "
+"encoding, they do make a lot of sense to be included in the JSON to "
+"enable displaying it to the end user. The structure is nested in the "
+"following way:"
+msgstr ""
+
+#: ../../abi-spec.rst:652 8436e963aead43dca6d56e092a0c1807
+msgid ""
+"An object with members ``name``, ``type`` and potentially ``components`` "
+"describes a typed variable. The canonical type is determined until a "
+"tuple type is reached and the string description up to that point is "
+"stored in ``type`` prefix with the word ``tuple``, i.e. it will be "
+"``tuple`` followed by a sequence of ``[]`` and ``[k]`` with integers "
+"``k``. The components of the tuple are then stored in the member "
+"``components``, which is of an array type and has the same structure as "
+"the top-level object except that ``indexed`` is not allowed there."
+msgstr ""
+
+#: ../../abi-spec.rst:660 c3a5051fd60f4781bc3193535d519b2f
+msgid "As an example, the code"
+msgstr ""
+
+#: ../../abi-spec.rst:738 dc44cfb2879d4807a910b43fb4f929ba
+msgid "Strict Encoding Mode"
+msgstr ""
+
+#: ../../abi-spec.rst:740 09dbd862e4354a87bc093297d76f514c
+msgid ""
+"Strict encoding mode is the mode that leads to exactly the same encoding "
+"as defined in the formal specification above. This means that offsets "
+"have to be as small as possible while still not creating overlaps in the "
+"data areas, and thus no gaps are allowed."
+msgstr ""
+
+#: ../../abi-spec.rst:744 1962e4695acf4d8fb5bf2428f6869a91
+msgid ""
+"Usually, ABI decoders are written in a straightforward way by just "
+"following offset pointers, but some decoders might enforce strict mode. "
+"The Solidity ABI decoder currently does not enforce strict mode, but the "
+"encoder always creates data in strict mode."
+msgstr ""
+
+#: ../../abi-spec.rst:749 33fc686d2e8c4dba85af82c24814119f
+msgid "Non-standard Packed Mode"
+msgstr ""
+
+#: ../../abi-spec.rst:751 a23c0fd4871b493d970f91f2135e660a
+msgid ""
+"Through ``abi.encodePacked()``, Solidity supports a non-standard packed "
+"mode where:"
+msgstr ""
+
+#: ../../abi-spec.rst:753 fc4387d883cc4c48a3c391948601da4b
+msgid ""
+"types shorter than 32 bytes are concatenated directly, without padding or"
+" sign extension"
+msgstr ""
+
+#: ../../abi-spec.rst:754 392a1ecaba324a35a591b41a8e20458c
+msgid "dynamic types are encoded in-place and without the length."
+msgstr ""
+
+#: ../../abi-spec.rst:755 06e1a682b1b24c75b2c91ae516905735
+msgid "array elements are padded, but still encoded in-place"
+msgstr ""
+
+#: ../../abi-spec.rst:757 18d5308f82894f769c411d4351998184
+msgid "Furthermore, structs as well as nested arrays are not supported."
+msgstr ""
+
+#: ../../abi-spec.rst:759 e0ab112c4c194718a20eabd72b98cea8
+msgid ""
+"As an example, the encoding of ``int16(-1), bytes1(0x42), uint16(0x03), "
+"string(\"Hello, world!\")`` results in:"
+msgstr ""
+
+#: ../../abi-spec.rst:769 7d35b3bd040a4c25ae3194816a98d13d
+msgid "More specifically:"
+msgstr ""
+
+#: ../../abi-spec.rst:771 e670bea29c5742d299d1688ee9179876
+msgid ""
+"During the encoding, everything is encoded in-place. This means that "
+"there is no distinction between head and tail, as in the ABI encoding, "
+"and the length of an array is not encoded."
+msgstr ""
+
+#: ../../abi-spec.rst:774 8e0aaec946a94f599cf51598791793f2
+msgid ""
+"The direct arguments of ``abi.encodePacked`` are encoded without padding,"
+" as long as they are not arrays (or ``string`` or ``bytes``)."
+msgstr ""
+
+#: ../../abi-spec.rst:776 2456b33409854c478e9ac6eb3770de9a
+msgid ""
+"The encoding of an array is the concatenation of the encoding of its "
+"elements **with** padding."
+msgstr ""
+
+#: ../../abi-spec.rst:778 fd8c668512c14ecd941aef53b370f5dc
+msgid ""
+"Dynamically-sized types like ``string``, ``bytes`` or ``uint[]`` are "
+"encoded without their length field."
+msgstr ""
+
+#: ../../abi-spec.rst:780 c447cc5bc2054656ad58e87c9f0089c0
+msgid ""
+"The encoding of ``string`` or ``bytes`` does not apply padding at the "
+"end, unless it is part of an array or struct (then it is padded to a "
+"multiple of 32 bytes)."
+msgstr ""
+
+#: ../../abi-spec.rst:784 bab4326f60f9498d959759636aa69999
+msgid ""
+"In general, the encoding is ambiguous as soon as there are two "
+"dynamically-sized elements, because of the missing length field."
+msgstr ""
+
+#: ../../abi-spec.rst:787 8ea01d6cb6234fd788f665931016ce2f
+msgid ""
+"If padding is needed, explicit type conversions can be used: "
+"``abi.encodePacked(uint16(0x12)) == hex\"0012\"``."
+msgstr ""
+
+#: ../../abi-spec.rst:789 ec98103ca3284e079169164527200763
+msgid ""
+"Since packed encoding is not used when calling functions, there is no "
+"special support for prepending a function selector. Since the encoding is"
+" ambiguous, there is no decoding function."
+msgstr ""
+
+#: ../../abi-spec.rst:794 e463046de9fe47c68296cc154a83982f
+msgid ""
+"If you use ``keccak256(abi.encodePacked(a, b))`` and both ``a`` and ``b``"
+" are dynamic types, it is easy to craft collisions in the hash value by "
+"moving parts of ``a`` into ``b`` and vice-versa. More specifically, "
+"``abi.encodePacked(\"a\", \"bc\") == abi.encodePacked(\"ab\", \"c\")``. "
+"If you use ``abi.encodePacked`` for signatures, authentication or data "
+"integrity, make sure to always use the same types and check that at most "
+"one of them is dynamic. Unless there is a compelling reason, "
+"``abi.encode`` should be preferred."
+msgstr ""
+
+#: ../../abi-spec.rst:805 afed41cd022b44dbac46d45c7cf2b3ab
+msgid "Encoding of Indexed Event Parameters"
+msgstr ""
+
+#: ../../abi-spec.rst:807 44279d77f376402aab3e05613de1c3e7
+msgid ""
+"Indexed event parameters that are not value types, i.e. arrays and "
+"structs are not stored directly but instead a Keccak-256 hash of an "
+"encoding is stored. This encoding is defined as follows:"
+msgstr ""
+
+#: ../../abi-spec.rst:811 cf4bb414dc1f4ee4a6491a0671219e9b
+msgid ""
+"the encoding of a ``bytes`` and ``string`` value is just the string "
+"contents without any padding or length prefix."
+msgstr ""
+
+#: ../../abi-spec.rst:813 f8bbb6f11e4c436bab6e6999f12804f2
+msgid ""
+"the encoding of a struct is the concatenation of the encoding of its "
+"members, always padded to a multiple of 32 bytes (even ``bytes`` and "
+"``string``)."
+msgstr ""
+
+#: ../../abi-spec.rst:815 f4f12d783c634d8d95969483d2c1704e
+msgid ""
+"the encoding of an array (both dynamically- and statically-sized) is the "
+"concatenation of the encoding of its elements, always padded to a "
+"multiple of 32 bytes (even ``bytes`` and ``string``) and without any "
+"length prefix"
+msgstr ""
+
+#: ../../abi-spec.rst:819 daece1485a614397a9efa6e935ca83b6
+msgid ""
+"In the above, as usual, a negative number is padded by sign extension and"
+" not zero padded. ``bytesNN`` types are padded on the right while "
+"``uintNN`` / ``intNN`` are padded on the left."
+msgstr ""
+
+#: ../../abi-spec.rst:824 745ca7a2a86f4cb1ae66c533d16ecbb4
+msgid ""
+"The encoding of a struct is ambiguous if it contains more than one "
+"dynamically-sized array. Because of that, always re-check the event data "
+"and do not rely on the search result based on the indexed parameters "
+"alone."
+msgstr ""
+

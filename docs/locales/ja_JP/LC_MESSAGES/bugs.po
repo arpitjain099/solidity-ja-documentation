@@ -1,0 +1,192 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2023, The Solidity Authors
+# This file is distributed under the same license as the Solidity package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Solidity 0.8.20\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-18 04:40+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ja_JP\n"
+"Language-Team: ja_JP <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../bugs.rst:7 0cc57170f00040d29b296109f43afc0f
+msgid "List of Known Bugs"
+msgstr ""
+
+#: ../../bugs.rst:9 59a1fe0efc2e49fa9654dde551bba8c6
+msgid ""
+"Below, you can find a JSON-formatted list of some of the known security-"
+"relevant bugs in the Solidity compiler. The file itself is hosted in the "
+"`Github repository "
+"<https://github.com/ethereum/solidity/blob/develop/docs/bugs.json>`_. The"
+" list stretches back as far as version 0.3.0, bugs known to be present "
+"only in versions preceding that are not listed."
+msgstr ""
+
+#: ../../bugs.rst:15 1d942e5594d34afa87c81f0ff1b73208
+msgid ""
+"There is another file called `bugs_by_version.json "
+"<https://github.com/ethereum/solidity/blob/develop/docs/bugs_by_version.json>`_,"
+" which can be used to check which bugs affect a specific version of the "
+"compiler."
+msgstr ""
+
+#: ../../bugs.rst:19 d91a85530e6841049f149c1add8c73f2
+msgid ""
+"Contract source verification tools and also other tools interacting with "
+"contracts should consult this list according to the following criteria:"
+msgstr ""
+
+#: ../../bugs.rst:22 6372adf04f0448fb835c1baf764fff31
+msgid ""
+"It is mildly suspicious if a contract was compiled with a nightly "
+"compiler version instead of a released version. This list does not keep "
+"track of unreleased or nightly versions."
+msgstr ""
+
+#: ../../bugs.rst:25 abe5c4acc2764382aeeb5bb6af72a0ee
+msgid ""
+"It is also mildly suspicious if a contract was compiled with a version "
+"that was not the most recent at the time the contract was created. For "
+"contracts created from other contracts, you have to follow the creation "
+"chain back to a transaction and use the date of that transaction as "
+"creation date."
+msgstr ""
+
+#: ../../bugs.rst:29 1385b71a5cd842fdaf025554d8dcb77a
+msgid ""
+"It is highly suspicious if a contract was compiled with a compiler that "
+"contains a known bug and the contract was created at a time where a newer"
+" compiler version containing a fix was already released."
+msgstr ""
+
+#: ../../bugs.rst:33 d277dc52596f4b1eb4211b8bef52b732
+msgid ""
+"The JSON file of known bugs below is an array of objects, one for each "
+"bug, with the following keys:"
+msgstr ""
+
+#: ../../bugs.rst:38 4c57b9f3857c494f959d7d6b72df2ddc
+msgid "uid"
+msgstr ""
+
+#: ../../bugs.rst:37 bf042db996254c41a62a9b672f99c730
+msgid ""
+"Unique identifier given to the bug in the form of "
+"``SOL-<year>-<number>``. It is possible that multiple entries exists with"
+" the same uid. This means multiple version ranges are affected by the "
+"same bug."
+msgstr ""
+
+#: ../../bugs.rst:40 5ac1f7e8474a4f18872bd5a7a38f0c9d
+msgid "name"
+msgstr ""
+
+#: ../../bugs.rst:41 1b47b12db90049ee99b3ffcc695374b2
+msgid "Unique name given to the bug"
+msgstr ""
+
+#: ../../bugs.rst:42 573ab35011274d849cd406d2c36e7565
+msgid "summary"
+msgstr ""
+
+#: ../../bugs.rst:43 e7e16f0407164aa69a54a2a9990e03df
+msgid "Short description of the bug"
+msgstr ""
+
+#: ../../bugs.rst:44 e567d816bb994ed993444f4d8db08e4b
+msgid "description"
+msgstr ""
+
+#: ../../bugs.rst:45 86735190da4d412daee496a48bf2119e
+msgid "Detailed description of the bug"
+msgstr ""
+
+#: ../../bugs.rst:46 336ec504aea44148b38166e6b261f1ab
+msgid "link"
+msgstr ""
+
+#: ../../bugs.rst:47 5c0b2c7993074adb814777386d7dd0dc
+msgid "URL of a website with more detailed information, optional"
+msgstr ""
+
+#: ../../bugs.rst:48 666c49eba87e466fafbf07b96d8f5099
+msgid "introduced"
+msgstr ""
+
+#: ../../bugs.rst:49 050a57f6337f4d0089850a18d3f789cb
+msgid "The first published compiler version that contained the bug, optional"
+msgstr ""
+
+#: ../../bugs.rst:50 8696737d20694774b79fd7c5c6d1599e
+msgid "fixed"
+msgstr ""
+
+#: ../../bugs.rst:51 2daecd6c82334b51a200585df88bc844
+msgid "The first published compiler version that did not contain the bug anymore"
+msgstr ""
+
+#: ../../bugs.rst:52 13bb318220514b6e99bd839d51b15c42
+msgid "publish"
+msgstr ""
+
+#: ../../bugs.rst:53 ec5d45c1ee774dbba686c4f4386a579c
+msgid "The date at which the bug became known publicly, optional"
+msgstr ""
+
+#: ../../bugs.rst:56 1a1e8d5075e545609733f73c5bb03208
+msgid "severity"
+msgstr ""
+
+#: ../../bugs.rst:55 a1979f3a37514417a4995483ce0d82d7
+msgid ""
+"Severity of the bug: very low, low, medium, high. Takes into account "
+"discoverability in contract tests, likelihood of occurrence and potential"
+" damage by exploits."
+msgstr ""
+
+#: ../../bugs.rst:67 9e4e1806ff004bf49a594c7a9cb9b9a0
+msgid "conditions"
+msgstr ""
+
+#: ../../bugs.rst:59 92b52b6387e243aaa86301c99c661ea0
+msgid ""
+"Conditions that have to be met to trigger the bug. The following keys can"
+" be used: ``optimizer``, Boolean value which means that the optimizer has"
+" to be switched on to enable the bug. ``evmVersion``, a string that "
+"indicates which EVM version compiler settings trigger the bug. The string"
+" can contain comparison operators. For example, ``\">=constantinople\"`` "
+"means that the bug is present when the EVM version is set to "
+"``constantinople`` or later. If no conditions are given, assume that the "
+"bug is present."
+msgstr ""
+
+#: ../../bugs.rst:81 31f94ec9f6fa4694b4efeae8f4d951dc
+msgid "check"
+msgstr ""
+
+#: ../../bugs.rst:70 b69b53e7822e40908478b4f798c8b7a7
+msgid ""
+"This field contains different checks that report whether the smart "
+"contract contains the bug or not. The first type of check are Javascript "
+"regular expressions that are to be matched against the source code "
+"(\"source-regex\") if the bug is present.  If there is no match, then the"
+" bug is very likely not present. If there is a match, the bug might be "
+"present.  For improved accuracy, the checks should be applied to the "
+"source code after stripping comments. The second type of check are "
+"patterns to be checked on the compact AST of the Solidity program (\"ast-"
+"compact-json-path\"). The specified search query is a `JsonPath "
+"<https://github.com/json-path/JsonPath>`_ expression. If at least one "
+"path of the Solidity AST matches the query, the bug is likely present."
+msgstr ""
+

@@ -1,0 +1,876 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2023, The Solidity Authors
+# This file is distributed under the same license as the Solidity package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Solidity 0.8.20\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-18 04:40+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ja_JP\n"
+"Language-Team: ja_JP <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../installing-solidity.rst:7 ca91ecfe57234fc68d649c4c39f52509
+msgid "Installing the Solidity Compiler"
+msgstr ""
+
+#: ../../installing-solidity.rst:10 f9abc3aa797b431aa4926ba1731145d5
+msgid "Versioning"
+msgstr ""
+
+#: ../../installing-solidity.rst:12 300e64084ebf4d16a5ea60e59351b778
+msgid ""
+"Solidity versions follow `Semantic Versioning <https://semver.org>`_. In "
+"addition, patch level releases with major release 0 (i.e. 0.x.y) will not"
+" contain breaking changes. That means code that compiles with version "
+"0.x.y can be expected to compile with 0.x.z where z > y."
+msgstr ""
+
+#: ../../installing-solidity.rst:17 7b5373634cd649319e540d0a0f0b7f03
+msgid ""
+"In addition to releases, we provide **nightly development builds** with "
+"the intention of making it easy for developers to try out upcoming "
+"features and provide early feedback. Note, however, that while the "
+"nightly builds are usually very stable, they contain bleeding-edge code "
+"from the development branch and are not guaranteed to be always working. "
+"Despite our best efforts, they might contain undocumented and/or broken "
+"changes that will not become a part of an actual release. They are not "
+"meant for production use."
+msgstr ""
+
+#: ../../installing-solidity.rst:25 c9b9a002274540acb9c4514aa8700cfe
+msgid ""
+"When deploying contracts, you should use the latest released version of "
+"Solidity. This is because breaking changes, as well as new features and "
+"bug fixes are introduced regularly. We currently use a 0.x version number"
+" `to indicate this fast pace of change <https://semver.org/#spec-"
+"item-4>`_."
+msgstr ""
+
+#: ../../installing-solidity.rst:30 731b4399b0a542248673515cf864b3cf
+msgid "Remix"
+msgstr ""
+
+#: ../../installing-solidity.rst:32 bee671f5142c46e39e19c155b66eee72
+msgid ""
+"*We recommend Remix for small contracts and for quickly learning "
+"Solidity.*"
+msgstr ""
+
+#: ../../installing-solidity.rst:34 7ddb3418655344fda6fe89c257db0caf
+msgid ""
+"`Access Remix online <https://remix.ethereum.org/>`_, you do not need to "
+"install anything. If you want to use it without connection to the "
+"Internet, go to https://github.com/ethereum/remix-live/tree/gh-pages and "
+"download the ``.zip`` file as explained on that page. Remix is also a "
+"convenient option for testing nightly builds without installing multiple "
+"Solidity versions."
+msgstr ""
+
+#: ../../installing-solidity.rst:40 f193e252445f4ee7b984da38d1687aaf
+msgid ""
+"Further options on this page detail installing commandline Solidity "
+"compiler software on your computer. Choose a commandline compiler if you "
+"are working on a larger contract or if you require more compilation "
+"options."
+msgstr ""
+
+#: ../../installing-solidity.rst:47 74c84591610148a38d8307185d7c0013
+msgid "npm / Node.js"
+msgstr ""
+
+#: ../../installing-solidity.rst:49 4ea183ba8a0f44beaae865492f33194e
+msgid ""
+"Use ``npm`` for a convenient and portable way to install ``solcjs``, a "
+"Solidity compiler. The `solcjs` program has fewer features than the ways "
+"to access the compiler described further down this page. The :ref"
+":`commandline-compiler` documentation assumes you are using the full-"
+"featured compiler, ``solc``. The usage of ``solcjs`` is documented inside"
+" its own `repository <https://github.com/ethereum/solc-js>`_."
+msgstr ""
+
+#: ../../installing-solidity.rst:56 64135356dfaa43cf97dbeb80645d8f00
+msgid ""
+"Note: The solc-js project is derived from the C++ `solc` by using "
+"Emscripten which means that both use the same compiler source code. "
+"`solc-js` can be used in JavaScript projects directly (such as Remix). "
+"Please refer to the solc-js repository for instructions."
+msgstr ""
+
+#: ../../installing-solidity.rst:67 1b4dd226b9af4f9eaca5f91a3cf3b2b5
+msgid "The commandline executable is named ``solcjs``."
+msgstr ""
+
+#: ../../installing-solidity.rst:69 357591cbddff4de68d77427d951fa32e
+msgid ""
+"The commandline options of ``solcjs`` are not compatible with ``solc`` "
+"and tools (such as ``geth``) expecting the behaviour of ``solc`` will not"
+" work with ``solcjs``."
+msgstr ""
+
+#: ../../installing-solidity.rst:73 b287dd1bbab54d129eca6ef71a7f3be3
+msgid "Docker"
+msgstr ""
+
+#: ../../installing-solidity.rst:75 3376130fd5d94c20840d67716e866378
+msgid ""
+"Docker images of Solidity builds are available using the ``solc`` image "
+"from the ``ethereum`` organisation. Use the ``stable`` tag for the latest"
+" released version, and ``nightly`` for potentially unstable changes in "
+"the develop branch."
+msgstr ""
+
+#: ../../installing-solidity.rst:78 63882840d4e84a8fb3da3d5c0be7b112
+msgid ""
+"The Docker image runs the compiler executable, so you can pass all "
+"compiler arguments to it. For example, the command below pulls the stable"
+" version of the ``solc`` image (if you do not have it already), and runs "
+"it in a new container, passing the ``--help`` argument."
+msgstr ""
+
+#: ../../installing-solidity.rst:86 c2d2c44775704590b25bcdcaa93ad3ab
+msgid ""
+"You can also specify release build versions in the tag, for example, for "
+"the 0.5.4 release."
+msgstr ""
+
+#: ../../installing-solidity.rst:92 9ca86658a982405c84c05f3c2ac0c19a
+msgid ""
+"To use the Docker image to compile Solidity files on the host machine "
+"mount a local folder for input and output, and specify the contract to "
+"compile. For example."
+msgstr ""
+
+#: ../../installing-solidity.rst:99 7eefbfddf3fb44c28b93de3290e8a369
+msgid ""
+"You can also use the standard JSON interface (which is recommended when "
+"using the compiler with tooling). When using this interface it is not "
+"necessary to mount any directories as long as the JSON input is self-"
+"contained (i.e. it does not refer to any external files that would have "
+"to be :ref:`loaded by the import callback <initial-vfs-content-standard-"
+"json-with-import-callback>`)."
+msgstr ""
+
+#: ../../installing-solidity.rst:109 fa8f2d0522884d0595965fe32723cc67
+msgid "Linux Packages"
+msgstr ""
+
+#: ../../installing-solidity.rst:111 6bcd5b76a9de4988814210088af90851
+msgid ""
+"Binary packages of Solidity are available at `solidity/releases "
+"<https://github.com/ethereum/solidity/releases>`_."
+msgstr ""
+
+#: ../../installing-solidity.rst:114 0aabe7102a834146a55b35fde75af385
+msgid ""
+"We also have PPAs for Ubuntu, you can get the latest stable version using"
+" the following commands:"
+msgstr ""
+
+#: ../../installing-solidity.rst:123 b5e009c0c50444cc822c112d47703b0e
+msgid "The nightly version can be installed using these commands:"
+msgstr ""
+
+#: ../../installing-solidity.rst:132 734aa2821b3c40f48ea9c3ccf6cdd886
+msgid ""
+"Furthermore, some Linux distributions provide their own packages. These "
+"packages are not directly maintained by us, but usually kept up-to-date "
+"by the respective package maintainers."
+msgstr ""
+
+#: ../../installing-solidity.rst:135 4e63e7dd0a844163beac3cd80020438b
+msgid "For example, Arch Linux has packages for the latest development version:"
+msgstr ""
+
+#: ../../installing-solidity.rst:141 b1ec4d285528456f969e24e6f1aaf159
+msgid ""
+"There is also a `snap package <https://snapcraft.io/solc>`_, however, it "
+"is **currently unmaintained**. It is installable in all the `supported "
+"Linux distros <https://snapcraft.io/docs/core/install>`_. To install the "
+"latest stable version of solc:"
+msgstr ""
+
+#: ../../installing-solidity.rst:149 56ffbaeb80e247fdbc7ebc0057ee4ed7
+msgid ""
+"If you want to help testing the latest development version of Solidity "
+"with the most recent changes, please use the following:"
+msgstr ""
+
+#: ../../installing-solidity.rst:158 0aba624c16184e11bccee1c820f87a5a
+msgid ""
+"The ``solc`` snap uses strict confinement. This is the most secure mode "
+"for snap packages but it comes with limitations, like accessing only the "
+"files in your ``/home`` and ``/media`` directories. For more information,"
+" go to `Demystifying Snap Confinement <https://snapcraft.io/blog"
+"/demystifying-snap-confinement>`_."
+msgstr ""
+
+#: ../../installing-solidity.rst:164 03396753b43043b8b705b9695226f75a
+msgid "macOS Packages"
+msgstr ""
+
+#: ../../installing-solidity.rst:166 9a7a271c65834fda89c894bf81a16d59
+msgid ""
+"We distribute the Solidity compiler through Homebrew as a build-from-"
+"source version. Pre-built bottles are currently not supported."
+msgstr ""
+
+#: ../../installing-solidity.rst:177 840fabd8e0aa425092a7977dedbe0a3a
+msgid ""
+"To install the most recent 0.4.x / 0.5.x version of Solidity you can also"
+" use ``brew install solidity@4`` and ``brew install solidity@5``, "
+"respectively."
+msgstr ""
+
+#: ../../installing-solidity.rst:180 6714ce3a1c9c4a6f814049a2451f2155
+msgid ""
+"If you need a specific version of Solidity you can install a Homebrew "
+"formula directly from Github."
+msgstr ""
+
+#: ../../installing-solidity.rst:183 e2fb7f29dc244881b762c44cc2200715
+msgid ""
+"View `solidity.rb commits on Github <https://github.com/ethereum"
+"/homebrew-ethereum/commits/master/solidity.rb>`_."
+msgstr ""
+
+#: ../../installing-solidity.rst:186 8426b1fac55c446586baeae45bb2a789
+msgid ""
+"Copy the commit hash of the version you want and check it out on your "
+"machine."
+msgstr ""
+
+#: ../../installing-solidity.rst:194 1464f684bbb34471b1d4406920c83481
+msgid "Install it using ``brew``:"
+msgstr ""
+
+#: ../../installing-solidity.rst:203 9879c8c42bc84cac9cfcd09e6f912675
+msgid "Static Binaries"
+msgstr ""
+
+#: ../../installing-solidity.rst:205 202c4f3d67b5452f9e116bf8b8d7fd99
+msgid ""
+"We maintain a repository containing static builds of past and current "
+"compiler versions for all supported platforms at `solc-bin`_. This is "
+"also the location where you can find the nightly builds."
+msgstr ""
+
+#: ../../installing-solidity.rst:208 8610d7185f1d48cb8924446c891755cc
+msgid ""
+"The repository is not only a quick and easy way for end users to get "
+"binaries ready to be used out-of-the-box but it is also meant to be "
+"friendly to third-party tools:"
+msgstr ""
+
+#: ../../installing-solidity.rst:211 768137a8ad174694af80adfc3e279c36
+msgid ""
+"The content is mirrored to https://binaries.soliditylang.org where it can"
+" be easily downloaded over HTTPS without any authentication, rate "
+"limiting or the need to use git."
+msgstr ""
+
+#: ../../installing-solidity.rst:213 4904071404c6420284b3aeab38ad6f96
+msgid ""
+"Content is served with correct `Content-Type` headers and lenient CORS "
+"configuration so that it can be directly loaded by tools running in the "
+"browser."
+msgstr ""
+
+#: ../../installing-solidity.rst:215 a98cfad131274e2facff1af219016d10
+msgid ""
+"Binaries do not require installation or unpacking (with the exception of "
+"older Windows builds bundled with necessary DLLs)."
+msgstr ""
+
+#: ../../installing-solidity.rst:217 27409b441757481a8191fd272e955cfd
+msgid ""
+"We strive for a high level of backwards-compatibility. Files, once added,"
+" are not removed or moved without providing a symlink/redirect at the old"
+" location. They are also never modified in place and should always match "
+"the original checksum. The only exception would be broken or unusable "
+"files with a potential to cause more harm than good if left as is."
+msgstr ""
+
+#: ../../installing-solidity.rst:221 f68c44e0d9ed41e692fb49d789815a5b
+msgid ""
+"Files are served over both HTTP and HTTPS. As long as you obtain the file"
+" list in a secure way (via git, HTTPS, IPFS or just have it cached "
+"locally) and verify hashes of the binaries after downloading them, you do"
+" not have to use HTTPS for the binaries themselves."
+msgstr ""
+
+#: ../../installing-solidity.rst:225 94dce363c84c4e36973546b925c26329
+msgid ""
+"The same binaries are in most cases available on the `Solidity release "
+"page on Github`_. The difference is that we do not generally update old "
+"releases on the Github release page. This means that we do not rename "
+"them if the naming convention changes and we do not add builds for "
+"platforms that were not supported at the time of release. This only "
+"happens in ``solc-bin``."
+msgstr ""
+
+#: ../../installing-solidity.rst:230 0d967c3d48f94eb697cf421619f875a2
+msgid ""
+"The ``solc-bin`` repository contains several top-level directories, each "
+"representing a single platform. Each one contains a ``list.json`` file "
+"listing the available binaries. For example in ``emscripten-"
+"wasm32/list.json`` you will find the following information about version "
+"0.7.4:"
+msgstr ""
+
+#: ../../installing-solidity.rst:249 9a4da6794a18446c8610251f1f1f3614
+msgid "This means that:"
+msgstr ""
+
+#: ../../installing-solidity.rst:251 f060027d44b64cdcb1832bf7056c9661
+msgid ""
+"You can find the binary in the same directory under the name `solc-"
+"emscripten-wasm32-v0.7.4+commit.3f05b770.js <https://github.com/ethereum"
+"/solc-bin/blob/gh-pages/emscripten-wasm32/solc-emscripten-"
+"wasm32-v0.7.4+commit.3f05b770.js>`_. Note that the file might be a "
+"symlink, and you will need to resolve it yourself if you are not using "
+"git to download it or your file system does not support symlinks."
+msgstr ""
+
+#: ../../installing-solidity.rst:255 5ac6f9d1807b4f2c98b818cbbbe3e1b5
+msgid ""
+"The binary is also mirrored at https://binaries.soliditylang.org"
+"/emscripten-wasm32/solc-emscripten-wasm32-v0.7.4+commit.3f05b770.js. In "
+"this case git is not necessary and symlinks are resolved transparently, "
+"either by serving a copy of the file or returning a HTTP redirect."
+msgstr ""
+
+#: ../../installing-solidity.rst:258 4acb32c1132140b3863b8bf20f8ed1e3
+msgid ""
+"The file is also available on IPFS at "
+"`QmTLs5MuLEWXQkths41HiACoXDiH8zxyqBHGFDRSzVE5CS`_."
+msgstr ""
+
+#: ../../installing-solidity.rst:259 08c561e1375e48bd89c4d64d0137f0dc
+msgid ""
+"The file might in future be available on Swarm at "
+"`16c5f09109c793db99fe35f037c6092b061bd39260ee7a677c8a97f18c955ab1`_."
+msgstr ""
+
+#: ../../installing-solidity.rst:260 f078ce33d3994832a3055c0bbd16e36c
+msgid ""
+"You can verify the integrity of the binary by comparing its keccak256 "
+"hash to "
+"``0x300330ecd127756b824aa13e843cb1f43c473cb22eaf3750d5fb9c99279af8c3``.  "
+"The hash can be computed on the command line using ``keccak256sum`` "
+"utility provided by `sha3sum`_ or `keccak256() function from ethereumjs-"
+"util`_ in JavaScript."
+msgstr ""
+
+#: ../../installing-solidity.rst:264 5442cccccb56439a883af8911962c856
+msgid ""
+"You can also verify the integrity of the binary by comparing its sha256 "
+"hash to "
+"``0x2b55ed5fec4d9625b6c7b3ab1abd2b7fb7dd2a9c68543bf0323db2c7e2d55af2``."
+msgstr ""
+
+#: ../../installing-solidity.rst:269 720fc6344c8e474da1327e23c58a8b55
+msgid ""
+"Due to the strong backwards compatibility requirement the repository "
+"contains some legacy elements but you should avoid using them when "
+"writing new tools:"
+msgstr ""
+
+#: ../../installing-solidity.rst:272 04f34614077549deb2a11be258d0789f
+msgid ""
+"Use ``emscripten-wasm32/`` (with a fallback to ``emscripten-asmjs/``) "
+"instead of ``bin/`` if you want the best performance. Until version 0.6.1"
+" we only provided asm.js binaries. Starting with 0.6.2 we switched to "
+"`WebAssembly builds`_ with much better performance. We have rebuilt the "
+"older versions for wasm but the original asm.js files remain in ``bin/``."
+" The new ones had to be placed in a separate directory to avoid name "
+"clashes."
+msgstr ""
+
+#: ../../installing-solidity.rst:277 8783eab45b8b4faf921e3572ccca0fb7
+msgid ""
+"Use ``emscripten-asmjs/`` and ``emscripten-wasm32/`` instead of ``bin/`` "
+"and ``wasm/`` directories if you want to be sure whether you are "
+"downloading a wasm or an asm.js binary."
+msgstr ""
+
+#: ../../installing-solidity.rst:279 5e3eba8759a6461cb337554b9ab5b9c2
+msgid ""
+"Use ``list.json`` instead of ``list.js`` and ``list.txt``. The JSON list "
+"format contains all the information from the old ones and more."
+msgstr ""
+
+#: ../../installing-solidity.rst:281 08cccd60f6fd4782acaf79fd73955b0c
+msgid ""
+"Use https://binaries.soliditylang.org instead of https://solc-"
+"bin.ethereum.org. To keep things simple we moved almost everything "
+"related to the compiler under the new ``soliditylang.org`` domain and "
+"this applies to ``solc-bin`` too. While the new domain is recommended, "
+"the old one is still fully supported and guaranteed to point at the same "
+"location."
+msgstr ""
+
+#: ../../installing-solidity.rst:288 c26351ea04074e4e963f0977461ce1ac
+msgid ""
+"The binaries are also available at https://ethereum.github.io/solc-bin/ "
+"but this page stopped being updated just after the release of version "
+"0.7.2, will not receive any new releases or nightly builds for any "
+"platform and does not serve the new directory structure, including non-"
+"emscripten builds."
+msgstr ""
+
+#: ../../installing-solidity.rst:293 44f1c63df6fc4ee3a32189c6d1be134c
+msgid ""
+"If you are using it, please switch to https://binaries.soliditylang.org, "
+"which is a drop-in replacement. This allows us to make changes to the "
+"underlying hosting in a transparent way and minimize disruption. Unlike "
+"the ``ethereum.github.io`` domain, which we do not have any control over,"
+" ``binaries.soliditylang.org`` is guaranteed to work and maintain the "
+"same URL structure in the long-term."
+msgstr ""
+
+#: ../../installing-solidity.rst:312 5f4a40d131ba4bf09dc2bc6c01f385a2
+msgid "Building from Source"
+msgstr ""
+
+#: ../../installing-solidity.rst:315 a87a7e2698b84c1198378cfbdf531b8a
+msgid "Prerequisites - All Operating Systems"
+msgstr ""
+
+#: ../../installing-solidity.rst:317 625ed8d39bf2417b8bea4a069cd338c9
+msgid "The following are dependencies for all builds of Solidity:"
+msgstr ""
+
+#: ../../installing-solidity.rst:320 ../../installing-solidity.rst:406
+#: 8c0743858f3f4993bca258ee160c29f9 eafc7938fef34d8ca1278ecd4fbb15c6
+msgid "Software"
+msgstr ""
+
+#: ../../installing-solidity.rst:320 ../../installing-solidity.rst:406
+#: 0567fc14fa344029a7daab2882f95673 74d00326a8c049bfbf8be8d43ae5873a
+msgid "Notes"
+msgstr ""
+
+#: ../../installing-solidity.rst:322 188a80c227f742ec9dd831d5b3031222
+msgid "`CMake`_ (version 3.21.3+ on Windows, 3.13+ otherwise)"
+msgstr ""
+
+#: ../../installing-solidity.rst:322 f9a11cb0ba6b45ffad4b15e30a7c9b1a
+msgid "Cross-platform build file generator."
+msgstr ""
+
+#: ../../installing-solidity.rst:325 620058736d6247acb59d62992c1a0940
+msgid "`Boost`_ (version 1.77 on Windows, 1.65+ otherwise)"
+msgstr ""
+
+#: ../../installing-solidity.rst:325 ../../installing-solidity.rst:412
+#: 7a18cf075df94b8e9ac321746dea0eaf 998766ca20d74db59078aaf9963b9842
+msgid "C++ libraries."
+msgstr ""
+
+#: ../../installing-solidity.rst:328 3f62c9edf8384528809a3c4834fe4bc8
+msgid "`Git`_"
+msgstr ""
+
+#: ../../installing-solidity.rst:328 3122d023f74a4f08acbcc2b2ec17e55f
+msgid "Command-line tool for retrieving source code."
+msgstr ""
+
+#: ../../installing-solidity.rst:330 8ba08bcb3c2c4dd4973a2002e947ce10
+msgid "`z3`_ (version 4.8.16+, Optional)"
+msgstr ""
+
+#: ../../installing-solidity.rst:330 ../../installing-solidity.rst:332
+#: cd8fb8cc3e884e7cac22041556cb6216 db345e0cf321430894cfd5c644e17ce9
+msgid "For use with SMT checker."
+msgstr ""
+
+#: ../../installing-solidity.rst:332 c6b5b949c0e0453ea0db22e6b23e10b0
+msgid "`cvc4`_ (Optional)"
+msgstr ""
+
+#: ../../installing-solidity.rst:342 6280d83e71c14fe8b36f072187b10102
+msgid ""
+"Solidity versions prior to 0.5.10 can fail to correctly link against "
+"Boost versions 1.70+. A possible workaround is to temporarily rename "
+"``<Boost install path>/lib/cmake/Boost-1.70.0`` prior to running the "
+"cmake command to configure solidity."
+msgstr ""
+
+#: ../../installing-solidity.rst:346 dcde3a0030fb46a4b896f502d56868e3
+msgid ""
+"Starting from 0.5.10 linking against Boost 1.70+ should work without "
+"manual intervention."
+msgstr ""
+
+#: ../../installing-solidity.rst:349 2fa888c801ec40e990f7e798aae46238
+msgid ""
+"The default build configuration requires a specific Z3 version (the "
+"latest one at the time the code was last updated). Changes introduced "
+"between Z3 releases often result in slightly different (but still valid) "
+"results being returned. Our SMT tests do not account for these "
+"differences and will likely fail with a different version than the one "
+"they were written for. This does not mean that a build using a different "
+"version is faulty. If you pass ``-DSTRICT_Z3_VERSION=OFF`` option to "
+"CMake, you can build with any version that satisfies the requirement "
+"given in the table above. If you do this, however, please remember to "
+"pass the ``--no-smt`` option to ``scripts/tests.sh`` to skip the SMT "
+"tests."
+msgstr ""
+
+#: ../../installing-solidity.rst:359 7519ee1f23b84d899d7997ef028800f5
+msgid ""
+"By default the build is performed in *pedantic mode*, which enables extra"
+" warnings and tells the compiler to treat all warnings as errors. This "
+"forces developers to fix warnings as they arise, so they do not "
+"accumulate \"to be fixed later\". If you are only interested in creating "
+"a release build and do not intend to modify the source code to deal with "
+"such warnings, you can pass ``-DPEDANTIC=OFF`` option to CMake to disable"
+" this mode. Doing this is not recommended for general use but may be "
+"necessary when using a toolchain we are not testing with or trying to "
+"build an older version with newer tools. If you encounter such warnings, "
+"please consider `reporting them "
+"<https://github.com/ethereum/solidity/issues/new>`_."
+msgstr ""
+
+#: ../../installing-solidity.rst:370 7d5bffbf36664509b530240c10d51508
+msgid "Minimum Compiler Versions"
+msgstr ""
+
+#: ../../installing-solidity.rst:372 eb9aab94b65d4afe957e4262fbc33c58
+msgid ""
+"The following C++ compilers and their minimum versions can build the "
+"Solidity codebase:"
+msgstr ""
+
+#: ../../installing-solidity.rst:374 c364ffd212f5408386e2507f286772a6
+msgid "`GCC <https://gcc.gnu.org>`_, version 8+"
+msgstr ""
+
+#: ../../installing-solidity.rst:375 5fd5d6122cd848ccb5537c92c204dc3d
+msgid "`Clang <https://clang.llvm.org/>`_, version 7+"
+msgstr ""
+
+#: ../../installing-solidity.rst:376 e63ed8dcbcf14c43832f317772690f8e
+msgid "`MSVC <https://visualstudio.microsoft.com/vs/>`_, version 2019+"
+msgstr ""
+
+#: ../../installing-solidity.rst:379 1a3e668e364541dab7d9bf2e8e2e0b67
+msgid "Prerequisites - macOS"
+msgstr ""
+
+#: ../../installing-solidity.rst:381 0a84add64c2a41759d85b3b6befdd86e
+msgid ""
+"For macOS builds, ensure that you have the latest version of `Xcode "
+"installed <https://developer.apple.com/xcode/download/>`_. This contains "
+"the `Clang C++ compiler <https://en.wikipedia.org/wiki/Clang>`_, the "
+"`Xcode IDE <https://en.wikipedia.org/wiki/Xcode>`_ and other Apple "
+"development tools that are required for building C++ applications on OS "
+"X. If you are installing Xcode for the first time, or have just installed"
+" a new version then you will need to agree to the license before you can "
+"do command-line builds:"
+msgstr ""
+
+#: ../../installing-solidity.rst:394 72c7e8d108bd4c7b92141bc9fdc53b70
+msgid ""
+"Our OS X build script uses `the Homebrew <https://brew.sh>`_ package "
+"manager for installing external dependencies. Here's how to `uninstall "
+"Homebrew <https://docs.brew.sh/FAQ#how-do-i-uninstall-homebrew>`_, if you"
+" ever want to start again from scratch."
+msgstr ""
+
+#: ../../installing-solidity.rst:401 b524ec70f1da4d57b42cfc8f93494846
+msgid "Prerequisites - Windows"
+msgstr ""
+
+#: ../../installing-solidity.rst:403 542a3bfe7d074ae18d764a76379437d1
+msgid ""
+"You need to install the following dependencies for Windows builds of "
+"Solidity:"
+msgstr ""
+
+#: ../../installing-solidity.rst:408 22dccbf550ca4222885bde06f8641bde
+msgid "`Visual Studio 2019 Build Tools`_"
+msgstr ""
+
+#: ../../installing-solidity.rst:408 f1482251dd5d4958ba0adef30f794f53
+msgid "C++ compiler"
+msgstr ""
+
+#: ../../installing-solidity.rst:410 e512bed1f3234e43957bc39e45570b45
+msgid "`Visual Studio 2019`_  (Optional)"
+msgstr ""
+
+#: ../../installing-solidity.rst:410 69ad6fd3fbb14b9f8045c0af04e4adf2
+msgid "C++ compiler and dev environment."
+msgstr ""
+
+#: ../../installing-solidity.rst:412 6fa620adb4834687b167f066547d9ede
+msgid "`Boost`_ (version 1.77)"
+msgstr ""
+
+#: ../../installing-solidity.rst:415 7ab289f290444844b749c79f08dda2e8
+msgid ""
+"If you already have one IDE and only need the compiler and libraries, you"
+" could install Visual Studio 2019 Build Tools."
+msgstr ""
+
+#: ../../installing-solidity.rst:418 10f846cfa3ba487aa0d55e654e39a7da
+msgid ""
+"Visual Studio 2019 provides both IDE and necessary compiler and "
+"libraries. So if you have not got an IDE and prefer to develop Solidity, "
+"Visual Studio 2019 may be a choice for you to get everything setup "
+"easily."
+msgstr ""
+
+#: ../../installing-solidity.rst:422 fa6c63803cb844b4b10a94ebebced8b1
+msgid ""
+"Here is the list of components that should be installed in Visual Studio "
+"2019 Build Tools or Visual Studio 2019:"
+msgstr ""
+
+#: ../../installing-solidity.rst:425 bc61c6ae5a0140e9ad7ec4d56cf8e477
+msgid "Visual Studio C++ core features"
+msgstr ""
+
+#: ../../installing-solidity.rst:426 d013a869429d41c98eff764e7490d0fb
+msgid "VC++ 2019 v141 toolset (x86,x64)"
+msgstr ""
+
+#: ../../installing-solidity.rst:427 5aa37d9355a341fbbfc4e605b7b3a471
+msgid "Windows Universal CRT SDK"
+msgstr ""
+
+#: ../../installing-solidity.rst:428 ba341bbf59ad422f9f653704ae318a01
+msgid "Windows 8.1 SDK"
+msgstr ""
+
+#: ../../installing-solidity.rst:429 c64b36becc6e445da88e7d6e707df9bd
+msgid "C++/CLI support"
+msgstr ""
+
+#: ../../installing-solidity.rst:434 aa31ee9629e744019d231dfdb2af1afa
+msgid ""
+"We have a helper script which you can use to install all required "
+"external dependencies:"
+msgstr ""
+
+#: ../../installing-solidity.rst:440 4333170965524466b9542565b8407efe
+msgid "This will install ``boost`` and ``cmake`` to the ``deps`` subdirectory."
+msgstr ""
+
+#: ../../installing-solidity.rst:443 78f1665b7ef7406392629a0ee00de235
+msgid "Clone the Repository"
+msgstr ""
+
+#: ../../installing-solidity.rst:445 cc50258582a84367890b414f4c10e4da
+msgid "To clone the source code, execute the following command:"
+msgstr ""
+
+#: ../../installing-solidity.rst:452 697c6039f70b475786090f66ec22b59c
+msgid ""
+"If you want to help developing Solidity, you should fork Solidity and add"
+" your personal fork as a second remote:"
+msgstr ""
+
+#: ../../installing-solidity.rst:460 089dd8d1dd6f46fe85a6af6c0b2fafe5
+msgid ""
+"This method will result in a prerelease build leading to e.g. a flag "
+"being set in each bytecode produced by such a compiler. If you want to "
+"re-build a released Solidity compiler, then please use the source tarball"
+" on the github release page:"
+msgstr ""
+
+#: ../../installing-solidity.rst:465 0902b95bf46a41afbfcf70ee5da3d7b4
+msgid "https://github.com/ethereum/solidity/releases/download/v0.X.Y/solidity_0.X.Y.tar.gz"
+msgstr ""
+
+#: ../../installing-solidity.rst:467 4f8ee28445b44863bc3efdf19b486e38
+msgid "(not the \"Source code\" provided by github)."
+msgstr ""
+
+#: ../../installing-solidity.rst:470 64e88fffe1314010a0be3d732863a0b8
+msgid "Command-Line Build"
+msgstr ""
+
+#: ../../installing-solidity.rst:472 899dda564d1d495b9dc434e636074768
+msgid "**Be sure to install External Dependencies (see above) before build.**"
+msgstr ""
+
+#: ../../installing-solidity.rst:474 0fd64c360dec4985a391eadc137d8f82
+msgid ""
+"Solidity project uses CMake to configure the build. You might want to "
+"install `ccache`_ to speed up repeated builds. CMake will pick it up "
+"automatically. Building Solidity is quite similar on Linux, macOS and "
+"other Unices:"
+msgstr ""
+
+#: ../../installing-solidity.rst:487 da12b4c9071a42fe8d169f841804133d
+msgid "or even easier on Linux and macOS, you can run:"
+msgstr ""
+
+#: ../../installing-solidity.rst:496 74d7f93e9d7540aa976ec0df696a911d
+msgid "BSD builds should work, but are untested by the Solidity team."
+msgstr ""
+
+#: ../../installing-solidity.rst:498 66f485c814aa49eb8e291d185cad24c8
+msgid "And for Windows:"
+msgstr ""
+
+#: ../../installing-solidity.rst:506 a1e0fb8ba81f4c06bab4cd874247ccc7
+msgid ""
+"In case you want to use the version of boost installed by "
+"``scripts\\install_deps.ps1``, you will additionally need to pass "
+"``-DBoost_DIR=\"deps\\boost\\lib\\cmake\\Boost-*\"`` and "
+"``-DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded`` as arguments to the call "
+"to ``cmake``."
+msgstr ""
+
+#: ../../installing-solidity.rst:510 f8079f5e34454e74a49b229ae9430f44
+msgid ""
+"This should result in the creation of **solidity.sln** in that build "
+"directory. Double-clicking on that file should result in Visual Studio "
+"firing up.  We suggest building **Release** configuration, but all others"
+" work."
+msgstr ""
+
+#: ../../installing-solidity.rst:514 7462275255304b2caa83823cafd3c77f
+msgid "Alternatively, you can build for Windows on the command-line, like so:"
+msgstr ""
+
+#: ../../installing-solidity.rst:521 2798d31030fc41698fe1d482434c3ebc
+msgid "CMake Options"
+msgstr ""
+
+#: ../../installing-solidity.rst:523 9560e79cae564452812d8170506763b6
+msgid ""
+"If you are interested what CMake options are available run ``cmake .. "
+"-LH``."
+msgstr ""
+
+#: ../../installing-solidity.rst:528 1e0f735fdb864131aec549e457732cd2
+msgid "SMT Solvers"
+msgstr ""
+
+#: ../../installing-solidity.rst:529 3cfa07b55d6b42309e67909f0ac935c0
+msgid ""
+"Solidity can be built against SMT solvers and will do so by default if "
+"they are found in the system. Each solver can be disabled by a `cmake` "
+"option."
+msgstr ""
+
+#: ../../installing-solidity.rst:532 fe076bef777d44a68055099bd735a6f8
+msgid ""
+"*Note: In some cases, this can also be a potential workaround for build "
+"failures.*"
+msgstr ""
+
+#: ../../installing-solidity.rst:535 f79a372cd7f945a0aa4882c54ebee899
+msgid ""
+"Inside the build folder you can disable them, since they are enabled by "
+"default:"
+msgstr ""
+
+#: ../../installing-solidity.rst:549 3df9039a5ede43bf9b96b4963ea25078
+msgid "The Version String in Detail"
+msgstr ""
+
+#: ../../installing-solidity.rst:551 57b6cb92c4a14717a2735533703f664d
+msgid "The Solidity version string contains four parts:"
+msgstr ""
+
+#: ../../installing-solidity.rst:553 1c0e2287e3904d49bd008f9311eafb4a
+msgid "the version number"
+msgstr ""
+
+#: ../../installing-solidity.rst:554 f060b8d9f79e4623bc97c2a374cc6e04
+msgid ""
+"pre-release tag, usually set to ``develop.YYYY.MM.DD`` or "
+"``nightly.YYYY.MM.DD``"
+msgstr ""
+
+#: ../../installing-solidity.rst:555 f387b7a06ece4bb7bea4b17df392467f
+msgid "commit in the format of ``commit.GITHASH``"
+msgstr ""
+
+#: ../../installing-solidity.rst:556 313680adc5144f789a6183e01f9fcf2d
+msgid ""
+"platform, which has an arbitrary number of items, containing details "
+"about the platform and compiler"
+msgstr ""
+
+#: ../../installing-solidity.rst:558 6f74d1e1c30841cea6bfc95307640646
+msgid ""
+"If there are local modifications, the commit will be postfixed with "
+"``.mod``."
+msgstr ""
+
+#: ../../installing-solidity.rst:560 3f90e5fbab3a4f08abea3f9454c975e9
+msgid ""
+"These parts are combined as required by SemVer, where the Solidity pre-"
+"release tag equals to the SemVer pre-release and the Solidity commit and "
+"platform combined make up the SemVer build metadata."
+msgstr ""
+
+#: ../../installing-solidity.rst:563 477a5b828e8340b5baf82084e7d4fda3
+msgid "A release example: ``0.4.8+commit.60cc1668.Emscripten.clang``."
+msgstr ""
+
+#: ../../installing-solidity.rst:565 5d65a9c702434aa7841b1ceaa9e3cbe5
+msgid ""
+"A pre-release example: "
+"``0.4.9-nightly.2017.1.17+commit.6ecb4aa3.Emscripten.clang``"
+msgstr ""
+
+#: ../../installing-solidity.rst:568 7ecc4ac566e749b19525520a813a11ca
+msgid "Important Information About Versioning"
+msgstr ""
+
+#: ../../installing-solidity.rst:570 e55bdab88cb24229b3a5b1a9f79e5499
+msgid ""
+"After a release is made, the patch version level is bumped, because we "
+"assume that only patch level changes follow. When changes are merged, the"
+" version should be bumped according to SemVer and the severity of the "
+"change. Finally, a release is always made with the version of the current"
+" nightly build, but without the ``prerelease`` specifier."
+msgstr ""
+
+#: ../../installing-solidity.rst:575 46c1455e85214b1abcc4656a338fba46
+msgid "Example:"
+msgstr ""
+
+#: ../../installing-solidity.rst:577 0d4160e67c1c4071903daa68814c2515
+msgid "The 0.4.0 release is made."
+msgstr ""
+
+#: ../../installing-solidity.rst:578 43859457c20d4af4b72361926708fa4b
+msgid "The nightly build has a version of 0.4.1 from now on."
+msgstr ""
+
+#: ../../installing-solidity.rst:579 27264d22428b4daaa28038cd2d2d639c
+msgid "Non-breaking changes are introduced --> no change in version."
+msgstr ""
+
+#: ../../installing-solidity.rst:580 b23b10f9256843c4a110b17a43fb9f78
+msgid "A breaking change is introduced --> version is bumped to 0.5.0."
+msgstr ""
+
+#: ../../installing-solidity.rst:581 6456e40cd4d349a59bcb2247e1e5745f
+msgid "The 0.5.0 release is made."
+msgstr ""
+
+#: ../../installing-solidity.rst:583 f9894bb093c84d3a956feaeca9e15675
+msgid ""
+"This behaviour works well with the  :ref:`version pragma "
+"<version_pragma>`."
+msgstr ""
+

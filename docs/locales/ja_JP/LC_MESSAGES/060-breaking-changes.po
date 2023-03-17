@@ -1,0 +1,369 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2023, The Solidity Authors
+# This file is distributed under the same license as the Solidity package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Solidity 0.8.20\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-18 04:40+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ja_JP\n"
+"Language-Team: ja_JP <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../060-breaking-changes.rst:3 25c5c5faedca47de85174dff8a3506f4
+msgid "Solidity v0.6.0 Breaking Changes"
+msgstr ""
+
+#: ../../060-breaking-changes.rst:5 1b582944fffd4228a93ee6e72fc3c2d0
+msgid ""
+"This section highlights the main breaking changes introduced in Solidity "
+"version 0.6.0, along with the reasoning behind the changes and how to "
+"update affected code. For the full list check `the release changelog "
+"<https://github.com/ethereum/solidity/releases/tag/v0.6.0>`_."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:13 8cd8be3a243c4c5c9565ca1f7a62494b
+msgid "Changes the Compiler Might not Warn About"
+msgstr ""
+
+#: ../../060-breaking-changes.rst:15 d3954a9143eb44e68e39a1a81d72ca86
+msgid ""
+"This section lists changes where the behaviour of your code might change "
+"without the compiler telling you about it."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:18 658d3b98d0134d4d97c576d30a82783b
+msgid ""
+"The resulting type of an exponentiation is the type of the base. It used "
+"to be the smallest type that can hold both the type of the base and the "
+"type of the exponent, as with symmetric operations. Additionally, signed "
+"types are allowed for the base of the exponentiation."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:24 2fb4628f42eb40338e214aed1b58b85e
+msgid "Explicitness Requirements"
+msgstr ""
+
+#: ../../060-breaking-changes.rst:26 fc56b3974e484153b96ce69fc3efb032
+msgid ""
+"This section lists changes where the code now needs to be more explicit, "
+"but the semantics do not change. For most of the topics the compiler will"
+" provide suggestions."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:30 7b3663ce4468453baa521cb1205d893e
+msgid ""
+"Functions can now only be overridden when they are either marked with the"
+" ``virtual`` keyword or defined in an interface. Functions without "
+"implementation outside an interface have to be marked ``virtual``. When "
+"overriding a function or modifier, the new keyword ``override`` must be "
+"used. When overriding a function or modifier defined in multiple parallel"
+" bases, all bases must be listed in parentheses after the keyword like "
+"so: ``override(Base1, Base2)``."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:38 572593dea8894500a06daacfadf14447
+msgid ""
+"Member-access to ``length`` of arrays is now always read-only, even for "
+"storage arrays. It is no longer possible to resize storage arrays by "
+"assigning a new value to their length. Use ``push()``, ``push(value)`` or"
+" ``pop()`` instead, or assign a full array, which will of course "
+"overwrite the existing content. The reason behind this is to prevent "
+"storage collisions of gigantic storage arrays."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:44 003a1c975fe64b92b263038dbf6453b8
+msgid ""
+"The new keyword ``abstract`` can be used to mark contracts as abstract. "
+"It has to be used if a contract does not implement all its functions. "
+"Abstract contracts cannot be created using the ``new`` operator, and it "
+"is not possible to generate bytecode for them during compilation."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:48 cb9f1fbeac0441cbaabfb1bcf181f9dc
+msgid ""
+"Libraries have to implement all their functions, not only the internal "
+"ones."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:50 14336fcfc6cc4db3900e35573ffe7183
+msgid ""
+"The names of variables declared in inline assembly may no longer end in "
+"``_slot`` or ``_offset``."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:52 552b8af1048640d7a63a11795d5b114d
+msgid ""
+"Variable declarations in inline assembly may no longer shadow any "
+"declaration outside the inline assembly block. If the name contains a "
+"dot, its prefix up to the dot may not conflict with any declaration "
+"outside the inline assembly block."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:56 60001f921e244979bc3e35ad016bcebc
+msgid ""
+"In inline assembly, opcodes that do not take arguments are now "
+"represented as \"built-in functions\" instead of standalone identifiers. "
+"So ``gas`` is now ``gas()``."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:58 652d56169a594a77ade5316f4c93a21b
+msgid ""
+"State variable shadowing is now disallowed.  A derived contract can only "
+"declare a state variable ``x``, if there is no visible state variable "
+"with the same name in any of its bases."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:64 876f0bc999f84b7ab112616f4abe7cf8
+msgid "Semantic and Syntactic Changes"
+msgstr ""
+
+#: ../../060-breaking-changes.rst:66 6557466d8f1f4291a50b6cc87f9e97f2
+msgid ""
+"This section lists changes where you have to modify your code and it does"
+" something else afterwards."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:69 bdb90193771b4344888b92217deb489c
+msgid ""
+"Conversions from external function types to ``address`` are now "
+"disallowed. Instead external function types have a member called "
+"``address``, similar to the existing ``selector`` member."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:72 07e884d5debf4b3186957cdc23e5d82d
+msgid ""
+"The function ``push(value)`` for dynamic storage arrays does not return "
+"the new length anymore (it returns nothing)."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:74 f6fc2b53a219470ca6afc04e66e55625
+msgid ""
+"The unnamed function commonly referred to as \"fallback function\" was "
+"split up into a new fallback function that is defined using the "
+"``fallback`` keyword and a receive ether function defined using the "
+"``receive`` keyword."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:78 48520d09f9d04a77b241e558d3a544f2
+msgid ""
+"If present, the receive ether function is called whenever the call data "
+"is empty (whether or not ether is received). This function is implicitly "
+"``payable``."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:81 28be7b04f4144a41b19d2f47671c6a88
+msgid ""
+"The new fallback function is called when no other function matches (if "
+"the receive ether function does not exist then this includes calls with "
+"empty call data). You can make this function ``payable`` or not. If it is"
+" not ``payable`` then transactions not matching any other function which "
+"send value will revert. You should only need to implement the new "
+"fallback function if you are following an upgrade or proxy pattern."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:89 a04c8c246d3c4f409f6a9338a6d1d355
+msgid "New Features"
+msgstr ""
+
+#: ../../060-breaking-changes.rst:91 72fd7da99c1140dab963984ad6a74cc9
+msgid ""
+"This section lists things that were not possible prior to Solidity 0.6.0 "
+"or were more difficult to achieve."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:94 eb490fba444d41f8a945065d28e4d7f5
+msgid ""
+"The :ref:`try/catch statement <try-catch>` allows you to react on failed "
+"external calls."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:95 5e64ece126374ef4832b8564d1a0a5ec
+msgid "``struct`` and ``enum`` types can be declared at file level."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:96 7b640e39a8c54aaa8fbdd90ed0038fc3
+msgid ""
+"Array slices can be used for calldata arrays, for example "
+"``abi.decode(msg.data[4:], (uint, uint))`` is a low-level way to decode "
+"the function call payload."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:98 747d174df6e94ea88f9c0b3ea6d23940
+msgid ""
+"Natspec supports multiple return parameters in developer documentation, "
+"enforcing the same naming check as ``@param``."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:99 ab54934825424f9397b535a61b377567
+msgid ""
+"Yul and Inline Assembly have a new statement called ``leave`` that exits "
+"the current function."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:100 fde2ede8d72542128c1f6379c5b43c45
+msgid ""
+"Conversions from ``address`` to ``address payable`` are now possible via "
+"``payable(x)``, where ``x`` must be of type ``address``."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:105 e84388366ac84478a4964afbbda9e784
+msgid "Interface Changes"
+msgstr ""
+
+#: ../../060-breaking-changes.rst:107 084934dcf14647eeb286c3368d9d0298
+msgid ""
+"This section lists changes that are unrelated to the language itself, but"
+" that have an effect on the interfaces of the compiler. These may change "
+"the way how you use the compiler on the command line, how you use its "
+"programmable interface, or how you analyze the output produced by it."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:112 e81016dfce34408d8096f640de2c3a73
+msgid "New Error Reporter"
+msgstr ""
+
+#: ../../060-breaking-changes.rst:114 2f255c7f74ed43e88cd35d643f956c16
+msgid ""
+"A new error reporter was introduced, which aims at producing more "
+"accessible error messages on the command line. It is enabled by default, "
+"but passing ``--old-reporter`` falls back to the the deprecated old error"
+" reporter."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:118 17ec0e5d75c841539be7a5e837a753de
+msgid "Metadata Hash Options"
+msgstr ""
+
+#: ../../060-breaking-changes.rst:120 db15e6b155df4634ae8ae099eb670565
+msgid ""
+"The compiler now appends the `IPFS <https://ipfs.io/>`_ hash of the "
+"metadata file to the end of the bytecode by default (for details, see "
+"documentation on :doc:`contract metadata <metadata>`). Before 0.6.0, the "
+"compiler appended the `Swarm <https://ethersphere.github.io/swarm-"
+"home/>`_ hash by default, and in order to still support this behaviour, "
+"the new command line option ``--metadata-hash`` was introduced. It allows"
+" you to select the hash to be produced and appended, by passing either "
+"``ipfs`` or ``swarm`` as value to the ``--metadata-hash`` command line "
+"option. Passing the value ``none`` completely removes the hash."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:127 b8bb789bbaf143049fc156d7ca672065
+msgid ""
+"These changes can also be used via the :ref:`Standard JSON Interface"
+"<compiler-api>` and effect the metadata JSON generated by the compiler."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:129 a040caf3c99245ec868825aeb76c054c
+msgid ""
+"The recommended way to read the metadata is to read the last two bytes to"
+" determine the length of the CBOR encoding and perform a proper decoding "
+"on that data block as explained in the :ref:`metadata section<encoding-"
+"of-the-metadata-hash-in-the-bytecode>`."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:133 4123f763dd924a2f8d9e2fdcd5353c27
+msgid "Yul Optimizer"
+msgstr ""
+
+#: ../../060-breaking-changes.rst:135 f89448fd2dc846b69832bd6341742ddd
+msgid ""
+"Together with the legacy bytecode optimizer, the :doc:`Yul <yul>` "
+"optimizer is now enabled by default when you call the compiler with "
+"``--optimize``. It can be disabled by calling the compiler with ``--no-"
+"optimize-yul``. This mostly affects code that uses ABI coder v2."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:140 4e53a83ec1d640fdbd13e75e9108601d
+msgid "C API Changes"
+msgstr ""
+
+#: ../../060-breaking-changes.rst:142 e91603725485482fa469140a0065caae
+msgid ""
+"The client code that uses the C API of ``libsolc`` is now in control of "
+"the memory used by the compiler. To make this change consistent, "
+"``solidity_free`` was renamed to ``solidity_reset``, the functions "
+"``solidity_alloc`` and ``solidity_free`` were added and "
+"``solidity_compile`` now returns a string that must be explicitly freed "
+"via ``solidity_free()``."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:149 40fc9daafe934eeda40b6b22180a2866
+msgid "How to update your code"
+msgstr ""
+
+#: ../../060-breaking-changes.rst:151 7cd97d6441c44f49926b45312b3039ff
+msgid ""
+"This section gives detailed instructions on how to update prior code for "
+"every breaking change."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:153 579f78b5fad042e78e678cb051e9a010
+msgid ""
+"Change ``address(f)`` to ``f.address`` for ``f`` being of external "
+"function type."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:155 fa9606ce6d1f49d1bf49ffdf73dc9e64
+msgid ""
+"Replace ``function () external [payable] { ... }`` by either ``receive() "
+"external payable { ... }``, ``fallback() external [payable] { ... }`` or "
+"both. Prefer using a ``receive`` function only, whenever possible."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:159 8363634d50284b4a9d358e6eb6740f8e
+msgid ""
+"Change ``uint length = array.push(value)`` to ``array.push(value);``. The"
+" new length can be accessed via ``array.length``."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:162 93c2e1d5bdac4819a48c2027f742a4bd
+msgid ""
+"Change ``array.length++`` to ``array.push()`` to increase, and use "
+"``pop()`` to decrease the length of a storage array."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:165 5668770a55dc42e38bd8e1b8f4165497
+msgid ""
+"For every named return parameter in a function's ``@dev`` documentation "
+"define a ``@return`` entry which contains the parameter's name as the "
+"first word. E.g. if you have function ``f()`` defined like ``function f()"
+" public returns (uint value)`` and a ``@dev`` annotating it, document its"
+" return parameters like so: ``@return value The return value.``. You can "
+"mix named and un-named return parameters documentation so long as the "
+"notices are in the order they appear in the tuple return type."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:171 a6b762c3254c432c8ae3a2cd6ee18fc4
+msgid ""
+"Choose unique identifiers for variable declarations in inline assembly "
+"that do not conflict with declarations outside the inline assembly block."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:174 0a764ba6d82449e19abfe2e65a086cea
+msgid ""
+"Add ``virtual`` to every non-interface function you intend to override. "
+"Add ``virtual`` to all functions without implementation outside "
+"interfaces. For single inheritance, add ``override`` to every overriding "
+"function. For multiple inheritance, add ``override(A, B, ..)``, where you"
+" list all contracts that define the overridden function in the "
+"parentheses. When multiple bases define the same function, the inheriting"
+" contract must override all conflicting functions."
+msgstr ""
+
+#: ../../060-breaking-changes.rst:180 fbd584e77c4141ae92bf51947f9f3c54
+msgid ""
+"In inline assembly, add ``()`` to all opcodes that do not otherwise "
+"accept an argument. For example, change ``pc`` to ``pc()``, and ``gas`` "
+"to ``gas()``."
+msgstr ""
+
